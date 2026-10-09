@@ -1,0 +1,250 @@
+/* Дарья Шпилевская · психолог — концепт.
+   Айдентика из её Taplink: дидона на тёплой бумаге (как её логотип «Daria Shpilevskaia»),
+   тонкие чёрные линейки, глубокий цвет моря с её баннера, пшеница и «бабушкин» фарфор как акценты. */
+:root {
+  --paper: #f4efe9;
+  --paper-2: #ece5dc;
+  --ink: #161514;
+  --ink-soft: #5e4c42;
+  --sea: #163a3c;
+  --sea-2: #0f2a2b;
+  --sea-ink: #1f5254;
+  --foam: #d6e4df;
+  --wheat: #c9a978;
+  --rose: #b85a66;
+  --line: rgba(22, 21, 20, .16);
+  --pad: clamp(18px, 5vw, 56px);
+  --edge: var(--pad);
+  --section: clamp(84px, 13vw, 150px);
+  --serif: 'Noto Serif Display', 'Times New Roman', serif;
+  --sans: 'Jost', system-ui, -apple-system, sans-serif;
+  --name-size: 15.6vw;
+  --name-ls: -.012em;
+  --concept-bg: #161514;
+  --concept-ink: #efe9e1;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 300; }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--edge); }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- кнопки: строгие прямоугольники, как на её Taplink; при наведении только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: space-between; gap: 22px;
+  min-height: 58px; padding: 0 22px 0 26px; border-radius: 2px;
+  background: var(--ink); color: var(--paper); text-decoration: none;
+  font: 500 13px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase;
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.4; }
+.btn:hover, .btn:focus-visible { scale: 1.035 !important; }
+.btn--light { background: var(--paper); color: var(--ink); }
+.btn--line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); justify-content: center; }
+
+.link {
+  display: inline-flex; gap: 8px; align-items: center;
+  font: 500 13px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; text-decoration: none;
+  padding-bottom: 6px; border-bottom: 1px solid var(--ink);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.link:hover, .link:focus-visible { scale: 1.04 !important; }
+
+/* ---------- 1. Hero ---------- */
+.hero { padding-top: 14px; padding-bottom: var(--section); }
+.hero__head { position: relative; }
+.name {
+  font: 300 var(--name-size)/1.36 var(--serif); letter-spacing: var(--name-ls);
+  white-space: nowrap;
+}
+.name > span { display: block; }
+/* строки высотой 1.36em, чтобы маски SplitText не резали хвост «p»; визуально сближаем их отрицательным отступом */
+.name__l2 { margin-top: -.34em; }
+.hero__role {
+  position: absolute; right: 0; top: calc(var(--name-size) * .36);
+  display: grid; justify-items: end; gap: 2px;
+  font: 500 10.5px/1.45 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft);
+}
+
+/* Море: полоса прямо под базовой линией имени, в ней отражение с рябью */
+.sea {
+  position: relative; z-index: 1; overflow: hidden;
+  height: clamp(150px, 41vw, 220px); margin-inline: calc(var(--edge) * -1);
+  background: var(--sea-2);
+}
+.sea__strip { --fade: 150px; position: absolute; top: 0; bottom: 0; left: -30px; display: flex; will-change: transform; }
+.sea__strip img { flex: none; width: var(--tile, 120vw); height: 100%; max-width: none; object-fit: cover; object-position: 50% var(--sea-y, 28%); }
+.sea__strip img + img { /* соседние кадры перетекают друг в друга без шва */
+  margin-left: calc(var(--fade) * -1);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--fade));
+  mask-image: linear-gradient(90deg, transparent, #000 var(--fade));
+}
+.sea::before { /* лёгкое зерно прячет мягкость исходника */
+  content: ''; position: absolute; inset: 0; z-index: 1; opacity: .22; mix-blend-mode: overlay;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.sea::after {
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(15, 42, 43, .35), rgba(15, 42, 43, .05) 45%, rgba(15, 42, 43, .45));
+}
+/* Отражение: тот же размер и интерлиньяж, что у второй строки имени, отражено относительно верхнего края моря */
+.reflect {
+  position: absolute; z-index: 2; left: var(--edge); top: 0;
+  font: 300 var(--name-size)/1.36 var(--serif); letter-spacing: var(--name-ls); white-space: nowrap;
+  color: rgba(244, 239, 233, .62);
+  transform: scaleY(-1);
+  filter: url(#ripple);
+  -webkit-mask-image: linear-gradient(to top, #000 8%, rgba(0, 0, 0, .55) 32%, transparent 72%);
+  mask-image: linear-gradient(to top, #000 8%, rgba(0, 0, 0, .55) 32%, transparent 72%);
+  pointer-events: none;
+}
+
+.hero__row {
+  position: relative; z-index: 3;
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.5fr); grid-template-areas: 'lines photo';
+  gap: 14px; align-items: end; margin-top: -76px;
+}
+.portrait { grid-area: photo; padding: 5px; background: var(--paper); }
+.portrait__frame { position: relative; overflow: hidden; aspect-ratio: 4 / 5; background: #c9c9cb; }
+.portrait__frame img { width: 100%; height: 100%; object-fit: cover; object-position: 46% 30%; }
+.hero__lines { grid-area: lines; padding-bottom: 6px; }
+.hero__lines li {
+  padding: 9px 0 8px; border-top: 1px solid var(--line);
+  font: 300 14.5px/1.2 var(--serif); font-style: italic; hyphens: manual;
+}
+.hero__lines li:last-child { border-bottom: 1px solid var(--line); }
+
+.hero__copy { margin-top: 34px; }
+.hero__tag { font: 300 clamp(27px, 7.3vw, 46px)/1.16 var(--serif); letter-spacing: -.01em; max-width: 19ch; }
+.hero__tag em { color: var(--sea-ink); }
+.heart { display: inline-block; font-family: var(--sans); font-size: .62em; vertical-align: .2em; color: var(--rose); }
+.hero__cta { display: grid; gap: 22px; justify-items: start; margin-top: 30px; }
+.hero__cta .btn { width: 100%; }
+
+/* ---------- заголовки секций ---------- */
+.eyebrow {
+  display: inline-flex; gap: 12px; align-items: center;
+  font: 500 11.5px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { font-family: var(--serif); font-style: italic; font-size: 15px; letter-spacing: 0; text-transform: none; color: var(--sea-ink); }
+.eyebrow::after { content: ''; width: 36px; height: 1px; background: currentColor; opacity: .5; order: -1; }
+.sec-head h2 { margin-top: 18px; font: 300 clamp(34px, 9vw, 66px)/1.06 var(--serif); letter-spacing: -.015em; }
+.sec-sub { margin-top: 18px; max-width: 40ch; }
+
+/* ---------- 2. Запросы: глубина моря ---------- */
+.topics {
+  position: relative; overflow: hidden; padding-block: var(--section);
+  background:
+    radial-gradient(130% 55% at 50% 0%, rgba(58, 112, 110, .38), rgba(58, 112, 110, 0) 70%),
+    linear-gradient(180deg, var(--sea) 0%, var(--sea-2) 100%);
+  color: var(--paper);
+}
+.topics .eyebrow { color: rgba(214, 228, 223, .72); }
+.topics .eyebrow span { color: var(--wheat); }
+.topics .sec-head h2 em { color: var(--foam); }
+.topics .sec-sub { color: rgba(214, 228, 223, .78); }
+.topics .sec-head { position: relative; }
+.star-big {
+  position: absolute; right: -22vw; top: -6vw; width: 78vw; height: 78vw; max-width: 620px; max-height: 620px;
+  color: var(--wheat); opacity: .07; pointer-events: none;
+}
+.req { position: relative; margin-top: 38px; border-top: 1px solid rgba(214, 228, 223, .16); }
+.req li {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; align-items: start;
+  padding: 17px 0 16px; border-bottom: 1px solid rgba(214, 228, 223, .16);
+  font: 300 20px/1.3 var(--serif);
+}
+.st { width: 14px; height: 14px; margin-top: .3em; color: var(--wheat); }
+
+/* ---------- 3. Терапия ---------- */
+.therapy { padding-block: var(--section); display: grid; gap: 56px; }
+.therapy .sec-head h2 em { color: var(--sea-ink); }
+.therapy__lead { margin-top: 28px; font: 300 clamp(24px, 6.4vw, 36px)/1.22 var(--serif); letter-spacing: -.01em; max-width: 24ch; }
+.therapy__text { margin-top: 20px; color: var(--ink-soft); max-width: 56ch; }
+.therapy__text mark {
+  color: var(--ink); font-family: var(--serif); font-style: italic; font-size: 1.08em;
+  background: linear-gradient(var(--sea-ink), var(--sea-ink)) 0 100% / var(--u, 100%) 1px no-repeat;
+  padding-bottom: 1px;
+}
+.qa { margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--line); }
+.qa h3 { font: 300 clamp(23px, 6vw, 30px)/1.2 var(--serif); font-style: italic; color: var(--sea-ink); }
+.qa p { margin-top: 14px; color: var(--ink-soft); max-width: 56ch; }
+
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; border-top: 1px solid var(--ink); }
+.fact { padding: 18px 0 20px; border-bottom: 1px solid var(--line); }
+.fact:nth-child(odd) { padding-right: 14px; border-right: 1px solid var(--line); }
+.fact:nth-child(even) { padding-left: 18px; }
+.fact dt { font: 500 11px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+.fact dd { margin: 12px 0 0; font: 300 clamp(23px, 6.2vw, 30px)/1.1 var(--serif); letter-spacing: -.01em; }
+.fact dd small { font: 400 14px/1 var(--sans); letter-spacing: 0; color: var(--ink-soft); white-space: nowrap; }
+.facts__note { margin-top: 16px; font-size: 14.5px; color: var(--ink-soft); max-width: 48ch; }
+
+.strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 30px; }
+.strip li { overflow: hidden; aspect-ratio: 244 / 238; background: var(--paper-2); }
+.strip img { width: 100%; height: 100%; object-fit: cover; }
+
+.wait {
+  position: relative; margin-top: 34px; padding: 34px 24px 28px;
+  background: linear-gradient(160deg, var(--sea) 0%, var(--sea-2) 100%); color: var(--paper);
+}
+.wait::before { content: ''; position: absolute; inset: 8px; border: 1px solid rgba(201, 169, 120, .32); pointer-events: none; }
+.wait__eyebrow { font: 500 11px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--wheat); }
+.wait__title { margin-top: 16px; font: 300 clamp(28px, 7.4vw, 38px)/1.1 var(--serif); letter-spacing: -.01em; }
+.wait__text { margin-top: 14px; color: rgba(214, 228, 223, .82); font-size: 15px; }
+.wait .btn { position: relative; width: 100%; margin-top: 24px; }
+.wait__links { position: relative; display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 20px; }
+.wait__links a {
+  font: 500 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; text-decoration: none;
+  padding-bottom: 5px; border-bottom: 1px solid rgba(214, 228, 223, .4);
+  display: inline-block; transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.wait__links a:hover, .wait__links a:focus-visible { scale: 1.04 !important; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 0 var(--section); text-align: center; display: grid; justify-items: center; gap: 16px; }
+.concept-end::before { content: ''; width: 1px; height: 64px; background: var(--ink); opacity: .35; margin-bottom: 18px; }
+.concept-end__title { font: 300 clamp(28px, 7.4vw, 46px)/1.12 var(--serif); max-width: 16ch; }
+.concept-end__title em { color: var(--sea-ink); }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+.concept-end .btn { margin-top: 8px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  :root {
+    --edge: max(var(--pad), calc((100vw - 1240px) / 2));
+    --name-size: min(8.2vw, 124px);
+    --section: clamp(110px, 10vw, 160px);
+  }
+  .hero {
+    display: grid; grid-template-columns: minmax(0, 1.32fr) minmax(0, .68fr); grid-template-rows: auto auto 1fr;
+    column-gap: clamp(40px, 5vw, 88px); padding-top: 48px;
+  }
+  .hero__head { grid-column: 1; grid-row: 1; }
+  .hero__role { top: calc(var(--name-size) * .42); font-size: 11.5px; }
+  .sea { grid-column: 1 / -1; grid-row: 2; height: clamp(180px, 15vw, 230px); --tile: 600px; --sea-y: 84%; }
+  .hero__copy { grid-column: 1; grid-row: 3; margin-top: 44px; }
+  .hero__tag { font-size: clamp(30px, 3.1vw, 46px); max-width: 21ch; }
+  .hero__cta { display: flex; align-items: center; gap: 36px; margin-top: 36px; }
+  .hero__cta .btn { width: auto; }
+  .hero__row {
+    grid-column: 2; grid-row: 1 / 4; align-self: start;
+    display: flex; flex-direction: column; gap: 26px; margin-top: calc(var(--name-size) * .3);
+  }
+  .portrait { padding: 7px; }
+  .hero__lines li { font-size: 17px; padding: 13px 0 12px; }
+
+  .topics .sec-head { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); column-gap: 64px; align-items: end; }
+  .topics .eyebrow { grid-column: 1 / -1; justify-self: start; }
+  .topics .sec-head h2 { grid-column: 1; }
+  .topics .sec-sub { grid-column: 2; margin-bottom: .5em; }
+  .star-big { right: -120px; top: -140px; }
+  .req { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; margin-top: 64px; border-top: 0; }
+  .req li { font-size: 22px; padding: 22px 0 21px; }
+  .req li:nth-child(-n + 2) { border-top: 1px solid rgba(214, 228, 223, .16); }
+
+  .therapy { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); column-gap: clamp(48px, 7vw, 112px); align-items: start; }
+  .therapy__side { padding-top: 34px; }
+  .wait { padding: 40px 36px 34px; }
+  .wait__links { gap: 10px 32px; }
+}

@@ -1,0 +1,272 @@
+/* Екатерина · Ритуал удачи — концепт.
+   Айдентика: ночной изумруд + лаймовый свет её Taplink, жемчужная бумага, голубой «флюид» из её блока заставок.
+   Тема — сакральная геометрия: «семя жизни» вокруг портрета, ромбы ◇ из её списка. */
+:root {
+  --night: #071a15;
+  --deep: #0c2a21;
+  --emerald: #134434;
+  --jade: #1d6e53;
+  --lime: #d9eea2;
+  --lime-2: #c4e27a;
+  --pearl: #f3f0e6;
+  --paper: #f5f3eb;
+  --mint: #e8f0da;
+  --ink: #0f241d;
+  --ink-soft: #4f6159;
+  --line: rgba(19, 68, 52, .16);
+  --glow: rgba(217, 238, 162, .62);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 13vw, 156px);
+  --display: 'Prata', Georgia, 'Times New Roman', serif;
+  --sans: 'Geologica', system-ui, -apple-system, sans-serif;
+  --concept-bg: #04120e;
+  --concept-ink: #e6eed2;
+}
+
+body { background: var(--paper); color: var(--ink); font: 300 16px/1.6 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+sup { font-size: .5em; vertical-align: .9em; margin-left: .04em; color: var(--jade); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  font: 500 15px/1 var(--sans); letter-spacing: .03em; text-decoration: none; white-space: nowrap;
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--lime { background: var(--lime); color: var(--deep); box-shadow: 0 0 0 1px rgba(255, 255, 255, .25) inset, 0 18px 40px -16px rgba(196, 226, 122, .55); }
+.btn--emerald { background: var(--emerald); color: var(--pearl); box-shadow: 0 16px 34px -18px rgba(12, 42, 33, .7); }
+.btn--ghost { background: transparent; color: var(--emerald); box-shadow: inset 0 0 0 1.5px rgba(19, 68, 52, .35); }
+.btn--ghost-light { background: transparent; color: var(--pearl); box-shadow: inset 0 0 0 1.5px rgba(217, 238, 162, .45); }
+.btn__sep { width: 4px; height: 4px; transform: rotate(45deg); background: currentColor; opacity: .55; }
+.btn--shine::after { /* мягкий блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .55) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+
+/* ---------- служебные подписи ---------- */
+.eyebrow {
+  display: inline-flex; gap: 12px; align-items: center;
+  font: 500 11.5px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--jade); }
+.eyebrow--light { color: rgba(243, 240, 230, .6); }
+.eyebrow--light span { color: var(--lime); }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center;
+  padding-top: 26px; padding-bottom: 76px;
+  color: var(--pearl);
+  background: radial-gradient(130% 62% at 50% 30%, #17483a 0%, #0e3127 38%, var(--deep) 62%, var(--night) 100%);
+}
+.hero__figure {
+  position: relative; width: min(330px, calc(100vw - 60px)); aspect-ratio: 1;
+  margin: 44px auto 40px;
+}
+/* «взрыв света» — её обложка с Taplink, сложенная зеркально в круговое сияние */
+.hero__rays {
+  position: absolute; left: 50%; top: 50%; width: 210%; aspect-ratio: 750 / 450;
+  translate: -50% -50%; display: grid; grid-template-rows: 1fr 1fr;
+  mix-blend-mode: screen; opacity: .34; pointer-events: none;
+  -webkit-mask-image: radial-gradient(circle closest-side, #000 18%, rgba(0, 0, 0, .55) 52%, transparent 100%);
+          mask-image: radial-gradient(circle closest-side, #000 18%, rgba(0, 0, 0, .55) 52%, transparent 100%);
+}
+.hero__rays img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.35) hue-rotate(28deg) saturate(1.3); }
+.hero__rays img + img { scale: 1 -1; }
+
+.geo { position: absolute; left: -25%; top: -25%; width: 150%; height: 150%; overflow: visible; pointer-events: none; }
+.geo circle, .geo path, .geo polygon { fill: none; stroke: var(--lime); vector-effect: non-scaling-stroke; }
+.geo__outer circle { stroke-width: .8; opacity: .17; }
+.geo__petal { stroke-width: 1; opacity: .85; }
+.geo__hex { stroke-width: .8; opacity: .45; }
+.geo__ring { stroke-width: 1.1; opacity: .75; }
+.geo__ring--thin { stroke-width: .7; opacity: .4; }
+.geo__frame { stroke-width: 1; opacity: .9; }
+.geo .geo__dots circle { fill: var(--lime); stroke: none; }
+.geo__orbit {
+  fill: rgba(232, 240, 210, .78); font: 400 13px var(--sans); letter-spacing: 0; text-transform: uppercase;
+}
+
+.hero__portrait {
+  position: absolute; left: 25%; top: 25%; width: 50%; aspect-ratio: 1; border-radius: 50%; overflow: hidden;
+  background: #3a4542; z-index: 2;
+  box-shadow: 0 0 0 6px rgba(7, 26, 21, .55), 0 30px 70px -20px rgba(0, 0, 0, .7), 0 0 90px 10px rgba(217, 238, 162, .14);
+}
+.hero__portrait img { width: 100%; height: 100%; object-fit: cover; scale: 1.06; }
+.hero__badge {
+  position: absolute; left: 50%; top: 75%; z-index: 3; translate: -50% -50%;
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 12px; border-radius: 999px;
+  background: rgba(7, 26, 21, .78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 0 1px rgba(217, 238, 162, .3);
+  font: 400 15px/1 var(--display); color: var(--pearl); white-space: nowrap;
+}
+.hero__badge i { width: 6px; height: 6px; transform: rotate(45deg); background: var(--lime); }
+
+.hero__text { position: relative; z-index: 2; display: grid; justify-items: center; }
+.hero__eyebrow { font: 500 11.5px/1.3 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--lime); }
+.hero__title {
+  margin-top: 8px;
+  font: 400 clamp(54px, 15.4vw, 132px)/1.06 var(--display); letter-spacing: -.012em;
+  color: var(--pearl); text-wrap: balance;
+}
+/* маска букв при интро: запас снизу и слева под выносные элементы Prata */
+.hero__title .ch-mask { padding: 0 .04em .26em .1em; margin: 0 -.04em -.26em -.1em; }
+.hero__plus {
+  margin-top: 14px; display: inline-flex; align-items: center; gap: 10px;
+  font: 400 15.5px/1.3 var(--sans); color: rgba(243, 240, 230, .86); letter-spacing: .01em;
+}
+.hero__plus span {
+  display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(217, 238, 162, .55); color: var(--lime); font-size: 14px; line-height: 1;
+}
+.hero__lead { margin-top: 14px; max-width: 30ch; font: 300 16.5px/1.5 var(--sans); color: rgba(243, 240, 230, .72); text-wrap: balance; }
+.hero__cta { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 22px; }
+.hero__more { font: 400 14px/1 var(--sans); color: rgba(243, 240, 230, .7); text-decoration: none; letter-spacing: .02em; transition: color .3s; }
+.hero__more:hover { color: var(--lime); }
+
+/* ---------- 1½. Манифест ---------- */
+.manifest {
+  position: relative; padding-top: 34px; padding-bottom: var(--section);
+  background: linear-gradient(180deg, var(--night) 0%, var(--deep) 100%); color: var(--pearl);
+}
+.manifest__text {
+  margin-top: 26px; max-width: 26ch;
+  font: 400 clamp(25px, 6.6vw, 54px)/1.32 var(--display); letter-spacing: -.005em;
+}
+.manifest__text { position: relative; z-index: 1; }
+.manifest__text .hl { color: var(--lime); }
+/* «и так по кругу»: большое семя жизни за текстом, доворачивается при прокрутке */
+.manifest { overflow: hidden; isolation: isolate; }
+.manifest__seed { position: absolute; right: -38%; bottom: -10%; width: 110vw; aspect-ratio: 1; height: auto; color: var(--lime); opacity: .07; z-index: 0; pointer-events: none; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 640px; }
+.sec-head h2, .wall__text h2 { margin-top: 18px; font: 400 clamp(32px, 8.6vw, 62px)/1.1 var(--display); letter-spacing: -.01em; text-wrap: balance; }
+.sec-sub { margin-top: 14px; color: var(--ink-soft); max-width: 40ch; }
+
+/* ---------- 2. Клуб ---------- */
+.club {
+  position: relative; padding-block: var(--section);
+  background: radial-gradient(90% 40% at 100% 0%, rgba(217, 238, 162, .35), transparent 70%), var(--paper);
+}
+.incl-wrap { position: relative; margin-top: 40px; }
+.incl__thread { position: absolute; left: 21px; top: 22px; bottom: 92px; width: 1px; background: var(--line); }
+.incl__thread span { position: absolute; inset: 0; background: var(--jade); transform-origin: top; }
+.incl { display: grid; gap: 6px; }
+.incl__item { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 18px; align-items: center; padding: 10px 0; }
+.rh { position: relative; display: grid; place-items: center; width: 44px; height: 44px; }
+.rh svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.rh path { fill: var(--paper); stroke: var(--jade); stroke-width: 1.2; }
+.rh b { position: relative; font: 500 11px/1 var(--sans); letter-spacing: .06em; color: var(--jade); }
+.incl__item p { font: 400 17px/1.4 var(--sans); color: var(--ink); }
+.incl__item--key p { font: 400 21px/1.25 var(--display); color: var(--emerald); }
+.incl__item--key .rh path { fill: var(--emerald); stroke: var(--emerald); }
+.incl__item--key .rh b { color: var(--lime); }
+.incl__note { margin: 22px 0 0 62px; font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); max-width: 44ch; }
+
+.club__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 44px; margin-top: 64px; }
+.fit__lead { margin-top: 16px; font: 400 clamp(23px, 6vw, 34px)/1.3 var(--display); color: var(--emerald); max-width: 24ch; }
+.fit__list { margin-top: 22px; display: grid; gap: 14px; }
+.fit__list li { position: relative; padding-left: 26px; color: var(--ink-soft); font-size: 15.5px; max-width: 48ch; }
+.fit__list li::before {
+  content: ''; position: absolute; left: 2px; top: .62em; width: 8px; height: 8px; transform: rotate(45deg);
+  box-shadow: inset 0 0 0 1.2px var(--jade);
+}
+
+.price {
+  position: relative; overflow: hidden; isolation: isolate;
+  padding: 34px 26px 28px; border-radius: 30px; color: var(--pearl);
+  background: radial-gradient(120% 90% at 85% 0%, #1d5a46 0%, var(--emerald) 40%, var(--deep) 100%);
+  box-shadow: 0 40px 70px -40px rgba(7, 26, 21, .8);
+}
+.price__seed { position: absolute; right: -22%; top: -18%; width: 78%; aspect-ratio: 1; height: auto; color: var(--lime); opacity: .22; z-index: -1; }
+.price__label { font: 500 12px/1.6 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--lime); }
+.price__sum { margin-top: 18px; font: 400 clamp(60px, 17vw, 84px)/1 var(--display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.price__note { margin: 14px 0 26px; color: rgba(243, 240, 230, .72); font-size: 15px; max-width: 26ch; }
+.price .btn { width: 100%; box-shadow: 0 14px 30px -18px rgba(0, 0, 0, .6); }
+
+/* ---------- 3. Заставки и автор ---------- */
+.gifts { padding-block: clamp(36px, 6vw, 90px) 64px; background: linear-gradient(180deg, var(--paper) 0%, var(--mint) 30%, var(--mint) 100%); }
+.wall { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; justify-items: center; text-align: center; }
+.wall__orb { position: relative; width: min(280px, 70vw); aspect-ratio: 1; }
+.wall__rings { position: absolute; inset: -6%; width: 112%; height: 112%; overflow: visible; }
+.wall__rings circle { fill: none; stroke: var(--jade); stroke-width: 1; opacity: .5; vector-effect: non-scaling-stroke; }
+.wall__rings .dash { stroke-dasharray: 2 7; opacity: .55; }
+.wall__rings .dot { fill: var(--jade); stroke: none; opacity: .8; }
+.wall__img { position: absolute; inset: 5%; border-radius: 50%; overflow: hidden; box-shadow: 0 40px 70px -30px rgba(38, 92, 140, .55); }
+.wall__img img { width: 100%; height: 100%; object-fit: cover; scale: 1.18; filter: blur(1.2px) saturate(1.08); /* исходник маленький: лёгкое размытие прячет пиксели */ }
+.wall__text { display: grid; justify-items: center; }
+.wall__text h2 { color: var(--emerald); }
+.wall__text h2 span { display: block; text-transform: uppercase; letter-spacing: .04em; }
+.wall__sub { margin: 12px 0 26px; font: 400 16px/1.4 var(--sans); color: var(--ink); }
+.wall__hint { margin-top: 16px; max-width: 30ch; font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
+
+.author {
+  margin-top: 72px; padding: 26px 22px 22px; border-radius: 28px;
+  background: rgba(255, 255, 255, .62); box-shadow: inset 0 0 0 1px rgba(19, 68, 52, .1), 0 30px 60px -44px rgba(12, 42, 33, .5);
+}
+.author__head { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; align-items: center; }
+.author__ava { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px rgba(29, 110, 83, .4); }
+.author__name { font: 400 24px/1.1 var(--display); color: var(--emerald); }
+.author__role { margin-top: 5px; font-size: 13.5px; line-height: 1.35; color: var(--ink-soft); }
+.author__bio { margin-top: 18px; font: 400 17px/1.5 var(--sans); color: var(--ink); }
+.heart { color: var(--jade); }
+.author__links { margin-top: 20px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.author__links .btn { min-height: 52px; }
+.legal { margin-top: 40px; font-size: 12px; line-height: 1.5; color: rgba(79, 97, 89, .8); max-width: 60ch; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end {
+  position: relative; overflow: hidden; isolation: isolate;
+  padding-block: 96px; text-align: center; display: grid; justify-items: center; gap: 16px;
+  background: radial-gradient(80% 70% at 50% 30%, #12392d, var(--night) 80%); color: var(--pearl);
+}
+.concept-end__seed { position: absolute; left: 50%; top: 50%; width: min(560px, 130vw); aspect-ratio: 1; height: auto; translate: -50% -50%; color: var(--lime); opacity: .09; z-index: -1; }
+.concept-end__title { font: 400 clamp(28px, 7.4vw, 48px)/1.15 var(--display); max-width: 16ch; }
+.concept-end__title span { color: var(--lime); }
+.concept-end__text { color: rgba(243, 240, 230, .68); max-width: 36ch; font-size: 15px; margin-bottom: 8px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; justify-items: start; text-align: left;
+    column-gap: clamp(40px, 6vw, 100px);
+    min-height: calc(100svh - 34px); padding-top: 40px; padding-bottom: 56px;
+    background: radial-gradient(70% 90% at 74% 48%, #17483a 0%, #0e3127 34%, var(--deep) 58%, var(--night) 100%);
+  }
+  .hero__figure { order: 2; width: min(540px, 38vw); margin: 90px auto; }
+  .hero__text { justify-items: start; }
+  .hero__title { font-size: clamp(76px, 8vw, 132px); text-wrap: wrap; }
+  .hero__plus { font-size: 18px; margin-top: 22px; }
+  .hero__lead { font-size: 19px; max-width: 32ch; text-wrap: pretty; }
+  .hero__cta { justify-content: flex-start; margin-top: 34px; }
+  .geo__orbit { font-size: 10px; }
+
+  .manifest { padding-top: 64px; }
+  .manifest__text { max-width: 22ch; margin-top: 34px; }
+  .manifest__seed { right: max(var(--pad), calc((100vw - 1200px) / 2 - 40px)); bottom: auto; top: 50%; width: min(560px, 40vw); margin-top: calc(min(560px, 40vw) / -2); opacity: .2; }
+
+  .club { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); column-gap: clamp(40px, 6vw, 100px); align-items: start; }
+  .club .sec-head { position: sticky; top: 64px; }
+  .incl-wrap { margin-top: 8px; }
+  .incl__item { padding: 14px 0; }
+  .incl__item p { font-size: 19px; }
+  .incl__item--key p { font-size: 25px; }
+  .club__grid { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 100px); align-items: center; margin-top: 110px; }
+  .price { padding: 48px 44px 40px; }
+
+  .wall { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); text-align: left; justify-items: start; align-items: center; gap: clamp(40px, 6vw, 100px); }
+  .wall__orb { width: min(380px, 28vw); justify-self: center; }
+  .wall__text { justify-items: start; }
+  .author { margin-top: 110px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) auto; gap: 28px 40px; align-items: center; padding: 30px 34px; }
+  .author__bio { margin-top: 0; }
+  .author__links { margin-top: 0; grid-template-columns: auto auto; }
+  .concept-end { padding-block: 130px; }
+}

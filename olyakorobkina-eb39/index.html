@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<script>(function(h){h.classList.add('is-loading');var r=function(){h.classList.remove('is-loading')};setTimeout(function(){if(!window.MotionBase)r()},9000);setTimeout(r,12000)})(document.documentElement)</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- preload-fonts -->
+<link rel="preload" href="../shared/fonts/ok/Oranienbaum-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ok/Oranienbaum-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ok/YsabeauOffice-italic-300-500-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ok/YsabeauOffice-italic-300-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ok/YsabeauOffice-normal-300-600-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ok/YsabeauOffice-normal-300-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- /preload-fonts -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Ольга Коробкина · энергокоуч — концепт</title>
+<link rel="stylesheet" href="../shared/fonts/ok.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="concept-bar" data-concept>
+  <span>Концепт редизайна @olya_korobkina · не официальный сайт</span>
+  <a href="https://olyakorobkina.taplink.ws">Текущий сайт →</a>
+</div>
+
+<main>
+  <!-- 1. Hero: имя, роль, фото-«снимок ауры», главная кнопка + цифры из «Обо мне» -->
+  <section class="hero" aria-label="Ольга Коробкина, энергокоуч">
+    <div class="hero__head">
+      <p class="kicker"><span>Энергокоуч</span><i></i><span>онлайн / оффлайн</span></p>
+      <h1 class="hero__name"><span class="hero__first">Ольга</span> <span class="hero__last">Коробкина</span></h1>
+    </div>
+
+    <figure class="hero__photo">
+      <div class="aura" aria-hidden="true">
+        <span class="aura__blob aura__blob--violet"></span>
+        <span class="aura__blob aura__blob--orchid"></span>
+        <span class="aura__blob aura__blob--amber"></span>
+        <span class="aura__blob aura__blob--sky"></span>
+      </div>
+      <svg class="halo" viewBox="0 0 400 520" preserveAspectRatio="none" aria-hidden="true">
+        <path class="halo__line" pathLength="1" d="M14 506 V200 A186 186 0 0 1 386 200 V506" />
+        <path class="halo__line halo__line--2" pathLength="1" d="M2 518 V200 A198 198 0 0 1 398 200 V518" />
+      </svg>
+      <div class="frame">
+        <img src="assets/portrait.jpg" width="880" height="1161" alt="Ольга Коробкина" fetchpriority="high">
+        <span class="frame__tint" aria-hidden="true"></span>
+        <span class="frame__scan" aria-hidden="true"><span class="frame__beam"></span></span>
+      </div>
+    </figure>
+
+    <div class="hero__body">
+      <p class="hero__lead">Эксперт по повышению уровня <span class="aura-text">энергии</span> <span class="nw">и качества</span> жизни</p>
+      <div class="hero__actions">
+        <a class="btn" href="https://t.me/Korobkina147">Записаться на приём</a>
+        <a class="btn btn--ghost" href="#services">Посмотреть услуги</a>
+      </div>
+    </div>
+
+    <div class="about">
+      <p class="about__label"><span class="dot"></span>Дипломированный энергокоуч по методу Соло</p>
+      <ul class="stats">
+        <li class="stat"><p class="stat__num"><span data-count="100">100</span>+</p><p class="stat__text">проведенных терапий</p></li>
+        <li class="stat"><p class="stat__num"><span data-count="30">30</span>+</p><p class="stat__text">клиентов, чья жизнь начала меняться после первой терапии</p></li>
+      </ul>
+      <div class="skills">
+        <p class="skills__title">Владею знаниями</p>
+        <ul class="chips-static">
+          <li>психологии</li>
+          <li>энергокоучинга</li>
+          <li>родологии</li>
+          <li>нумерологии</li>
+          <li>диагностики ауры</li>
+        </ul>
+        <p class="skills__note">Всё это помогает формировать <em>уникальный подход</em> к&nbsp;каждому клиенту</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Запросы: 7 тем, у каждой свой цвет «ауры» -->
+  <section class="topics" aria-labelledby="topics-title">
+    <header class="sec-head">
+      <p class="eyebrow"><span>01</span> запросы</p>
+      <h2 id="topics-title">Какие <em>запросы</em> я решаю?</h2>
+    </header>
+
+    <div class="topics__ui">
+      <div class="tabs" role="tablist" aria-label="Темы запросов">
+        <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" style="--hue: var(--h1)"><i></i>Усталость и выгорание</button>
+        <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" style="--hue: var(--h2)"><i></i>Здоровье и тело</button>
+        <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" style="--hue: var(--h3)"><i></i>Отношения</button>
+        <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" style="--hue: var(--h4)"><i></i>Беременность</button>
+        <button class="tab" role="tab" id="tab-5" aria-controls="panel-5" aria-selected="false" style="--hue: var(--h5)"><i></i>Предназначение</button>
+        <button class="tab" role="tab" id="tab-6" aria-controls="panel-6" aria-selected="false" style="--hue: var(--h6)"><i></i>Самореализация</button>
+        <button class="tab" role="tab" id="tab-7" aria-controls="panel-7" aria-selected="false" style="--hue: var(--h7)"><i></i>Деньги</button>
+      </div>
+
+      <div class="stage">
+        <span class="stage__glow" aria-hidden="true"></span>
+        <div class="stage__inner">
+          <article class="panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" data-hue="--h1">
+            <p class="panel__num">01 / 07</p>
+            <h3 class="panel__title">Усталость <span class="nw">и выгорание</span></h3>
+            <ul class="panel__list">
+              <li>Просыпаюсь уже уставшим, нет сил даже на простые дела</li>
+              <li>Чувствую себя как выжатый лимон. Кофе не бодрит, отдых не помогает</li>
+              <li>Раздражаюсь по пустякам, срываюсь на близких</li>
+              <li>У меня синдром самозванца, это выматывает</li>
+              <li>Сгораю на работе. Больше ни на что не хватает сил</li>
+            </ul>
+          </article>
+          <article class="panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" data-hue="--h2">
+            <p class="panel__num">02 / 07</p>
+            <h3 class="panel__title">Здоровье и тело</h3>
+            <ul class="panel__list">
+              <li>Заболевание возвращается снова и снова</li>
+              <li>По мед. показаниям всё хорошо, соблюдаю рекомендации врачей, но всё равно болит</li>
+              <li>Не могу похудеть/поправиться, хотя перепробовал(а) всё</li>
+              <li>Заедаю стресс и не могу остановиться</li>
+              <li>Не хватает дисциплины, чтобы вести ЗОЖ</li>
+              <li>Ненавижу своё тело, не могу принять себя</li>
+              <li>Не высыпаюсь, хотя сплю достаточно</li>
+              <li>Постоянно в стрессе, тело всё время напряжено (болит спина, шея, голова)</li>
+            </ul>
+          </article>
+          <article class="panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" data-hue="--h3">
+            <p class="panel__num">03 / 07</p>
+            <h3 class="panel__title">Отношения с <span class="nw">кем-либо</span></h3>
+            <p class="panel__sub">с собой, партнёром, детьми и другими</p>
+            <ul class="panel__list">
+              <li>Нет глубокой связи, всё как-то поверхностно</li>
+              <li>Чувствую себя одиноко в паре</li>
+              <li>Не покидает чувство контроля и тревоги, как будто, если не я, то всё рухнет</li>
+              <li>Не могу выстроить личные границы, все мной пользуются</li>
+              <li>Никогда не было серьёзных отношений, на мне как будто «венок безбрачия»</li>
+              <li>Сложные отношения с ребёнком (подростком), он творит такое, как будто не мой</li>
+              <li>Разлад с близкими людьми, друзьями</li>
+              <li>Потеря, утрата человека</li>
+            </ul>
+          </article>
+          <article class="panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" data-hue="--h4">
+            <p class="panel__num">04 / 07</p>
+            <h3 class="panel__title">Беременность</h3>
+            <ul class="panel__list">
+              <li>Не могу забеременеть, хотя по медицинским показателям здорова</li>
+            </ul>
+          </article>
+          <article class="panel" role="tabpanel" id="panel-5" aria-labelledby="tab-5" data-hue="--h5">
+            <p class="panel__num">05 / 07</p>
+            <h3 class="panel__title">Предназначение</h3>
+            <p class="panel__sub">смыслы и путь жизни</p>
+            <ul class="panel__list">
+              <li>Не знаю, чего хочу от жизни. В душе пустота, нет никакого огня и интереса</li>
+              <li>Чувствую, что занимаюсь не своим делом</li>
+              <li>Кажется, что все поезда ушли и лучшие годы пробовать кончились</li>
+              <li>Живу чужой жизнью (родителей, общества)</li>
+              <li>В чём мой дар и как его реализовать?</li>
+            </ul>
+          </article>
+          <article class="panel" role="tabpanel" id="panel-6" aria-labelledby="tab-6" data-hue="--h6">
+            <p class="panel__num">06 / 07</p>
+            <h3 class="panel__title">Самореализация</h3>
+            <p class="panel__sub">работа, карьера, влияние</p>
+            <ul class="panel__list">
+              <li>Хочу сменить профессию или начать свой бизнес/проект, но страшно, нет энергии, не понимаю, с чего начать</li>
+              <li>Чувствую, что могу больше, но застрял(а) на неинтересной работе</li>
+              <li>Боюсь проявляться (меня не заметят/осудят)</li>
+              <li>Не знаю, куда расти дальше?</li>
+              <li>Как совместить самореализацию и материнство/отцовство?</li>
+              <li>Хочу, чтобы моё дело приносило не только деньги, но и пользу</li>
+            </ul>
+          </article>
+          <article class="panel" role="tabpanel" id="panel-7" aria-labelledby="tab-7" data-hue="--h7">
+            <p class="panel__num">07 / 07</p>
+            <h3 class="panel__title">Деньги</h3>
+            <p class="panel__sub">доход, установки, достаток</p>
+            <ul class="panel__list">
+              <li>Деньги утекают сквозь пальцы</li>
+              <li>Живу в долг или от зарплаты до зарплаты</li>
+              <li>Испытываю чувство вины, когда трачу на себя</li>
+              <li>Не умею просить больше денег за свой труд</li>
+              <li>Есть внутренний блок: «Деньги — это зло»</li>
+              <li>Доход есть, а радости и ощущения достатка — нет</li>
+              <li>Панически боюсь остаться без денег</li>
+              <li>Не могу выйти на новый финансовый уровень</li>
+            </ul>
+          </article>
+        </div>
+        <div class="stage__foot">
+          <img class="avatar" src="assets/face.jpg" width="480" height="480" alt="" loading="lazy">
+          <p class="stage__who">Ольга Коробкина<small>энергокоуч</small></p>
+          <a class="btn btn--small" href="https://t.me/Korobkina147">Записаться на приём</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Перемычка: её слоган с баннера -->
+  <section class="motto" aria-label="Ты автор своей жизни">
+    <span class="motto__aura" aria-hidden="true"></span>
+    <p class="motto__title">Ты автор своей жизни!</p>
+    <p class="motto__sub"><span class="aura-text">энергия</span> — твой главный инструмент</p>
+  </section>
+
+  <!-- 3. Услуги -->
+  <section class="services" id="services" aria-labelledby="services-title">
+    <header class="sec-head">
+      <p class="eyebrow"><span>02</span> услуги</p>
+      <h2 id="services-title">Мои <em>услуги</em></h2>
+    </header>
+
+    <div class="cards">
+      <article class="card" style="--hue: var(--h5)">
+        <span class="card__orb" aria-hidden="true"></span>
+        <h3 class="card__title">Энерготерапия</h3>
+        <ul class="card__list">
+          <li>Расслабление и погружение в поле сердца</li>
+          <li>Снятие скрытых энергетических блоков, внутренних зарядов, влияний прошлого</li>
+          <li>Наполнение ресурсным состоянием</li>
+        </ul>
+        <dl class="card__meta">
+          <div><dt>Длительность</dt><dd>до 1,5 часов</dd></div>
+          <div><dt>Формат</dt><dd>онлайн/оффлайн</dd></div>
+        </dl>
+        <p class="card__price"><span data-count="8000">8&nbsp;000</span><small>руб.</small></p>
+        <a class="btn btn--small" href="https://t.me/Korobkina147">Записаться на энерготерапию</a>
+      </article>
+
+      <article class="card" style="--hue: var(--h6)">
+        <span class="card__orb" aria-hidden="true"></span>
+        <h3 class="card__title">Диагностика</h3>
+        <p class="card__sub">негативных программ (сущностей)</p>
+        <ul class="card__list">
+          <li>Первичная встреча, обсуждение деталей</li>
+          <li>Подготовка и предоставление снимков ауры, сделанных с помощью научного метода визуализации энергопотоков (Flame Aura)</li>
+          <li>Заключение и рекомендации (как освободиться от влияния сущностей)</li>
+        </ul>
+        <dl class="card__meta">
+          <div><dt>Длительность</dt><dd>до 1 часа</dd></div>
+          <div><dt>Формат</dt><dd>онлайн/оффлайн</dd></div>
+        </dl>
+        <p class="card__price"><span data-count="5000">5&nbsp;000</span><small>руб.</small></p>
+        <a class="btn btn--small" href="https://t.me/Korobkina147">Записаться на диагностику</a>
+      </article>
+
+      <article class="card card--vip" style="--hue: var(--h1)">
+        <span class="card__ring" aria-hidden="true"></span>
+        <span class="card__orb" aria-hidden="true"></span>
+        <h3 class="card__title">VIP-пакет</h3>
+        <ul class="card__list">
+          <li>Диагностика негативных программ</li>
+          <li>Энерготерапия</li>
+        </ul>
+        <dl class="card__meta">
+          <div><dt>Длительность</dt><dd>до 2,5 часов</dd></div>
+          <div><dt>Формат</dt><dd>онлайн/оффлайн</dd></div>
+        </dl>
+        <p class="card__price"><span data-count="11000">11&nbsp;000</span><small>руб.</small></p>
+        <a class="btn btn--small btn--light" href="https://t.me/Korobkina147">Хочу VIP-пакет</a>
+      </article>
+    </div>
+  </section>
+
+  <aside class="concept-end">
+    <span class="concept-end__aura" aria-hidden="true"></span>
+    <p class="concept-end__title">Так может выглядеть <em>весь ваш сайт</em></p>
+    <p class="concept-end__text">Это концепт: три блока вашего Taplink в новом дизайне, на ваших фото и текстах.</p>
+    <a class="btn btn--ghost" href="https://olyakorobkina.taplink.ws">Открыть текущий сайт</a>
+  </aside>
+</main>
+
+<script src="../shared/vendor/gsap/gsap.min.js"></script>
+<script src="../shared/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="../shared/vendor/gsap/SplitText.min.js"></script>
+<script src="../shared/motion-base.js"></script>
+<script src="motion.js"></script>
+</body>
+</html>

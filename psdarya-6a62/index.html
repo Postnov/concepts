@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<script>(function(h){h.classList.add('is-loading');var r=function(){h.classList.remove('is-loading')};setTimeout(function(){if(!window.MotionBase)r()},9000);setTimeout(r,12000)})(document.documentElement)</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- preload-fonts -->
+<link rel="preload" href="../shared/fonts/pd/Jost-normal-300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/Jost-normal-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/Jost-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/Jost-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/Jost-normal-500-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/Jost-normal-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/NotoSerifDisplay-italic-300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/NotoSerifDisplay-italic-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/NotoSerifDisplay-italic-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/NotoSerifDisplay-italic-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/NotoSerifDisplay-normal-300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/NotoSerifDisplay-normal-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/NotoSerifDisplay-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/NotoSerifDisplay-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/NotoSerifDisplay-normal-500-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/pd/NotoSerifDisplay-normal-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- /preload-fonts -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Дарья Шпилевская · психолог — концепт</title>
+<link rel="stylesheet" href="../shared/fonts/pd.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="concept-bar" data-concept>
+  <span>Концепт редизайна @ps.darya · не официальный сайт</span>
+  <a href="https://taplink.cc/ps.darya">Текущий сайт →</a>
+</div>
+
+<!-- Фильтр «рябь на воде» для отражения имени -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <filter id="ripple" x="-4%" y="-30%" width="108%" height="160%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.009 0.11" numOctaves="2" seed="7" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <!-- её маркер списка ✽: восемь лепестков -->
+  <symbol id="star" viewBox="-12 -12 24 24">
+    <g fill="currentColor">
+      <path d="M0-11.5C1.9-7.6 1.7-3.4 0-.8-1.7-3.4-1.9-7.6 0-11.5Z"/>
+      <path d="M0-11.5C1.9-7.6 1.7-3.4 0-.8-1.7-3.4-1.9-7.6 0-11.5Z" transform="rotate(45)"/>
+      <path d="M0-11.5C1.9-7.6 1.7-3.4 0-.8-1.7-3.4-1.9-7.6 0-11.5Z" transform="rotate(90)"/>
+      <path d="M0-11.5C1.9-7.6 1.7-3.4 0-.8-1.7-3.4-1.9-7.6 0-11.5Z" transform="rotate(135)"/>
+      <path d="M0-11.5C1.9-7.6 1.7-3.4 0-.8-1.7-3.4-1.9-7.6 0-11.5Z" transform="rotate(180)"/>
+      <path d="M0-11.5C1.9-7.6 1.7-3.4 0-.8-1.7-3.4-1.9-7.6 0-11.5Z" transform="rotate(225)"/>
+      <path d="M0-11.5C1.9-7.6 1.7-3.4 0-.8-1.7-3.4-1.9-7.6 0-11.5Z" transform="rotate(270)"/>
+      <path d="M0-11.5C1.9-7.6 1.7-3.4 0-.8-1.7-3.4-1.9-7.6 0-11.5Z" transform="rotate(315)"/>
+    </g>
+  </symbol>
+</svg>
+
+<main>
+  <!-- 1. Hero -->
+  <section class="hero" aria-label="Дарья Шпилевская, психолог">
+    <header class="hero__head">
+      <p class="hero__role"><span>психолог</span><span>психоаналитик</span></p>
+      <h1 class="name"><span class="name__l1">Daria</span> <span class="name__l2">Shpilevskaia</span></h1>
+    </header>
+
+    <div class="sea" aria-hidden="true">
+      <div class="sea__strip">
+        <img src="assets/sea.jpg" width="440" height="414" alt="">
+        <img src="assets/sea.jpg" width="440" height="414" alt="">
+        <img src="assets/sea.jpg" width="440" height="414" alt="">
+        <img src="assets/sea.jpg" width="440" height="414" alt="">
+      </div>
+      <div class="reflect">Shpilevskaia</div>
+    </div>
+
+    <div class="hero__row">
+      <figure class="portrait">
+        <div class="portrait__frame"><img src="assets/portrait.jpg" width="440" height="414" alt="Дарья Шпилевская" fetchpriority="high"></div>
+      </figure>
+      <ul class="hero__lines">
+        <li>Отношения с&nbsp;собой</li>
+        <li>Самоценность</li>
+        <li>Психо&shy;аналитическая терапия</li>
+      </ul>
+    </div>
+
+    <div class="hero__copy">
+      <p class="hero__tag">Ты заслуживаешь любви и заботы <em>особенно от себя</em>&nbsp;<span class="heart" aria-hidden="true">♥&#xFE0E;</span></p>
+      <div class="hero__cta">
+        <a class="btn" href="https://t.me/daryashpilevskaya">Связаться со мной <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
+        <a class="link" href="#waitlist">Лист ожидания <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Запросы -->
+  <section class="topics" aria-labelledby="topics-title">
+    <svg class="star-big" aria-hidden="true"><use href="#star"/></svg>
+    <header class="sec-head">
+      <p class="eyebrow"><span>01</span> запросы</p>
+      <h2 id="topics-title">С какими запросами <em>ты работаешь?</em></h2>
+      <p class="sec-sub">Я не работаю с алкогольной и наркотической зависимостями, но могу помочь с:</p>
+    </header>
+    <ul class="req">
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Токсичный стыд, неуверенность в себе, чувство недостаточности</li>
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Постоянное сравнение себя с другими не в свою пользу</li>
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Зависимость от мнения родителей и окружающих</li>
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Отсутствие личных границ</li>
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Низкая самооценка и самоценность</li>
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Синдром самозванца</li>
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Проблемы в романтических отношениях</li>
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Негативные отношения с деньгами</li>
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Непонимание «кем хочу стать, когда вырасту»</li>
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Нет баланса между работой и отдыхом</li>
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Отсутствие мотивации что-то делать</li>
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Множественные страхи и травмы</li>
+      <li><svg class="st" aria-hidden="true"><use href="#star"/></svg>Негативные установки родом из детства</li>
+    </ul>
+  </section>
+
+  <!-- 3. Как устроена работа -->
+  <section class="therapy" aria-labelledby="therapy-title">
+    <div class="therapy__main">
+      <header class="sec-head">
+        <p class="eyebrow"><span>02</span> терапия</p>
+        <h2 id="therapy-title">В каком подходе <em>ты работаешь?</em></h2>
+      </header>
+      <p class="therapy__lead">Я работаю в психоаналитически-ориентированном подходе.</p>
+      <p class="therapy__text">Но не стоит пугаться: это не про холодного аналитика, кушетку и посещения 3 раза в неделю, <mark>это про глубину и работу с личностными изменениями</mark>. Я не навязываю свое собственное мнение, а мягко, поддерживающе и учитывая особенности и уникальность каждого человека, подвожу клиента к его собственному решению.</p>
+
+      <div class="qa">
+        <h3>Как проходит первая встреча?</h3>
+        <p>Первая встреча больше ознакомительная, чтобы мы с вами поняли, могу ли я удовлетворить ваш запрос и взять вас в работу. Вы рассказываете о вашем запросе, я буду задавать уточняющие вопросы, чтобы лучше вас понять, обговорим ваши ожидания от терапии, а я расскажу, чем могу помочь.</p>
+      </div>
+    </div>
+
+    <div class="therapy__side">
+      <dl class="facts">
+        <div class="fact"><dt>сессия</dt><dd>60 минут</dd></div>
+        <div class="fact"><dt>стоимость</dt><dd>9 000 ₽ <small>/ 115 $</small></dd></div>
+        <div class="fact"><dt>формат</dt><dd>онлайн, zoom</dd></div>
+        <div class="fact"><dt>частота</dt><dd>раз в неделю</dd></div>
+      </dl>
+      <p class="facts__note">Я рекомендую посещать раз в неделю для достижения лучшего результата и 60 минут нам хватит, чтобы работа была эффективной.</p>
+
+      <ul class="strip">
+        <li><img src="assets/m-book.jpg" width="244" height="238" alt="Книга и полевые цветы" loading="lazy"></li>
+        <li><img src="assets/m-flowers.jpg" width="244" height="238" alt="Гвоздики и бусы с сердцем" loading="lazy"></li>
+        <li><img src="assets/m-laptop.jpg" width="244" height="238" alt="Дарья за ноутбуком" loading="lazy"></li>
+        <li><img src="assets/m-leaf.jpg" width="244" height="238" alt="Ветка зелени на льне" loading="lazy"></li>
+      </ul>
+
+      <div class="wait" id="waitlist">
+        <p class="wait__eyebrow">лист ожидания</p>
+        <h3 class="wait__title">Запись в лист ожидания</h3>
+        <p class="wait__text">К сожалению, сейчас у меня нет мест в личную терапию, но вы можете заполнить анкету, и я с вами свяжусь, как только место освободится.</p>
+        <a class="btn btn--light" href="https://docs.google.com/forms/d/e/1FAIpQLSfhUZcJJ9KWpsNvXzVfHsnQ7fqRknMqecwTSuvvUVrV_d31Ug/viewform?usp=publish-editor">Заполнить анкету <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
+        <p class="wait__links">
+          <a href="https://t.me/daryashpilevskaya">Связаться со мной ↗</a>
+          <a href="https://t.me/psdaryatyping">Telegram ↗</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <aside class="concept-end">
+    <p class="concept-end__title">Так может выглядеть <em>весь ваш сайт</em></p>
+    <p class="concept-end__text">Это концепт: три блока вашего Taplink в новом дизайне, на ваших фото и текстах.</p>
+    <a class="btn btn--line" href="https://taplink.cc/ps.darya">Открыть текущий сайт</a>
+  </aside>
+</main>
+
+<script src="../shared/vendor/gsap/gsap.min.js"></script>
+<script src="../shared/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="../shared/vendor/gsap/SplitText.min.js"></script>
+<script src="../shared/motion-base.js"></script>
+<script src="motion.js"></script>
+</body>
+</html>
