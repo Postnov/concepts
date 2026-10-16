@@ -1,0 +1,29 @@
+/* Общая база демо: сброс и плашка «концепт». Цвета плашки задаёт демо через --concept-bg / --concept-ink. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+/* Пока грузятся шрифты и не выставлены кадры интро — содержимое скрыто (класс ставит скрипт в <head>) */
+html.is-loading main { opacity: 0; }
+/* Слова SplitText (wordsClass: 'sw') не переносятся внутри: вёрстка совпадает с ненарезанным текстом, без прыжка после revert */
+.sw { white-space: nowrap; }
+
+body { margin: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: clip; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+
+.concept-bar {
+  position: relative; z-index: 50;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; justify-content: center;
+  padding: 8px 14px; font: 500 11.5px/1.35 system-ui, -apple-system, sans-serif; letter-spacing: .01em; text-align: center;
+  background: var(--concept-bg, #1d232b); color: var(--concept-ink, #f4f1ec);
+}
+.concept-bar a { text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; opacity: .85; }
+.concept-bar a:hover { opacity: 1; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

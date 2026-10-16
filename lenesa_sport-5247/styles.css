@@ -1,0 +1,353 @@
+/* Елена · @lenesa_sport — концепт «Прилавок с ценниками».
+   Свежий белый, зелень листьев, бордо как её топ, апельсины точечно. Bitter (слэб) + Fira Sans. */
+:root {
+  --bg: #fffdf8;
+  --white: #fff;
+  --green: #1f6b3a;
+  --green-deep: #174f2b;
+  --mint: #e3f1df;
+  --mint-2: #d3e8cd;
+  --bordo: #7a1f2b;
+  --orange: #f28c28;
+  --ink: #1e2a22;
+  --ink-soft: #4b5a50;
+  --line: rgba(31, 107, 58, .2);
+  --pad: clamp(16px, 5vw, 56px);
+  --section: clamp(72px, 12vw, 140px);
+  --slab: 'Bitter', 'Roboto Slab', 'PT Serif', serif;
+  --sans: 'Fira Sans', 'PT Sans', system-ui, sans-serif;
+  --concept-bg: #1e2a22;
+  --concept-ink: #eef5ec;
+}
+
+body { background: var(--bg); color: var(--ink); font: 400 16px/1.55 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+em { font-family: var(--slab); font-style: italic; font-weight: 700; color: var(--bordo); }
+
+/* ---------- клетка «скатерть» (как её юбка): полоса-орнамент ---------- */
+/* Ячейка 12px, полосы по .45: белый, светлое бордо и насыщенное на пересечении — три тона, как у ткани */
+.gingham {
+  height: 24px;
+  background:
+    linear-gradient(90deg, rgba(122, 31, 43, .45) 50%, transparent 0) 0 0 / 12px 12px,
+    linear-gradient(rgba(122, 31, 43, .45) 50%, transparent 0) 0 0 / 12px 12px,
+    var(--white);
+  transform-origin: 0 50%;
+}
+
+/* Переносы: заголовки ровными строками, в абзацах без висячих слов */
+h1, h2, h3, .tag__title, .chan__txt b, .chan-row__txt b, .concept-end__title { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 26px; border-radius: 999px;
+  background: var(--green); color: var(--white); text-decoration: none;
+  font: 600 16px/1.15 var(--sans); letter-spacing: .01em; text-align: left;
+  box-shadow: 0 16px 30px -16px rgba(31, 107, 58, .75);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04; }
+.btn__ic { width: 18px; height: 18px; flex: none; }
+.btn__wa { width: 22px; height: 22px; flex: none; }
+.btn__lines { display: grid; gap: 2px; }
+.btn__lines small { font: 500 12.5px/1.2 var(--sans); opacity: .8; }
+.btn--light { background: var(--white); color: var(--green); box-shadow: 0 16px 30px -18px rgba(0, 0, 0, .45); }
+.btn--ghost { background: transparent; color: var(--green); box-shadow: inset 0 0 0 2px var(--green); }
+.link {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  font: 600 15.5px/1 var(--sans); color: var(--green); text-decoration: none;
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.link .btn__ic { width: 16px; height: 16px; }
+.link:hover, .link:focus-visible { scale: 1.04; }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); padding-top: 18px; padding-bottom: var(--section); }
+.hero__photo { position: relative; z-index: 1; margin: 0; }
+.frame {
+  position: relative; z-index: 1; overflow: hidden; border-radius: 30px;
+  aspect-ratio: 1 / .96; background: var(--mint);
+  box-shadow: 0 34px 50px -34px rgba(30, 42, 34, .55);
+}
+/* Над волосами ~8% воздуха: голова не упирается в край рамки */
+.frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+
+/* Листья, как вокруг её аватара на таплинке: выглядывают из-за рамки, не перекрывают фото */
+.leaf { position: absolute; z-index: 0; color: #2f8a4c; pointer-events: none; }
+.leaf--a { width: 64px; height: 64px; left: -18px; top: -20px; rotate: -80deg; color: #3a9a57; }
+.leaf--b { display: none; width: 112px; height: 112px; right: -50px; bottom: 22%; rotate: 70deg; color: #2a7a43; }
+
+/* Ценник на ниточке: висит на рамке фото */
+.hang { position: absolute; z-index: 3; right: 20px; top: -10px; display: grid; justify-items: center; transform-origin: 50% 0; }
+.hang__string { width: 2px; height: 34px; background: var(--bordo); border-radius: 2px; }
+.hang__string::before { /* «гвоздик» на рамке */
+  content: ''; position: absolute; left: 50%; top: -4px; width: 10px; height: 10px; margin-left: -5px;
+  border-radius: 50%; background: var(--bordo); box-shadow: 0 0 0 3px var(--bg);
+}
+.hang__tag {
+  position: relative; margin-top: -6px; width: 136px; padding: 22px 12px 13px; border-radius: 14px;
+  background: var(--white); box-shadow: inset 0 0 0 2.5px var(--green), 0 16px 24px -14px rgba(30, 42, 34, .55);
+  font: 500 12.5px/1.25 var(--sans); color: var(--ink-soft); text-align: center;
+}
+.hang__tag b { display: block; margin-bottom: 2px; font: 800 18px/1.1 var(--slab); color: var(--green); }
+.hang__eye {
+  position: absolute; left: 50%; top: 7px; width: 10px; height: 10px; margin-left: -5px;
+  border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 2px var(--green);
+}
+
+.gingham--hero { position: relative; z-index: 0; height: 36px; margin: -18px calc(var(--pad) * -1) 0; }
+
+.hero__text { padding-top: 26px; }
+.hero__title { color: var(--green); }
+.hero__hi { display: block; font: 500 26px/1.1 var(--slab); color: var(--ink); }
+.hero__name {
+  display: inline-block; margin-top: 2px;
+  font: 900 clamp(80px, 23vw, 168px)/.92 var(--slab); letter-spacing: -.025em;
+}
+.hero__name::after { /* точка-апельсин */
+  content: ''; display: inline-block; width: .17em; height: .17em; margin-left: .05em; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffb25c, var(--orange) 60%, #d9711a);
+}
+.hero__lead { margin-top: 10px; font: 500 19px/1.35 var(--slab); }
+.regalia { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.regalia li {
+  padding: 8px 14px; border-radius: 999px; background: var(--mint);
+  font: 500 14px/1.2 var(--sans); color: var(--green);
+}
+.hero__cta { display: grid; justify-items: center; gap: 10px; margin-top: 26px; }
+.hero__cta .btn { width: 100%; }
+.hero__note { font: 700 italic 16px/1.2 var(--slab); color: var(--bordo); }
+
+.chan-row {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr) 20px; gap: 14px; align-items: center;
+  margin-top: 26px; padding: 14px 16px; border-radius: 20px; text-decoration: none;
+  background: var(--white); box-shadow: inset 0 0 0 1.5px var(--line);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.chan-row:hover, .chan-row:focus-visible { scale: 1.02; }
+.chan-row__ic {
+  display: grid; place-items: center; width: 48px; height: 48px; border-radius: 15px;
+  background: var(--ink); color: var(--white); font: 800 13px/1 var(--sans); letter-spacing: .04em;
+}
+.chan-row__txt b, .chan__txt b { display: block; font: 800 17px/1.2 var(--slab); color: var(--ink); }
+.chan-row__txt small, .chan__txt small { display: block; margin-top: 3px; font-size: 14px; line-height: 1.35; color: var(--ink-soft); }
+.chan-row__go, .chan__go { width: 20px; height: 20px; color: var(--green); }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 680px; }
+/* Подпись раздела — маленький ценник: зелёная окантовка и дырочка, как у ценников витрины */
+.eyebrow {
+  position: relative; display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 15px 8px 29px; border-radius: 6px 12px 12px 6px; rotate: -2deg;
+  background: var(--white); box-shadow: inset 0 0 0 2px var(--green), 0 10px 16px -12px rgba(23, 79, 43, .7);
+  font: 600 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--green);
+}
+.eyebrow::before {
+  content: ''; position: absolute; left: 10px; top: 50%; width: 9px; height: 9px; margin-top: -4.5px; border-radius: 50%;
+  background: var(--hole, var(--bg)); box-shadow: inset 0 0 0 2px var(--green);
+}
+.eyebrow span { font: 800 italic 14px/1 var(--slab); letter-spacing: 0; color: var(--bordo); }
+.sec-head h2:not(.eyebrow) { margin-top: 18px; font: 800 clamp(28px, 7.6vw, 64px)/1.06 var(--slab); color: var(--green); letter-spacing: -.01em; }
+.sec-head h2 em { display: inline-block; }
+.sec-sub { margin-top: 14px; color: var(--ink-soft); max-width: 46ch; }
+
+/* ---------- 2. Витрина ---------- */
+.shop { --hole: var(--mint); position: relative; padding-bottom: var(--section); background: var(--mint); }
+.shop > .gingham { margin-inline: calc(var(--pad) * -1); }
+.shop .sec-head { padding-top: clamp(56px, 10vw, 110px); }
+.shelf { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; margin-top: 30px; }
+
+.tag {
+  position: relative; padding: 24px 20px 20px; border-radius: 26px;
+  background: var(--white); box-shadow: inset 0 0 0 3px var(--green), 0 22px 40px -30px rgba(23, 79, 43, .7);
+}
+.tag__hole {
+  position: absolute; right: 20px; top: 20px; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--mint); box-shadow: inset 0 0 0 3px var(--green);
+}
+.tag__num { font: 600 12px/1 var(--sans); letter-spacing: .16em; color: var(--green); opacity: .75; }
+.tag__title { margin-top: 10px; padding-right: 26px; font: 800 22px/1.18 var(--slab); color: var(--green); }
+.tag__sub { margin-top: 10px; font-size: 15.5px; line-height: 1.5; color: var(--ink-soft); }
+.tag__row { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 16px; align-items: center; margin-top: 12px; }
+.tag__row .tag__title { margin-top: 0; }
+.tag__row .tag__sub { margin-top: 6px; }
+.tag__cover { width: 76px; height: 76px; border-radius: 18px; object-fit: cover; box-shadow: 0 10px 18px -10px rgba(30, 42, 34, .5); }
+.tag__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 22px; margin-top: 20px; }
+.tag .btn { width: 100%; }
+
+/* Цена: старая перечёркивается бордовым штрихом, новая поднимается на её место */
+.price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin-top: 14px; }
+.price__old {
+  position: relative; text-decoration: none;
+  font: 700 italic 22px/1 var(--slab); color: var(--ink-soft);
+}
+.price__old svg { position: absolute; left: -6%; top: 8%; width: 112%; height: 84%; overflow: visible; }
+.price__old path { fill: none; stroke: var(--bordo); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; vector-effect: non-scaling-stroke; }
+.price__mask { display: inline-block; overflow: hidden; padding: .08em .14em .06em 0; margin: -.08em -.14em -.06em 0; }
+.price__new { display: inline-block; font: 900 italic clamp(38px, 10.5vw, 52px)/1 var(--slab); color: var(--bordo); letter-spacing: -.01em; }
+.price__per { font: 500 15px/1.2 var(--sans); color: var(--ink-soft); }
+
+/* Флагман — курс: перевёрнутый ценник */
+.tag--hero { background: var(--green); color: var(--white); box-shadow: inset 0 0 0 3px var(--green), 0 26px 46px -30px rgba(23, 79, 43, .9); }
+.tag--hero .tag__hole { background: var(--mint); box-shadow: inset 0 0 0 3px var(--white); }
+.tag__top { display: flex; align-items: flex-start; gap: 14px; }
+.tag__thumb { width: 116px; height: 116px; border-radius: 20px; object-fit: cover; box-shadow: 0 0 0 3px rgba(255, 255, 255, .9); rotate: -2deg; }
+/* Номер версии курса — часть её названия «Курс «Я управляю весом» 16.0», не ценник */
+.ver {
+  display: inline-block; vertical-align: .14em; margin-left: .08em; padding: .2em .42em .16em; border-radius: .4em;
+  background: rgba(255, 255, 255, .16); color: #ffcf9c; font: 800 italic .64em/1 var(--slab); letter-spacing: .02em; white-space: nowrap;
+}
+.tag--hero .tag__title { margin-top: 18px; font-size: 27px; color: var(--white); }
+.tag--hero .tag__sub { color: #d8ecd3; font-size: 16px; }
+.tag__notes { display: grid; gap: 8px; margin-top: 16px; }
+.tag__notes li { position: relative; padding-left: 20px; font: 500 15px/1.4 var(--sans); }
+.tag__notes li::before { content: ''; position: absolute; left: 0; top: .42em; width: 9px; height: 9px; border-radius: 50%; background: var(--orange); }
+
+/* Раскрывашка «что входит»: перфорация, как линия отрыва на ценнике */
+.more { margin-top: 18px; border-top: 2px dashed rgba(31, 107, 58, .3); }
+.more__head { width: 100%; display: flex; align-items: center; gap: 12px; padding: 14px 0 0; text-align: left; font: 600 15.5px/1.2 var(--sans); color: var(--green); }
+.more__plus { position: relative; flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--mint); transition: background-color .3s; }
+.more__plus::before, .more__plus::after {
+  content: ''; position: absolute; left: 50%; top: 50%; width: 11px; height: 2px; border-radius: 2px; background: var(--green);
+  transform: translate(-50%, -50%); transition: transform .4s cubic-bezier(.2, .7, .2, 1);
+}
+.more__plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+.more__head[aria-expanded='true'] .more__plus { background: var(--green); }
+.more__head[aria-expanded='true'] .more__plus::before, .more__head[aria-expanded='true'] .more__plus::after { background: var(--white); }
+.more__head[aria-expanded='true'] .more__plus::after { transform: translate(-50%, -50%) rotate(0); }
+.more__body { overflow: hidden; }
+.more__body > :first-child { margin-top: 14px; }
+.more__lead { font: 600 15px/1.4 var(--sans); color: var(--ink); margin-bottom: 10px; }
+.more__text { display: grid; gap: 10px; font-size: 15px; line-height: 1.5; color: var(--ink-soft); }
+.more__text b { color: var(--ink); }
+.more__text .more__lead { margin-bottom: 0; }
+.more__accent { font: 700 italic 16px/1.35 var(--slab); color: var(--bordo); }
+.dash, .check, .nums { display: grid; gap: 8px; font-size: 15px; line-height: 1.5; color: var(--ink-soft); }
+.dash li, .check li { position: relative; padding-left: 22px; }
+.dash li::before { content: ''; position: absolute; left: 0; top: .74em; width: 11px; height: 2px; border-radius: 2px; background: var(--green); }
+.check li::before {
+  content: ''; position: absolute; left: 2px; top: .38em; width: 6px; height: 11px;
+  border: solid var(--green); border-width: 0 2.5px 2.5px 0; rotate: 40deg;
+}
+.nums { counter-reset: n; }
+.nums li { position: relative; padding-left: 30px; counter-increment: n; }
+.nums li::before {
+  content: counter(n); position: absolute; left: 0; top: .1em; display: grid; place-items: center;
+  width: 21px; height: 21px; border-radius: 50%; background: var(--bordo); color: var(--white); font: 700 12px/1 var(--sans);
+}
+.tag > .check { margin-top: 16px; }
+.price--single { margin-top: 12px; }
+
+/* ---------- 3. Отзывы и каналы ---------- */
+.reviews { padding-top: var(--section); padding-bottom: calc(var(--section) * .7); }
+.slider {
+  display: flex; gap: 16px; margin: 30px calc(var(--pad) * -1) 0; padding: 14px var(--pad) 22px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad);
+  scrollbar-width: none; outline: none;
+}
+.slider::-webkit-scrollbar { display: none; }
+.shot {
+  flex: 0 0 66%; scroll-snap-align: start; overflow: hidden; border-radius: 24px;
+  aspect-ratio: 640 / 972; background: var(--mint);
+  box-shadow: inset 0 0 0 1px var(--line), 0 24px 36px -26px rgba(30, 42, 34, .6);
+}
+.shot:nth-child(odd) { rotate: -1.4deg; }
+.shot:nth-child(even) { rotate: 1.2deg; }
+.shot img { width: 100%; height: 100%; object-fit: cover; }
+.shot--fit img { object-fit: contain; } /* новые скриншоты отзывов показаны целиком, без обрезки текста */
+.slider__bar { height: 4px; border-radius: 4px; background: var(--mint-2); overflow: hidden; max-width: 220px; margin-top: 4px; }
+.slider__bar span { display: block; height: 100%; width: 100%; border-radius: 4px; background: var(--green); transform-origin: 0 50%; transform: scaleX(var(--p, .45)); }
+.all-reviews { margin-top: 14px; }
+
+.channels { display: grid; gap: 12px; margin-top: 44px; }
+.chan {
+  display: grid; grid-template-columns: 50px minmax(0, 1fr) 20px; gap: 14px; align-items: center;
+  padding: 15px 18px 15px 15px; border-radius: 22px; text-decoration: none;
+  background: var(--white); box-shadow: inset 0 0 0 1.5px var(--line), 0 16px 30px -26px rgba(30, 42, 34, .5);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.chan:hover, .chan:focus-visible { scale: 1.02; }
+.chan__ic { width: 50px; height: 50px; padding: 12px; border-radius: 16px; background: var(--green); color: var(--white); }
+.chan:nth-child(2) .chan__ic { background: var(--bordo); }
+
+/* ---------- финальная плашка концепта: отделена полосой «скатерти» на всю ширину ---------- */
+.gingham--end { transform-origin: 50% 50%; }
+.concept-end { padding-block: clamp(52px, 9vw, 96px) var(--section); text-align: center; display: grid; justify-items: center; gap: 16px; }
+.concept-end__title { font: 800 clamp(28px, 7vw, 44px)/1.12 var(--slab); color: var(--green); max-width: 20ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .shop > .gingham, .gingham--hero { margin-inline: calc(max(var(--pad), calc((100vw - 1180px) / 2)) * -1); }
+  .slider { margin-inline: 0; padding-inline: 0; }
+
+  .hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); column-gap: clamp(40px, 6vw, 96px);
+    align-items: center; padding-top: 64px; padding-bottom: 0;
+  }
+  .shop > .gingham { display: none; }
+  .hero__photo { grid-column: 2; grid-row: 1; width: min(100%, 560px); justify-self: end; }
+  .hero__text { grid-column: 1; grid-row: 1; padding-top: 0; padding-bottom: 56px; }
+  .gingham--hero { grid-column: 1 / -1; grid-row: 2; margin-top: -48px; height: 48px; }
+  .frame { aspect-ratio: 1 / 1; border-radius: 36px; }
+  .hang { right: 34px; }
+  .hang__string { height: 46px; }
+  .hang__tag { width: 160px; padding: 24px 14px 15px; font-size: 13.5px; }
+  .hang__tag b { font-size: 21px; }
+  .leaf--a { width: 104px; height: 104px; left: -42px; top: -40px; }
+  .leaf--b { display: block; width: 130px; height: 130px; right: -62px; }
+  .hero__hi { font-size: 34px; }
+  .hero__name { font-size: clamp(120px, 11.5vw, 172px); }
+  .hero__lead { font-size: 30px; }
+  .hero__cta { justify-items: start; grid-template-columns: auto auto; align-items: center; gap: 18px; }
+  .hero__cta .btn { width: auto; min-height: 60px; padding: 0 32px; font-size: 17px; }
+  .chan-row { max-width: 460px; }
+
+  /* Ценники в ряд одной высоты: низ полки ровный, кнопки прижаты к низу карточки */
+  .shelf { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 40px; align-items: stretch; }
+  .tag { padding: 28px 26px 24px; }
+  .tag .tag__actions { margin-top: 22px; }
+  .shelf > .tag:not(.tag--hero):not(.tag--wide) { display: flex; flex-direction: column; }
+  /* Как на настоящем ценнике: название сверху, цена и кнопка внизу */
+  .shelf > .tag:not(.tag--hero):not(.tag--wide) > .price { margin-top: auto; padding-top: 20px; }
+  .shelf > .tag:not(.tag--hero):not(.tag--wide) .tag__actions { margin-top: auto; padding-top: 24px; }
+  .shelf > .tag:not(.tag--hero):not(.tag--wide) .price ~ .tag__actions { margin-top: 0; }
+  .tag__title { font-size: 24px; }
+  .tag--hero {
+    grid-column: 1 / -1; display: grid; grid-template-columns: 200px minmax(0, 1fr) auto; column-gap: 34px; align-items: center;
+    padding: 30px 40px 30px 30px;
+  }
+  .tag--hero .tag__top { grid-row: 1 / span 4; position: relative; }
+  .tag--hero .tag__thumb { width: 200px; height: 200px; border-radius: 26px; rotate: -2deg; }
+  .tag--hero .tag__title { grid-column: 2; margin-top: 0; font-size: 38px; }
+  .tag--hero .tag__sub, .tag--hero .tag__notes { grid-column: 2; }
+  .tag--hero .tag__actions { grid-column: 3; grid-row: 1 / span 4; margin: 0; padding-top: 0; }
+  .tag--hero .btn { width: auto; }
+  .tag--wide {
+    grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); column-gap: 48px; padding: 32px 40px;
+  }
+  .tag--wide > :not(.check):not(.tag__hole) { grid-column: 1; }
+  .tag--wide > .check { grid-column: 2; grid-row: 1 / span 4; align-self: center; margin-top: 0; font-size: 16px; gap: 12px; }
+  .tag--wide .tag__actions { justify-content: flex-start; }
+  .tag--wide .btn { width: auto; }
+  .tag--wide .more { grid-column: 1 / -1; }
+  .tag--wide .more__text { columns: 2; column-gap: 48px; display: block; }
+  .tag--wide .more__text > * { break-inside: avoid; margin-bottom: 10px; }
+
+  /* Отзывы как в полной версии: шапка строкой, три скриншота крупно на всю ширину — переписка читается */
+  .reviews .sec-head {
+    max-width: none; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+    column-gap: clamp(40px, 6vw, 90px); align-items: end;
+  }
+  .reviews .sec-head > * { grid-column: 1; justify-self: start; }
+  .reviews .sec-head .sec-sub { grid-column: 2; grid-row: 2; margin: 0 0 .5em; font-size: 17px; }
+  .slider { margin: 52px 0 0; overflow: visible; padding: 10px 0; gap: clamp(22px, 2.4vw, 34px); flex-wrap: wrap; }
+  .shot { flex: 0 0 calc((100% - 3 * clamp(22px, 2.4vw, 34px)) / 4); }
+  .slider__bar { display: none; }
+  .all-reviews { margin-top: 26px; }
+  .channels { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 48px; }
+}

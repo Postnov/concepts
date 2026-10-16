@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<script>(function(h){h.classList.add('is-loading');var r=function(){h.classList.remove('is-loading')};setTimeout(function(){if(!window.MotionBase)r()},9000);setTimeout(r,12000)})(document.documentElement)</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- preload-fonts -->
+<link rel="preload" href="../shared/fonts/ay/GolosText-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/GolosText-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/GolosText-normal-500-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/GolosText-normal-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/GolosText-normal-600-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/GolosText-normal-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/NotoSerifDisplay-italic-300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/NotoSerifDisplay-italic-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/NotoSerifDisplay-italic-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/NotoSerifDisplay-italic-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/NotoSerifDisplay-normal-300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/NotoSerifDisplay-normal-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/NotoSerifDisplay-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/ay/NotoSerifDisplay-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- /preload-fonts -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#16261a">
+<title>Анна Януш · психолог, отношения — концепт</title>
+<link rel="stylesheet" href="../shared/fonts/ay.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="concept-bar" data-concept>
+  <span>Концепт редизайна @anya_yanysh · не официальный сайт</span>
+  <a href="https://taplink.cc/anna_yanysh">Текущий сайт →</a>
+</div>
+
+<main>
+  <!-- 1. Hero: имя, роль, две окружности -->
+  <section class="hero" aria-label="Анна Януш, психолог">
+    <p class="hero__top">
+      <span class="kicker">Психолог <i></i> отношения</span>
+      <a class="hero__handle" href="https://instagram.com/anya_yanysh">@anya_yanysh</a>
+    </p>
+
+    <!-- Две окружности: двое сближаются, но у каждого остаётся свой центр -->
+    <div class="hero__art" aria-hidden="true">
+      <div class="glow"></div>
+      <svg class="pair pair--hero" viewBox="0 0 400 340" data-pair data-gap="112" data-from="330">
+        <defs>
+          <radialGradient id="lens-hero" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#f4e6c8" stop-opacity=".95"/>
+            <stop offset=".55" stop-color="#d9c79f" stop-opacity=".45"/>
+            <stop offset="1" stop-color="#9fb39a" stop-opacity=".08"/>
+          </radialGradient>
+          <clipPath id="clip-hero"><circle data-a cx="144" cy="170" r="104"/></clipPath>
+        </defs>
+        <circle class="pair__lens" data-b cx="256" cy="170" r="104" fill="url(#lens-hero)" clip-path="url(#clip-hero)"/>
+        <circle class="pair__echo" data-a cx="144" cy="170" r="138"/>
+        <circle class="pair__echo" data-b cx="256" cy="170" r="138"/>
+        <circle class="pair__ring" data-a cx="144" cy="170" r="104"/>
+        <circle class="pair__ring" data-b cx="256" cy="170" r="104"/>
+        <circle class="pair__dot" data-a cx="144" cy="170" r="3.5"/>
+        <circle class="pair__dot" data-b cx="256" cy="170" r="3.5"/>
+      </svg>
+    </div>
+
+    <div class="hero__text">
+      <h1 class="hero__name"><span class="hero__first">Анна</span> <em class="hero__last">Януш</em></h1>
+      <p class="hero__lead">Здоровые отношения <br>и опора в себе.</p>
+      <a class="btn btn--light" href="https://t.me/Anna_Yanysh">
+        <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 4.3 2.9 11.4c-.9.4-.9 1.6.1 1.9l4.6 1.4 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.4 4.8 3.5c.6.4 1.4.1 1.6-.6l3.2-15.5c.2-.9-.7-1.7-1.6-1.4Zm-3.3 3.6-8.6 7.7-.3 3-1.3-4.2 10.2-6.5Z"/></svg>
+        Запись на консультацию
+      </a>
+    </div>
+  </section>
+
+  <!-- 2. Направления: три строки био как три опоры -->
+  <section class="ways" aria-labelledby="ways-title">
+    <header class="sec-head">
+      <p class="eyebrow"><span>01</span> направления</p>
+      <h2 id="ways-title" class="sr-only">Направления работы</h2>
+    </header>
+    <ol class="ways__list">
+      <li class="way">
+        <svg class="way__glyph glyph-pair" viewBox="0 0 96 64" aria-hidden="true">
+          <circle class="g-a" cx="36" cy="32" r="22"/>
+          <circle class="g-b" cx="60" cy="32" r="22"/>
+          <circle class="g-dot g-a" cx="36" cy="32" r="2"/>
+          <circle class="g-dot g-b" cx="60" cy="32" r="2"/>
+        </svg>
+        <span class="way__num">01</span>
+        <h3 class="way__title">Здоровые <em>отношения</em></h3>
+      </li>
+      <li class="way">
+        <svg class="way__glyph glyph-axis" viewBox="0 0 96 64" aria-hidden="true">
+          <circle class="g-ring" cx="48" cy="26" r="20"/>
+          <line class="g-axis" x1="48" y1="26" x2="48" y2="60"/>
+          <line class="g-ground" x1="30" y1="60" x2="66" y2="60"/>
+          <circle class="g-dot" cx="48" cy="26" r="2.6"/>
+        </svg>
+        <span class="way__num">02</span>
+        <h3 class="way__title">Опора <em>в себе</em></h3>
+      </li>
+      <li class="way">
+        <svg class="way__glyph glyph-grow" viewBox="0 0 96 64" aria-hidden="true">
+          <circle class="g-grow" cx="48" cy="52" r="8"/>
+          <circle class="g-grow" cx="48" cy="44" r="16"/>
+          <circle class="g-grow" cx="48" cy="34" r="26"/>
+        </svg>
+        <span class="way__num">03</span>
+        <h3 class="way__title">Трансформация личности <em>через НЛП</em></h3>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 3. Результат и запись -->
+  <section class="result" aria-labelledby="result-title">
+    <svg class="pair pair--result" viewBox="0 0 400 340" data-pair data-gap="120" data-from="420" aria-hidden="true">
+      <defs>
+        <radialGradient id="lens-result" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stop-color="#f4e6c8" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#f4e6c8" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="clip-result"><circle data-a cx="140" cy="170" r="110"/></clipPath>
+      </defs>
+      <circle class="pair__lens" data-b cx="260" cy="170" r="110" fill="url(#lens-result)" clip-path="url(#clip-result)"/>
+      <circle class="pair__ring" data-a cx="140" cy="170" r="110"/>
+      <circle class="pair__ring" data-b cx="260" cy="170" r="110"/>
+    </svg>
+    <div class="result__inner">
+      <p class="eyebrow eyebrow--light"><span>02</span> результат</p>
+      <h2 id="result-title" class="result__quote">Результат, который меняет <em>качество жизни.</em></h2>
+      <div class="result__cta">
+        <p class="result__label">Запись здесь <span class="drop" aria-hidden="true"><i></i></span></p>
+        <div class="result__btns">
+          <a class="btn btn--light" href="https://t.me/Anna_Yanysh">
+            <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 4.3 2.9 11.4c-.9.4-.9 1.6.1 1.9l4.6 1.4 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.4 4.8 3.5c.6.4 1.4.1 1.6-.6l3.2-15.5c.2-.9-.7-1.7-1.6-1.4Zm-3.3 3.6-8.6 7.7-.3 3-1.3-4.2 10.2-6.5Z"/></svg>
+            Записаться в Telegram
+          </a>
+          <a class="btn btn--line" href="https://ig.me/m/anya_yanysh">Написать в Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="concept-end">
+    <p class="concept-end__title">Так может выглядеть <em>весь ваш сайт</em></p>
+    <p class="concept-end__text">Это концепт: ваш Taplink и слова из вашего профиля в новом дизайне.</p>
+    <a class="btn btn--ghost" href="https://taplink.cc/anna_yanysh">Открыть текущий сайт</a>
+  </aside>
+</main>
+
+<script src="../shared/vendor/gsap/gsap.min.js"></script>
+<script src="../shared/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="../shared/vendor/gsap/SplitText.min.js"></script>
+<script src="../shared/motion-base.js"></script>
+<script src="motion.js"></script>
+</body>
+</html>
