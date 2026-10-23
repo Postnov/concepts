@@ -1,0 +1,200 @@
+/* Айшат Агларова · остеопракт — концепт.
+   Палитра из её кабинета и Taplink: молочные стены, тёплый свет свечи, розовый костюм (коралл), бирюза её таплинка.
+   Шрифты: Viaoda Libre (контрастная антиква) + Zen Kaku Gothic New (спокойный гротеск). */
+:root {
+  --milk: #faf6f2;
+  --sand: #f3ebe4;
+  --blush: #f6dedb;
+  --coral: #e7848f;
+  --coral-deep: #b9505f;
+  --aqua: #44bdb3;
+  --teal: #1f6a64;
+  --ink: #24302e;
+  --ink-soft: #5f6a68;
+  --line: rgba(36, 48, 46, .14);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 13vw, 156px);
+  --leaf: 150px 26px 150px 26px;          /* «лист»: скруглены два противоположных угла */
+  --leaf-m: 26px 150px 26px 150px;
+  --sans: 'Zen Kaku Gothic New', system-ui, -apple-system, sans-serif;
+  --serif: 'Viaoda Libre', 'Times New Roman', serif;
+  --concept-bg: #24302e;
+  --concept-ink: #f6efe9;
+}
+
+body { background: var(--milk); color: var(--ink); font: 400 16px/1.65 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+.accent { color: var(--coral-deep); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: var(--coral-deep); color: #fff; text-decoration: none;
+  font: 500 15px/1 var(--sans); letter-spacing: .03em;
+  box-shadow: 0 16px 32px -16px rgba(185, 80, 95, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px rgba(36, 48, 46, .35); }
+
+/* ---------- «сведение»: два цветных отпечатка (коралл и бирюза) сходятся в одно изображение ---------- */
+.reg { position: relative; }
+.reg__echo {
+  position: absolute; left: 0; top: 0; width: 100%;
+  color: var(--coral); mix-blend-mode: multiply; pointer-events: none;
+  visibility: hidden; opacity: 0;
+}
+.reg__echo .accent { color: var(--aqua); }
+
+.shot { position: relative; }
+.frame { position: relative; z-index: 1; overflow: hidden; border-radius: var(--leaf); background: var(--blush); aspect-ratio: 660 / 853; }
+.frame img { width: 100%; height: 100%; object-fit: cover; }
+.hero__photo .frame img { scale: 1.08; } /* запас под параллакс */
+.frame--wide { aspect-ratio: 1180 / 853; }
+.shot--mirror .frame, .shot--mirror .echo, .shot--mirror .shot__line { border-radius: var(--leaf-m); }
+.echo {
+  position: absolute; inset: 0; z-index: 2; border-radius: var(--leaf); pointer-events: none;
+  background: var(--img) center / cover no-repeat; background-blend-mode: screen;
+  mix-blend-mode: multiply; visibility: hidden; opacity: 0;
+}
+.echo--coral { background-color: var(--coral); }
+.echo--aqua { background-color: var(--aqua); }
+.shot__line {
+  position: absolute; inset: 0; z-index: 0; border-radius: var(--leaf);
+  box-shadow: inset 0 0 0 1px rgba(185, 80, 95, .45);
+  translate: 14px 14px;
+}
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px;
+  padding-top: 26px; padding-bottom: var(--section);
+  background:
+    radial-gradient(60% 34% at 78% 16%, rgba(246, 222, 219, .9), rgba(246, 222, 219, 0) 70%),
+    radial-gradient(50% 30% at 8% 62%, rgba(68, 189, 179, .12), rgba(68, 189, 179, 0) 70%);
+}
+.hero__photo { order: -1; margin: 0 14px 0 0; }
+.kicker {
+  display: flex; align-items: center; gap: 10px;
+  font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.kicker i { width: 18px; height: 1px; background: var(--coral-deep); }
+.t-name {
+  font: 400 clamp(66px, 19.5vw, 138px)/.94 var(--serif); letter-spacing: -.005em;
+  font-kerning: none; font-variant-ligatures: none;
+}
+.hero .reg { margin-top: 16px; }
+.hero__name { color: var(--ink); }
+.hero__motto {
+  margin-top: 22px; font: 400 clamp(28px, 7.6vw, 44px)/1.1 var(--serif); color: var(--coral-deep);
+}
+.hero__lead { margin-top: 12px; max-width: 34ch; font: 300 clamp(17px, 4.4vw, 20px)/1.5 var(--sans); color: var(--ink-soft); }
+
+.facts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; margin-top: 28px; }
+.fact {
+  display: grid; gap: 6px; padding: 16px 16px 15px; border-radius: 22px;
+  background: rgba(255, 255, 255, .72); box-shadow: inset 0 0 0 1px var(--line);
+}
+.fact__big { font: 400 38px/1 var(--serif); color: var(--teal); }
+.fact__text { font-size: 13.5px; line-height: 1.35; color: var(--ink-soft); }
+.reg-link {
+  display: flex; align-items: flex-start; gap: 10px; margin-top: 16px;
+  font-size: 14px; line-height: 1.45; color: var(--ink-soft); text-decoration: none;
+}
+.reg-link:hover { color: var(--ink); }
+.reg-link__dot { flex: none; width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: var(--aqua); box-shadow: 0 0 0 4px rgba(68, 189, 179, .18); }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.hero__cta .btn { flex: 1 1 200px; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 680px; }
+.eyebrow {
+  display: inline-flex; gap: 12px; align-items: center;
+  font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { font: 400 20px/1 var(--serif); letter-spacing: 0; color: var(--coral-deep); }
+.sec-head .reg { margin-top: 14px; }
+.t-h2 { font: 400 clamp(44px, 12.4vw, 92px)/1 var(--serif); letter-spacing: -.005em; }
+
+/* ---------- 2. Направления ---------- */
+.dirs { padding-block: var(--section); background: linear-gradient(180deg, var(--milk), var(--sand) 26%, var(--sand) 78%, var(--milk)); }
+.dirs__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; margin-top: 36px; }
+.dirs__photo { margin-right: 14px; }
+.dirs__word { font: 400 clamp(26px, 7vw, 40px)/1 var(--serif); color: var(--coral-deep); }
+.dirs__items { margin-top: 18px; border-top: 1px solid var(--line); }
+.dir {
+  display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 8px; align-items: baseline;
+  padding: 20px 0 21px; border-bottom: 1px solid var(--line);
+}
+.dir__num { font: 500 12px/1 var(--sans); letter-spacing: .14em; color: var(--teal); }
+.dir__title { font: 400 clamp(30px, 8.4vw, 46px)/1.08 var(--serif); }
+
+/* ---------- 3. Стоимость ---------- */
+.price { position: relative; padding-block: var(--section); }
+.price::before { /* тёплое пятно света, как от свечи на её фото */
+  content: ''; position: absolute; right: -20%; top: 18%; width: 80vw; max-width: 720px; aspect-ratio: 1;
+  background: radial-gradient(closest-side, rgba(246, 222, 219, .85), rgba(246, 222, 219, 0)); pointer-events: none; z-index: -1;
+}
+.price { isolation: isolate; }
+.cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 36px; }
+.card {
+  position: relative; padding: 26px 24px 26px; border-radius: 30px 30px 30px 8px;
+  background: var(--coral-deep); color: #fff;
+  box-shadow: 0 30px 60px -36px rgba(120, 44, 56, .7);
+}
+.card--alt { background: #fff; color: var(--ink); border-radius: 8px 30px 30px 30px; box-shadow: inset 0 0 0 1px var(--line), 0 30px 60px -40px rgba(36, 48, 46, .45); }
+.card__echo {
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  box-shadow: inset 0 0 0 1.5px var(--aqua); visibility: hidden; opacity: 0;
+}
+.card__who { font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; opacity: .85; }
+.card__title { margin-top: 14px; font: 400 30px/1.05 var(--serif); }
+.card__time { display: flex; align-items: center; gap: 9px; margin-top: 10px; font-size: 14.5px; opacity: .85; }
+.card__dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.card__price { margin-top: 26px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .3); font: 400 64px/1 var(--serif); letter-spacing: -.01em; }
+.card--alt .card__price { border-top-color: var(--line); color: var(--coral-deep); }
+.rub { font: 300 .62em/1 system-ui, -apple-system, sans-serif; }
+.price__foot { display: grid; gap: 18px; justify-items: start; margin-top: 26px; }
+.price__note { font-size: 13.5px; color: var(--ink-soft); }
+.address { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.45; text-decoration: none; }
+.address span:last-child { text-decoration: underline; text-decoration-color: rgba(36, 48, 46, .3); text-underline-offset: 4px; }
+.address__pin {
+  flex: none; width: 14px; height: 14px; margin-top: 3px; border-radius: 50% 50% 50% 0; rotate: -45deg;
+  background: var(--coral-deep); box-shadow: inset 0 0 0 4px var(--coral-deep), inset 0 0 0 7px #fff;
+}
+.price__foot .btn { margin-top: 8px; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 0 var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 400 clamp(34px, 9vw, 56px)/1.05 var(--serif); max-width: 14ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+.concept-end .btn { margin-top: 6px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  :root { --leaf: 220px 34px 220px 34px; --leaf-m: 34px 220px 34px 220px; }
+  .hero {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); align-items: center; gap: clamp(48px, 6vw, 100px);
+    min-height: calc(100svh - 34px); padding-top: 48px; padding-bottom: 96px;
+  }
+  .hero__photo { order: 0; margin: 0 24px 24px 0; }
+  .hero__cta .btn { flex: 0 0 auto; }
+  .facts { max-width: 480px; }
+  .dirs__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(48px, 7vw, 110px); align-items: start; margin-top: 56px; }
+  .dirs__photo { position: sticky; top: 60px; margin: 0 24px 24px 0; }
+  .dirs__list { padding-top: 8px; }
+  .cards { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; margin-top: 56px; }
+  .card { padding: 34px 34px 34px; }
+  .card__price { font-size: 76px; }
+  .price__foot { grid-template-columns: auto auto 1fr; align-items: center; gap: 22px 40px; }
+  .price__foot .btn { margin-top: 0; justify-self: end; }
+}
+@media (min-width: 900px) and (max-width: 1100px) {
+  .price__foot { grid-template-columns: minmax(0, 1fr); }
+  .price__foot .btn { justify-self: start; }
+}
+
+.no-motion .echo, .no-motion .reg__echo, .no-motion .card__echo { display: none; }

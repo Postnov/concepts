@@ -1,0 +1,326 @@
+/* Юлия Савельева · нутрициолог — концепт (демо; разметка и стили совпадают с full/, кроме ленты дипломов). Монохромный эдиториал: студийный серый, графит, бумага,
+   один цветной акцент — авокадо (кивок нику). Фото «проявляются» из плоского серого в полный контраст. */
+:root {
+  --ink: #1c1c1c;          /* графит */
+  --card: #2a2a29;         /* карточки и полосы */
+  --paper: #edebe6;        /* текст на графите, фон «Образования» */
+  --muted: #9a9893;        /* вторичный текст на графите */
+  --kicker: #b3b1ab;       /* первая строка её кнопок («Методическое пособие», «Курс»): ≥ 6.7:1 на графите и карточках */
+  --avocado: #a3b36b;      /* акцент на тёмном */
+  --olive: #55602a;        /* тот же акцент на светлом (контраст ≥ 5:1) */
+  --olive-deep: #3e4620;   /* подписи на студийном сером (контраст 5.8:1) */
+  --studio: #c5c6c1;       /* серый фон её студийной съёмки */
+  --studio-soft: #4a4b47;  /* вторичный текст на студийном сером */
+  --line: rgba(237, 235, 230, .14);
+  --line-ink: rgba(28, 28, 28, .16);
+  --pad: clamp(18px, 4.6vw, 56px);
+  --section: clamp(84px, 12vw, 150px);
+  --display: 'Fira Sans Extra Condensed', 'PT Sans Narrow', 'Arial Narrow', sans-serif;
+  --text: 'Fira Sans', 'PT Sans', system-ui, -apple-system, sans-serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --concept-bg: #1c1c1c;
+  --concept-ink: #edebe6;
+}
+
+body { background: var(--ink); color: var(--paper); font: 400 16px/1.55 var(--text); }
+main { overflow-x: clip; }
+em { font-style: normal; color: var(--avocado); }
+.nw { white-space: nowrap; }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 56px; padding: 0 28px; border-radius: 2px;
+  background: var(--ink); color: var(--paper); text-decoration: none;
+  font: 500 13px/1 var(--text); letter-spacing: .16em; text-transform: uppercase;
+  box-shadow: 0 18px 36px -18px rgba(28, 28, 28, .7);
+  transition: scale .45s var(--ease);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04; }
+.btn__icon { width: 19px; height: 19px; fill: var(--avocado); flex: none; }
+.btn--ghost { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 1px rgba(237, 235, 230, .42); }
+
+/* ---------- «отпечаток»: фото в рамке с плёночным зерном ---------- */
+/* все фото — ч/б «журнальная» печать; проявка в motion.js приходит ровно в это состояние */
+.print { position: relative; overflow: hidden; }
+.print img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.12) brightness(1.02); }
+.print::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: url(assets/grain.png); background-size: 128px; opacity: .09; mix-blend-mode: overlay;
+}
+
+/* ---------- заголовки разделов — её заголовки с Taplink, без служебных надписей ---------- */
+.display {
+  font: 200 clamp(56px, 14.6vw, 128px)/.9 var(--display); text-transform: uppercase; letter-spacing: .005em;
+}
+
+/* ================= 1. Обложка ================= */
+.hero {
+  --w: calc(100vw - 2 * var(--pad));            /* ширина «блока» имени: обе строки по ширине колонки */
+  position: relative; isolation: isolate;
+  background: var(--studio); color: var(--ink);
+  padding: 16px var(--pad) 0;
+}
+.hero__mast {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; gap: 14px;
+  font: 400 12px/1 var(--text); letter-spacing: .08em; color: var(--studio-soft);
+}
+.hero__mast .rule { flex: 1; height: 1px; background: currentColor; opacity: .45; transform-origin: left; }
+.hero__role-top { text-transform: uppercase; letter-spacing: .22em; font-weight: 500; font-size: 11px; }
+.hero__title { position: relative; z-index: 2; margin-top: 24px; font-weight: inherit; }
+.hero__kicker {
+  display: flex; align-items: center; gap: 14px;
+  font: 500 15px/1 var(--text); letter-spacing: .24em; text-transform: uppercase; color: var(--olive-deep);
+}
+.hero__kicker::before { content: ''; width: 34px; height: 1.5px; background: var(--avocado); }
+.hero__name { display: block; margin-top: 14px; font-family: var(--display); font-weight: 200; text-transform: uppercase; }
+.hero__line { display: block; white-space: nowrap; }
+/* «ЮЛИЯ» и «САВЕЛЬЕВА» набраны в одну ширину — обложечный «замок» */
+.hero__line--1 { font-size: calc(var(--w) / 2.15); line-height: .8; margin-left: -.065em; }
+.hero__line--2 { font-size: calc(var(--w) / 4.13); line-height: .9; margin-top: .06em; margin-left: -.045em; }
+
+.hero__photo { position: relative; z-index: 1; margin: -74px calc(var(--pad) * -1) 0; overflow: hidden; }
+.hero__photo .print {
+  width: 110%; aspect-ratio: 1039 / 1408;
+  /* верх фото растворяется в студийном сером, как бесшовный фон */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 16%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 16%);
+}
+.hero__photo .print::after { opacity: .12; }
+.hero__cta { position: absolute; z-index: 3; right: var(--pad); bottom: 30px; }
+.hero__cta .btn { padding: 0 22px; }
+
+/* ================= 2. Продукты — оглавление ================= */
+.toc { padding: var(--section) var(--pad); background: var(--ink); }
+.toc__list { margin-top: 40px; position: relative; }
+.toc__list::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line); }
+.toc__row {
+  position: relative; display: grid; grid-template-columns: 34px minmax(0, 1fr) 20px; gap: 10px; align-items: center;
+  padding: 16px 0 17px; text-decoration: none; color: var(--paper);
+}
+.toc__line { position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: left; }
+.toc__num { align-self: start; padding-top: 2px; font: 300 19px/1 var(--display); color: var(--avocado); font-variant-numeric: tabular-nums; }
+.toc__body { min-width: 0; }
+/* на баннере эта строка того же кегля, что и название: здесь она мельче, но читается и в записи рилса */
+.toc__body small {
+  display: block; margin-bottom: 5px;
+  font: 500 12.5px/1.3 var(--text); letter-spacing: .14em; text-transform: uppercase; color: var(--kicker);
+}
+.toc__title {
+  display: block; font: 300 22px/1.15 var(--display); letter-spacing: .005em; text-wrap: balance;
+  transform-origin: 0 50%; transition: scale .5s var(--ease);
+}
+.toc__arrow { justify-self: end; font: 300 19px/1 var(--text); color: var(--muted); }
+/* наведение — только плавное увеличение строки */
+.toc__row:hover .toc__title, .toc__row:focus-visible .toc__title { scale: 1.045; }
+
+/* ================= 3. Немного обо мне — своя полоса, снимок «отпечатком» на бумаге ================= */
+.about { padding: var(--section) 0; background: var(--card); }
+.about .sec-head { padding: 0 var(--pad); }
+/* снимок в пропорции оригинала и с полями: не шире ~354 px на телефоне, т.е. почти без увеличения */
+.about__photo {
+  margin: 40px var(--pad) 0; padding: 6px; background: var(--paper);
+  box-shadow: 0 30px 50px -30px rgba(0, 0, 0, .75);
+}
+.print--about { aspect-ratio: 1051 / 861; }
+.print--about img { object-position: 50% 30%; }
+/* без линеек: пункты держатся на квадратах-маркерах и воздухе — не повторяют оглавление выше */
+.facts { margin-top: 40px; padding: 0 var(--pad); display: grid; gap: 24px; }
+.facts li { display: grid; grid-template-columns: 8px minmax(0, 1fr); gap: 18px; }
+/* её маркер ▪ — квадрат авокадо по первой строке */
+.facts__mark { width: 8px; height: 8px; margin-top: 9px; background: var(--avocado); }
+.facts p { font: 300 17px/1.5 var(--text); color: var(--paper); text-wrap: pretty; }
+.facts .soft { color: var(--muted); }
+
+/* ================= 4. Образование — бумажная полоса ================= */
+.edu { padding: var(--section) 0 calc(var(--section) * .8); background: var(--paper); color: var(--ink); }
+.edu__head { padding: 0 var(--pad); }
+.ribbon { margin-top: 40px; display: grid; gap: 4px; }
+/* без анимации — каждая строка листается пальцем; с анимацией строки едут сами при прокрутке страницы */
+.ribbon__track {
+  display: flex; align-items: flex-end; gap: 16px; padding: 10px var(--pad) 22px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.ribbon__track::-webkit-scrollbar { display: none; }
+.js-motion .ribbon { overflow: hidden; }
+.js-motion .ribbon__track { width: max-content; overflow: visible; scroll-snap-type: none; }
+.dip { flex: none; scroll-snap-align: start; scroll-margin-left: var(--pad); }
+.dip__paper {
+  padding: 7px; background: #fff;
+  box-shadow: 0 0 0 1px rgba(28, 28, 28, .06), 0 22px 40px -26px rgba(28, 28, 28, .55);
+}
+/* документы приглушены до «архива отпечатков»: читаются, но не спорят с единственным акцентом авокадо.
+   Значение совпадает с DOC_SHARP в motion.js — после clearProps цвет не меняется */
+.dip__paper img { height: 160px; width: auto; filter: grayscale(.7) contrast(1.05) brightness(1); }
+
+.more { margin: 26px var(--pad) 0; border-top: 1px solid var(--line-ink); border-bottom: 1px solid var(--line-ink); }
+.more__head {
+  width: 100%; display: flex; align-items: center; gap: 16px; padding: 20px 0; text-align: left;
+  font: 500 12.5px/1.3 var(--text); letter-spacing: .18em; text-transform: uppercase; color: var(--ink);
+}
+.more__icon { position: relative; flex: none; width: 34px; height: 34px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(28, 28, 28, .35); }
+.more__icon::before, .more__icon::after {
+  content: ''; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.2px; background: var(--ink);
+  translate: -50% -50%; transition: rotate .45s var(--ease);
+}
+/* плюс → минус только поворотом */
+.more__icon::after { rotate: 90deg; }
+.more__head[aria-expanded='true'] .more__icon::after { rotate: 0deg; }
+.more__body { overflow: hidden; }
+.years { padding-bottom: 14px; }
+.years li { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 10px; padding: 13px 0; border-top: 1px solid var(--line-ink); }
+.years b { font: 500 16px/1.4 var(--display); letter-spacing: .04em; color: var(--olive); }
+.years p { font: 400 14.5px/1.55 var(--text); color: #393937; }
+
+/* ================= 5. Блог — её кнопка как разворотный заголовок ================= */
+.blog { padding: var(--section) var(--pad); background: var(--ink); }
+.blog__link { display: block; color: var(--paper); text-decoration: none; }
+.blog__title {
+  /* на 390 px три строки: «блог / о нутрициологии / простым языком» — предлог не висит */
+  font: 200 clamp(40px, 11.6vw, 168px)/.9 var(--display); text-transform: uppercase; letter-spacing: .005em;
+  transform-origin: 0 100%; transition: scale .6s var(--ease);
+}
+.blog__title .w { display: inline-block; }
+.blog__link:hover .blog__title, .blog__link:focus-visible .blog__title { scale: 1.02; }
+.blog__meta {
+  display: flex; align-items: center; gap: 12px; margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--line);
+  font: 400 14px/1.3 var(--text); letter-spacing: .06em; color: var(--kicker);
+}
+.blog__icon { flex: none; width: 22px; height: 22px; color: var(--avocado); }
+.blog__go { margin-left: auto; font: 300 22px/1 var(--text); letter-spacing: 0; }
+
+/* ================= 6. Академия ЭдПро — курсы «обложками» ================= */
+.academy { padding: 0 var(--pad) var(--section); background: var(--ink); }
+.academy__head { padding-top: 56px; border-top: 1px solid var(--line); }
+.academy__title { font: 200 clamp(44px, 12.4vw, 112px)/.92 var(--display); text-transform: uppercase; }
+.academy__title a { display: inline-block; color: var(--paper); text-decoration: none; transform-origin: 0 100%; transition: scale .5s var(--ease); }
+.academy__title a:hover, .academy__title a:focus-visible { scale: 1.03; }
+.academy__go { display: inline-block; margin-left: .14em; font: 300 .42em/1 var(--text); vertical-align: .95em; color: var(--avocado); }
+/* на телефоне обложки ложатся стопкой: каждая следующая наезжает на предыдущую (position: sticky, без JS) */
+.covers { margin-top: 36px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.covers__item { position: sticky; top: 18px; }
+.covers__item:nth-child(2) { top: 32px; }
+.covers__item:nth-child(3) { top: 46px; }
+.covers__item:first-child .cover { box-shadow: inset 0 0 0 1px rgba(237, 235, 230, .07); }
+.cover {
+  position: relative; display: flex; flex-direction: column; gap: 30px;
+  min-height: 318px; padding: 22px 22px 26px; border-radius: 2px; overflow: hidden;
+  background: var(--card); color: var(--paper); text-decoration: none;
+  box-shadow: inset 0 0 0 1px rgba(237, 235, 230, .07), 0 -22px 44px -26px rgba(0, 0, 0, .85);
+  transition: scale .45s var(--ease);
+}
+.cover::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: url(assets/grain.png); background-size: 128px; opacity: .06; mix-blend-mode: overlay;
+}
+.cover:hover, .cover:focus-visible { scale: 1.02; }
+.cover__top { display: flex; align-items: flex-start; justify-content: space-between; }
+/* её иконки с кнопок курсов (весы, мозг, молекула) тонкой линией */
+.cover__icon { width: 56px; height: 56px; color: var(--avocado); }
+.cover__go { font: 300 20px/1 var(--text); color: var(--muted); }
+/* заголовки — от верха, на одной высоте во всех карточках; подпись прижата к низу */
+.cover__body { display: flex; flex-direction: column; flex: 1; }
+.cover__kicker { display: block; margin-bottom: 10px; font: 500 12.5px/1.3 var(--text); letter-spacing: .14em; text-transform: uppercase; color: var(--kicker); }
+.cover__title { display: block; margin-bottom: 18px; font: 300 31px/1.04 var(--display); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+.cover__note { display: block; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); font: 400 13.5px/1.5 var(--text); color: var(--muted); }
+
+/* ================= Подвал — «задняя обложка» на студийном сером ================= */
+.foot { --w: calc(100vw - 2 * var(--pad)); padding: 60px var(--pad) 72px; background: var(--studio); color: var(--ink); overflow: hidden; }
+.foot__mast { display: flex; align-items: center; gap: 14px; font: 400 12px/1 var(--text); letter-spacing: .08em; color: var(--studio-soft); }
+.foot__mast .rule { flex: 1; height: 1px; background: currentColor; opacity: .45; transform-origin: left; }
+.foot__role { font: 500 13px/1 var(--text); letter-spacing: .24em; text-transform: uppercase; color: var(--olive-deep); }
+.foot__name { margin-top: 26px; font-family: var(--display); font-weight: 200; text-transform: uppercase; }
+/* «ЮЛИЯ САВЕЛЬЕВА» в одну строку ровно по ширине колонки: чернила глифа = 6.58em, левый отступ глифа .092em */
+.foot__line { display: block; white-space: nowrap; font-size: calc(var(--w) / 6.58); line-height: .82; margin-left: -.092em; }
+.foot__grid { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; }
+.foot__cta .btn { padding: 0 24px; }
+.foot__label { margin-bottom: 10px; font: 500 11px/1 var(--text); letter-spacing: .22em; text-transform: uppercase; color: var(--studio-soft); }
+.foot__links li { border-top: 1px solid var(--line-ink); }
+.foot__links li:last-child { border-bottom: 1px solid var(--line-ink); }
+.foot__links a {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0;
+  font: 300 21px/1.2 var(--display); text-decoration: none;
+  transform-origin: 0 50%; transition: scale .45s var(--ease);
+}
+.foot__links a::after { content: '↗'; flex: none; font: 300 16px/1 var(--text); color: var(--studio-soft); }
+.foot__links a:hover, .foot__links a:focus-visible { scale: 1.025; }
+.foot__legal { margin-top: 16px; font: 400 13.5px/1.6 var(--text); color: var(--studio-soft); }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end {
+  display: grid; justify-items: center; gap: 16px; text-align: center;
+  padding: 72px var(--pad) var(--section); background: var(--card);
+}
+.concept-end__title { font: 200 clamp(40px, 11vw, 76px)/.95 var(--display); text-transform: uppercase; max-width: 14ch; }
+.concept-end__text { color: var(--muted); max-width: 40ch; font-size: 15px; }
+
+/* ================= десктоп ================= */
+@media (min-width: 900px) {
+  .hero {
+    --w: min(560px, 38vw);
+    display: grid; grid-template-columns: minmax(0, 1fr); align-content: start;
+    min-height: calc(100svh - 36px); padding: 28px var(--pad) 56px;
+    /* фон — продолжение её студии: тот же серый, что у края снимка после фильтра, по высоте
+       (верх ~#d6, светлая полоса горизонта ~#ec, пол ~#d8) — шва на стыке с фото нет */
+    background: linear-gradient(180deg, #d6d6d3 0%, #dcdcd9 12%, #e5e5e2 22%, #ebebe8 32%, #ecece9 44%, #eaeae7 54%, #dcdcd9 66%, #d6d6d3 76%, #d9d9d6 88%, #d8d8d5 100%);
+  }
+  .hero__title { margin-top: clamp(64px, 11vh, 120px); }
+  /* фото начинается сразу за колонкой имени (+48px), чтобы «САВЕЛЬЕВА» не упиралась в край снимка */
+  .hero__photo {
+    position: absolute; z-index: 1; top: 0; bottom: 0; right: 0; left: calc(var(--pad) + var(--w) + 48px); margin: 0;
+  }
+  .hero__photo .print {
+    width: 100%; height: 100%; aspect-ratio: auto;
+    /* косой край: вверху (только фон) снимок растворяется широко, к низу край сужается до нуля —
+       пальцы у нижнего края остаются целыми, локоть смягчён, но не «призрачный» */
+    -webkit-mask-image: linear-gradient(98deg, transparent 0, #000 132px);
+    mask-image: linear-gradient(98deg, transparent 0, #000 132px);
+  }
+  .hero__photo img { object-position: 30% 40%; }
+  .hero__mast { max-width: 40%; }
+  .hero__cta { position: relative; right: auto; bottom: auto; margin-top: 48px; }
+  .hero__cta .btn { padding: 0 30px; }
+
+  .toc { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(40px, 6vw, 110px); align-items: start; }
+  .toc__head { position: sticky; top: 48px; }
+  .toc__list { margin-top: 0; }
+  .toc__title { font-size: 30px; }
+  .toc__row { grid-template-columns: 52px minmax(0, 1fr) 28px; padding: 24px 0 25px; }
+
+  .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(40px, 6vw, 110px); padding: var(--section) var(--pad); align-items: start; }
+  .about .sec-head { grid-column: 2; grid-row: 1; padding: 0; }
+  .about__photo { grid-column: 1; grid-row: 1 / span 2; margin: 0; position: sticky; top: 48px; }
+  .about__photo { padding: 8px; }
+  .facts { grid-column: 2; grid-row: 2; padding: 0; margin-top: 40px; gap: 26px; }
+  .facts p { font-size: 18px; }
+
+  .ribbon__track { gap: 26px; }
+  .dip__paper img { height: 250px; }
+  .more { max-width: 900px; }
+
+  .blog { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .blog__meta { margin-top: 48px; max-width: 520px; }
+
+  .academy { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .academy__head { padding-top: 80px; }
+  .covers { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 48px; }
+  .covers__item, .covers__item:nth-child(2), .covers__item:nth-child(3) { position: static; }
+  .cover { height: 100%; min-height: 440px; padding: 30px 30px 32px; box-shadow: inset 0 0 0 1px rgba(237, 235, 230, .07); }
+  .cover { gap: 44px; }
+  .cover__icon { width: 72px; height: 72px; }
+  .cover__title { font-size: 38px; }
+  /* подписи в одну и в две строки: линейка над ними на одной высоте во всех трёх карточках */
+  .cover__note { min-height: 56px; }
+
+  .foot { --w: calc(100vw - 2 * var(--pad)); padding: 88px var(--pad) 110px; }
+  .foot__name { margin-top: 34px; }
+  .foot__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 4vw, 72px); margin-top: 64px; align-items: start; }
+  .foot__links a { font-size: 22px; }
+}
+@media (min-width: 1600px) {
+  section, .foot, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1400px) / 2)); }
+  .foot { --w: 1400px; }
+  .hero { --w: 640px; }
+  .hero__photo { left: calc(max(var(--pad), (100vw - 1400px) / 2) + var(--w) + 48px); }
+}

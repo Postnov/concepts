@@ -1,0 +1,227 @@
+/* Олеся Армашова · гастроэнтеролог — концепт. Идея: приборная панель (её шутка про эндоскоп «как BMW, только круче»).
+   Палитра: графит и тёплая бумага, лайм её Taplink как свет приборов, красная зона и янтарные лампы — только в циферблате. */
+:root {
+  --paper: #f2efe8;
+  --paper-2: #e8e4d9;
+  --card: #fbfaf6;
+  --ink: #161a17;
+  --ink-soft: #596158;
+  --graph: #121513;
+  --graph-2: #1b201d;
+  --lime: #c8e45e;
+  --olive: #4a6a1c;
+  --olive-deep: #35500f;
+  --amber: #f0a73a;
+  --red: #ef4b32;
+  --line: rgba(22, 26, 23, .14);
+  --line-light: rgba(242, 239, 232, .16);
+  --radius: 28px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(76px, 12vw, 140px);
+  --display: 'Unbounded', 'Arial Black', system-ui, sans-serif;
+  --sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --concept-bg: #0b0d0c;
+  --concept-ink: #e9eee0;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-style: normal; color: var(--olive); }
+.nw { white-space: nowrap; }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: var(--lime); color: var(--graph); text-decoration: none;
+  font: 500 15.5px/1 var(--sans); letter-spacing: .01em;
+  box-shadow: 0 16px 34px -16px rgba(120, 160, 20, .8);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 46px; padding: 0 24px; font-size: 14.5px; }
+.btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 640px; }
+.eyebrow {
+  display: inline-flex; gap: 12px; align-items: center;
+  font: 500 11.5px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--olive); }
+.sec-head h2 { margin-top: 18px; font: 300 clamp(27px, 7.4vw, 50px)/1.14 var(--display); letter-spacing: -.02em; }
+.sec-sub { margin-top: 16px; color: var(--ink-soft); max-width: 46ch; }
+
+/* ---------- 1. Hero: приборная панель ---------- */
+.hero { padding: 8px 8px 0; }
+.hero__panel {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; grid-template-areas: 'text' 'dial' 'keys' 'cta';
+  padding: 28px 18px 34px; border-radius: 30px; color: var(--paper);
+  background:
+    radial-gradient(90% 46% at 50% 52%, rgba(200, 228, 94, .12), rgba(200, 228, 94, 0) 70%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .022) 0 1px, transparent 1px 56px),
+    linear-gradient(180deg, #171c19, #0e110f);
+}
+.kicker {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px;
+  font: 500 11.5px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: rgba(242, 239, 232, .62);
+}
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--lime); }
+.hero__name { margin-top: 18px; font: 300 clamp(40px, 12.4vw, 104px)/1.04 var(--display); letter-spacing: -.025em; }
+.hero__first, .hero__last { display: block; }
+.hero__first { color: var(--lime); }
+.hero__lead { margin-top: 18px; font: 400 clamp(18px, 5.2vw, 28px)/1.3 var(--display); letter-spacing: -.01em; }
+.hero__lead em { color: var(--lime); }
+.hero__text { grid-area: text; }
+.hero__cta { grid-area: cta; display: grid; gap: 14px; justify-items: stretch; }
+.hero__cta .btn { width: 100%; }
+.badge {
+  display: inline-flex; align-items: center; gap: 10px; max-width: 100%;
+  padding: 10px 16px 10px 12px; border-radius: 16px; text-decoration: none;
+  font: 400 13px/1.3 var(--sans); color: rgba(242, 239, 232, .82);
+  box-shadow: inset 0 0 0 1px var(--line-light); transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.badge:hover, .badge:focus-visible { scale: 1.03 !important; }
+.badge svg { flex: none; width: 18px; height: 18px; fill: var(--lime); }
+
+/* циферблат */
+.dial { grid-area: dial; margin: 0; display: grid; justify-items: center; gap: 22px; }
+.dial__face { position: relative; width: min(100%, 372px); aspect-ratio: 1; container-type: inline-size; }
+.dial__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.dial__bezel { fill: none; stroke: rgba(255, 255, 255, .1); stroke-width: 1; }
+.t { stroke: rgba(242, 239, 232, .34); stroke-width: 1; stroke-linecap: round; }
+.t--mid { stroke: rgba(242, 239, 232, .56); stroke-width: 1.4; }
+.t--major { stroke: rgba(242, 239, 232, .95); stroke-width: 2.4; }
+.t.is-red { stroke: var(--red); }
+.lbl { font: 500 13px var(--mono); fill: rgba(242, 239, 232, .7); text-anchor: middle; dominant-baseline: central; paint-order: stroke; stroke: #0e110f; stroke-width: 6px; stroke-linejoin: round; }
+.lbl.is-red { fill: var(--red); }
+.dial__track { fill: none; stroke: rgba(255, 255, 255, .1); stroke-width: 4; }
+.dial__red { fill: none; stroke: var(--red); stroke-width: 4; }
+.dial__arc { fill: none; stroke: var(--lime); stroke-width: 4; filter: drop-shadow(0 0 5px rgba(200, 228, 94, .65)); }
+.dial__ring { fill: #0e110f; stroke: var(--lime); stroke-width: 1.2; }
+.needle polygon { fill: var(--red); filter: drop-shadow(0 0 4px rgba(239, 75, 50, .75)); }
+.dial__photo {
+  position: absolute; left: 50%; top: 50%; width: 44%; aspect-ratio: 1; translate: -50% -50%;
+  border-radius: 50%; overflow: hidden; background: #2a2f2b;
+}
+.dial__photo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.03); }
+
+/* одометр: 20 000+ */
+.odo {
+  position: absolute; left: 50%; top: 77%; translate: -50% 0;
+  display: flex; align-items: center; margin: 0;
+  font: 400 8.4cqw/1.2 var(--display); color: var(--paper);
+}
+.odo__cell { display: block; width: .76em; height: 1.2em; margin: 0 1.5px; overflow: hidden; border-radius: 5px; background: rgba(255, 255, 255, .07); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08); }
+.odo__col { display: block; translate: 0 calc(var(--f) * -5%); }
+.odo__col b { display: block; height: 1.2em; font-weight: inherit; text-align: center; }
+.odo__gap { width: .24em; }
+.odo__plus { margin-left: .14em; font-size: .7em; color: var(--lime); }
+
+.keys { grid-area: keys; display: grid; justify-items: center; gap: 12px; }
+.keys__label { font: 500 11px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: rgba(242, 239, 232, .55); }
+.lamps { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 420px; }
+.lamps li {
+  display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px 8px 11px; border-radius: 999px;
+  font: 400 13.5px/1.1 var(--sans); background: rgba(255, 255, 255, .05); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1);
+}
+.lamp { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 9px 1px rgba(200, 228, 94, .7); }
+
+.dial__cap { display: grid; gap: 12px; text-align: center; max-width: 36ch; }
+.dial__what { font-size: 14px; line-height: 1.5; color: rgba(242, 239, 232, .68); }
+.dial__quip { font: 400 15px/1.35 var(--display); letter-spacing: -.01em; color: var(--paper); }
+
+/* ---------- 2. Консультации ---------- */
+.consult { padding-block: var(--section) calc(var(--section) * .8); }
+.tiles { display: grid; gap: 14px; margin-top: 36px; }
+.tile {
+  position: relative; display: grid; align-content: start; justify-items: start;
+  padding: 24px 22px 22px; border-radius: 26px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line);
+}
+.tile--dark { background: var(--graph); color: var(--paper); box-shadow: 0 26px 50px -30px rgba(18, 21, 19, .8); }
+.timer { position: relative; width: 64px; height: 64px; margin-bottom: 18px; }
+.timer svg { display: block; width: 100%; height: 100%; rotate: -90deg; overflow: visible; }
+.timer circle { fill: none; stroke-width: 4; }
+.timer__track { stroke: var(--line); }
+.timer__arc { stroke: var(--olive); stroke-linecap: round; }
+.tile--dark .timer__track { stroke: rgba(255, 255, 255, .14); }
+.tile--dark .timer__arc { stroke: var(--lime); filter: drop-shadow(0 0 4px rgba(200, 228, 94, .6)); }
+.timer span { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; font: 500 9.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.timer b { display: block; margin-bottom: 3px; font: 500 17px/1 var(--mono); letter-spacing: 0; color: var(--ink); }
+.tile--dark .timer span { color: rgba(242, 239, 232, .6); }
+.tile--dark .timer b { color: var(--paper); }
+.tile__title { font: 400 19px/1.25 var(--display); letter-spacing: -.015em; }
+.tile__sub { margin-top: 10px; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+.tile--dark .tile__sub { color: rgba(242, 239, 232, .7); }
+.tile__price { margin: 22px 0 22px; font: 400 clamp(30px, 8.6vw, 40px)/1 var(--display); letter-spacing: -.025em; font-variant-numeric: tabular-nums; }
+.cur { font: 400 .78em var(--sans); }
+.tile__price small { margin-left: 10px; font: 500 11.5px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: rgba(242, 239, 232, .6); }
+.tile .btn--small { align-self: end; }
+.note {
+  margin-top: 30px; display: flex; align-items: center; gap: 16px; padding: 18px 20px; border-radius: 22px;
+  background: var(--paper-2); font: 400 15.5px/1.45 var(--sans);
+}
+.note__mark { position: relative; flex: none; width: 30px; height: 30px; border-radius: 50%; box-shadow: inset 0 0 0 2px var(--red); }
+.note__mark::after { content: ''; position: absolute; left: 50%; top: 50%; width: 20px; height: 2px; background: var(--red); transform: translate(-50%, -50%) rotate(-45deg); }
+
+/* ---------- 3. Очный приём ---------- */
+.clinic {
+  margin: 0 8px; padding-block: calc(var(--section) * .8); border-radius: 30px; color: var(--paper);
+  background:
+    radial-gradient(80% 40% at 100% 0%, rgba(200, 228, 94, .1), rgba(200, 228, 94, 0) 70%),
+    linear-gradient(180deg, #171c19, #0e110f);
+}
+.clinic .eyebrow { color: rgba(242, 239, 232, .6); }
+.clinic .eyebrow span { color: var(--lime); }
+.clinic em { color: var(--lime); }
+.clinic .sec-sub { color: rgba(242, 239, 232, .7); }
+.clinic .sec-head .btn { margin-top: 28px; }
+.places { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+.places li { padding: 8px 15px; border-radius: 999px; font: 400 14px/1.2 var(--sans); box-shadow: inset 0 0 0 1px var(--line-light); }
+.route { position: relative; margin-top: 40px; padding-left: 34px; --p: 1; }
+.route__rail { position: absolute; left: 8px; top: 14px; bottom: 14px; width: 2px; border-radius: 2px; background: rgba(255, 255, 255, .12); }
+.route__tube { position: absolute; inset: 0; border-radius: 2px; background: var(--lime); box-shadow: 0 0 10px rgba(200, 228, 94, .5); transform-origin: top; transform: scaleY(var(--p)); }
+.route__tip {
+  position: absolute; left: 50%; top: calc(var(--p) * 100%); width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%;
+  background: var(--lime); box-shadow: 0 0 0 5px rgba(200, 228, 94, .2), 0 0 18px 3px rgba(200, 228, 94, .75);
+}
+.route__list { display: grid; }
+.stop { position: relative; padding: 17px 0; border-bottom: 1px solid rgba(255, 255, 255, .09); }
+.stop__node {
+  position: absolute; left: -31px; top: 25px; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--lime); box-shadow: 0 0 12px rgba(200, 228, 94, .8); transition: background .5s, box-shadow .5s;
+}
+.js-motion .stop:not(.is-lit) .stop__node { background: #2b312d; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .22); }
+.stop p { font: 400 16.5px/1.45 var(--sans); }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: calc(var(--section) * .7) var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 300 clamp(22px, 6vw, 36px)/1.2 var(--display); letter-spacing: -.02em; max-width: 20ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .hero { padding: 10px 14px 0; }
+  .hero__panel {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); grid-template-rows: auto auto auto; grid-template-areas: 'text dial' 'keys dial' 'cta dial';
+    align-content: center; align-items: center; column-gap: clamp(32px, 5vw, 80px); row-gap: 0;
+    min-height: calc(100svh - 64px); padding: clamp(40px, 5vw, 72px) max(clamp(32px, 5vw, 72px), calc((100vw - 1200px) / 2));
+  }
+  .hero__name { font-size: clamp(56px, 6.6vw, 104px); }
+  .hero__lead { font-size: clamp(22px, 2.3vw, 32px); }
+  .hero__cta { margin-top: 30px; justify-items: start; align-self: start; }
+  .hero__cta .btn { width: auto; }
+  .hero__text { align-self: end; }
+  .keys { margin-top: 34px; justify-items: start; align-self: start; }
+  .lamps { justify-content: flex-start; }
+  .dial__face { width: min(100%, 500px); }
+  .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .clinic { margin: 0 14px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .clinic .sec-head { position: sticky; top: 56px; }
+  .route { margin-top: 0; }
+  .stop p { font-size: 18px; }
+}

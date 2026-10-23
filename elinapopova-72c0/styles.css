@@ -1,0 +1,213 @@
+/* Элина Григорьевна · репетитор по русскому — концепт.
+   Палитра её Taplink: кирпично-терракотовый, пыльная роза и тёплый крем, шоколадные чернила.
+   Фирменный мотив — разбор предложения красной ручкой: ударения над гласными, подчёркивания членов предложения. */
+:root {
+  --paper: #f8f1eb;
+  --paper-2: #f3e7df;
+  --rose: #ecd6cc;
+  --rose-2: #dfb9ab;
+  --brick: #9b4330;
+  --brick-deep: #7c3222;
+  --ink: #3e2819;
+  --ink-soft: #6c5345;
+  --cream: #fbf5ef;
+  --line: rgba(62, 40, 25, .15);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(76px, 12vw, 140px);
+  --serif: 'Alice', 'Onest', Georgia, serif;
+  --sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --concept-bg: #3e2819;
+  --concept-ink: #f6ece4;
+  /* волнистая линия «определения» */
+  --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M0 4 Q4 0.6 8 4 T16 4' fill='none' stroke='%239b4330' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 58px; padding: 12px 30px; border-radius: 999px;
+  background: var(--brick); color: var(--cream); text-decoration: none;
+  font: 500 15.5px/1.25 var(--sans); letter-spacing: .01em;
+  box-shadow: 0 16px 32px -18px rgba(124, 50, 34, .75);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1), background-color .3s;
+}
+.btn:hover, .btn:focus-visible { scale: 1.04; }
+.btn--dark { background: var(--ink); box-shadow: 0 16px 32px -18px rgba(62, 40, 25, .8); }
+.btn--ghost { background: transparent; color: var(--brick); box-shadow: inset 0 0 0 1.5px var(--brick); }
+
+/* ---------- красная ручка: ударение над гласной ---------- */
+.st { position: relative; }
+.st::after {
+  content: ''; position: absolute; left: 50%; top: .13em;
+  width: .082em; min-width: 2px; height: .23em; border-radius: 1em;
+  background: var(--brick);
+  transform-origin: 50% 100%;
+  transform: translate(-30%, calc((1 - var(--st, 1)) * -.4em)) rotate(38deg) scaleY(var(--st, 1));
+  opacity: var(--st, 1);
+}
+
+/* ---------- красная ручка: члены предложения ---------- */
+.pm { position: relative; white-space: nowrap; }
+.pm::after {
+  content: ''; position: absolute; left: -.02em; right: -.02em; pointer-events: none;
+  clip-path: inset(-3px calc(100% - var(--pm, 100%)) -3px 0);
+}
+.pm--line::after { bottom: .1em; height: 2px; background: var(--brick); border-radius: 2px; }
+.pm--double::after { bottom: .02em; height: 8px; border-top: 2px solid var(--brick); border-bottom: 2px solid var(--brick); }
+.pm--wave::after { bottom: -.02em; height: 8px; background: var(--wave) repeat-x 0 50% / 16px 8px; }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; padding-top: 28px; padding-bottom: clamp(64px, 10vw, 120px);
+  background: linear-gradient(180deg, var(--rose) 0, var(--paper-2) 46%, var(--paper) 100%);
+}
+.hero__head { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 20px; align-items: end; }
+.hero__photo { position: relative; padding: 0 0 0 8px; }
+.arch { position: relative; z-index: 1; aspect-ratio: 5 / 6; overflow: hidden; border-radius: 999px 999px 16px 16px; background: var(--rose-2); }
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transform: scale(1.04); }
+.arch__pen { position: absolute; z-index: 2; top: -8px; left: 0; width: calc(100% - 8px); height: calc(100% - 4px); overflow: visible; pointer-events: none; }
+.arch__pen path { fill: none; stroke: var(--brick); stroke-width: 1.5; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.kicker { font: 600 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--brick); }
+.hero__name { margin-top: 10px; font: 400 23px/1.15 var(--serif); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tags li {
+  padding: 6px 11px; border-radius: 999px; font: 500 12.5px/1.2 var(--sans);
+  background: rgba(251, 245, 239, .75); color: var(--brick-deep); box-shadow: inset 0 0 0 1px rgba(155, 67, 48, .22);
+}
+
+.hero__title { margin-top: 34px; font: 400 clamp(52px, 15.2vw, 150px)/.98 var(--serif); letter-spacing: -.012em; color: var(--ink); }
+.ln { display: block; padding: .12em 0 .16em; margin: -.12em 0 -.16em; }
+.ln:nth-child(2) { padding-left: .55em; }
+.hero.is-masked .ln { overflow: hidden; }
+.ln__i { display: inline-block; }
+.hero__body { margin-top: 26px; display: grid; gap: 26px; justify-items: start; }
+.hero__lead { font: 400 clamp(17px, 4.5vw, 21px)/1.55 var(--sans); color: var(--ink-soft); max-width: 34ch; }
+.hero__body .btn { width: 100%; max-width: 420px; }
+
+.facts { margin-top: 40px; border-top: 1px solid var(--line); }
+.facts li {
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 14px; align-items: baseline;
+  padding: 15px 0; border-bottom: 1px solid var(--line);
+}
+.facts b { font: 400 25px/1.1 var(--serif); color: var(--brick); }
+.facts span { font-size: 14.5px; line-height: 1.4; color: var(--ink-soft); }
+
+/* ---------- заголовки секций ---------- */
+.eyebrow { display: inline-flex; gap: 10px; align-items: baseline; font: 600 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { font: 400 17px/1 var(--serif); letter-spacing: 0; text-transform: none; color: var(--brick); }
+.sec-title { margin-top: 16px; font: 400 clamp(36px, 10vw, 68px)/1.08 var(--serif); }
+
+/* ---------- 2. Диагностика ---------- */
+.diag { padding-block: 0; padding-inline: 10px; }
+.diag__inner {
+  padding: clamp(56px, 10vw, 110px) calc(var(--pad) - 10px);
+  border-radius: 34px; background: var(--rose);
+  background-image: radial-gradient(120% 70% at 100% 0%, rgba(251, 245, 239, .6), transparent 60%);
+}
+.diag__title { margin-top: 18px; font: 400 clamp(33px, 9.2vw, 62px)/1.32 var(--serif); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 22px; font: 500 12.5px/1 var(--sans); letter-spacing: .04em; color: var(--ink-soft); }
+.legend li { display: inline-flex; align-items: center; gap: 8px; }
+.lg { display: inline-block; width: 22px; height: 8px; }
+.lg--line { height: 2px; background: var(--brick); border-radius: 2px; }
+.lg--double { border-top: 2px solid var(--brick); border-bottom: 2px solid var(--brick); height: 8px; }
+.lg--wave { background: var(--wave) repeat-x 0 50% / 16px 8px; }
+
+.diag__side { margin-top: 44px; display: grid; gap: 34px; justify-items: start; }
+.steps-wrap { position: relative; width: 100%; }
+.steps__rail { position: absolute; left: 21px; top: 22px; bottom: 22px; width: 1.5px; background: rgba(155, 67, 48, .2); }
+.steps__rail span { position: absolute; inset: 0; background: var(--brick); transform-origin: top; }
+.steps { display: grid; gap: 22px; }
+.step { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; align-items: center; }
+.step__n {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--cream); color: var(--brick); box-shadow: inset 0 0 0 1.5px var(--brick);
+  font: 400 20px/1 var(--serif);
+}
+.step p { font: 400 clamp(18px, 4.8vw, 22px)/1.35 var(--serif); }
+.diag__side .btn { width: 100%; max-width: 420px; }
+
+/* ---------- 3. Услуги и тарифы ---------- */
+.plans { padding-block: var(--section); }
+.plans__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 36px; }
+.plan {
+  position: relative; display: flex; flex-direction: column;
+  padding: 26px 22px 26px; border-radius: 26px;
+  background: #fffaf6; box-shadow: inset 0 0 0 1px var(--line), 0 26px 50px -38px rgba(62, 40, 25, .45);
+}
+.plan--main { background: var(--brick); color: var(--cream); box-shadow: 0 30px 60px -34px rgba(124, 50, 34, .8); }
+.plan--vip { background: var(--ink); color: var(--cream); box-shadow: 0 30px 60px -34px rgba(62, 40, 25, .8); }
+.plan__meta { font: 600 11.5px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--brick); }
+.plan--main .plan__meta, .plan--vip .plan__meta { color: rgba(251, 245, 239, .72); }
+.plan__title { margin-top: 14px; font: 400 26px/1.16 var(--serif); }
+.plan__price { margin: 18px 0 16px; font: 400 46px/1.05 var(--serif); color: var(--brick); font-variant-numeric: lining-nums; }
+.plan--main .plan__price, .plan--vip .plan__price { color: var(--cream); }
+.plan__price--range { font-size: 38px; }
+.plan__price small { font: 400 15px/1 var(--sans); color: var(--ink-soft); }
+.plan__text { font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+.plan--main .plan__text, .plan--vip .plan__text { color: rgba(251, 245, 239, .82); }
+.plan__list { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 9px; font-size: 15px; line-height: 1.4; }
+.plan--main .plan__list, .plan--vip .plan__list { border-color: rgba(251, 245, 239, .22); }
+.plan__list li { position: relative; padding-left: 22px; }
+/* пункт отмечен «ударением» красной ручкой */
+.plan__list li::before {
+  content: ''; position: absolute; left: 5px; top: .28em; width: 2px; height: .72em; border-radius: 2px;
+  background: var(--brick); transform-origin: 50% 100%;
+  transform: translateY(calc((1 - var(--st, 1)) * -.5em)) rotate(38deg) scaleY(var(--st, 1)); opacity: var(--st, 1);
+}
+.plan--main .plan__list li::before, .plan--vip .plan__list li::before { background: #f3c6b6; }
+.plans__cta { margin-top: 34px; display: flex; justify-content: center; }
+.plans__cta .btn { width: 100%; max-width: 420px; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 0 var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 400 clamp(27px, 7vw, 44px)/1.15 var(--serif); }
+.concept-end__title span { display: inline-block; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- планшет ---------- */
+@media (min-width: 700px) {
+  .plans__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); column-gap: clamp(40px, 6vw, 110px);
+    grid-template-areas: 'title head' 'body head' 'facts facts'; align-items: start;
+    padding-top: 64px;
+  }
+  .hero__head { grid-area: head; grid-template-columns: minmax(0, 1fr); gap: 26px; align-items: start; padding-top: 12px; }
+  .hero__photo { width: 100%; padding-left: 12px; }
+  .arch__pen { top: -12px; width: calc(100% - 12px); height: calc(100% - 6px); }
+  .hero__name { font-size: 28px; }
+  .hero__title { grid-area: title; margin-top: 0; font-size: clamp(84px, 8.6vw, 138px); }
+  .hero__body { grid-area: body; margin-top: 36px; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 40px; }
+  .hero__body .btn { width: auto; }
+  .facts { grid-area: facts; margin-top: 72px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 0; }
+  .facts li { display: block; padding: 22px 28px 0 0; border-bottom: 0; border-top: 1px solid var(--line); }
+  .facts li + li { padding-left: 28px; border-left: 1px solid var(--line); }
+  .facts b { display: block; font-size: 40px; }
+  .facts span { display: block; margin-top: 8px; font-size: 15.5px; }
+
+  .diag { padding-inline: max(14px, calc((100vw - 1260px) / 2)); }
+  .diag__inner {
+    display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: clamp(40px, 5vw, 80px); align-items: center;
+    padding: 110px clamp(40px, 6vw, 96px); border-radius: 44px;
+  }
+  .diag__title { font-size: clamp(44px, 3.9vw, 56px); }
+  .diag__side { margin-top: 0; }
+  .diag__side .btn { width: auto; }
+
+  .plans__cta .btn { width: auto; }
+}
+@media (min-width: 1200px) {
+  .plans__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .plan__title { min-height: 2.32em; }
+  .plan__price { font-size: 42px; }
+  .plan__price--range { font-size: 32px; }
+}

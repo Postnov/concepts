@@ -1,0 +1,193 @@
+/* Юлия Галоян · акушер-гинеколог — концепт.
+   Палитра от её Taplink и фото: тёплый студийный серый, пыльная роза кнопок, какао-бордовый текст. */
+:root {
+  --studio: #3d3c35;
+  --studio-2: #4a4940;
+  --cream: #f4ece5;
+  --cream-soft: rgba(244, 236, 229, .7);
+  --rose-light: #e2a99c;
+  --blush: #f6ede8;
+  --paper: #fbf7f4;
+  --ink: #391819;
+  --ink-soft: #6f5553;
+  --rose: #c98b7f;
+  --rose-deep: #a35f54;
+  --line: rgba(57, 24, 25, .14);
+  --radius: 26px;
+  --pad: clamp(20px, 5.5vw, 72px);
+  --section: clamp(84px, 12vw, 160px);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Golos Text', system-ui, -apple-system, sans-serif;
+  --concept-bg: #2a2925;
+  --concept-ink: #f4ece5;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 58px; padding: 0 32px; border-radius: 999px;
+  background: var(--rose-deep); color: #fff; text-decoration: none;
+  font: 500 15px/1.2 var(--sans); letter-spacing: .03em; text-align: center;
+  box-shadow: 0 16px 34px -18px rgba(163, 95, 84, .8);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* мягкий блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .3) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 50px; padding: 0 26px; font-size: 14.5px; }
+.btn--ghost { background: transparent; color: var(--rose-deep); box-shadow: inset 0 0 0 1.5px var(--rose); }
+.btn--light { background: var(--rose-light); color: var(--ink); box-shadow: none; }
+
+.eyebrow {
+  display: inline-flex; gap: 12px; align-items: center;
+  font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--rose-deep); }
+.eyebrow::after { content: ''; width: 34px; height: 1px; background: currentColor; opacity: .5; }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; isolation: isolate;
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  padding-top: 30px; padding-bottom: clamp(64px, 10vw, 120px);
+  background: var(--studio); color: var(--cream);
+}
+/* Тёплое пятно света в студии; медленно дышит */
+.hero__glow {
+  position: absolute; z-index: -1; left: 50%; top: 34%; width: 150vw; aspect-ratio: 1; translate: -50% -50%;
+  background: radial-gradient(closest-side, rgba(236, 214, 196, .2), rgba(236, 214, 196, .06) 55%, transparent);
+  pointer-events: none;
+}
+.hero__head { position: relative; z-index: 2; }
+.kicker {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  font: 500 11.5px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--cream-soft);
+}
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--rose-light); }
+.hero__name {
+  width: min-content; margin-top: 22px;
+  font: 400 clamp(78px, 21.5vw, 176px)/.9 var(--serif); letter-spacing: -.02em;
+}
+.hero__patr {
+  margin-top: 10px; padding-left: .1em;
+  font: italic 400 clamp(30px, 8.4vw, 60px)/1 var(--serif); color: var(--rose-light);
+}
+
+/* Фото: края растворяются в фоне студии — портрет «в луче света».
+   --spot — размер луча; интро раскрывает его с нуля */
+.hero__photo { position: relative; z-index: 1; margin: -96px calc(-1 * var(--pad)) 0; }
+.spot {
+  --spot: 100%;
+  width: 100%; height: auto; aspect-ratio: 780 / 900;
+  /* луч (эллипс) ∩ мягкий уход в темноту снизу — у фото нигде нет жёсткого края */
+  -webkit-mask-image: radial-gradient(ellipse calc(var(--spot) * .53) calc(var(--spot) * .6) at 50% 52%, #000 54%, transparent 100%), linear-gradient(transparent, #000 16%, #000 80%, transparent 99%);
+  -webkit-mask-composite: source-in;
+          mask-image: radial-gradient(ellipse calc(var(--spot) * .53) calc(var(--spot) * .6) at 50% 52%, #000 54%, transparent 100%), linear-gradient(transparent, #000 16%, #000 80%, transparent 99%);
+          mask-composite: intersect;
+}
+
+.hero__body { position: relative; z-index: 2; margin-top: -18px; }
+.roles { border-top: 1px solid rgba(244, 236, 229, .2); }
+.roles li {
+  padding: 13px 0; border-bottom: 1px solid rgba(244, 236, 229, .2);
+  font: 500 13px/1.35 var(--sans); letter-spacing: .14em; text-transform: uppercase;
+}
+.hero__motto {
+  margin: 28px 0 32px; max-width: 15ch;
+  font: 400 clamp(32px, 8.6vw, 56px)/1.1 var(--serif); letter-spacing: -.01em;
+}
+.hero__motto em { color: var(--rose-light); }
+.hero .btn { background: var(--rose-light); color: var(--ink); box-shadow: 0 18px 40px -20px rgba(0, 0, 0, .6); }
+
+/* ---------- 2. Обо мне ---------- */
+.about { padding-block: var(--section); background: var(--blush); }
+.statement { margin-top: 22px; max-width: 13ch; font: 400 clamp(38px, 10vw, 84px)/1.05 var(--serif); letter-spacing: -.015em; }
+.principles { margin-top: 44px; border-top: 1px solid var(--line); }
+.principle {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 4px;
+  padding: 24px 0; border-bottom: 1px solid var(--line);
+}
+.principle__num { font: 500 13px/1.9 var(--sans); letter-spacing: .1em; color: var(--rose-deep); }
+.principle p { font-size: 16.5px; line-height: 1.62; }
+.principle em { font-size: 1.1em; color: var(--rose-deep); }
+
+/* ---------- 3. Форматы ---------- */
+.services { padding-block: var(--section); background: var(--paper); }
+.sec-head h2 { margin-top: 18px; max-width: 14ch; font: 400 clamp(36px, 9.4vw, 72px)/1.06 var(--serif); letter-spacing: -.015em; }
+.sec-head h2 em { color: var(--rose-deep); }
+.cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; margin-top: 44px; }
+.card {
+  display: flex; flex-direction: column; align-items: flex-start;
+  padding: 28px 24px 26px; border-radius: var(--radius);
+  background: #fff; box-shadow: 0 1px 0 var(--line), 0 30px 60px -40px rgba(57, 24, 25, .35);
+}
+.card__meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.card__meta span {
+  padding: 7px 12px; border-radius: 999px; background: var(--blush);
+  font: 500 11.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--rose-deep);
+}
+.card__title { margin-top: 20px; font: 400 clamp(28px, 7.6vw, 36px)/1.1 var(--serif); }
+.card__text { margin-top: 12px; color: var(--ink-soft); }
+.addr { margin-top: 16px; display: grid; gap: 10px; width: 100%; }
+.addr li { padding-left: 16px; border-left: 2px solid var(--rose); font-size: 15px; line-height: 1.45; color: var(--ink-soft); }
+.addr b { display: block; font-weight: 500; color: var(--ink); }
+.prices { width: 100%; margin-top: 22px; display: grid; gap: 12px; }
+.prices li { display: flex; align-items: baseline; font-size: 15.5px; line-height: 1.35; }
+.prices span { flex: 0 1 auto; }
+.prices i { flex: 1 1 18px; min-width: 18px; margin: 0 10px; border-bottom: 1.5px dotted rgba(57, 24, 25, .35); transform-origin: 0 50%; }
+.prices b { flex: none; font: 500 22px/1 var(--serif); white-space: nowrap; color: var(--ink); }
+.card__note { margin-top: 18px; font-size: 14px; line-height: 1.55; color: var(--ink-soft); }
+.card .btn { margin-top: 24px; }
+
+.card--dark { background: var(--ink); color: var(--cream); box-shadow: 0 30px 60px -36px rgba(57, 24, 25, .7); }
+.card--dark .card__meta span { background: rgba(244, 236, 229, .1); color: var(--rose-light); }
+.card--dark .card__text, .card--dark .card__note { color: var(--cream-soft); }
+.card--dark .prices i { border-color: rgba(244, 236, 229, .35); }
+.card--dark .prices b { color: var(--cream); }
+.card__warn {
+  margin-top: 14px; padding: 12px 14px; border-radius: 14px;
+  background: rgba(226, 169, 156, .14); color: var(--cream); font-size: 14px; line-height: 1.5;
+}
+
+/* ---------- финал концепта ---------- */
+.concept-end { padding-block: clamp(72px, 10vw, 120px); text-align: center; background: var(--blush); }
+.concept-end__title { font: 400 clamp(30px, 7.6vw, 52px)/1.1 var(--serif); }
+.concept-end__title em { color: var(--rose-deep); }
+.concept-end__text { margin: 14px auto 28px; max-width: 40ch; color: var(--ink-soft); }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 960px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 40px;
+    grid-template-rows: auto 1fr; align-items: start;
+    padding-top: 56px; padding-bottom: 96px; min-height: min(900px, calc(100svh - 34px));
+  }
+  .hero__glow { left: 72%; top: 52%; width: 70vw; }
+  .hero__head { grid-column: 1; grid-row: 1; }
+  .hero__body { grid-column: 1; grid-row: 2; margin-top: 40px; max-width: 520px; }
+  .hero__photo { grid-column: 2; grid-row: 1 / 3; margin: -20px calc(-1 * var(--pad)) 0 -40px; align-self: center; }
+  .hero__name { font-size: clamp(110px, 10.4vw, 176px); }
+  .hero__motto { max-width: 16ch; }
+
+  .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); column-gap: 80px; }
+  .about .eyebrow { grid-column: 1; }
+  .statement { grid-column: 1; align-self: start; position: sticky; top: 48px; }
+  .principles { grid-column: 2; grid-row: 1 / 3; margin-top: 0; }
+  .principle { grid-template-columns: 72px minmax(0, 1fr); padding: 32px 0; }
+  .principle p { font-size: 18px; }
+
+  .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 64px; align-items: stretch; }
+  .card { padding: 34px 30px 30px; }
+  .card .btn { margin-top: auto; }
+  .card__note, .card__warn { margin-bottom: 26px; }
+  .card__note + .card__warn { margin-top: -12px; }
+}

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<script>(function(h){h.classList.add('is-loading');var r=function(){h.classList.remove('is-loading')};setTimeout(function(){if(!window.MotionBase)r()},9000);setTimeout(r,12000)})(document.documentElement)</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- preload-fonts -->
+<link rel="preload" href="../shared/fonts/tarot_tatiana_gadanie-8443-ln/Ledger-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/tarot_tatiana_gadanie-8443-ln/Ledger-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/tarot_tatiana_gadanie-8443-ln/NotoSansDisplay-normal-300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/tarot_tatiana_gadanie-8443-ln/NotoSansDisplay-normal-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/tarot_tatiana_gadanie-8443-ln/NotoSansDisplay-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/tarot_tatiana_gadanie-8443-ln/NotoSansDisplay-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/tarot_tatiana_gadanie-8443-ln/NotoSansDisplay-normal-500-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/tarot_tatiana_gadanie-8443-ln/NotoSansDisplay-normal-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/tarot_tatiana_gadanie-8443-ln/NotoSansDisplay-normal-600-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/tarot_tatiana_gadanie-8443-ln/NotoSansDisplay-normal-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- /preload-fonts -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Татьяна · таролог — концепт</title>
+<link rel="stylesheet" href="../shared/fonts/tarot_tatiana_gadanie-8443-ln.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Рисунок рубашки карты: один раз, дальше через <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sigil" viewBox="0 0 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="1.1">
+      <circle cx="50" cy="50" r="30"/>
+      <circle cx="50" cy="50" r="22" stroke-dasharray="1.5 3"/>
+      <path d="M50 14 56 44 86 50 56 56 50 86 44 56 14 50 44 44Z"/>
+      <path d="M50 30 53 47 70 50 53 53 50 70 47 53 30 50 47 47Z" stroke-width=".8"/>
+      <rect x="35" y="35" width="30" height="30" transform="rotate(45 50 50)" stroke-width=".7"/>
+    </g>
+    <circle cx="50" cy="50" r="2.4" fill="currentColor"/>
+    <circle cx="50" cy="6" r="1.6" fill="currentColor"/>
+    <circle cx="50" cy="94" r="1.6" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<div class="concept-bar" data-concept>
+  <span>Концепт редизайна @tarot_tatiana_gadanie · не официальный сайт</span>
+  <a href="https://taplink.cc/tarot_tatiana_gadanie">Текущий сайт →</a>
+</div>
+
+<main>
+  <!-- 1. Hero: веер карт вокруг её фото -->
+  <section class="hero" aria-label="Татьяна, таролог">
+    <div class="hero__visual">
+    <div class="hero__stage" aria-hidden="true">
+      <span class="glow"></span>
+      <div class="fan">
+        <span class="fan__card" style="--r:-34deg"><svg><use href="#sigil"/></svg></span>
+        <span class="fan__card" style="--r:-17deg"><svg><use href="#sigil"/></svg></span>
+        <span class="fan__card" style="--r:0deg"><svg><use href="#sigil"/></svg></span>
+        <span class="fan__card" style="--r:17deg"><svg><use href="#sigil"/></svg></span>
+        <span class="fan__card" style="--r:34deg"><svg><use href="#sigil"/></svg></span>
+      </div>
+    </div>
+    <figure class="medal">
+      <div class="medal__ring"><img src="assets/portrait.jpg" width="300" height="300" alt="Татьяна с колодой Таро" fetchpriority="high"></div>
+    </figure>
+    </div>
+
+    <div class="hero__text">
+      <p class="kicker"><span>Таролог</span><i></i><span>Таро расклады</span></p>
+      <h1 class="hero__name">Татьяна</h1>
+      <p class="hero__lead">Консультирую по всему миру</p>
+      <ul class="facts">
+        <li><b>13 лет</b><span>опыта</span></li>
+        <li><b>в течение дня</b><span>готовность</span></li>
+        <li><b>видео</b><span>формат ответа</span></li>
+      </ul>
+      <div class="hero__cta">
+        <a class="btn" href="https://wa.me/message/GQPDTPSRBBDNK1">Записаться на расклад</a>
+        <a class="link-down" href="#rasklady">Расклады и цены</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Расклады: карты переворачиваются рубашкой вниз -->
+  <section class="spreads" id="rasklady" aria-labelledby="spreads-title">
+    <header class="sec-head">
+      <p class="eyebrow"><span>01</span> расклады</p>
+      <h2 id="spreads-title">Таро <em>расклады</em></h2>
+      <p class="sec-sub">Готовность в течение дня. Ответ отправляю видео сообщением</p>
+    </header>
+
+    <div class="deck">
+      <article class="tcard">
+        <div class="tcard__inner">
+          <div class="tcard__face">
+            <p class="tcard__num">I</p>
+            <h3 class="tcard__title">Мини расклад</h3>
+            <p class="tcard__price">1&nbsp;777&nbsp;<small>₽</small></p>
+            <p class="tcard__tag">один запрос</p>
+            <p class="tcard__text">Мини расклад на один конкретный запрос без разбора смежных тем.</p>
+            <a class="btn btn--small" href="https://wa.me/message/GQPDTPSRBBDNK1">Записаться</a>
+          </div>
+          <div class="tcard__back" aria-hidden="true"><svg><use href="#sigil"/></svg></div>
+        </div>
+      </article>
+
+      <article class="tcard">
+        <div class="tcard__inner">
+          <div class="tcard__face">
+            <p class="tcard__num">II</p>
+            <h3 class="tcard__title">Полный расклад</h3>
+            <p class="tcard__price">3&nbsp;777&nbsp;<small>₽</small></p>
+            <p class="tcard__tag">одна сфера · до 5 вопросов</p>
+            <p class="tcard__text">Чтобы разобраться в ситуации целиком и понять, что происходит и куда всё движется.</p>
+            <p class="tcard__ex">Например: любовь / финансы / переезд / профессиональная реализация</p>
+            <a class="btn btn--small" href="https://wa.me/message/GQPDTPSRBBDNK1">Записаться</a>
+          </div>
+          <div class="tcard__back" aria-hidden="true"><svg><use href="#sigil"/></svg></div>
+        </div>
+      </article>
+
+      <article class="tcard">
+        <div class="tcard__inner">
+          <div class="tcard__face">
+            <p class="tcard__num">III</p>
+            <h3 class="tcard__title">На несколько сфер жизни</h3>
+            <p class="tcard__price">5&nbsp;777&nbsp;<small>₽</small></p>
+            <p class="tcard__tag">до 10 вопросов</p>
+            <p class="tcard__text">Включает до 10 вопросов на разные темы.</p>
+            <p class="tcard__ex">Например: профессиональная реализация, любовь, личная жизнь и финансы</p>
+            <a class="btn btn--small" href="https://wa.me/message/GQPDTPSRBBDNK1">Записаться</a>
+          </div>
+          <div class="tcard__back" aria-hidden="true"><svg><use href="#sigil"/></svg></div>
+        </div>
+      </article>
+
+      <article class="tcard tcard--gold">
+        <div class="tcard__inner">
+          <div class="tcard__face">
+            <p class="tcard__num">IV</p>
+            <h3 class="tcard__title">Расклад на год</h3>
+            <p class="tcard__price">7&nbsp;777&nbsp;<small>₽</small></p>
+            <p class="tcard__tag">на каждый сезон года</p>
+            <p class="tcard__text">Главные тенденции года, личная жизнь, финансы, реализация и важные события на каждый сезон года.</p>
+            <a class="btn btn--small" href="https://wa.me/message/GQPDTPSRBBDNK1">Записаться</a>
+          </div>
+          <div class="tcard__back" aria-hidden="true"><svg><use href="#sigil"/></svg></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3. Как записаться -->
+  <section class="steps" aria-labelledby="steps-title">
+    <header class="sec-head">
+      <p class="eyebrow"><span>02</span> запись</p>
+      <h2 id="steps-title">Как записаться <em>на расклад</em></h2>
+    </header>
+    <div class="steps__body">
+      <span class="steps__thread" aria-hidden="true"><span></span></span>
+      <ol class="steps__list">
+        <li class="step">
+          <span class="step__num">01</span>
+          <p class="step__text">Нажмите на кнопку <span class="nw">«Записаться»</span></p>
+        </li>
+        <li class="step">
+          <span class="step__num">02</span>
+          <p class="step__text">В вотсапе сразу опишите вкратце свою жизненную ситуацию на данный момент и вопросы</p>
+        </li>
+        <li class="step">
+          <span class="step__num">03</span>
+          <p class="step__text">Приложите фото, имя и полный возраст всех участников</p>
+          <p class="step__note">даты рождения не нужны</p>
+        </li>
+        <li class="step">
+          <span class="step__num">04</span>
+          <p class="step__text">Готовность в течение дня. Ответ отправляю видео сообщением</p>
+        </li>
+      </ol>
+    </div>
+    <div class="steps__cta">
+      <a class="btn" href="https://wa.me/message/GQPDTPSRBBDNK1">Записаться в WhatsApp</a>
+    </div>
+  </section>
+
+  <aside class="concept-end">
+    <p class="concept-end__title">Так может выглядеть <em>весь ваш сайт</em></p>
+    <p class="concept-end__text">Это концепт: три блока вашего Taplink в новом дизайне, на ваших фото и текстах.</p>
+    <a class="btn btn--ghost" href="https://taplink.cc/tarot_tatiana_gadanie">Открыть текущий сайт</a>
+  </aside>
+</main>
+
+<script src="../shared/vendor/gsap/gsap.min.js"></script>
+<script src="../shared/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="../shared/vendor/gsap/SplitText.min.js"></script>
+<script src="../shared/motion-base.js"></script>
+<script src="motion.js"></script>
+</body>
+</html>

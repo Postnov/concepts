@@ -1,0 +1,274 @@
+/* Вероника Бородина · Муза женственности — концепт.
+   Палитра от её Taplink и фото: пудровый крем, коралл и алый её кнопок, глубокий винный вместо чёрного.
+   Шрифты: Poiret One (ар-деко, тонкая «муза») + Bellota Text (мягкий гуманист с курсивом). */
+:root {
+  --paper: #fbf3ee;
+  --paper-2: #f6e5df;
+  --blush: #f7d6cf;
+  --coral: #f2a59d;
+  --rose: #d8424e;
+  --rose-deep: #b02f3c;
+  --ink: #3a1820;
+  --ink-soft: #7a5a5f;
+  --wine: #2c1117;
+  --wine-2: #3e1820;
+  --on-wine: #f8e6df;
+  --on-wine-soft: rgba(248, 230, 223, .66);
+  --line: rgba(58, 24, 32, .14);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 14vw, 160px);
+  --display: 'Poiret One', 'Bellota Text', Georgia, serif;
+  --text: 'Bellota Text', system-ui, -apple-system, sans-serif;
+  --concept-bg: #2c1117;
+  --concept-ink: #f8e6df;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16.5px/1.6 var(--text); }
+em { font-style: italic; color: var(--rose); }
+main { overflow-x: clip; }
+h4 { margin: 0; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 58px; padding: 14px 30px; border-radius: 999px;
+  background: var(--rose); color: #fff; text-decoration: none;
+  font: 700 15.5px/1.2 var(--text); letter-spacing: .02em;
+  box-shadow: 0 16px 34px -16px rgba(176, 47, 60, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* мягкий блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .3) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--rose-deep); box-shadow: inset 0 0 0 1.5px rgba(216, 66, 78, .45); }
+.btn--light { background: var(--on-wine); color: var(--wine); box-shadow: 0 18px 40px -18px rgba(242, 165, 157, .6); }
+.btn--small { min-height: 46px; padding: 10px 24px; font-size: 14.5px; }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center;
+  padding-top: 18px; padding-bottom: var(--section); text-align: center;
+  background: radial-gradient(120% 60% at 50% 22%, #fde9e3 0%, var(--paper) 62%);
+}
+.hero__stage { position: relative; width: min(100%, 380px); aspect-ratio: 1; }
+.dance, .orbits { position: absolute; inset: 0; width: 100%; height: 100%; }
+.orbit { fill: none; stroke: rgba(58, 24, 32, .16); stroke-width: .18; }
+.orbit--venus { stroke: rgba(216, 66, 78, .28); stroke-dasharray: .6 1.2; }
+.thread { stroke: var(--rose); stroke-width: .22; opacity: .7; }
+.planet--earth { fill: var(--ink); }
+.planet--venus { fill: var(--rose); }
+.planet-glow { fill: rgba(242, 165, 157, .55); filter: blur(1px); }
+.hero__photo { position: absolute; inset: 24%; }
+.hero__frame {
+  position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 50%;
+  background: var(--blush);
+  box-shadow: 0 0 0 6px rgba(251, 243, 238, .9), 0 30px 60px -26px rgba(58, 24, 32, .55);
+}
+.hero__frame img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); }
+.hero__name .char-mask { padding: .14em .05em .22em; margin: -.14em -.05em -.22em; }
+.code__title .char-mask { padding: .12em .05em .12em; margin: -.12em -.05em -.12em; }
+.line-mask { padding: 0 .1em .18em; margin: 0 -.1em -.18em; }
+
+.hero__text { display: grid; justify-items: center; margin-top: 8px; }
+.kicker {
+  display: flex; align-items: center; gap: 12px;
+  font: 700 11.5px/1 var(--text); letter-spacing: .3em; text-transform: uppercase; color: var(--ink-soft);
+}
+.kicker i { width: 5px; height: 5px; border-radius: 50%; background: var(--rose); }
+.hero__name {
+  margin-top: 16px; display: grid;
+  font: 400 clamp(50px, 15.4vw, 128px)/.98 var(--display); letter-spacing: -.01em; color: var(--ink);
+}
+.hero__last { color: var(--rose); }
+.hero__role { margin-top: 14px; font: italic 300 19px/1.3 var(--text); color: var(--ink-soft); letter-spacing: .01em; }
+.hero__lead { margin-top: 18px; max-width: 22ch; font: 300 clamp(22px, 6vw, 30px)/1.32 var(--text); }
+.hero__lead em { font-weight: 400; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; width: min(100%, 420px); margin-top: 30px; }
+.stats li { display: grid; gap: 4px; padding: 14px 4px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stats b { font: 400 clamp(28px, 8vw, 40px)/1 var(--display); color: var(--ink); }
+.stats span { font-size: 13px; color: var(--ink-soft); letter-spacing: .02em; }
+.hero__cta { display: grid; gap: 12px; width: min(100%, 420px); margin-top: 30px; }
+
+/* ---------- заголовки секций ---------- */
+.eyebrow {
+  display: inline-flex; gap: 12px; align-items: center;
+  font: 700 11.5px/1 var(--text); letter-spacing: .28em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--rose); letter-spacing: .1em; }
+.label { font: 700 12px/1.3 var(--text); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+
+/* ---------- 2. GIRL CODE (тёмный винный) ---------- */
+.code {
+  position: relative; padding-block: var(--section); color: var(--on-wine);
+  background:
+    radial-gradient(70% 40% at 85% 8%, rgba(216, 66, 78, .28), transparent 70%),
+    radial-gradient(60% 35% at 0% 70%, rgba(242, 165, 157, .12), transparent 70%),
+    var(--wine);
+}
+.code .eyebrow { color: var(--on-wine-soft); }
+.code .eyebrow span { color: var(--coral); }
+.code__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; }
+.code__head { position: relative; }
+/* Роза Венеры: путь Венеры с Земли за 8 лет — пять петель; рисуется при прокрутке */
+.code__rose { display: block; width: min(78%, 300px); height: auto; margin: 36px auto 0; pointer-events: none; opacity: .85; overflow: visible; }
+.code__rose-path { fill: none; stroke: var(--coral); stroke-width: .55; stroke-linejoin: round; }
+.code__rose-earth { fill: var(--coral); }
+.code__title {
+  margin-top: 18px;
+  font: 400 clamp(64px, 20vw, 168px)/.9 var(--display); text-transform: uppercase; letter-spacing: -.01em; color: var(--on-wine);
+}
+.code__sub { margin-top: 14px; font: italic 300 clamp(22px, 6vw, 30px)/1.25 var(--text); color: var(--coral); }
+.code__quote {
+  margin: 28px 0 0; padding: 22px 0 0; border-top: 1px solid rgba(248, 230, 223, .16);
+  font: 300 clamp(20px, 5.4vw, 26px)/1.38 var(--text); max-width: 26ch;
+}
+.code__body { display: grid; gap: 18px; color: var(--on-wine-soft); max-width: 620px; }
+.code__body > p { max-width: 50ch; }
+
+/* «Включить Венеру»: знак ♀ рисуется и загорается */
+.venus {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; justify-items: start;
+  margin: 14px 0 10px; padding: 26px 22px 24px; border-radius: 26px;
+  background: rgba(248, 230, 223, .05); box-shadow: inset 0 0 0 1px rgba(248, 230, 223, .1);
+}
+.venus__sign { width: 62px; height: auto; overflow: visible; }
+.venus__halo { fill: rgba(242, 165, 157, .0); }
+.venus__path { fill: none; stroke: var(--coral); stroke-width: 3; stroke-linecap: round; filter: drop-shadow(0 0 6px rgba(242, 165, 157, .8)); }
+.venus__text { color: var(--on-wine); font-size: 17px; line-height: 1.55; }
+.venus__on { color: var(--coral); background: linear-gradient(90deg, rgba(242, 165, 157, .22), rgba(242, 165, 157, .22)) 0 100% / var(--hl, 100%) 38% no-repeat; padding: 0 .08em; }
+.no-motion .venus__halo { fill: rgba(242, 165, 157, .16); }
+
+.code .label { color: var(--coral); margin-top: 10px; }
+.code__list { display: grid; gap: 0; counter-reset: c; }
+.code__list li {
+  position: relative; display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; align-items: baseline;
+  padding: 14px 0; border-bottom: 1px solid rgba(248, 230, 223, .12); color: var(--on-wine); font-size: 16px; line-height: 1.45;
+}
+.code__dot {
+  position: relative; top: -1px; width: 11px; height: 11px; border-radius: 50%;
+  box-shadow: inset 0 0 0 1.5px var(--coral); background: var(--coral);
+}
+.js-motion .code__dot { background: transparent; }
+.code__dot.is-on { background: var(--coral); box-shadow: inset 0 0 0 1.5px var(--coral), 0 0 14px 2px rgba(242, 165, 157, .55); transition: background .5s, box-shadow .6s; }
+.code__buy {
+  display: grid; justify-items: start; gap: 16px; margin-top: 20px; padding: 28px 24px; border-radius: 28px;
+  background: linear-gradient(150deg, rgba(216, 66, 78, .32), rgba(216, 66, 78, .1));
+  box-shadow: inset 0 0 0 1px rgba(242, 165, 157, .28);
+}
+.code__call { color: var(--on-wine); font-size: 17px; max-width: 30ch; }
+
+/* цена: появляется целиком */
+.cost { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.cost b { font: 400 30px/1.1 var(--display); color: var(--ink); white-space: nowrap; }
+.cost span { color: var(--ink-soft); font-size: 15px; white-space: nowrap; }
+.cost--big b { font-size: clamp(44px, 12vw, 60px); color: var(--on-wine); }
+.code .cost span { color: var(--on-wine-soft); }
+
+/* ---------- 3. Астрологические консультации ---------- */
+.astro { padding-block: var(--section); }
+.sec-head { max-width: 680px; }
+.sec-head h2 { margin-top: 18px; font: 400 clamp(38px, 10.6vw, 76px)/1.02 var(--display); letter-spacing: -.01em; }
+.sec-head h2 em, .concept-end__title em { font-style: normal; }
+.sec-head h2 em { display: block; }
+.sec-quote {
+  position: relative; margin-top: 24px; padding-left: 18px; max-width: 34ch;
+  font: italic 300 18px/1.45 var(--text); color: var(--ink-soft);
+}
+.sec-quote::before { content: ''; position: absolute; left: 0; top: .3em; bottom: .3em; width: 2px; border-radius: 2px; background: var(--coral); }
+.astro__list { margin-top: 40px; }
+
+.svc { position: relative; border-bottom: 1px solid var(--line); }
+.svc::after { /* нить, которая прочерчивает строку при появлении */
+  content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--rose);
+  transform-origin: left; transform: scaleX(var(--draw, 0)); opacity: calc(var(--thread-o, 1) * .6);
+}
+.no-motion .svc::after { display: none; }
+.svc__head {
+  width: 100%; display: grid; grid-template-columns: 30px minmax(0, 1fr) auto 30px; gap: 10px; align-items: center;
+  padding: 19px 0; text-align: left;
+}
+.svc__num { font: 700 11.5px/1 var(--text); letter-spacing: .1em; color: var(--coral); }
+.svc__title { font: 400 18px/1.25 var(--text); }
+.svc__price { font: 400 15px/1 var(--text); color: var(--ink-soft); white-space: nowrap; }
+.svc__icon { position: relative; width: 30px; height: 30px; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--line); transition: background .35s, box-shadow .35s; }
+.svc__icon::before, .svc__icon::after {
+  content: ''; position: absolute; left: 50%; top: 50%; width: 10px; height: 1.5px; background: var(--rose);
+  transform: translate(-50%, -50%); transition: transform .45s cubic-bezier(.2, .7, .2, 1);
+}
+.svc__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.svc__head[aria-expanded='true'] .svc__icon { background: var(--rose); box-shadow: 0 0 0 5px rgba(216, 66, 78, .12); }
+.svc__head[aria-expanded='true'] .svc__icon::before, .svc__head[aria-expanded='true'] .svc__icon::after { background: #fff; }
+.svc__head[aria-expanded='true'] .svc__icon::after { transform: translate(-50%, -50%) rotate(0); }
+.svc__head[aria-expanded='true'] .svc__title { color: var(--rose-deep); }
+.svc__body { overflow: hidden; }
+.svc__inner { display: grid; gap: 12px; padding: 0 0 26px 40px; color: var(--ink-soft); font-size: 15.5px; line-height: 1.55; }
+.svc__inner .label { margin-top: 8px; color: var(--rose-deep); font-size: 11px; }
+.svc__inner .sub { margin-top: 10px; font: 700 16px/1.3 var(--text); color: var(--ink); }
+.svc__inner .sub small { display: block; margin-bottom: 4px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--coral); }
+.svc__inner .result b { color: var(--ink); }
+.dots { display: grid; gap: 8px; }
+.dots li { position: relative; padding-left: 18px; }
+.dots li::before { content: ''; position: absolute; left: 0; top: .62em; width: 6px; height: 6px; border-radius: 50%; box-shadow: inset 0 0 0 1.3px var(--rose); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tags li { padding: 7px 13px; border-radius: 999px; background: var(--paper-2); color: var(--ink); font-size: 14px; line-height: 1.2; }
+.tiers { display: grid; gap: 0; }
+.tiers li { display: grid; gap: 4px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+.tiers .cost b { font-size: 24px; }
+.svc__foot {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;
+  margin-top: 10px; padding: 18px 20px; border-radius: 22px; background: #fff; box-shadow: 0 18px 40px -30px rgba(58, 24, 32, .4);
+}
+
+.forecast {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 16px; align-items: center;
+  margin-top: 34px; padding: 26px 26px; border-radius: 28px; text-decoration: none; overflow: hidden; isolation: isolate;
+  background: var(--rose); color: #fff; box-shadow: 0 26px 50px -30px rgba(176, 47, 60, .8);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.forecast:hover { scale: 1.02; }
+.forecast::before { /* Луна-полумесяц из её кнопки «Годовой прогноз» */
+  content: ''; position: absolute; right: -24px; top: -46px; width: 170px; height: 170px; border-radius: 50%; z-index: -1;
+  box-shadow: inset -34px 26px 0 0 rgba(255, 255, 255, .13);
+}
+.forecast__k { font: 400 clamp(28px, 8vw, 40px)/1.05 var(--display); text-transform: uppercase; }
+.forecast__t { grid-row: 2; font: italic 300 17px/1.3 var(--text); opacity: .85; }
+.forecast__arrow { grid-row: 1 / 3; grid-column: 2; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: rgba(255, 255, 255, .16); font-size: 22px; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 400 clamp(30px, 8vw, 48px)/1.1 var(--display); max-width: 16ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15.5px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: center; justify-items: stretch; text-align: left;
+    min-height: calc(100svh - 34px); padding-block: 40px; column-gap: clamp(40px, 5vw, 80px);
+    background: radial-gradient(60% 80% at 74% 46%, #fde9e3 0%, var(--paper) 70%);
+  }
+  .hero__stage { order: 2; width: min(100%, 620px); justify-self: end; }
+  .hero__text { justify-items: start; margin-top: 0; }
+  .hero__name { font-size: clamp(64px, 7.4vw, 118px); }
+  .hero__lead { max-width: 20ch; }
+  .stats { width: min(100%, 520px); gap: 22px; }
+  .stats li { padding-inline: 0; }
+  .hero__cta { grid-template-columns: auto auto; width: auto; justify-content: start; }
+
+  .code__grid { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(48px, 7vw, 110px); align-items: start; }
+  .code__head { position: sticky; top: 60px; }
+  .code__rose { width: min(100%, 380px); margin: 44px 0 0; }
+  .code__body { padding-top: 64px; }
+  .code__list li { font-size: 17px; }
+
+  .astro { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(48px, 6vw, 100px); align-items: start; }
+  .astro .sec-head { position: sticky; top: 60px; }
+  .astro__list { margin-top: 0; }
+  .svc__title { font-size: 20px; }
+  .svc__price { font-size: 16px; }
+}

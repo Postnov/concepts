@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<script>(function(h){h.classList.add('is-loading');var r=function(){h.classList.remove('is-loading')};setTimeout(function(){if(!window.MotionBase)r()},9000);setTimeout(r,12000)})(document.documentElement)</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- preload-fonts -->
+<link rel="preload" href="../shared/fonts/testidea-072a-nc/ComforterBrush-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/testidea-072a-nc/ComforterBrush-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/testidea-072a-nc/Nunito-italic-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/testidea-072a-nc/Nunito-italic-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/testidea-072a-nc/Nunito-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/testidea-072a-nc/Nunito-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/testidea-072a-nc/Nunito-normal-700-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/testidea-072a-nc/Nunito-normal-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/testidea-072a-nc/Nunito-normal-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/testidea-072a-nc/Nunito-normal-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/testidea-072a-nc/Nunito-normal-900-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/testidea-072a-nc/Nunito-normal-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- /preload-fonts -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Настя Идея · авторский тест по архетипам — концепт</title>
+<link rel="stylesheet" href="../shared/fonts/testidea-072a-nc.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="concept-bar" data-concept>
+  <span>Концепт редизайна @nastya.idea · не официальный сайт</span>
+  <a href="https://test-idea.taplink.ws">Текущий сайт →</a>
+</div>
+
+<!-- Общие SVG: клевер, ткань в горошек для стрелки -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="clover" viewBox="0 0 100 120">
+      <g fill="currentColor">
+        <path d="M50 50 C 40 38, 22 44, 26 30 C 29 19, 44 18, 50 30 C 56 18, 71 19, 74 30 C 78 44, 60 38, 50 50 Z" transform="rotate(0 50 50)"/>
+        <path d="M50 50 C 40 38, 22 44, 26 30 C 29 19, 44 18, 50 30 C 56 18, 71 19, 74 30 C 78 44, 60 38, 50 50 Z" transform="rotate(90 50 50)"/>
+        <path d="M50 50 C 40 38, 22 44, 26 30 C 29 19, 44 18, 50 30 C 56 18, 71 19, 74 30 C 78 44, 60 38, 50 50 Z" transform="rotate(180 50 50)"/>
+        <path d="M50 50 C 40 38, 22 44, 26 30 C 29 19, 44 18, 50 30 C 56 18, 71 19, 74 30 C 78 44, 60 38, 50 50 Z" transform="rotate(270 50 50)"/>
+      </g>
+      <path d="M52 56 C 56 78, 54 96, 66 116" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <rect width="22" height="22" fill="#f4a9cf"/>
+      <circle cx="6" cy="6" r="4.2" fill="#b4366f"/>
+      <circle cx="17" cy="17" r="4.2" fill="#b4366f"/>
+    </pattern>
+    <symbol id="arrow" viewBox="0 0 120 140">
+      <path d="M38 4 H82 V70 H114 L60 136 L6 70 H38 Z" fill="url(#dots)"/>
+      <path d="M44 10 H76 V76 H101 L60 126 L19 76 H44 Z" fill="none" stroke="#fff6fb" stroke-width="2.4" stroke-dasharray="6 5" stroke-linecap="round" opacity=".9"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main>
+  <!-- 1. Hero: обложка теста -->
+  <section class="hero" aria-label="Авторский тест Насти Идеи">
+    <div class="hero__top">
+      <p class="hero__tag">Авторский<br>тест</p>
+      <svg class="clover clover--top" aria-hidden="true"><use href="#clover"/></svg>
+      <p class="hero__tag hero__tag--r">Настя<br>Идея</p>
+    </div>
+
+    <div class="hero__stage">
+      <ul class="hero__pola" aria-hidden="true">
+        <li><span class="pola pola--static"><span class="pola__img"><img src="assets/test-01.jpg" width="284" height="272" alt="" fetchpriority="high"><i class="pola__milk"></i></span><span class="pola__num">#1</span></span></li>
+        <li><span class="pola pola--static"><span class="pola__img"><img src="assets/test-05.jpg" width="284" height="272" alt="" fetchpriority="high"><i class="pola__milk"></i></span><span class="pola__num">#5</span></span></li>
+        <li><span class="pola pola--static"><span class="pola__img"><img src="assets/test-09.jpg" width="284" height="272" alt="" fetchpriority="high"><i class="pola__milk"></i></span><span class="pola__num">#9</span></span></li>
+        <li><span class="pola pola--static"><span class="pola__img"><img src="assets/test-12.jpg" width="284" height="272" alt="" fetchpriority="high"><i class="pola__milk"></i></span><span class="pola__num">#12</span></span></li>
+      </ul>
+
+      <div class="patch">
+        <svg class="patch__svg" viewBox="0 0 1000 700" aria-hidden="true">
+          <defs>
+            <mask id="seam-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="700">
+              <ellipse class="seam-draw" cx="500" cy="350" rx="446" ry="300" fill="none" stroke="#fff" stroke-width="40" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="0"/>
+            </mask>
+            <path id="patch-arc" d="M 175 318 A 340 250 0 0 1 825 318"/>
+          </defs>
+          <ellipse class="seam" cx="500" cy="350" rx="446" ry="300" fill="none" stroke="#e9f2ff" stroke-width="5.5" stroke-dasharray="24 15" stroke-linecap="round" mask="url(#seam-mask)"/>
+          <text class="patch__arc"><textPath href="#patch-arc" startOffset="50%" text-anchor="middle">разбор по твоему архетипу</textPath></text>
+        </svg>
+        <div class="patch__body"><h1 class="patch__title">Где ты<br> сливаешь свой потенциал?</h1></div>
+      </div>
+    </div>
+
+    <p class="hero__time">Время прочтения: 7&nbsp;минут</p>
+    <div class="hero__cta">
+      <a class="btn" href="#test">Пройти тест</a>
+      <a class="btn btn--ghost" href="#mk">Программа МК</a>
+    </div>
+
+    <div class="hero__bio">
+      <p class="hero__role">Психология проявленности • Архетипы</p>
+      <p class="hero__proof"><b>+36 миллионников, <span class="nw">+20к подписчиков:</span></b> знаю, что сделает тебя популярным</p>
+    </div>
+  </section>
+
+  <!-- 2. Тест: 12 картинок и расшифровка -->
+  <section class="test" id="test" aria-labelledby="test-title">
+    <div class="test__main">
+      <header class="sec-head">
+        <p class="eyebrow"><span>01</span> тест</p>
+        <h2 id="test-title">Ниже пройди тест и&nbsp;узнай, что конкретно <span class="hl">тормозит твою реализацию</span></h2>
+        <p class="sec-sub">и как это исправить, чтобы твои способности наконец начали работать на тебя</p>
+      </header>
+
+      <div class="note">
+        <span class="note__bang" aria-hidden="true">!</span>
+        <p>Выбери одну из картинок, опираясь на своё текущее состояние, запомни её номер и ниже читай расшифровку</p>
+        <span class="note__bang note__bang--r" aria-hidden="true">!</span>
+      </div>
+      <svg class="arrow" viewBox="0 0 120 140" aria-hidden="true"><use href="#arrow"/></svg>
+
+      <ul class="grid" aria-label="Картинки теста">
+        <li><button class="pola" type="button" data-pick="1" aria-pressed="false" aria-controls="arch-1"><span class="pola__img"><img src="assets/test-01.jpg" width="284" height="272" alt="Картинка №1" loading="lazy"><i class="pola__milk" aria-hidden="true"></i></span><span class="pola__num">#1</span></button></li>
+        <li><button class="pola" type="button" data-pick="2" aria-pressed="false" aria-controls="arch-2"><span class="pola__img"><img src="assets/test-02.jpg" width="284" height="272" alt="Картинка №2" loading="lazy"><i class="pola__milk" aria-hidden="true"></i></span><span class="pola__num">#2</span></button></li>
+        <li><button class="pola" type="button" data-pick="3" aria-pressed="false" aria-controls="arch-3"><span class="pola__img"><img src="assets/test-03.jpg" width="284" height="272" alt="Картинка №3" loading="lazy"><i class="pola__milk" aria-hidden="true"></i></span><span class="pola__num">#3</span></button></li>
+        <li><button class="pola" type="button" data-pick="4" aria-pressed="false" aria-controls="arch-4"><span class="pola__img"><img src="assets/test-04.jpg" width="284" height="272" alt="Картинка №4" loading="lazy"><i class="pola__milk" aria-hidden="true"></i></span><span class="pola__num">#4</span></button></li>
+        <li><button class="pola" type="button" data-pick="5" aria-pressed="false" aria-controls="arch-5"><span class="pola__img"><img src="assets/test-05.jpg" width="284" height="272" alt="Картинка №5" loading="lazy"><i class="pola__milk" aria-hidden="true"></i></span><span class="pola__num">#5</span></button></li>
+        <li><button class="pola" type="button" data-pick="6" aria-pressed="false" aria-controls="arch-6"><span class="pola__img"><img src="assets/test-06.jpg" width="284" height="272" alt="Картинка №6" loading="lazy"><i class="pola__milk" aria-hidden="true"></i></span><span class="pola__num">#6</span></button></li>
+        <li><button class="pola" type="button" data-pick="7" aria-pressed="false" aria-controls="arch-7"><span class="pola__img"><img src="assets/test-07.jpg" width="284" height="272" alt="Картинка №7" loading="lazy"><i class="pola__milk" aria-hidden="true"></i></span><span class="pola__num">#7</span></button></li>
+        <li><button class="pola" type="button" data-pick="8" aria-pressed="false" aria-controls="arch-8"><span class="pola__img"><img src="assets/test-08.jpg" width="284" height="272" alt="Картинка №8" loading="lazy"><i class="pola__milk" aria-hidden="true"></i></span><span class="pola__num">#8</span></button></li>
+        <li><button class="pola" type="button" data-pick="9" aria-pressed="false" aria-controls="arch-9"><span class="pola__img"><img src="assets/test-09.jpg" width="284" height="272" alt="Картинка №9" loading="lazy"><i class="pola__milk" aria-hidden="true"></i></span><span class="pola__num">#9</span></button></li>
+        <li><button class="pola" type="button" data-pick="10" aria-pressed="false" aria-controls="arch-10"><span class="pola__img"><img src="assets/test-10.jpg" width="284" height="272" alt="Картинка №10" loading="lazy"><i class="pola__milk" aria-hidden="true"></i></span><span class="pola__num">#10</span></button></li>
+        <li><button class="pola" type="button" data-pick="11" aria-pressed="false" aria-controls="arch-11"><span class="pola__img"><img src="assets/test-11.jpg" width="284" height="272" alt="Картинка №11" loading="lazy"><i class="pola__milk" aria-hidden="true"></i></span><span class="pola__num">#11</span></button></li>
+        <li><button class="pola" type="button" data-pick="12" aria-pressed="false" aria-controls="arch-12"><span class="pola__img"><img src="assets/test-12.jpg" width="284" height="272" alt="Картинка №12" loading="lazy"><i class="pola__milk" aria-hidden="true"></i></span><span class="pola__num">#12</span></button></li>
+      </ul>
+    </div>
+
+    <div class="test__side">
+      <div class="panel" id="panel" aria-live="polite">
+        <p class="brush panel__title">Расшифровка</p>
+        <ul class="chips" aria-label="Архетипы">
+          <li><button class="chip" type="button" data-pick="1" aria-pressed="false" aria-controls="arch-1"><b>#1</b> Гурман</button></li>
+          <li><button class="chip" type="button" data-pick="2" aria-pressed="false" aria-controls="arch-2"><b>#2</b> Достигатор</button></li>
+          <li><button class="chip" type="button" data-pick="3" aria-pressed="false" aria-controls="arch-3"><b>#3</b> Душа компании</button></li>
+          <li><button class="chip" type="button" data-pick="4" aria-pressed="false" aria-controls="arch-4"><b>#4</b> Лидер</button></li>
+          <li><button class="chip" type="button" data-pick="5" aria-pressed="false" aria-controls="arch-5"><b>#5</b> Муза</button></li>
+          <li><button class="chip" type="button" data-pick="6" aria-pressed="false" aria-controls="arch-6"><b>#6</b> Авантюрист</button></li>
+          <li><button class="chip" type="button" data-pick="7" aria-pressed="false" aria-controls="arch-7"><b>#7</b> Стендапер</button></li>
+          <li><button class="chip" type="button" data-pick="8" aria-pressed="false" aria-controls="arch-8"><b>#8</b> Советник</button></li>
+          <li><button class="chip" type="button" data-pick="9" aria-pressed="false" aria-controls="arch-9"><b>#9</b> Инфлюенсер</button></li>
+          <li><button class="chip" type="button" data-pick="10" aria-pressed="false" aria-controls="arch-10"><b>#10</b> Неравнодушный</button></li>
+          <li><button class="chip" type="button" data-pick="11" aria-pressed="false" aria-controls="arch-11"><b>#11</b> Разрушитель</button></li>
+          <li><button class="chip" type="button" data-pick="12" aria-pressed="false" aria-controls="arch-12"><b>#12</b> Мечтатель</button></li>
+        </ul>
+        <article class="arch" id="arch-1" hidden aria-labelledby="arch-1-t">
+          <header class="arch__head"><span class="arch__num">#1</span><h3 class="arch__name" id="arch-1-t">Гурман</h3><span class="pola arch__thumb" aria-hidden="true"><span class="pola__img"><img src="assets/test-01.jpg" width="284" height="272" alt="" decoding="async"></span></span></header>
+          <p class="arch__lead">Ты про красоту, чувства, притяжение, умеешь создавать атмосферу</p>
+          <p class="arch__but">Но есть причина, почему это не приносит подписчиков, просмотры и клиентов…</p>
+          <div class="arch__parts">
+            <div class="arch__part"><p class="arch__label arch__label--leak">Как ты сливаешь деньги и рост</p><ul class="dash"><li>боишься быть «слишком»</li><li>зависишь от настроения</li><li>не показываешь себя, скрываешься за масками</li><li>избегаешь прямых продаж</li></ul></div>
+            <div class="arch__part"><p class="arch__label arch__label--res">К чему это приводит</p><ul class="dash"><li>нет стабильности</li><li>ты не раскрываешь свой потенциал</li><li>тебя воспринимают поверхностно</li></ul></div>
+          </div>
+          <div class="arch__problem"><p class="arch__label arch__label--key">Главная проблема</p><p class="arch__key"><span>ты не понимаешь, как монетизировать свою притягательность</span></p></div>
+        </article>
+        <article class="arch" id="arch-2" hidden aria-labelledby="arch-2-t">
+          <header class="arch__head"><span class="arch__num">#2</span><h3 class="arch__name" id="arch-2-t">Достигатор</h3><span class="pola arch__thumb" aria-hidden="true"><span class="pola__img"><img src="assets/test-02.jpg" width="284" height="272" alt="" decoding="async"></span></span></header>
+          <p class="arch__lead">Ты сильная, целеустремлённая, умеешь добиваться своего</p>
+          <p class="arch__but">Но есть причина, почему это не приносит подписчиков, просмотры и клиентов…</p>
+          <div class="arch__parts">
+            <div class="arch__part"><p class="arch__label arch__label--leak">Как ты сливаешь деньги и рост</p><ul class="dash"><li>работаешь через «надо» и усилие</li><li>давишь на себя, выжимая из себя последние ресурсы</li><li>не даёшь себе отдых</li><li>игнорируешь, что тебе на самом деле подходит</li></ul></div>
+            <div class="arch__part"><p class="arch__label arch__label--res">К чему это приводит</p><ul class="dash"><li>выгорание</li><li>самосаботаж</li><li>нестабильный доход</li></ul></div>
+          </div>
+          <div class="arch__problem"><p class="arch__label arch__label--key">Главная проблема</p><p class="arch__key"><span>ты не понимаешь, как зарабатывать без постоянной борьбы</span></p></div>
+        </article>
+        <article class="arch" id="arch-3" hidden aria-labelledby="arch-3-t">
+          <header class="arch__head"><span class="arch__num">#3</span><h3 class="arch__name" id="arch-3-t">Душа компании</h3><span class="pola arch__thumb" aria-hidden="true"><span class="pola__img"><img src="assets/test-03.jpg" width="284" height="272" alt="" decoding="async"></span></span></header>
+          <p class="arch__lead">Ты простая, понятная, «своя в доску», с тобой легко</p>
+          <p class="arch__but">Но есть причина, почему это не приносит подписчиков, просмотры и клиентов…</p>
+          <div class="arch__parts">
+            <div class="arch__part"><p class="arch__label arch__label--leak">Как ты сливаешь деньги и рост</p><ul class="dash"><li>боишься выделяться</li><li>делаешь «как у всех», теряя свою уникальность</li><li>занижаешь свою ценность</li><li>не проявляешь амбиции</li></ul></div>
+            <div class="arch__part"><p class="arch__label arch__label--res">К чему это приводит</p><ul class="dash"><li>блог не запоминается</li><li>нет роста и клиентов</li></ul></div>
+          </div>
+          <div class="arch__problem"><p class="arch__label arch__label--key">Главная проблема</p><p class="arch__key"><span>ты не понимаешь, в чём твоя уникальность</span></p></div>
+        </article>
+        <article class="arch" id="arch-4" hidden aria-labelledby="arch-4-t">
+          <header class="arch__head"><span class="arch__num">#4</span><h3 class="arch__name" id="arch-4-t">Лидер</h3><span class="pola arch__thumb" aria-hidden="true"><span class="pola__img"><img src="assets/test-04.jpg" width="284" height="272" alt="" decoding="async"></span></span></header>
+          <p class="arch__lead">Ты структурная, сильная, умеешь управлять и видеть систему</p>
+          <p class="arch__but">Но есть причина, почему это не приносит подписчиков, просмотры и клиентов…</p>
+          <div class="arch__parts">
+            <div class="arch__part"><p class="arch__label arch__label--leak">Как ты сливаешь деньги и рост</p><ul class="dash"><li>хочешь всё контролировать</li><li>не делегируешь — боишься нестабильности</li><li>давишь на себя и застреваешь в перфекционизме</li></ul></div>
+            <div class="arch__part"><p class="arch__label arch__label--res">К чему это приводит</p><ul class="dash"><li>напряжение</li><li>потолок в доходе</li><li>патологическое избегание требований</li></ul></div>
+          </div>
+          <div class="arch__problem"><p class="arch__label arch__label--key">Главная проблема</p><p class="arch__key"><span>ты не понимаешь, как зарабатывать без тотального контроля</span></p></div>
+        </article>
+        <article class="arch" id="arch-5" hidden aria-labelledby="arch-5-t">
+          <header class="arch__head"><span class="arch__num">#5</span><h3 class="arch__name" id="arch-5-t">Муза</h3><span class="pola arch__thumb" aria-hidden="true"><span class="pola__img"><img src="assets/test-05.jpg" width="284" height="272" alt="" decoding="async"></span></span></header>
+          <p class="arch__lead">Ты генерируешь идеи, чувствуешь эстетику и глубину</p>
+          <p class="arch__but">Но есть причина, почему это не приносит подписчиков, просмотры и клиентов…</p>
+          <div class="arch__parts">
+            <div class="arch__part"><p class="arch__label arch__label--leak">Как ты сливаешь деньги и рост</p><ul class="dash"><li>откладываешь, пока не будет идеально</li><li>не доводишь до результата</li><li>боишься продавать</li><li>боишься критики, поэтому закрываешься и не показываешь продукт аудитории</li><li>не замечаешь в себе уникальных талантов</li></ul></div>
+            <div class="arch__part"><p class="arch__label arch__label--res">К чему это приводит</p><ul class="dash"><li>идеи есть, денег нет</li><li>нет стабильности</li></ul></div>
+          </div>
+          <div class="arch__problem"><p class="arch__label arch__label--key">Главная проблема</p><p class="arch__key"><span>ты не понимаешь, как превратить творчество в доход</span></p></div>
+        </article>
+        <article class="arch" id="arch-6" hidden aria-labelledby="arch-6-t">
+          <header class="arch__head"><span class="arch__num">#6</span><h3 class="arch__name" id="arch-6-t">Авантюрист</h3><span class="pola arch__thumb" aria-hidden="true"><span class="pola__img"><img src="assets/test-06.jpg" width="284" height="272" alt="" decoding="async"></span></span></header>
+          <p class="arch__lead">Ты любишь новое, быстро загораешься идеями</p>
+          <p class="arch__but">Но есть причина, почему это не приносит подписчиков, просмотры и клиентов…</p>
+          <div class="arch__parts">
+            <div class="arch__part"><p class="arch__label arch__label--leak">Как ты сливаешь деньги и рост</p><ul class="dash"><li>часто меняешь направление</li><li>не фиксируешь результат</li><li>теряешь интерес, когда становится рутинно</li><li>ищешь себя, вместо монетизации того, что уже есть</li></ul></div>
+            <div class="arch__part"><p class="arch__label arch__label--res">К чему это приводит</p><ul class="dash"><li>нет стабильного дохода</li><li>постоянное ощущение «снова сначала»</li><li>разочарование в себе</li></ul></div>
+          </div>
+          <div class="arch__problem"><p class="arch__label arch__label--key">Главная проблема</p><p class="arch__key"><span>ты не понимаешь, как зарабатывать, не ограничивая себя</span></p></div>
+        </article>
+        <article class="arch" id="arch-7" hidden aria-labelledby="arch-7-t">
+          <header class="arch__head"><span class="arch__num">#7</span><h3 class="arch__name" id="arch-7-t">Стендапер</h3><span class="pola arch__thumb" aria-hidden="true"><span class="pola__img"><img src="assets/test-07.jpg" width="284" height="272" alt="" decoding="async"></span></span></header>
+          <p class="arch__lead">Ты лёгкая, живая, харизматичная, с тобой интересно и хочется остаться</p>
+          <p class="arch__but">Но есть причина, почему это не приносит подписчиков, просмотры и клиентов…</p>
+          <div class="arch__parts">
+            <div class="arch__part"><p class="arch__label arch__label--leak">Как ты сливаешь деньги и рост</p><ul class="dash"><li>делаешь контент «чтобы было весело», в тебе не видят специалиста</li><li>уходишь от серьёзных тем и продаж</li><li>боишься, что тебя не примут всерьёз</li><li>не показываешь экспертность</li></ul></div>
+            <div class="arch__part"><p class="arch__label arch__label--res">К чему это приводит</p><ul class="dash"><li>много просмотров, но мало клиентов — люди приходят за развлечением, а не за покупкой</li></ul></div>
+          </div>
+          <div class="arch__problem"><p class="arch__label arch__label--key">Главная проблема</p><p class="arch__key"><span>ты не понимаешь, как превратить внимание в деньги</span></p></div>
+        </article>
+        <article class="arch" id="arch-8" hidden aria-labelledby="arch-8-t">
+          <header class="arch__head"><span class="arch__num">#8</span><h3 class="arch__name" id="arch-8-t">Советник</h3><span class="pola arch__thumb" aria-hidden="true"><span class="pola__img"><img src="assets/test-08.jpg" width="284" height="272" alt="" decoding="async"></span></span></header>
+          <p class="arch__lead">Ты умеешь видеть глубже, чем другие, замечаешь закономерности и можешь давать сильные инсайты</p>
+          <p class="arch__but">Но есть причина, почему это не приносит подписчиков, просмотры и клиентов…</p>
+          <div class="arch__parts">
+            <div class="arch__part"><p class="arch__label arch__label--leak">Как ты сливаешь деньги и рост</p><ul class="dash"><li>постоянно учишься, но не выходишь в проявленность</li><li>думаешь «нужно ещё разобраться» и откладываешь реальные действия</li><li>не показываешь свою глубину аудитории</li><li>усложняешь, тебя не понимают</li><li>боишься, что ты «недостаточно эксперт»</li></ul></div>
+            <div class="arch__part"><p class="arch__label arch__label--res">К чему это приводит</p><ul class="dash"><li>у тебя нет стабильных клиентов</li><li>блог не растёт, потому что ты не проявляешься</li><li>твои знания не превращаются в деньги</li></ul></div>
+          </div>
+          <div class="arch__problem"><p class="arch__label arch__label--key">Главная проблема</p><p class="arch__key"><span>ты не понимаешь, как монетизировать свой способ мышления</span></p></div>
+        </article>
+        <article class="arch" id="arch-9" hidden aria-labelledby="arch-9-t">
+          <header class="arch__head"><span class="arch__num">#9</span><h3 class="arch__name" id="arch-9-t">Инфлюенсер</h3><span class="pola arch__thumb" aria-hidden="true"><span class="pola__img"><img src="assets/test-09.jpg" width="284" height="272" alt="" decoding="async"></span></span></header>
+          <p class="arch__lead">Ты чувствуешь глубже других, видишь смыслы и связи</p>
+          <p class="arch__but">Но есть причина, почему это не приносит подписчиков, просмотры и клиентов…</p>
+          <div class="arch__parts">
+            <div class="arch__part"><p class="arch__label arch__label--leak">Как ты сливаешь деньги и рост</p><ul class="dash"><li>остаёшься в идеях, а не в действиях</li><li>сложно донести мысли просто</li><li>перескакиваешь между инсайтами, аудитория не понимает тебя</li><li>не закрепляешь результат</li></ul></div>
+            <div class="arch__part"><p class="arch__label arch__label--res">К чему это приводит</p><ul class="dash"><li>тебя не до конца понимают</li><li>нет стабильных клиентов</li></ul></div>
+          </div>
+          <div class="arch__problem"><p class="arch__label arch__label--key">Главная проблема</p><p class="arch__key"><span>ты не понимаешь, как заземлить свою глубину в деньги</span></p></div>
+        </article>
+        <article class="arch" id="arch-10" hidden aria-labelledby="arch-10-t">
+          <header class="arch__head"><span class="arch__num">#10</span><h3 class="arch__name" id="arch-10-t">Неравнодушный</h3><span class="pola arch__thumb" aria-hidden="true"><span class="pola__img"><img src="assets/test-10.jpg" width="284" height="272" alt="" decoding="async"></span></span></header>
+          <p class="arch__lead">Ты умеешь чувствовать людей, поддерживать, помогать и быть нужной</p>
+          <p class="arch__but">Но есть причина, почему это не приносит подписчиков, просмотры и клиентов…</p>
+          <div class="arch__parts">
+            <div class="arch__part"><p class="arch__label arch__label--leak">Как ты сливаешь деньги и рост</p><ul class="dash"><li>даёшь слишком много бесплатно</li><li>боишься продавать, чтобы не навязываться</li><li>занижаешь цену или перегружаешь клиента</li><li>ставишь комфорт других выше своего дохода</li></ul></div>
+            <div class="arch__part"><p class="arch__label arch__label--res">К чему это приводит</p><ul class="dash"><li>люди привыкают брать, но не платить</li><li>нет стабильного дохода</li><li>ты выгораешь</li></ul></div>
+          </div>
+          <div class="arch__problem"><p class="arch__label arch__label--key">Главная проблема</p><p class="arch__key"><span>ты не понимаешь, как зарабатывать, оставаясь в своей мягкости</span></p></div>
+        </article>
+        <article class="arch" id="arch-11" hidden aria-labelledby="arch-11-t">
+          <header class="arch__head"><span class="arch__num">#11</span><h3 class="arch__name" id="arch-11-t">Разрушитель</h3><span class="pola arch__thumb" aria-hidden="true"><span class="pola__img"><img src="assets/test-11.jpg" width="284" height="272" alt="" decoding="async"></span></span></header>
+          <p class="arch__lead">Ты не принимаешь шаблоны, чувствуешь, что хочешь по-своему</p>
+          <p class="arch__but">Но есть причина, почему это не приносит подписчиков, просмотры и клиентов…</p>
+          <div class="arch__parts">
+            <div class="arch__part"><p class="arch__label arch__label--leak">Как ты сливаешь деньги и рост</p><ul class="dash"><li>отрицаешь систему и структуру</li><li>бросаешь, когда становится «как у всех»</li><li>идёшь в протест, а не в результат</li><li>не закрепляешь то, что уже работает</li></ul></div>
+            <div class="arch__part"><p class="arch__label arch__label--res">К чему это приводит</p><ul class="dash"><li>нет стабильности</li><li>постоянные обнуления</li></ul></div>
+          </div>
+          <div class="arch__problem"><p class="arch__label arch__label--key">Главная проблема</p><p class="arch__key"><span>ты не понимаешь, как зарабатывать, не теряя свободу</span></p></div>
+        </article>
+        <article class="arch" id="arch-12" hidden aria-labelledby="arch-12-t">
+          <header class="arch__head"><span class="arch__num">#12</span><h3 class="arch__name" id="arch-12-t">Мечтатель</h3><span class="pola arch__thumb" aria-hidden="true"><span class="pola__img"><img src="assets/test-12.jpg" width="284" height="272" alt="" decoding="async"></span></span></header>
+          <p class="arch__lead">Ты веришь в лучшее, лёгкая, вдохновляющая</p>
+          <p class="arch__but">Но есть причина, почему это не приносит подписчиков, просмотры и клиентов…</p>
+          <div class="arch__parts">
+            <div class="arch__part"><p class="arch__label arch__label--leak">Как ты сливаешь деньги и рост</p><ul class="dash"><li>ждёшь, что «само получится»</li><li>избегаешь сложных решений</li><li>не выстраиваешь стратегию</li><li>боишься столкнуться с реальностью</li></ul></div>
+            <div class="arch__part"><p class="arch__label arch__label--res">К чему это приводит</p><ul class="dash"><li>нет системы</li><li>жизнь в иллюзии безопасности, потенциал сжирает изнутри</li><li>доход нестабильный</li></ul></div>
+          </div>
+          <div class="arch__problem"><p class="arch__label arch__label--key">Главная проблема</p><p class="arch__key"><span>ты не понимаешь, как соединить лёгкость и результат</span></p></div>
+        </article>
+        <p class="panel__note">На самом деле это легко монетизируется — если знать, как вести блог через свой архетип. Ниже ты найдёшь программу, где я показываю, как превратить свой архетип в&nbsp;подписчиков, просмотры и клиентов через блог</p>
+      </div>
+
+      <div class="gift">
+        <p class="gift__label">это бесплатно</p>
+        <p class="gift__text">Если хочешь узнать, действительно ли есть этот архетип в твоей дате рождения и как он называется в системе 22 архетипов — напиши мне в директ свою дату в формате <b>дд.мм.гг.</b>, я проверю и лично отвечу</p>
+        <a class="btn btn--denim" href="https://ig.me/m/nastya.idea">Написать в директ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Мастер-класс: программа и тариф -->
+  <section class="mk" id="mk" aria-labelledby="mk-title">
+    <div class="mk__main">
+      <header class="sec-head">
+        <p class="eyebrow"><span>02</span> мастер-класс</p>
+        <h2 class="mk__title" id="mk-title">
+          <span class="brush mk__brush">Программа</span>
+          <svg class="mk__patch" viewBox="0 0 260 150" aria-hidden="true" overflow="visible"><text x="4" y="128">МК</text><text class="mk__seam" x="4" y="128">МК</text></svg>
+          <span class="sr-only">МК</span>
+        </h2>
+        <p class="mk__name">«Личный бренд через архетипы»</p>
+        <p class="sec-sub">За 7 дней ты поймёшь, как перестать сливать свой потенциал, начнёшь проявляться через свою сильную сторону и увидишь, как <b>блог начинает притягивать аудиторию</b></p>
+      </header>
+
+      <div class="days">
+        <span class="days__thread" aria-hidden="true"></span>
+        <ol class="days__list">
+        <li class="day"><p class="day__n">День 1.</p><p class="day__t">Всё, что нужно знать о личном бренде. Основы</p></li>
+        <li class="day"><p class="day__n">День 2.</p><p class="day__t">Какой твой архетип? Специальные задания и тесты</p></li>
+        <li class="day"><p class="day__n">День 3.</p><p class="day__t">Расшифровка заданий. Что скрывает психика: навыки, суперсила, триггеры, сферы, формат контента</p></li>
+        <li class="day"><p class="day__n">День 4.</p><p class="day__t">Упаковка блога, которая приносит подписчиков и клиентов (через архетип)</p></li>
+        <li class="day"><p class="day__n">День 5.</p><p class="day__t">Основы миллионных просмотров</p></li>
+        <li class="day"><p class="day__n">День 6.</p><p class="day__t">Продуктовая воронка. Как легко монетизировать свою суперсилу в блоге</p></li>
+        <li class="day"><p class="day__n">День 7.</p><p class="day__t">Подробная инструкция, как расти в медийности, деньгах, зная свой архетип</p></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mk__side">
+      <article class="tariff" aria-labelledby="tariff-title">
+        <p class="tariff__kicker">тариф</p>
+        <h3 class="tariff__title" id="tariff-title">«Хочу всё сама»</h3>
+        <p class="tariff__lead">Поймёшь, как тебе раскрыть свою суперсилу и расти в подписчиках, медийности и доходе через свой архетип</p>
+        <p class="tariff__label">Что входит?</p>
+        <ul class="ticks">
+          <li>7 видео-уроков</li>
+          <li>Практические задания после каждого урока</li>
+          <li>Пошаговая система, как упаковать блог, чтобы он приводил подписчиков и клиентов</li>
+          <li>Авторский Промт GPT, который составит концепцию продвижения под твою личность</li>
+          <li>Доступ 6 месяцев</li>
+        </ul>
+        <div class="tariff__price">
+          <p class="price-old"><s>7&nbsp;000&nbsp;₽</s></p>
+          <p class="price">2&nbsp;490&nbsp;₽</p>
+        </div>
+        <a class="btn" href="https://ig.me/m/nastya.idea">Написать в директ</a>
+        <p class="tariff__how">Чтобы оплатить и получить доступ к МК, пиши в личные сообщения/директ</p>
+      </article>
+    </div>
+  </section>
+
+  <aside class="concept-end">
+    <svg class="clover clover--end" aria-hidden="true"><use href="#clover"/></svg>
+    <p class="concept-end__title">Так может выглядеть <span class="brush">весь ваш сайт</span></p>
+    <p class="concept-end__text">Это концепт: три блока вашего Taplink в новом дизайне, на ваших текстах и картинках.</p>
+    <a class="btn btn--ghost" href="https://test-idea.taplink.ws">Открыть текущий сайт</a>
+  </aside>
+</main>
+
+<script src="../shared/vendor/gsap/gsap.min.js"></script>
+<script src="../shared/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="../shared/vendor/gsap/SplitText.min.js"></script>
+<script src="../shared/motion-base.js"></script>
+<script src="motion.js"></script>
+</body>
+</html>
