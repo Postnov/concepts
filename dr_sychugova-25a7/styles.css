@@ -1,0 +1,200 @@
+/* Клара Сычугова · врач-гастроэнтеролог — концепт.
+   Айдентика от её Taplink: глубокий тёмно-синий (её униформа и иконки) на светлой клинической бумаге,
+   дидона Oranienbaum (её фирменный шрифт заголовков) + спокойный гротеск Sofia Sans.
+   Моушн-идея — «фокус»: всё проявляется из размытия в резкость, как картина, в которой врач разобрался; круг-кольцо — её мотив (иконки в круге). */
+:root {
+  --paper: #f3f1ed;          /* фон её фото: фото растворяется в странице */
+  --paper-2: #ebe8e2;
+  --ink: #1b233a;            /* её основной цвет текста */
+  --ink-soft: #596074;
+  --navy: #1d2b58;
+  --royal: #2c4795;          /* второй цвет градиента её иконок */
+  --mist: #dde3ea;
+  --ivory: #fffaf4;
+  --line: rgba(27, 35, 58, .14);
+  --pad: clamp(20px, 5.5vw, 64px);
+  --section: clamp(84px, 13vw, 160px);
+  --serif: 'Oranienbaum', 'Times New Roman', serif;
+  --sans: 'Sofia Sans', system-ui, -apple-system, sans-serif;
+  --concept-bg: #1b233a;
+  --concept-ink: #f3f1ed;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16.5px/1.58 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+em { font-family: var(--serif); font-style: normal; color: var(--royal); }
+.nw { white-space: nowrap; }
+/* ₽ нет в подмножествах её шрифтов — рисуем системным, тонким, чтобы знак был целым и одинаковым везде */
+.rub { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; font-weight: 300; font-size: .72em; letter-spacing: 0; }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 58px; padding: 0 32px; border-radius: 999px;
+  background: linear-gradient(120deg, var(--navy), var(--royal));
+  color: var(--ivory); text-decoration: none; text-align: center;
+  font: 600 13.5px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase;
+  box-shadow: 0 18px 34px -18px rgba(29, 43, 88, .8);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04; }
+.btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px rgba(27, 35, 58, .32); }
+.btn--light { background: var(--ivory); color: var(--ink); box-shadow: 0 18px 34px -18px rgba(0, 0, 0, .6); }
+
+/* Кольцо — общий мотив: тонкая окружность, которую моушн «дорисовывает» */
+.ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; rotate: -90deg; /* рисуется от верхней точки */ }
+/* толщина задаётся в единицах viewBox (100) под размер кольца: non-scaling-stroke ломает pathLength у пунктира */
+.ring circle { fill: none; stroke: currentColor; stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0; }
+
+.kicker {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
+  font: 600 12px/1.2 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.kicker i { width: 5px; height: 5px; border-radius: 50%; background: var(--royal); }
+.eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font: 600 12px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { font: 400 17px/1 var(--serif); letter-spacing: 0; color: var(--royal); }
+.eyebrow::after { content: ''; width: 44px; height: 1px; background: currentColor; opacity: .4; }
+.eyebrow--light { color: rgba(255, 250, 244, .7); }
+.eyebrow--light span { color: var(--ivory); }
+
+/* ---------- 1. Hero ---------- */
+.hero { position: relative; padding-top: 26px; }
+.hero__head { position: relative; z-index: 2; }
+.hero__name {
+  margin-top: 16px;
+  font: 400 clamp(66px, 19.5vw, 168px)/.9 var(--serif); letter-spacing: -.005em; color: var(--ink);
+}
+.hero__line { display: block; }
+.hero__line--2 { padding-left: .62em; }
+
+.hero__photo { position: relative; z-index: 1; margin: -96px calc(var(--pad) * -1) 0; }
+.hero__img {
+  position: relative; overflow: hidden; aspect-ratio: 1080 / 1380;
+  /* фото и так тает в цвет страницы; низ дотаиваем маской */
+  -webkit-mask-image: linear-gradient(transparent, #000 9%, #000 76%, transparent 98%); mask-image: linear-gradient(transparent, #000 9%, #000 76%, transparent 98%);
+}
+.hero__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+
+.badge {
+  position: absolute; left: 9%; top: 32%; width: 31%; aspect-ratio: 1;
+  display: grid; place-items: center; border-radius: 50%;
+  background: rgba(221, 227, 234, .78); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: 0 22px 40px -22px rgba(27, 35, 58, .45);
+  color: var(--navy);
+}
+.badge .ring { inset: -7%; width: 114%; height: 114%; color: rgba(29, 43, 88, .55); }
+.badge .ring circle { stroke-width: .75; }
+.badge__text { text-align: center; font: 600 clamp(9.5px, 2.6vw, 12px)/1.25 var(--sans); letter-spacing: .14em; text-transform: uppercase; padding: 0 8%; }
+.badge__text b { display: block; margin-bottom: 4px; font: 400 clamp(18px, 4.9vw, 30px)/1 var(--serif); letter-spacing: 0; text-transform: none; white-space: nowrap; }
+
+.hero__body { position: relative; z-index: 2; margin-top: -34px; }
+.hero__lead { font: 400 clamp(20px, 5.3vw, 25px)/1.38 var(--sans); max-width: 30ch; }
+.hero__actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 26px; }
+.hero__role { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
+.hero__role li {
+  padding: 8px 14px; border-radius: 999px; font-size: 13.5px; line-height: 1.2; color: var(--navy);
+  background: var(--mist);
+}
+.hero__role li:nth-child(2) { background: transparent; box-shadow: inset 0 0 0 1px rgba(29, 43, 88, .28); }
+.hero__note {
+  margin-top: 30px; padding-left: 18px; border-left: 1px solid var(--royal);
+  font: 400 clamp(20px, 5.4vw, 25px)/1.28 var(--serif); color: var(--navy); max-width: 32ch;
+}
+
+/* ---------- 2. Проблемы ---------- */
+.cases { padding-top: var(--section); }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.organ { position: relative; width: 76px; aspect-ratio: 1; color: var(--navy); }
+.organ img { width: 100%; height: 100%; border-radius: 50%; }
+.organ .ring { inset: -9px; width: calc(100% + 18px); height: calc(100% + 18px); color: rgba(29, 43, 88, .35); }
+.organ .ring circle { stroke-width: 1.1; }
+.sec-head h2 { font: 400 clamp(44px, 12vw, 84px)/.98 var(--serif); max-width: 12ch; }
+
+.cases__list { margin-top: 38px; display: grid; grid-template-columns: minmax(0, 1fr); counter-reset: none; }
+.case {
+  display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 18px; align-items: start;
+  position: relative; padding: 24px 0;
+}
+/* разделитель — псевдоэлемент: моушн прорисовывает его слева направо через --rule */
+.case::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%; scale: var(--rule, 1) 1; }
+.case__mark { position: relative; display: grid; place-items: center; width: 54px; aspect-ratio: 1; color: var(--navy); }
+.case__mark .ring { color: rgba(29, 43, 88, .5); }
+.case__mark .ring circle { stroke-width: 1.9; }
+.case__num { font: 400 22px/1 var(--serif); color: var(--navy); }
+.case__title { font: 400 clamp(23px, 6vw, 28px)/1.14 var(--serif); color: var(--ink); }
+.case__text { margin-top: 8px; color: var(--ink-soft); font-size: 15.5px; line-height: 1.5; }
+
+/* ---------- 3. Онлайн-консультация ---------- */
+.consult { margin-top: var(--section); padding-block: var(--section); background: var(--ink); color: var(--ivory); border-radius: 36px 36px 0 0; position: relative; overflow: hidden; }
+/* мягкий свет в углу, как в её фото-коридоре */
+.consult::before {
+  content: ''; position: absolute; width: 120vw; aspect-ratio: 1; right: -60vw; top: -50vw; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(44, 71, 149, .55), rgba(44, 71, 149, 0));
+  pointer-events: none;
+}
+.consult__inner { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 44px; }
+.consult h2 { margin-top: 18px; font: 400 clamp(44px, 12vw, 84px)/1 var(--serif); }
+.consult h2 .ln { display: block; }
+.consult h2 .ln--2 { padding-left: .5em; }
+.aperture { position: relative; width: min(64vw, 300px); aspect-ratio: 1; margin: 40px 0 0 auto; color: rgba(255, 250, 244, .55); }
+.aperture .ring { inset: -14px; width: calc(100% + 28px); height: calc(100% + 28px); }
+.aperture .ring circle { stroke-width: .38; }
+.aperture__img { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: var(--paper); }
+.aperture__img img { width: 100%; height: 100%; object-fit: cover; scale: 1.05; /* прячет обводку исходного круга */ }
+
+.prices { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+.price { padding: 20px 18px 22px; border-radius: 22px; background: var(--ivory); color: var(--ink); display: flex; flex-direction: column; justify-content: space-between; gap: 22px; }
+.price--alt { background: transparent; color: var(--ivory); box-shadow: inset 0 0 0 1px rgba(255, 250, 244, .3); }
+.price__label { font: 600 11.5px/1.3 var(--sans); letter-spacing: .16em; text-transform: uppercase; opacity: .75; }
+.price__value { font: 400 clamp(38px, 10.4vw, 58px)/1 var(--serif); white-space: nowrap; }
+
+.facts { margin-top: 34px; display: grid; gap: 0; }
+.fact { padding: 20px 0; border-top: 1px solid rgba(255, 250, 244, .16); }
+.fact__title { font: 600 12px/1.2 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: rgba(255, 250, 244, .62); }
+.fact p { margin-top: 8px; font-size: 17px; line-height: 1.5; color: rgba(255, 250, 244, .92); }
+.consult .btn { margin-top: 18px; width: 100%; }
+
+/* ---------- финал концепта ---------- */
+.concept-end { padding-block: clamp(72px, 11vw, 130px); text-align: center; display: grid; justify-items: center; gap: 16px; background: var(--paper-2); }
+.concept-end__title { font: 400 clamp(34px, 8.6vw, 58px)/1.05 var(--serif); }
+.concept-end__title em { display: block; }
+.concept-end__text { color: var(--ink-soft); max-width: 36ch; }
+.concept-end .btn { margin-top: 8px; }
+
+/* ---------- планшет и десктоп ---------- */
+@media (min-width: 720px) {
+  .hero__actions { grid-template-columns: repeat(2, max-content); }
+  .cases__list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px; }
+  .prices { gap: 14px; }
+}
+
+@media (min-width: 1000px) {
+  .hero {
+    display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); column-gap: 40px;
+    grid-template-areas: 'head photo' 'body photo'; grid-template-rows: auto 1fr;
+    max-width: 1440px; margin: 0 auto; padding-top: 56px;
+  }
+  .hero__head { grid-area: head; }
+  .hero__name { font-size: clamp(110px, 10.6vw, 168px); }
+  .hero__photo { grid-area: photo; margin: 0 calc(var(--pad) * -1) 0 0; }
+  .hero__img { aspect-ratio: 1080 / 1300; }
+  .badge { left: -1%; top: 38%; width: 27%; }
+  .hero__body { grid-area: body; margin-top: 40px; max-width: 560px; }
+  .hero__note { font-size: 24px; }
+
+  .cases { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: 64px; align-items: start; }
+  .cases .sec-head { position: sticky; top: 48px; }
+  .cases__list { margin-top: 0; }
+
+  .consult { border-radius: 48px 48px 0 0; }
+  .consult::before { width: 1100px; right: -400px; top: -500px; }
+  .consult__inner { max-width: 1312px; margin: 0 auto; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); column-gap: 80px; align-items: start; }
+  .aperture { width: 340px; margin: 56px 0 0 24px; }
+  .consult__side { padding-top: 8px; }
+  .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 28px; }
+  .consult .btn { width: auto; }
+}

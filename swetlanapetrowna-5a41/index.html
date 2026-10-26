@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<script>(function(h){h.classList.add('is-loading');var r=function(){h.classList.remove('is-loading')};setTimeout(function(){if(!window.MotionBase)r()},9000);setTimeout(r,12000)})(document.documentElement)</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- preload-fonts -->
+<link rel="preload" href="../shared/fonts/swetlanapetrowna-5a41-ap/AlumniSans-italic-700-900-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/swetlanapetrowna-5a41-ap/AlumniSans-italic-700-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/swetlanapetrowna-5a41-ap/AlumniSans-normal-500-900-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/swetlanapetrowna-5a41-ap/AlumniSans-normal-500-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/swetlanapetrowna-5a41-ap/IBMPlexSans-italic-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/swetlanapetrowna-5a41-ap/IBMPlexSans-italic-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/swetlanapetrowna-5a41-ap/IBMPlexSans-normal-400-600-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/swetlanapetrowna-5a41-ap/IBMPlexSans-normal-400-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- /preload-fonts -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Светлана Петровна · репетитор по математике — концепт</title>
+<link rel="stylesheet" href="../shared/fonts/swetlanapetrowna-5a41-ap.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Спрайт: футбольный мяч (используется в hero, во вкладках классов и в подписях секций) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <clipPath id="ball-clip"><circle r="12"/></clipPath>
+    <radialGradient id="ball-shade" cx=".36" cy=".3" r=".78"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#f2f3ea"/><stop offset="1" stop-color="#c4c9ba"/></radialGradient>
+    <symbol id="ball" viewBox="-13 -13 26 26">
+      <circle r="12" fill="url(#ball-shade)"/>
+      <path d="M0,-4.4L0,-8.66M4.18,-1.36L8.24,-2.68M2.59,3.56L5.09,7.01M-2.59,3.56L-5.09,7.01M-4.18,-1.36L-8.24,-2.68M3.23,-10.07L8.58,-6.19M10.58,-0.04L8.53,6.25M3.3,10.05L-3.3,10.05M-8.53,6.25L-10.58,-0.04M-8.58,-6.19L-3.23,-10.07" stroke="#10261c" stroke-width=".9" stroke-linecap="round" fill="none"/>
+      <path d="M0,-4.4L4.18,-1.36L2.59,3.56L-2.59,3.56L-4.18,-1.36Z" fill="#10261c"/>
+      <path clip-path="url(#ball-clip)" d="M0,-8.66L-3.23,-10.07L-2,-12.35L2,-12.35L3.23,-10.07ZM8.24,-2.68L8.58,-6.19L11.13,-5.72L12.36,-1.92L10.58,-0.04ZM5.09,7.01L8.53,6.25L8.88,8.82L5.64,11.17L3.3,10.05ZM-5.09,7.01L-3.3,10.05L-5.64,11.17L-8.88,8.82L-8.53,6.25ZM-8.24,-2.68L-10.58,-0.04L-12.36,-1.92L-11.13,-5.72L-8.58,-6.19Z" fill="#10261c"/>
+      <circle r="12" fill="none" stroke="#10261c" stroke-width="1.1"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="concept-bar" data-concept>
+  <span>Концепт редизайна @matematik_swet · не официальный сайт</span>
+  <a href="https://taplink.cc/swetlanapetrowna">Текущий сайт →</a>
+</div>
+
+<main>
+  <!-- 1. Hero: поле, центральный круг с фото, мяч летит по параболе -->
+  <section class="hero" aria-label="Светлана Петровна, репетитор по математике">
+    <div class="hero__text">
+      <p class="kicker"><svg class="kicker__ball" aria-hidden="true"><use href="#ball"/></svg><span>Интересная математика</span></p>
+      <h1 class="hero__name"><span class="hero__line">Светлана</span> <span class="hero__line">Петровна</span></h1>
+      <p class="hero__role">Репетитор по математике</p>
+    </div>
+
+    <figure class="field">
+      <span class="field__half" aria-hidden="true"></span>
+      <svg class="field__svg" viewBox="0 0 360 330" aria-hidden="true" focusable="false">
+        <defs><clipPath id="trail-clip"><rect class="field__clip" x="0" y="-40" width="400" height="400"/></clipPath></defs>
+        <circle class="field__circle" cx="180" cy="196" r="116" pathLength="100"/>
+        <path class="field__trail" d="M14 300 Q166 -276 318 300" clip-path="url(#trail-clip)"/>
+        <ellipse class="field__shadow" cx="318" cy="313" rx="11" ry="2.6"/>
+        <g class="field__ball" transform="translate(318 300)"><use href="#ball" x="-12.5" y="-12.5" width="25" height="25"/></g>
+      </svg>
+      <div class="field__photo"><img src="assets/portrait.jpg" width="300" height="300" alt="Светлана Петровна" fetchpriority="high"></div>
+      <span class="field__formula" aria-hidden="true"><i>y</i> = <i>ax</i>² + <i>bx</i> + <i>c</i></span>
+    </figure>
+
+    <div class="hero__side">
+      <dl class="stats">
+        <div class="stat"><dt class="stat__num">23</dt><dd>года опыта работы</dd></div>
+        <div class="stat"><dt class="stat__num">3</dt><dd>педагогических образования</dd></div>
+      </dl>
+      <div class="hero__cta">
+        <a class="btn" href="https://t.me/matematik_swet">Мой телеграм-канал</a>
+        <a class="btn btn--line" href="#courses">Курсы видеоуроков</a>
+      </div>
+      <ul class="tags">
+        <li><svg aria-hidden="true"><use href="#ball"/></svg>учительница-футболистка</li>
+        <li>курсы для детей, родителей, репетиторов</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2. Занятия и стоимость -->
+  <section class="lessons" aria-labelledby="lessons-title">
+    <header class="sec-head">
+      <p class="eyebrow"><svg aria-hidden="true"><use href="#ball"/></svg><span>01</span> занятия</p>
+      <h2 id="lessons-title">Индивидуальные и&nbsp;групповые занятия</h2>
+    </header>
+
+    <div class="lessons__grid">
+      <article class="card card--dark">
+        <svg class="tactic" viewBox="0 0 200 90" aria-hidden="true" focusable="false">
+          <rect class="tactic__box" x="150" y="15" width="50" height="60"/>
+          <path class="tactic__run" d="M36 62 C 70 18, 112 20, 150 45" pathLength="100"/>
+          <path class="tactic__tip" d="M141 36 L151 45 L138 49"/>
+          <circle class="tactic__dot tactic__dot--me" cx="30" cy="64" r="7"/>
+        </svg>
+        <p class="card__meta">индивидуально · 60 минут</p>
+        <h3 class="card__title">Индивидуальные занятия</h3>
+        <p class="card__price"><span class="card__sum">4&nbsp;000&nbsp;₽</span> <span class="card__per">/ 60&nbsp;минут</span></p>
+        <p class="card__note">На индивидуальные занятия попасть достаточно сложно, так как желающих очень много, и&nbsp;моего времени не&nbsp;хватает, чтобы взять всех желающих.</p>
+      </article>
+
+      <article class="card card--light">
+        <svg class="tactic" viewBox="0 0 200 90" aria-hidden="true" focusable="false">
+          <rect class="tactic__box" x="150" y="15" width="50" height="60"/>
+          <path class="tactic__run" d="M58 45 C 90 30, 118 30, 150 42" pathLength="100"/>
+          <path class="tactic__tip" d="M141 34 L151 42 L139 47"/>
+          <circle class="tactic__dot" cx="22" cy="20" r="6"/>
+          <circle class="tactic__dot" cx="22" cy="70" r="6"/>
+          <circle class="tactic__dot" cx="46" cy="32" r="6"/>
+          <circle class="tactic__dot" cx="46" cy="58" r="6"/>
+          <circle class="tactic__dot tactic__dot--me" cx="66" cy="45" r="7"/>
+        </svg>
+        <p class="card__meta">5−11 классы · в группе</p>
+        <h3 class="card__title">Групповые занятия</h3>
+        <p class="card__price"><span class="card__sum">650&nbsp;₽</span> <span class="card__per">/ 60&nbsp;минут при&nbsp;оплате за&nbsp;месяц</span></p>
+        <p class="card__note">Для того, чтобы попасть в&nbsp;группу, лучше подписаться на&nbsp;мой телеграм-канал, там можно первыми узнать, когда появляется место.</p>
+        <div class="card__cta">
+          <a class="btn btn--green" href="https://t.me/matematik_swet">Мой телеграм-канал</a>
+          <a class="btn btn--ghost" href="https://max.ru/id507503958340_biz">Канал в max</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3. Курсы видеоуроков: вкладки по классам, мяч катится под активной вкладкой -->
+  <section class="courses" id="courses" aria-labelledby="courses-title">
+    <header class="sec-head">
+      <p class="eyebrow"><svg aria-hidden="true"><use href="#ball"/></svg><span>02</span> видеоуроки</p>
+      <h2 id="courses-title">Курсы видеоуроков</h2>
+      <p class="sec-sub">Для детей, родителей, начинающих учителей/репетиторов — с&nbsp;ними вы можете познакомиться по&nbsp;ссылкам ниже.</p>
+    </header>
+
+    <div class="courses__board">
+      <div class="tabs" role="tablist" aria-label="Класс">
+        <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1"><b>4</b><span>класс</span></button>
+        <button class="tab" role="tab" id="tab-5" aria-controls="panel-5" aria-selected="false" tabindex="-1"><b>5</b><span>класс</span></button>
+        <button class="tab" role="tab" id="tab-6" aria-controls="panel-6" aria-selected="true"><b>6</b><span>класс</span></button>
+        <button class="tab" role="tab" id="tab-7" aria-controls="panel-7" aria-selected="false" tabindex="-1"><b>7</b><span>класс</span></button>
+        <span class="tabs__track" aria-hidden="true"><svg class="tabs__ball"><use href="#ball"/></svg></span>
+      </div>
+
+      <div class="panels">
+        <div class="panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+          <ol class="list">
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page4"><span class="row__n">01</span><span class="row__t">Подготовка к&nbsp;ВПР<small>4 класс</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+          </ol>
+        </div>
+        <div class="panel" role="tabpanel" id="panel-5" aria-labelledby="tab-5" hidden>
+          <ol class="list">
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page5"><span class="row__n">01</span><span class="row__t">Обыкновенные дроби<small>5 класс · 3 четверть</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page11"><span class="row__n">02</span><span class="row__t">Десятичные дроби<small>5 класс · 4 четверть</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page9"><span class="row__n">03</span><span class="row__t">Подготовка к&nbsp;ВПР по&nbsp;математике<small>5 класс</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+          </ol>
+        </div>
+        <div class="panel" role="tabpanel" id="panel-6" aria-labelledby="tab-6">
+          <ol class="list">
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page1"><span class="row__n">01</span><span class="row__t">Математика<small>6 класс · 1 полугодие</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page6"><span class="row__n">02</span><span class="row__t">Рациональные числа<small>Математика 6 класс · 2 полугодие</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page10"><span class="row__n">03</span><span class="row__t">Подготовка к&nbsp;ВПР<small>6 класс</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page7"><span class="row__n">04</span><span class="row__t">Задачи, которые решаются с&nbsp;помощью уравнений<small>6−7 класс</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+          </ol>
+        </div>
+        <div class="panel" role="tabpanel" id="panel-7" aria-labelledby="tab-7" hidden>
+          <ol class="list">
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page14"><span class="row__n">01</span><span class="row__t">Выражения. Уравнения. Тождества<small>Алгебра 7 класс · 1 часть</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page15"><span class="row__n">02</span><span class="row__t">Функции и&nbsp;их&nbsp;графики<small>Алгебра 7 класс</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page16"><span class="row__n">03</span><span class="row__t">Степень с&nbsp;натуральным показателем. Одночлены<small>Алгебра 7 класс</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page17"><span class="row__n">04</span><span class="row__t">Многочлены<small>Алгебра 7 класс</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page19"><span class="row__n">05</span><span class="row__t">Формулы сокращённого умножения<small>Алгебра 7 класс · 5 часть</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page13"><span class="row__n">06</span><span class="row__t">Геометрия<small>7 класс · 1 часть</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page18"><span class="row__n">07</span><span class="row__t">Геометрия<small>7 класс · 2 часть</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+            <li><a class="row" href="https://matematikswet.getcourse.ru/page7"><span class="row__n">08</span><span class="row__t">Задачи, которые решаются с&nbsp;помощью уравнений<small>6−7 класс</small></span><span class="row__go" aria-hidden="true"></span></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="courses__more">
+      <a class="btn" href="https://matematikswet.getcourse.ru/page12">Все курсы из&nbsp;видеоуроков тут</a>
+      <a class="tube" href="https://rutube.ru/channel/12286159/">
+        <span class="tube__play" aria-hidden="true"></span>
+        <span class="tube__text"><b>RuTube</b>Здесь найдете демо ВПР, контрольные, бесплатные уроки</span>
+      </a>
+    </div>
+  </section>
+
+  <aside class="concept-end">
+    <p class="concept-end__title">Так может выглядеть весь ваш сайт</p>
+    <p class="concept-end__text">Это концепт: три блока вашего Taplink в&nbsp;новом дизайне, на&nbsp;ваших фото и&nbsp;текстах.</p>
+    <a class="btn btn--line" href="https://taplink.cc/swetlanapetrowna">Открыть текущий сайт</a>
+  </aside>
+</main>
+
+<script src="../shared/vendor/gsap/gsap.min.js"></script>
+<script src="../shared/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="../shared/vendor/gsap/SplitText.min.js"></script>
+<script src="../shared/motion-base.js"></script>
+<script src="motion.js"></script>
+</body>
+</html>

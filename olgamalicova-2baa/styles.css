@@ -1,0 +1,223 @@
+/* Ольга Маликова · арт-прогулки по Милану — концепт.
+   Язык: каталог выставки и обложка модного журнала. Палитра с её фото: миланский известняк, чернила,
+   красная помада (её фирменная деталь) и фисташковые стулья с главного фото. Углы острые — как рамы и этикетки в галерее. */
+:root {
+  --stone: #eeeae3;
+  --stone-2: #e4ded3;
+  --paper: #f7f4ef;
+  --ink: #181614;
+  --ink-soft: #645d54;
+  --red: #b81d29;
+  --sage: #d3d8bc;
+  --sage-deep: #6f7a4e;
+  --line: rgba(24, 22, 20, .16);
+  --pad: clamp(20px, 5.2vw, 56px);
+  --section: clamp(88px, 14vw, 168px);
+  --serif: 'Playfair', 'Times New Roman', serif;
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --concept-bg: #181614;
+  --concept-ink: #eeeae3;
+}
+
+body { background: var(--stone); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+em { font-style: italic; }
+.nw { white-space: nowrap; }
+
+/* Маски SplitText: запас под выносные элементы и курсив, чтобы маска не подрезала глифы */
+.ch-mask { padding: .02em .14em .22em; margin: -.02em -.14em -.22em; }
+/* у строк — только снизу: верхнее и нижнее отрицательные поля соседних блоков схлопнулись бы и сдвинули строки */
+.ln-mask { padding: 0 .14em .22em; margin: 0 -.14em -.22em; }
+
+/* ---------- кнопки: острые, только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 56px; padding: 0 28px;
+  background: var(--ink); color: var(--stone); text-decoration: none;
+  font: 500 12.5px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase;
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04; }
+.btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+
+.eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font: 500 11px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--red); }
+.eyebrow::after { content: ''; flex: 0 0 36px; height: 1px; background: var(--line); }
+
+/* ---------- «окно» с фото и видоискатель куратора ---------- */
+.view { position: relative; overflow: hidden; background: var(--stone-2); isolation: isolate; }
+.view img { width: 100%; height: 100%; object-fit: cover; }
+/* Рамка-видоискатель: уголки + лёгкое затемнение всего, что вокруг (тень на 200vmax режется краем .view) */
+.finder {
+  position: absolute; z-index: 2; pointer-events: none;
+  left: var(--fx); top: var(--fy); width: var(--fw); height: var(--fh);
+  box-shadow: 0 0 0 200vmax rgba(20, 17, 15, var(--dim, .16));
+}
+.finder i { position: absolute; width: 20px; height: 20px; border: 0 solid #fff; }
+.finder i:nth-child(1) { left: 0; top: 0; border-width: 1.5px 0 0 1.5px; }
+.finder i:nth-child(2) { right: 0; top: 0; border-width: 1.5px 1.5px 0 0; }
+.finder i:nth-child(3) { left: 0; bottom: 0; border-width: 0 0 1.5px 1.5px; }
+.finder i:nth-child(4) { right: 0; bottom: 0; border-width: 0 1.5px 1.5px 0; }
+.finder__tag {
+  position: absolute; left: 10px; top: 10px;
+  padding: 5px 8px 6px; background: var(--red); color: #fff;
+  font: 600 9.5px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; white-space: nowrap;
+}
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); padding-top: 18px; padding-bottom: var(--section); }
+.hero__meta {
+  display: flex; justify-content: space-between; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  font: 500 10.5px/1.2 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft);
+}
+.hero__name { display: flex; flex-direction: column; margin-top: 20px; font-weight: 400; }
+.hero__first { font: italic 300 clamp(38px, 10.6vw, 92px)/1.05 var(--serif); color: var(--red); margin-left: .04em; }
+.hero__last {
+  font: 400 clamp(52px, 17.6vw, 190px)/.94 var(--serif); letter-spacing: -.012em; text-transform: uppercase;
+  margin-top: -.02em;
+}
+.hero__shot { margin-top: 20px; }
+.view--hero { aspect-ratio: 1 / 1.08; --fx: 24%; --fy: 11%; --fw: 49%; --fh: 87%; }
+.view--hero img { object-position: 50% 50%; }
+
+/* Музейная этикетка под фото */
+.label {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 16px; margin-top: 14px;
+  padding-top: 12px; border-top: 1px solid var(--line);
+}
+.label__no { grid-row: span 2; font: 500 10.5px/1.7 var(--sans); letter-spacing: .14em; color: var(--red); }
+.label__title { font: italic 400 17px/1.25 var(--serif); }
+.label__text { font-size: 13px; line-height: 1.5; color: var(--ink-soft); max-width: 44ch; }
+
+.hero__copy { margin-top: 44px; }
+.hero__motto { font: 300 clamp(34px, 9.6vw, 56px)/1.12 var(--serif); letter-spacing: -.012em; }
+.mark {
+  font-weight: 400; color: var(--red);
+  background: linear-gradient(var(--red), var(--red)) no-repeat 0 94% / var(--u, 100%) .055em;
+}
+.hero__sub { margin-top: 18px; max-width: 36ch; font-size: 15.5px; color: var(--ink-soft); }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.hero__cta .btn { flex: 1 1 100%; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head h2 { margin-top: 18px; font: 400 clamp(46px, 12.4vw, 104px)/1 var(--serif); letter-spacing: -.015em; }
+
+/* ---------- 2. Прогулки ---------- */
+.walks { padding-block: 0 var(--section); }
+.walks__aside { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 40%); gap: 18px; align-items: end; }
+.walks__photo .view { aspect-ratio: 620 / 810; }
+.cap { margin-top: 10px; font: italic 400 13px/1.4 var(--serif); color: var(--ink-soft); }
+
+.walks__list { position: relative; margin-top: 44px; }
+.walks__ol { border-bottom: 1px solid var(--line); }
+.walk { border-top: 1px solid var(--line); }
+.walk__row {
+  display: grid; grid-template-columns: 30px minmax(0, 1fr) 18px; gap: 12px; align-items: baseline;
+  padding: 21px 2px 22px; text-decoration: none;
+}
+.walk__no { font: 500 11px/1 var(--sans); letter-spacing: .12em; color: var(--ink-soft); transition: color .3s; }
+.walk__title { font: 400 22px/1.22 var(--serif); transition: color .3s; }
+.walk__go { position: relative; align-self: center; width: 18px; height: 18px; }
+.walk__go::before, .walk__go::after { content: ''; position: absolute; background: currentColor; }
+.walk__go::before { left: 2px; right: 2px; top: 50%; height: 1px; }
+.walk__go::after { right: 2px; top: 50%; width: 7px; height: 7px; background: none; border: solid currentColor; border-width: 1px 1px 0 0; transform: translateY(-50%) rotate(45deg); transform-origin: 70% 30%; }
+.walk__row:hover .walk__title, .walk.is-on .walk__title { color: var(--red); }
+.walk.is-on .walk__no { color: var(--red); }
+/* Видоискатель списка: красные уголки на текущей прогулке */
+.walks__pick { position: absolute; left: -8px; right: -8px; top: 0; height: 0; pointer-events: none; z-index: 1; opacity: 0; }
+.no-motion .walks__pick { display: none; }
+.walks__pick i { position: absolute; width: 14px; height: 14px; border: 0 solid var(--red); }
+.walks__pick i:nth-child(1) { left: 0; top: 0; border-width: 1.5px 0 0 1.5px; }
+.walks__pick i:nth-child(2) { right: 0; top: 0; border-width: 1.5px 1.5px 0 0; }
+.walks__pick i:nth-child(3) { left: 0; bottom: 0; border-width: 0 0 1.5px 1.5px; }
+.walks__pick i:nth-child(4) { right: 0; bottom: 0; border-width: 0 1.5px 1.5px 0; }
+
+/* Личный бренд: фисташковый «зал» */
+.brand {
+  display: grid; gap: 26px; margin: var(--section) calc(-1 * var(--pad)) 0;
+  padding: 26px var(--pad) 30px; background: var(--sage);
+}
+.brand__photo .view { aspect-ratio: 600 / 608; }
+.brand__title { font: 400 clamp(28px, 7.6vw, 46px)/1.12 var(--serif); letter-spacing: -.01em; max-width: 16ch; }
+.brand__cards { display: grid; gap: 12px; margin-top: 24px; }
+.consult {
+  display: grid; gap: 8px; padding: 22px 20px 20px; text-decoration: none;
+  background: var(--paper); color: var(--ink);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.consult:hover, .consult:focus-visible { scale: 1.02; }
+.consult--ink { background: var(--ink); color: var(--stone); }
+.consult__kind { font: 500 10.5px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; opacity: .65; }
+.consult__name { font: italic 400 clamp(25px, 6.8vw, 34px)/1.15 var(--serif); }
+.consult__more {
+  justify-self: start; margin-top: 10px; padding-bottom: 4px; border-bottom: 1px solid currentColor;
+  font: 500 11px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase;
+}
+
+/* ---------- 3. Обо мне ---------- */
+.about { padding-block: 0 var(--section); }
+.about__grid { display: grid; gap: 30px; margin-top: 26px; }
+.view--about { aspect-ratio: 600 / 790; --fx: 21%; --fy: 8%; --fw: 39%; --fh: 37%; }
+.about__hello { font: italic 300 clamp(44px, 12vw, 88px)/1.04 var(--serif); letter-spacing: -.015em; }
+.about__lead { margin-top: 16px; font: 300 clamp(22px, 6vw, 30px)/1.32 var(--serif); max-width: 22ch; }
+.about__text { margin-top: 18px; color: var(--ink-soft); font-size: 15px; max-width: 52ch; }
+.facts { margin-top: 30px; border-top: 1px solid var(--ink); }
+.fact { display: grid; grid-template-columns: minmax(0, 40%) minmax(0, 1fr); gap: 14px; align-items: baseline; padding: 15px 0 16px; border-bottom: 1px solid var(--line); }
+.fact dt { font: 400 24px/1.15 var(--serif); }
+.fact dd { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
+.care { margin-top: 34px; padding: 22px 0 0 18px; border-left: 2px solid var(--red); }
+.care__text { font: italic 400 19px/1.4 var(--serif); max-width: 26ch; margin-bottom: 18px; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end {
+  display: grid; justify-items: center; gap: 14px; text-align: center;
+  padding-block: 54px var(--section); border-top: 1px solid var(--line); margin-inline: var(--pad); padding-inline: 0;
+}
+.concept-end__title { font: 300 clamp(28px, 7.4vw, 46px)/1.15 var(--serif); max-width: 16ch; }
+.concept-end__title em { color: var(--red); }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 14.5px; }
+.concept-end .btn { margin-top: 8px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .concept-end { margin-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+
+  .hero {
+    grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-content: center;
+    min-height: calc(100svh - 34px); padding-top: 26px; padding-bottom: 72px;
+  }
+  .hero__meta, .hero__name { grid-column: 1 / -1; }
+  .hero__name { flex-direction: row; align-items: baseline; gap: 0 28px; margin-top: 14px; }
+  .hero__first { font-size: clamp(54px, 7vw, 104px); }
+  .hero__last { font-size: clamp(84px, 12.8vw, 188px); }
+  .hero__shot { grid-column: 1 / span 8; margin-top: 18px; }
+  .view--hero { aspect-ratio: 1080 / 608; --fx: 35%; --fy: 11%; --fw: 28%; --fh: 87%; }
+  .hero__copy { grid-column: 9 / -1; align-self: end; margin: 0 0 4px; }
+  .hero__motto { font-size: clamp(34px, 3vw, 44px); }
+  .hero__sub { font-size: 15px; }
+  .hero__cta .btn { flex: 1 1 auto; }
+
+  .walks { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: clamp(48px, 7vw, 110px); align-items: start; }
+  .walks__aside { position: sticky; top: 48px; display: block; }
+  .walks__photo { margin-top: 36px; width: min(100%, 340px); }
+  .walks__list { margin-top: 24px; }
+  .walk__row { grid-template-columns: 48px minmax(0, 1fr) 22px; padding: 28px 4px 29px; }
+  .walk__title { font-size: 30px; }
+  .brand {
+    grid-column: 1 / -1; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: clamp(48px, 7vw, 110px);
+    align-items: center; margin-inline: 0; padding: 56px;
+  }
+  .brand__cards { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin-top: 36px; }
+  .consult { min-height: 230px; padding: 26px 24px 24px; align-content: space-between; }
+
+  .about__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: clamp(48px, 7vw, 110px); align-items: start; margin-top: 36px; }
+  .about__shot { position: sticky; top: 48px; }
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; }
+  .fact { grid-template-columns: minmax(0, 1fr); gap: 8px; border-bottom: 0; padding-top: 18px; }
+  .fact dt { font-size: 30px; }
+}

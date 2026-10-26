@@ -1,0 +1,284 @@
+/* Симметрия · биомеханотерапия — концепт. Палитра из логотипа: глубокий синий, лайм, белый. Тема — ось симметрии и выравнивание. */
+:root {
+  --navy: #0f2242;
+  --navy-2: #15294f;
+  --navy-3: #1d3765;
+  --deep: #0a172e;
+  --lime: #8fe02e;
+  --lime-deep: #5ea514;
+  --ice: #eef3f9;
+  --ice-2: #e1e9f3;
+  --ink: #0f2242;
+  --ink-soft: #4d5d78;
+  --mist: rgba(233, 240, 250, .7);
+  --line-d: rgba(255, 255, 255, .12);
+  --line-l: rgba(15, 34, 66, .12);
+  --pad: clamp(20px, 5.2vw, 64px);
+  --inline: max(var(--pad), calc((100vw - 1240px) / 2));
+  --section: clamp(84px, 12vw, 150px);
+  --display: 'Science Gothic', 'Golos Text', system-ui, sans-serif;
+  --sans: 'Golos Text', system-ui, -apple-system, sans-serif;
+  --concept-bg: #0a172e;
+  --concept-ink: #dce6f3;
+}
+
+body { background: var(--navy); color: #fff; font: 400 16px/1.55 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--inline); }
+.lime { color: var(--lime); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 26px; border-radius: 999px;
+  background: var(--lime); color: var(--navy); text-decoration: none;
+  font: 600 15.5px/1 var(--sans); letter-spacing: .01em; text-align: center;
+  box-shadow: 0 16px 34px -16px rgba(143, 224, 46, .55);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn:hover, .btn:focus-visible { scale: 1.04; }
+.btn--ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .3); }
+
+/* ---------- 1. Hero ---------- */
+.hero { position: relative; isolation: isolate; padding-top: 22px; padding-bottom: clamp(90px, 11vw, 140px); }
+.hero::before { /* сетка, как на снимке */
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+  background-size: 28px 28px; background-position: center top;
+  -webkit-mask-image: radial-gradient(120% 70% at 70% 30%, #000 30%, transparent 85%);
+  mask-image: radial-gradient(120% 70% at 70% 30%, #000 30%, transparent 85%);
+}
+.hero::after { /* мягкое лаймовое свечение за осью */
+  content: ''; position: absolute; z-index: -1; pointer-events: none;
+  width: 520px; height: 520px; right: -260px; top: 80px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(143, 224, 46, .16), rgba(143, 224, 46, 0));
+}
+
+.hero__brand { display: flex; align-items: center; gap: 12px; }
+.logo { width: 42px; height: 42px; flex: none; overflow: visible; }
+.logo path { fill: none; stroke-width: 9.4; }
+.logo__top { stroke: var(--lime); }
+.logo__bottom { stroke: #fff; }
+.wordmark {
+  font: 800 17px/1.1 var(--display); font-stretch: 112.5%; letter-spacing: .03em; text-transform: uppercase;
+}
+.hero__tag {
+  margin-left: auto; text-align: right;
+  font: 500 9px/1.4 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--mist);
+}
+
+.hero__body { display: grid; grid-template-columns: minmax(0, 1fr) 92px; gap: 4px; margin-top: 30px; }
+.kicker {
+  display: flex; align-items: center; gap: 10px;
+  font: 500 10.5px/1 var(--display); font-stretch: 125%; letter-spacing: .2em; text-transform: uppercase; color: var(--lime);
+}
+.kicker::before { content: ''; width: 22px; height: 1.5px; background: var(--lime); }
+.hero__title {
+  margin-top: 18px;
+  font: 700 clamp(36px, 9.6vw, 96px)/1.06 var(--display); font-stretch: 87.5%; letter-spacing: -.005em;
+}
+.hero__lead { margin-top: 18px; font-size: 17px; line-height: 1.45; color: var(--mist); max-width: 24ch; }
+.cities { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; }
+.cities li {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 12px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line-d);
+  font: 500 13px/1 var(--sans); background: rgba(255, 255, 255, .03);
+}
+.cities li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--lime); }
+
+/* Фигура: позвоночник на оси симметрии */
+.axis-fig { position: relative; min-height: 360px; }
+.spine { display: block; width: 100%; height: 100%; overflow: visible; }
+.ruler { stroke: rgba(255, 255, 255, .22); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.axis-line { stroke: var(--lime); stroke-width: 1.2; stroke-dasharray: 3 5; vector-effect: non-scaling-stroke; opacity: .85; }
+.level line { stroke: rgba(255, 255, 255, .5); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.level circle { fill: var(--lime); }
+.vb__body { fill: #fff; }
+.vb__wing { fill: rgba(255, 255, 255, .3); }
+.vb__disc { fill: var(--lime); }
+.sacrum { fill: rgba(255, 255, 255, .85); }
+.pulse { fill: var(--lime); opacity: 0; }
+.scan {
+  position: absolute; left: -6px; right: -6px; top: 0; height: 2px; pointer-events: none; opacity: 0;
+  background: linear-gradient(90deg, transparent, var(--lime) 30%, var(--lime) 70%, transparent);
+  box-shadow: 0 0 18px 2px rgba(143, 224, 46, .55);
+}
+.axis-fig__corner, .axis-fig__ring { display: none; }
+.axis-fig__chip {
+  position: absolute; right: 0; bottom: -10px; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; border-radius: 999px;
+  background: rgba(15, 34, 66, .9); box-shadow: inset 0 0 0 1px var(--line-d);
+  font: 500 9px/1 var(--display); font-stretch: 125%; letter-spacing: .12em; text-transform: uppercase; color: var(--mist);
+}
+.axis-fig__chip i { width: 5px; height: 5px; border-radius: 50%; background: var(--lime); }
+
+.hero__cta { display: grid; gap: 10px; margin-top: 34px; }
+.hero__cta-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+.hero__cta-row .btn { padding: 0 14px; }
+
+.hero__about {
+  margin-top: 30px; padding: 18px 18px 18px 20px; border-left: 2px solid var(--lime);
+  border-radius: 0 18px 18px 0; background: rgba(255, 255, 255, .04);
+  font-size: 15.5px; line-height: 1.6; color: var(--mist);
+}
+.hero__about b { color: #fff; font-weight: 600; }
+.hero__about b.lime { color: var(--lime); }
+
+/* ---------- заголовки секций ---------- */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 500 10.5px/1 var(--display); font-stretch: 125%; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { padding: 5px 7px 4px; border-radius: 6px; background: var(--lime); color: var(--navy); letter-spacing: .06em; font-weight: 700; }
+.sec-head h2 {
+  margin-top: 18px;
+  font: 700 clamp(36px, 9.6vw, 76px)/1.08 var(--display); font-stretch: 87.5%; letter-spacing: -.005em;
+}
+.sec-sub { margin-top: 18px; font-size: 16.5px; line-height: 1.55; color: var(--ink-soft); max-width: 44ch; }
+.hl { padding: 0 .08em; background: linear-gradient(transparent 64%, var(--lime) 64%, var(--lime) 92%, transparent 92%); }
+
+/* ---------- 2. Что мы лечим: всё симметрично от оси ---------- */
+.cure {
+  position: relative; z-index: 1;
+  padding-block: var(--section) calc(var(--section) + 32px);
+  background: var(--ice); color: var(--ink); border-radius: 32px 32px 0 0;
+}
+.cure .sec-head { text-align: center; margin-inline: auto; max-width: 720px; }
+.cure .sec-sub { margin-inline: auto; }
+.cure__label {
+  margin-top: 44px; text-align: center;
+  font: 600 11px/1 var(--display); font-stretch: 125%; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft);
+}
+.cure__grid { position: relative; margin-top: 18px; }
+.cure__axis {
+  position: absolute; left: 50%; top: -12px; bottom: -12px; width: 0; translate: -.75px 0;
+  border-left: 1.5px dashed var(--lime-deep); transform-origin: 50% 0;
+}
+.tiles { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.tile {
+  display: flex; flex-direction: column; justify-content: space-between; gap: 20px;
+  min-height: 116px; padding: 15px 14px 17px; border-radius: 18px; background: #fff;
+  box-shadow: 0 1px 0 rgba(15, 34, 66, .05), 0 20px 34px -26px rgba(15, 34, 66, .45);
+}
+.tile__n {
+  align-self: flex-start; padding: 5px 7px 4px; border-radius: 6px; background: var(--ice-2);
+  font: 700 11px/1 var(--display); font-stretch: 125%; letter-spacing: .06em; color: var(--navy);
+}
+.tile__t { font: 600 16px/1.25 var(--sans); color: var(--ink); hyphens: manual; }
+
+.restore {
+  position: relative; margin-top: 14px; padding: 26px 22px 12px; border-radius: 24px;
+  background: var(--navy); color: #fff;
+}
+.restore__title {
+  font: 600 11px/1.4 var(--display); font-stretch: 125%; letter-spacing: .18em; text-transform: uppercase; color: var(--lime);
+}
+.restore__list { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin-top: 16px; column-gap: 16px; }
+.restore__list li {
+  padding: 15px 0 16px; border-top: 1px solid var(--line-d);
+  font: 700 25px/1.1 var(--display); font-stretch: 87.5%;
+}
+.restore__list span {
+  display: block; margin-bottom: 7px;
+  font: 500 11px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--mist);
+}
+
+/* ---------- 3. Курс ---------- */
+.course {
+  position: relative; z-index: 2; margin-top: -32px;
+  padding-block: var(--section); background: var(--navy); border-radius: 32px 32px 0 0;
+}
+.course .eyebrow, .course .sec-sub { color: var(--mist); }
+.course__btn { margin-top: 28px; }
+.course__main { display: grid; gap: 16px; margin-top: 48px; }
+.stage { padding: 24px 20px 26px; border-radius: 26px; background: var(--navy-2); box-shadow: inset 0 0 0 1px var(--line-d); }
+.stage__label span {
+  display: inline-block; padding: 6px 9px 5px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgba(143, 224, 46, .5);
+  font: 600 10.5px/1 var(--display); font-stretch: 125%; letter-spacing: .18em; text-transform: uppercase; color: var(--lime);
+}
+.stage__title { margin-top: 14px; font: 700 27px/1.12 var(--display); font-stretch: 87.5%; }
+
+.steps-wrap { position: relative; margin-top: 20px; }
+.steps__line { position: absolute; left: 13px; top: 18px; bottom: 18px; width: 2px; border-radius: 2px; background: rgba(255, 255, 255, .12); }
+.steps__line span { position: absolute; inset: 0; border-radius: inherit; background: var(--lime); transform-origin: 50% 0; }
+.step { position: relative; display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 14px; align-items: start; padding: 9px 0; }
+.step__node { /* узел-позвонок с номером */
+  display: grid; place-items: center; width: 28px; height: 20px; margin-top: 1px; border-radius: 6px;
+  background: var(--navy-2); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .3);
+  font: 700 11px/1 var(--display); font-stretch: 125%; color: var(--mist);
+  transition: background-color .45s, box-shadow .45s, color .45s;
+}
+.step.is-on .step__node, .no-motion .step__node { background: var(--lime); box-shadow: inset 0 0 0 1.5px var(--lime); color: var(--navy); }
+.step__t { font-size: 16px; line-height: 1.4; font-weight: 500; }
+
+.stage__text { margin-top: 12px; color: var(--mist); font-size: 15.5px; }
+.perks { display: grid; gap: 10px; margin-top: 18px; }
+.perk {
+  display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: start;
+  padding: 16px 16px 17px; border-radius: 18px; background: rgba(255, 255, 255, .05);
+}
+.perk__n { padding-top: 3px; font: 700 13px/1 var(--display); font-stretch: 125%; color: var(--lime); }
+.perk p { font-size: 15.5px; line-height: 1.45; }
+
+/* ---------- финал ---------- */
+.concept-end { padding-block: 84px 100px; text-align: center; background: var(--deep); }
+.concept-end__title { font: 700 clamp(30px, 8vw, 56px)/1.1 var(--display); font-stretch: 87.5%; }
+.concept-end__text { margin: 16px auto 28px; max-width: 40ch; color: var(--mist); }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 960px) {
+  .hero {
+    display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); column-gap: 72px;
+    grid-template-areas: "brand fig" "text fig" "cta fig" "about fig"; grid-template-rows: auto auto auto 1fr;
+    padding-top: 40px;
+  }
+  .hero::after { width: 900px; height: 900px; right: -200px; top: -120px; }
+  .hero__brand { grid-area: brand; }
+  .hero__tag { margin-left: 22px; padding-left: 22px; border-left: 1px solid var(--line-d); text-align: left; }
+  .hero__body { display: contents; }
+  .hero__text { grid-area: text; margin-top: 64px; }
+  .hero__title { font-size: clamp(56px, 5.9vw, 88px); }
+  .hero__lead { font-size: 20px; max-width: 30ch; }
+  .hero__cta { grid-area: cta; grid-template-columns: auto auto; justify-content: start; margin-top: 40px; }
+  .hero__cta-row { display: flex; }
+  .hero__cta-row .btn { padding: 0 26px; }
+  .hero__about { grid-area: about; align-self: start; margin-top: 48px; max-width: 600px; }
+
+  .axis-fig {
+    grid-area: fig; align-self: stretch; min-height: 680px; margin-top: 4px;
+    display: grid; place-items: center; padding: 56px 40px;
+    border-radius: 32px; background: rgba(255, 255, 255, .025); box-shadow: inset 0 0 0 1px var(--line-d);
+  }
+  .spine { position: relative; width: auto; height: 100%; max-height: 640px; }
+  .axis-fig__ring { display: block; position: absolute; left: 50%; top: 50%; width: min(86%, 520px); translate: -50% -50%; pointer-events: none; }
+  .axis-fig__ring path { fill: none; stroke-width: 9.4; stroke: rgba(255, 255, 255, .045); }
+  .axis-fig__ring .logo__top { stroke: rgba(143, 224, 46, .09); }
+  .axis-fig__corner {
+    display: block; position: absolute; top: 22px; left: 24px;
+    font: 500 10px/1 var(--display); font-stretch: 125%; letter-spacing: .2em; text-transform: uppercase; color: var(--mist);
+  }
+  .axis-fig__chip { right: auto; left: 50%; translate: -50% 0; bottom: 20px; font-size: 10px; padding: 8px 12px; }
+  .scan { left: 24px; right: 24px; }
+
+  .cure .sec-head h2 { font-size: clamp(48px, 5.6vw, 80px); }
+  .cure__label { margin-top: 64px; }
+  .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .tile { min-height: 168px; padding: 20px 20px 22px; }
+  .tile__t { font-size: 19px; }
+  .restore { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 2fr); align-items: center; gap: 40px; margin-top: 16px; padding: 30px 36px; }
+  .restore__list { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 0; column-gap: 24px; }
+  .restore__list li { border-top: 0; border-left: 1px solid var(--line-d); padding: 6px 0 6px 20px; font-size: 30px; }
+
+  .course { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); column-gap: 80px; align-items: start; }
+  .course__side { position: sticky; top: 48px; }
+  .course .sec-head h2 { font-size: clamp(48px, 5vw, 72px); }
+  .course__main { margin-top: 0; gap: 20px; }
+  .stage { padding: 34px 36px 36px; }
+  .stage__title { font-size: 34px; }
+  .step__t { font-size: 17px; }
+  .perks { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .perk { grid-template-columns: minmax(0, 1fr); align-content: start; gap: 14px; }
+}

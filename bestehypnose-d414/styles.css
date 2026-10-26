@@ -1,0 +1,259 @@
+/* Александр Лоренц — курс невербального гипноза.
+   Айдентика: глубокий ультрамарин (стена с его второго фото) + коралл (его поло) + слоновая кость.
+   Шрифты: Fira Sans Extra Condensed (узкие заглавные, как на его баннере) + EB Garamond (курсивные акценты и текст).
+   Фирменный приём — «тоннель внимания»: кольца со смещёнными центрами, при вращении качаются вокруг портрета. */
+:root {
+  --blue: #0e1846;
+  --blue-2: #16215f;
+  --blue-3: #2a3a94;
+  --ivory: #f5f0e8;
+  --paper: #ede6da;
+  --coral: #f3987b;
+  --coral-2: #ffb79f;
+  --ink: #111a44;
+  --muted-d: rgba(245, 240, 232, .74);
+  --muted-l: rgba(17, 26, 68, .72);
+  --line-d: rgba(245, 240, 232, .16);
+  --line-l: rgba(17, 26, 68, .14);
+  --f-caps: 'Fira Sans Extra Condensed', 'Arial Narrow', sans-serif;
+  --f-serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --gutter: 22px;
+  --tw: 663px; /* ширина «тоннеля»; портрет = 35.6% от неё */
+  --concept-bg: #080e2e;
+  --concept-ink: #f5f0e8;
+}
+
+body { background: var(--blue); color: var(--ivory); font: 400 19px/1.5 var(--f-serif); }
+main { overflow: hidden; }
+em { font-style: italic; }
+.nw { white-space: nowrap; }
+
+/* ---------- кнопки: только плавное увеличение при наведении ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 58px; padding: 0 30px; border-radius: 999px;
+  background: var(--coral); color: var(--ink);
+  font: 500 17px/1.1 var(--f-caps); letter-spacing: .08em; text-transform: uppercase; text-align: center;
+  text-decoration: none;
+  transition: scale .4s cubic-bezier(.2, .7, .2, 1), background-color .3s ease;
+}
+.btn:hover { scale: 1.04; background: var(--coral-2); }
+.btn--ghost { background: transparent; color: var(--ivory); box-shadow: inset 0 0 0 1px rgba(245, 240, 232, .38); }
+.btn--ghost:hover { background: rgba(245, 240, 232, .08); }
+.btn--ink { background: var(--ink); color: var(--ivory); }
+.btn--ink:hover { background: var(--blue-3); }
+
+/* ---------- общие заголовки секций ---------- */
+.eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font: 500 13px/1 var(--f-caps); letter-spacing: .2em; text-transform: uppercase;
+}
+.eyebrow span { display: inline-flex; align-items: center; gap: 12px; }
+.eyebrow span::after { content: ''; width: 28px; height: 1px; background: currentColor; opacity: .5; }
+.sec-head h2 {
+  margin-top: 18px;
+  font: 600 clamp(50px, 13.4vw, 104px)/.92 var(--f-caps); letter-spacing: -.003em; text-transform: uppercase;
+}
+.sec-head h2 em {
+  font: italic 400 .66em/1 var(--f-serif); letter-spacing: 0; text-transform: none;
+}
+
+/* ================= 1. HERO ================= */
+.hero {
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  padding: 30px var(--gutter) 46px;
+  background:
+    radial-gradient(120% 70% at 50% 52%, #24318c 0%, #172263 32%, #0e1846 64%, #0a1238 100%);
+}
+.hero > * { position: relative; z-index: 1; }
+.kicker {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px;
+  font: 500 13px/1.2 var(--f-caps); letter-spacing: .18em; text-transform: uppercase; color: var(--muted-d);
+}
+.kicker span:first-child { color: var(--ivory); }
+/* на телефоне имя и роль — двумя строками, без висящей точки */
+@media (max-width: 719px) { .kicker { flex-direction: column; align-items: flex-start; } .kicker i { display: none; } }
+.kicker i, .hero__motto i { width: 5px; height: 5px; border-radius: 50%; background: var(--coral); }
+
+.hero__title { margin-top: 18px; }
+.t-caps {
+  display: block;
+  font: 600 clamp(86px, 25vw, 176px)/.86 var(--f-caps); letter-spacing: -.004em; text-transform: uppercase;
+}
+.t-serif {
+  display: block; padding: .02em 0 .1em;
+  font: italic 400 clamp(47px, 13.7vw, 96px)/1 var(--f-serif); color: var(--coral);
+}
+
+.hero__visual { position: relative; z-index: 0; height: 330px; margin: -34px calc(var(--gutter) * -1) 0; }
+.tunnel {
+  position: absolute; left: 50%; top: 50%;
+  width: var(--tw); height: var(--tw); margin: calc(var(--tw) / -2) 0 0 calc(var(--tw) / -2);
+  overflow: visible; pointer-events: none;
+}
+.tunnel circle { fill: none; stroke: var(--ivory); stroke-width: 1; vector-effect: non-scaling-stroke; stroke-opacity: .12; }
+.tunnel__rings circle:nth-child(1) { stroke-opacity: .46; }
+.tunnel__rings circle:nth-child(2) { stroke-opacity: .36; }
+.tunnel__rings circle:nth-child(3) { stroke-opacity: .3; }
+.tunnel__rings circle:nth-child(5) { stroke-opacity: .24; }
+.tunnel__rings circle:nth-child(6) { stroke-opacity: .2; }
+.tunnel__rings circle:nth-child(7) { stroke-opacity: .17; }
+.tunnel__rings circle:nth-child(n+11) { stroke-opacity: .08; }
+.tunnel__rings .is-accent { stroke: var(--coral); stroke-opacity: .75; stroke-width: 1.4; }
+.tunnel__wave { stroke: var(--coral) !important; stroke-width: 1.4 !important; opacity: 0; }
+
+.hero__portrait {
+  --p: calc(var(--tw) * .356);
+  position: absolute; left: 50%; top: 50%;
+  width: var(--p); height: var(--p); margin: calc(var(--p) / -2) 0 0 calc(var(--p) / -2);
+  border-radius: 50%; overflow: hidden;
+  box-shadow: 0 30px 70px -20px rgba(3, 6, 25, .7), 0 0 0 1px rgba(245, 240, 232, .25);
+}
+.hero__portrait img { width: 100%; height: 100%; object-fit: cover; scale: 1.04; }
+
+.hero__lead { margin-top: 2px; font: 400 25px/1.25 var(--f-serif); }
+.hero__motto {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 12px;
+  font: 500 12.5px/1.2 var(--f-caps); letter-spacing: .2em; text-transform: uppercase; color: var(--muted-d);
+}
+.hero__actions { display: grid; gap: 12px; margin-top: 26px; }
+
+/* ================= 2. КУРСЫ ================= */
+.program { position: relative; display: flex; flex-direction: column; background: var(--ivory); color: var(--ink); padding: 92px var(--gutter) 100px; }
+/* на телефоне колонка «заголовок + особенности» распадается: особенности идут после ступеней */
+.program__aside { display: contents; }
+.program .sec-head { order: 1; }
+.program .steps { order: 2; }
+.program .feats { order: 3; margin-top: 44px; }
+.program .program__motto { order: 4; }
+.program .eyebrow { color: var(--blue-3); }
+.program .sec-head h2 em { color: var(--blue-3); }
+
+.steps { margin-top: 44px; counter-reset: s; }
+.step {
+  position: relative;
+  display: grid; grid-template-columns: 66px minmax(0, 1fr); gap: 18px; align-items: start;
+  padding: 26px 0 28px; border-top: 1px solid var(--line-l);
+}
+.step__badge { position: relative; display: grid; place-items: center; width: 66px; height: 66px; }
+.step__badge svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.step__badge circle,
+.about__orbit circle,
+.concept-end__disc circle { fill: none; stroke: currentColor; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.step__badge { color: var(--blue-3); }
+.step__badge b { position: relative; font: 500 15px/1 var(--f-caps); letter-spacing: .06em; color: var(--ink); }
+.step h3 { font: 600 25px/1.04 var(--f-caps); letter-spacing: .01em; text-transform: uppercase; padding-top: 6px; }
+.step p { margin-top: 10px; font-size: 19px; line-height: 1.45; color: var(--muted-l); }
+.chain span { display: block; }
+.chain span + span { margin-top: 3px; }
+
+.step--deep {
+  margin-top: 8px; padding: 26px 20px 28px; border: 0; border-radius: 24px;
+  background: var(--blue); color: var(--ivory);
+}
+.step--deep .step__badge { color: var(--coral); }
+.step--deep .step__badge b { color: var(--ivory); }
+.step--deep p { color: var(--muted-d); }
+
+.feats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; }
+.feats li {
+  display: flex; align-items: center; gap: 10px; padding: 15px 0;
+  border-top: 1px solid var(--line-l);
+  font: 500 16px/1.15 var(--f-caps); letter-spacing: .06em; text-transform: uppercase;
+}
+.feats li::before { content: ''; flex: none; width: 9px; height: 9px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--blue-3); }
+.program__motto {
+  margin-top: 40px;
+  font: 600 clamp(40px, 11vw, 72px)/.95 var(--f-caps); text-transform: uppercase;
+}
+.program__motto em { font: italic 400 .7em/1 var(--f-serif); text-transform: none; color: var(--blue-3); }
+
+/* ================= 3. О СЕБЕ ================= */
+.about { position: relative; overflow: hidden; background: var(--blue); padding: 92px var(--gutter) 104px; }
+.about .eyebrow { color: var(--coral); }
+.about .sec-head h2 em { color: var(--coral); }
+.about__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 46px; }
+.about__photo { position: relative; }
+.about__photo .frame {
+  position: relative; z-index: 1; overflow: hidden; aspect-ratio: 820 / 941;
+  border-radius: 999px 999px 26px 26px;
+  box-shadow: 0 40px 80px -30px rgba(2, 5, 22, .8);
+}
+.about__photo img { width: 100%; height: 100%; object-fit: cover; scale: 1.03; }
+.about__orbit { position: absolute; z-index: 0; right: -64px; top: -46px; width: 210px; height: 210px; color: var(--coral); opacity: .7; overflow: visible; }
+.about__lead { margin-top: 26px; font: 400 27px/1.28 var(--f-serif); }
+.about__p { margin-top: 18px; color: var(--muted-d); }
+.format__title { margin-top: 46px; font: 600 30px/1 var(--f-caps); text-transform: uppercase; letter-spacing: .01em; }
+.format { margin-top: 18px; }
+.format li {
+  display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 10px; align-items: baseline;
+  padding: 16px 0; border-top: 1px solid var(--line-d); font-size: 20px; line-height: 1.35;
+}
+.format li:last-child { border-bottom: 1px solid var(--line-d); }
+.format__n { font: 500 15px/1 var(--f-caps); letter-spacing: .08em; color: var(--coral); }
+.about__actions { display: grid; gap: 12px; margin-top: 34px; }
+
+/* ================= концепт ================= */
+.concept-end {
+  display: grid; justify-items: center; gap: 16px; text-align: center;
+  padding: 88px var(--gutter) 96px; background: var(--ivory); color: var(--ink);
+}
+.concept-end__disc { width: 86px; height: 86px; color: var(--blue-3); overflow: visible; margin-bottom: 6px; }
+.concept-end__title { font: 400 34px/1.1 var(--f-serif); max-width: 15ch; }
+.concept-end__title em { color: var(--blue-3); }
+.concept-end__text { max-width: 30ch; color: var(--muted-l); font-size: 18px; }
+.concept-end .btn { margin-top: 8px; }
+
+/* ================= ПЛАНШЕТ / ДЕСКТОП ================= */
+@media (min-width: 720px) {
+  :root { --gutter: 48px; --tw: 860px; }
+  .hero__visual { height: 470px; }
+  .hero__actions, .about__actions { display: flex; flex-wrap: wrap; }
+  .feats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1100px) {
+  :root { --gutter: max(64px, 6vw); --tw: 1180px; }
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: "kicker visual" "title visual" "lead visual" "motto visual" "actions visual";
+    grid-template-rows: auto auto auto auto 1fr;
+    column-gap: 40px; align-content: center;
+    min-height: min(860px, calc(100vh - 34px));
+    padding-top: 92px; padding-bottom: 96px;
+    background: radial-gradient(70% 90% at 74% 50%, #24318c 0%, #172263 30%, #0e1846 62%, #0a1238 100%);
+  }
+  .kicker { grid-area: kicker; }
+  .hero__title { grid-area: title; margin-top: 30px; }
+  .hero__lead { grid-area: lead; margin-top: 26px; font-size: 30px; }
+  .hero__motto { grid-area: motto; }
+  .hero__actions { grid-area: actions; align-self: start; margin-top: 36px; }
+  .hero__visual { grid-area: visual; height: auto; min-height: 640px; margin: -92px calc(var(--gutter) * -1) -96px 0; }
+
+  .program { padding: 140px var(--gutter) 150px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 72px; }
+  .program__aside { display: block; position: sticky; top: 60px; align-self: start; }
+  .program .feats { grid-template-columns: minmax(0, 1fr); max-width: 340px; margin-top: 56px; }
+  .program .feats li { padding: 17px 0; font-size: 17px; }
+  .program .feats li:last-child { border-bottom: 1px solid var(--line-l); }
+  .steps { margin-top: 0; }
+  .step { grid-template-columns: 84px minmax(0, 1fr); gap: 28px; padding: 32px 0 34px; }
+  .step:nth-child(2) { margin-left: 28px; }
+  .step:nth-child(3) { margin-left: 56px; }
+  .step:nth-child(4) { margin-left: 84px; }
+  .step--deep { margin-left: 112px; padding: 34px 32px 36px; }
+  .step__badge { width: 84px; height: 84px; }
+  .step h3 { font-size: 30px; }
+  .program__motto { grid-column: 1 / -1; margin-top: 100px; text-align: right; }
+
+  .about { padding: 140px var(--gutter) 150px; }
+  .about__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 96px; align-items: start; }
+  .about__photo { position: sticky; top: 60px; }
+  .about__orbit { width: 300px; height: 300px; right: -110px; top: -80px; }
+  .about__lead { font-size: 32px; }
+  .format { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 36px; }
+  .format li:nth-last-child(2) { border-bottom: 1px solid var(--line-d); }
+
+  .concept-end { padding: 120px var(--gutter) 130px; }
+  .concept-end__title { font-size: 46px; max-width: 22ch; }
+}

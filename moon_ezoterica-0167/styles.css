@@ -1,0 +1,201 @@
+/* Елена Мун · эзотерик, астролог, таролог — концепт. Палитра её картинок: ночной кобальт, лунное серебро, янтарь ковчега. */
+:root {
+  --night: #060919;
+  --night-2: #0b1030;
+  --indigo: #151a55;
+  --violet: #2a2468;
+  --moon: #eef0ff;
+  --moon-dim: #a9b1de;
+  --amber: #f3b564;
+  --amber-deep: #d4893a;
+  --pearl: #ecebf6;
+  --pearl-2: #e0ddf0;
+  --ink: #12163f;
+  --ink-soft: #4b4f7c;
+  --line: rgba(169, 177, 222, .2);
+  --radius: 28px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(80px, 11vw, 124px);
+  --sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --display: 'Forum', Georgia, serif;
+  --concept-bg: #0f1440;
+  --concept-ink: #e7e9ff;
+}
+
+body { background: var(--night); color: var(--moon); font: 400 16px/1.6 var(--sans); }
+em { font-family: var(--display); font-style: normal; font-weight: 400; color: var(--amber); }
+main { position: relative; overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: linear-gradient(180deg, #f8c982, #eba74f); color: #1a1230; text-decoration: none;
+  font: 500 15px/1 var(--sans); letter-spacing: .03em; text-align: center;
+  box-shadow: 0 16px 36px -14px rgba(243, 181, 100, .6);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* мягкий блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .5) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 46px; padding: 0 22px; font-size: 14px; }
+.btn--ghost { background: transparent; color: var(--moon); box-shadow: inset 0 0 0 1.5px rgba(169, 177, 222, .55); }
+.btn--ghost::after { display: none; }
+
+/* ---------- звёзды ---------- */
+.stars { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.stars i {
+  position: absolute; width: var(--s); height: var(--s); border-radius: 50%;
+  background: #dfe6ff; box-shadow: 0 0 calc(var(--s) * 3) rgba(190, 205, 255, .7);
+  opacity: var(--o); animation: twinkle var(--d) ease-in-out var(--l) infinite alternate;
+}
+@keyframes twinkle { to { opacity: .06; scale: .5; } }
+
+/* ---------- лунная нить ---------- */
+.lunar { position: fixed; z-index: 40; right: 4px; top: 16vh; bottom: 12vh; width: 24px; pointer-events: none; }
+.lunar__rail { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, transparent, rgba(169, 177, 222, .35) 12%, rgba(169, 177, 222, .35) 88%, transparent); }
+.lunar__moon { position: absolute; left: 0; top: calc(var(--p, 0) * (100% - 24px)); overflow: visible; filter: drop-shadow(0 0 5px rgba(246, 234, 208, .55)); }
+.lunar__disc { fill: #1b2160; fill-opacity: .92; }
+.lunar__lit { fill: #f6ead0; }
+.lunar__ring { fill: none; stroke: rgba(246, 234, 208, .6); stroke-width: .8; }
+.no-motion .lunar { display: none; }
+
+/* ---------- 1. Hero ---------- */
+.hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); padding: 0 0 clamp(70px, 12vw, 120px); }
+.hero__sky { position: relative; height: clamp(380px, 118vw, 600px); }
+.hero__art {
+  position: absolute; inset: 0;
+  -webkit-mask-image: linear-gradient(180deg, #000 54%, transparent 99%); mask-image: linear-gradient(180deg, #000 54%, transparent 99%);
+}
+.hero__art img { width: 100%; height: 100%; object-fit: cover; object-position: 51% 30%; }
+.hero__halo {
+  position: absolute; left: 50%; top: 36%; width: 92%; aspect-ratio: 1; margin: -46% 0 0 -46%; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(120, 160, 255, .42), rgba(120, 160, 255, .12) 60%, transparent 76%);
+}
+.hero .stars { -webkit-mask-image: linear-gradient(180deg, #000 40%, transparent 92%); mask-image: linear-gradient(180deg, #000 40%, transparent 92%); }
+.hero__text { position: relative; z-index: 2; margin-top: -92px; padding-inline: var(--pad); }
+.kicker {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px;
+  font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--moon-dim);
+}
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--amber); }
+.hero__name {
+  margin-top: 16px; font: 400 clamp(64px, 18.4vw, 132px)/1.02 var(--display); letter-spacing: .01em; color: var(--moon);
+}
+.hero__lead { margin-top: 20px; font: 300 clamp(18px, 4.9vw, 25px)/1.45 var(--sans); max-width: 26ch; color: #dfe2fb; }
+.hero__lead em { font-size: 1.1em; }
+.hero__cta { display: grid; gap: 12px; margin: 30px 0 28px; max-width: 440px; }
+.hero__who { display: flex; align-items: center; gap: 12px; font: 400 13px/1 var(--sans); letter-spacing: .06em; color: var(--moon-dim); }
+.hero__who img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1.5px rgba(243, 181, 100, .7), 0 0 0 5px rgba(243, 181, 100, .12); }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 680px; }
+.eyebrow {
+  display: inline-flex; gap: 10px; align-items: center;
+  font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--moon-dim);
+}
+.eyebrow span { color: var(--amber); }
+h2 { text-wrap: balance; margin-top: 18px; font: 400 clamp(32px, 9vw, 60px)/1.08 var(--display); letter-spacing: .005em; }
+.sec-sub { margin-top: 16px; color: var(--moon-dim); max-width: 44ch; }
+
+/* ---------- 2. Ковчег ---------- */
+.kovcheg {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px;
+  padding-block: var(--section);
+  background: linear-gradient(180deg, var(--night) 0, #0e1346 38%, #0a0e30 100%);
+}
+.stars--bg { z-index: 0; -webkit-mask-image: linear-gradient(180deg, #000, transparent 70%); mask-image: linear-gradient(180deg, #000, transparent 70%); }
+.kovcheg > :not(.stars) { position: relative; z-index: 1; }
+.kovcheg__art { margin: 0 -8px; }
+.frame { position: relative; overflow: hidden; border-radius: var(--radius); aspect-ratio: 1; background: var(--indigo); box-shadow: 0 40px 80px -40px rgba(80, 90, 220, .55), 0 0 0 1px rgba(243, 181, 100, .18); }
+.frame img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); }
+.kovcheg__lamp {
+  position: absolute; left: 50%; top: 42%; width: 34%; aspect-ratio: 1; margin: -17% 0 0 -17%; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 205, 120, .6), rgba(255, 190, 100, .2) 55%, transparent 75%);
+  mix-blend-mode: screen; pointer-events: none;
+}
+.kovcheg__text h2 { max-width: 17ch; }
+.bot {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 10px 18px 10px 14px; border-radius: 999px;
+  text-decoration: none; font: 500 15px/1 var(--sans); letter-spacing: .02em; color: var(--moon);
+  background: rgba(169, 177, 222, .1); box-shadow: inset 0 0 0 1px var(--line);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.bot:hover, .bot:focus-visible { scale: 1.04; }
+.bot i { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 10px var(--amber); }
+.actions { display: grid; gap: 12px; margin-top: 28px; max-width: 440px; }
+.textlink {
+  display: inline-block; margin-top: 22px; color: var(--moon-dim); font-size: 15px;
+  text-decoration: underline; text-decoration-color: rgba(243, 181, 100, .5); text-underline-offset: 5px;
+}
+.textlink:hover { color: var(--moon); }
+
+/* ---------- 3. Практики: плитки ---------- */
+.practice { padding-block: var(--section); background: linear-gradient(180deg, #0a0e30, var(--night) 22%, var(--night) 100%); }
+.tiles { display: grid; gap: 16px; margin-top: 38px; }
+.tile { position: relative; display: block; overflow: hidden; border-radius: 26px; aspect-ratio: 4 / 5; background: var(--indigo); isolation: isolate; box-shadow: 0 0 0 1px var(--line); }
+.tile__img, .tile__zoom { position: absolute; inset: 0; }
+.tile__img { overflow: hidden; }
+.tile__zoom { transition: scale 1s cubic-bezier(.2, .7, .2, 1); }
+.tile:hover .tile__zoom { scale: 1.04; }
+.tile__img img { width: 100%; height: 100%; object-fit: cover; }
+.tile::before { /* затемнение под текст */
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(6, 9, 25, 0) 38%, rgba(6, 9, 25, .86) 100%);
+}
+.tile__body { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; padding: 0 76px 22px 22px; }
+.tile__tag { font: 500 11.5px/1.3 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--amber); }
+.tile__title { margin-top: 8px; font: 400 clamp(26px, 7vw, 36px)/1.08 var(--display); }
+.tile__link { color: var(--moon); text-decoration: none; }
+.tile__link::after { content: ''; position: absolute; inset: 0; z-index: 3; }
+.tile__go {
+  position: absolute; z-index: 2; right: 18px; bottom: 20px; width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(238, 240, 255, .12); backdrop-filter: blur(6px); box-shadow: inset 0 0 0 1px rgba(238, 240, 255, .45);
+  transition: background .4s, scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.tile__go::before { content: ''; position: absolute; left: 50%; top: 50%; width: 14px; height: 1.5px; margin: -.75px 0 0 -7px; background: var(--moon); }
+.tile__go::after { content: ''; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -2px; border: solid var(--moon); border-width: 1.5px 1.5px 0 0; rotate: 45deg; }
+.tile:hover .tile__go { background: var(--amber); scale: 1.08; }
+.tile:hover .tile__go::before { background: #1a1230; }
+.tile:hover .tile__go::after { border-color: #1a1230; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; position: relative; z-index: 4; }
+.chips a {
+  display: inline-block; padding: 8px 14px; border-radius: 999px; font-size: 13.5px; line-height: 1.2; text-decoration: none;
+  background: rgba(238, 240, 255, .14); backdrop-filter: blur(8px); box-shadow: inset 0 0 0 1px rgba(238, 240, 255, .3);
+  transition: background .3s, color .3s;
+}
+.chips a:hover { background: var(--amber); color: #1a1230; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; background: var(--night); }
+.concept-end__title { font: 400 clamp(26px, 6.8vw, 42px)/1.15 var(--display); max-width: 18ch; }
+.concept-end__text { color: var(--moon-dim); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1240px) / 2)); }
+  .lunar { right: 22px; width: 32px; }
+  .lunar__moon { width: 32px; height: 32px; top: calc(var(--p, 0) * (100% - 32px)); }
+  .hero { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); align-items: center; gap: clamp(24px, 4vw, 72px); min-height: calc(100svh - 40px); padding-block: 24px; padding-inline: max(var(--pad), calc((100vw - 1240px) / 2)); }
+  .hero__sky { order: 2; height: min(78svh, 740px); }
+  .hero__art { -webkit-mask-image: radial-gradient(ellipse 56% 55% at 50% 48%, #000 54%, transparent 100%); mask-image: radial-gradient(ellipse 56% 55% at 50% 48%, #000 54%, transparent 100%); }
+  .hero__halo { top: 46%; width: 78%; margin: -39% 0 0 -39%; }
+  .hero .stars { -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 48%, #000 40%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at 50% 48%, #000 40%, transparent 100%); }
+  .hero__text { margin-top: 0; padding-inline: 0; }
+  .hero__name { font-size: clamp(84px, 9.4vw, 136px); }
+  .hero__cta { grid-template-columns: auto auto; justify-content: start; max-width: none; }
+  .kovcheg { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(40px, 6vw, 100px); align-items: center; }
+  .kovcheg__art { margin: 0; }
+  .actions { grid-template-columns: auto auto; justify-content: start; max-width: none; }
+  .tiles { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 20px; }
+  .tile { aspect-ratio: auto; min-height: 330px; }
+  .tile--lead { grid-column: 1 / 8; grid-row: 1 / 3; min-height: 680px; }
+  .tile:not(.tile--lead) { grid-column: 8 / 13; }
+  .tile__title { font-size: clamp(30px, 3vw, 40px); }
+  .tile--lead .tile__title { font-size: clamp(38px, 4vw, 54px); }
+}

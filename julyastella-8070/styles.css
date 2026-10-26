@@ -1,0 +1,194 @@
+/* Юлия Овчинникова · метод клеточного омоложения — концепт.
+   Палитра от её Taplink и фото: эспрессо, тауп #a58f77, кость; акцент ржавый — от корсета. Мотив — сантиметровая лента. */
+:root {
+  --espresso: #1b0f09;
+  --cocoa: #2a1810;
+  --umber: #3a2418;
+  --taupe: #a58f77;
+  --sand: #d9cab6;
+  --bone: #eee6da;
+  --paper: #f7f2ea;
+  --ink: #24150d;
+  --ink-soft: #6a5545;
+  --rust: #b4573a;
+  --line: rgba(36, 21, 13, .16);
+  --line-light: rgba(238, 230, 218, .2);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 12vw, 150px);
+  --wrap: 1240px;
+  --display: 'Viaoda Libre', 'Times New Roman', serif;
+  --sans: 'Jost', system-ui, -apple-system, sans-serif;
+  --concept-bg: #0f0805;
+  --concept-ink: #e9dfd2;
+}
+
+html { background: var(--espresso); }
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.62 var(--sans); font-synthesis: none; }
+/* у Viaoda Libre «st» срастается в лигатуру (ломает @julya.stella): font-шорткаты сбрасывают font-variant — нужен !important */
+body, body * { font-variant-ligatures: none !important; }
+.dash { font-family: var(--sans); font-weight: 300; }
+em { font-style: normal; color: var(--taupe); }
+.nw { white-space: nowrap; }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+.sec-head, .offers__grid, .levels__list { max-width: var(--wrap); margin-inline: auto; }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 56px; padding: 0 32px; border-radius: 999px;
+  background: var(--espresso); color: var(--bone); text-decoration: none;
+  font: 500 13px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; text-align: center;
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--light { background: var(--bone); color: var(--espresso); }
+.btn--ghost { background: transparent; color: inherit; box-shadow: inset 0 0 0 1px currentColor; }
+.hero .btn { background: var(--bone); color: var(--espresso); }
+
+/* ---------- общие заголовки ---------- */
+.eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font: 500 11.5px/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--rust); }
+.eyebrow::after { /* мини-лента */
+  content: ''; width: 84px; height: 7px; opacity: .55;
+  background: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 7px);
+}
+h2 { margin-top: 20px; font: 400 clamp(35px, 9.6vw, 78px)/1.1 var(--display); letter-spacing: -.005em; text-wrap: balance; }
+.sec-sub { margin-top: 18px; max-width: 34ch; font: 300 clamp(17px, 4.6vw, 21px)/1.5 var(--sans); color: var(--ink-soft); }
+
+/* ---------- 1. Hero ---------- */
+.hero { position: relative; padding: 0 0 clamp(64px, 11vw, 110px); background: var(--espresso); color: var(--bone); overflow: hidden; }
+.hero__photo { position: relative; height: min(126vw, 600px); }
+.hero__photo .frame { position: relative; height: 100%; overflow: hidden; background: var(--cocoa); }
+.hero__photo img { width: 100%; height: 108%; object-fit: cover; object-position: 56% 6%; }
+.hero__photo::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(27, 15, 9, .4) 0%, rgba(27, 15, 9, 0) 20%, rgba(27, 15, 9, 0) 46%, rgba(27, 15, 9, .8) 80%, var(--espresso) 100%);
+}
+.hero__text { position: relative; z-index: 2; margin-top: -150px; padding-inline: var(--pad); }
+.kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font: 500 11.5px/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: rgba(238, 230, 218, .9); text-shadow: 0 1px 14px rgba(27, 15, 9, .7); }
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--rust); }
+.hero__name { margin-top: 16px; font: 400 clamp(46px, 14.4vw, 150px)/1.08 var(--display); letter-spacing: -.01em; color: var(--bone); }
+.hero__lead { margin-top: 20px; max-width: 30ch; font: 300 clamp(18px, 4.7vw, 24px)/1.45 var(--sans); color: rgba(238, 230, 218, .9); }
+.hero__lead em { color: var(--bone); font-weight: 500; }
+.hero__about { margin-top: 26px; max-width: 44ch; font-size: 15.5px; color: rgba(238, 230, 218, .72); }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 30px; }
+.pills li { padding: 9px 16px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line-light); font: 400 13px/1 var(--sans); letter-spacing: .04em; color: var(--bone); }
+
+/* лента-шкала: число и тик, бегущие вниз по весу */
+.scale { margin-top: 30px; max-width: 440px; }
+.scale__read { display: flex; align-items: baseline; gap: 10px; }
+.scale__num { min-width: 1.9ch; font: 400 clamp(64px, 18vw, 96px)/1 var(--display); font-variant-numeric: tabular-nums; color: var(--bone); }
+.scale__unit { font: 500 12px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--taupe); }
+.scale__cap { margin-left: auto; align-self: flex-end; padding-bottom: 8px; text-align: right; font: 400 12px/1.5 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: rgba(238, 230, 218, .6); }
+.scale__tape {
+  position: relative; height: 52px; margin-top: 14px;
+}
+.scale__tape canvas {
+  display: block; width: 100%; height: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent);
+}
+.scale__mark { position: absolute; left: 50%; top: 0; bottom: 14px; width: 2px; margin-left: -1px; background: var(--rust); }
+.scale__mark::before { content: ''; position: absolute; left: 50%; bottom: -6px; width: 9px; height: 9px; margin-left: -4.5px; transform: rotate(45deg); background: var(--rust); }
+.hero .scale { color: var(--taupe); }
+
+/* ---------- 2. Личная работа ---------- */
+.offers { padding-block: var(--section); background: var(--bone); }
+.offers em { color: #8a6f56; }
+.offers__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin-top: clamp(40px, 7vw, 64px); }
+.offers__photo .frame { position: relative; overflow: hidden; aspect-ratio: 960 / 1180; background: var(--sand); }
+.offers__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 24%; }
+.offer { position: relative; padding: 30px 24px 28px; }
+.offer--light { background: var(--paper); box-shadow: inset 0 0 0 1px var(--line); }
+.offer--dark { background: var(--espresso); color: var(--bone); }
+.offer__meta { display: flex; align-items: flex-start; gap: 10px; font: 500 11.5px/1.3 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+.offer--dark .offer__meta { color: var(--taupe); }
+.offer__dot { flex: none; width: 6px; height: 6px; margin-top: .3em; border-radius: 50%; background: var(--rust); }
+.offer__title { margin-top: 18px; font: 400 clamp(32px, 8.6vw, 42px)/1.1 var(--display); text-wrap: balance; }
+.offer__tag { margin-top: 12px; font: 400 17px/1.4 var(--display); color: var(--rust); }
+.offer__lead { margin-top: 16px; font: 300 18px/1.5 var(--sans); }
+.offer--dark .offer__lead { color: rgba(238, 230, 218, .88); }
+.offer__rows { margin: 26px 0 0; }
+.offer__rows > div { position: relative; padding: 18px 0 16px; }
+.offer__rows > div::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%; transform: scaleX(var(--draw, 1)); }
+.offer--dark .offer__rows > div::before { background: var(--line-light); }
+.offer__rows dt { font: 500 11px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--rust); }
+.offer--dark .offer__rows dt { color: var(--taupe); }
+.offer__rows dd { margin: 10px 0 0; font-size: 15.5px; line-height: 1.62; }
+.offer--dark .offer__rows dd { color: rgba(238, 230, 218, .86); }
+.offer__buy { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 20px; margin-top: 14px; padding-top: 22px; border-top: 1px solid var(--line); }
+.offer--dark .offer__buy { border-color: var(--line-light); }
+.offer__price { display: flex; flex-direction: column; gap: 6px; }
+.offer__price small { font: 500 11px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+.offer__sum { font: 400 clamp(46px, 13vw, 58px)/1 var(--display); white-space: nowrap; }
+.offer__note { margin-top: 16px; font-size: 14px; color: rgba(238, 230, 218, .62); }
+
+/* ---------- 3. Экосистема ---------- */
+.levels { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; padding-block: var(--section); background: var(--espresso); color: var(--bone); }
+.levels .eyebrow { color: var(--taupe); }
+.levels .eyebrow span { color: var(--rust); }
+.levels__head { width: 100%; }
+.levels__photo .frame {
+  position: relative; overflow: hidden; width: min(100%, 460px); margin-inline: auto;
+  aspect-ratio: 864 / 1184; border-radius: 999px 999px 0 0; background: var(--cocoa);
+}
+.levels__photo img { width: 100%; height: 118%; object-fit: cover; object-position: 50% 16%; }
+.levels__list { position: relative; width: 100%; padding-left: 0; }
+.levels__rail { position: absolute; left: 18px; top: 22px; bottom: 22px; width: 11px; pointer-events: none; }
+.levels__rail::before, .levels__rail span {
+  content: ''; position: absolute; inset: 0;
+  background:
+    linear-gradient(var(--taupe), var(--taupe)) 0 0 / 1px 100% no-repeat,
+    repeating-linear-gradient(180deg, var(--taupe) 0 1px, transparent 1px 10px) 0 0 / 6px 100% no-repeat;
+}
+.levels__rail::before { opacity: .22; }
+.levels__rail span { display: block; transform-origin: 50% 0; transform: scaleY(var(--fill, 1)); opacity: .95; }
+.levels__rail span::after { content: ''; position: absolute; left: -3px; bottom: -4px; width: 8px; height: 8px; border-radius: 50%; background: var(--rust); }
+.level { position: relative; padding: 0 0 44px 66px; }
+.level:last-child { padding-bottom: 0; }
+.level__icon {
+  position: absolute; left: 0; top: -4px; display: grid; place-items: center; width: 37px; height: 37px;
+  border-radius: 50%; background: var(--espresso); box-shadow: inset 0 0 0 1px var(--taupe);
+}
+.level__icon svg { width: 20px; height: 20px; fill: none; stroke: var(--bone); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.level__icon path { stroke-dasharray: 1 2; stroke-dashoffset: var(--dash, 0); }
+.level__label { font: 500 11.5px/1.3 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--taupe); }
+.level__title { margin-top: 12px; font: 400 clamp(26px, 7.4vw, 34px)/1.15 var(--display); }
+.level__text { margin-top: 12px; max-width: 40ch; font: 300 17px/1.6 var(--sans); color: rgba(238, 230, 218, .84); }
+
+/* ---------- Концепт: финал ---------- */
+.concept-end { padding-block: clamp(70px, 10vw, 110px); text-align: center; background: var(--umber); color: var(--bone); }
+.concept-end__title { font: 400 clamp(30px, 8vw, 48px)/1.15 var(--display); }
+.concept-end__text { max-width: 44ch; margin: 16px auto 28px; color: rgba(238, 230, 218, .75); }
+
+/* ---------- Десктоп ---------- */
+@media (min-width: 960px) {
+  .hero { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr); align-items: stretch; min-height: min(900px, calc(100vh - 40px)); padding: 0; }
+  .hero__photo { order: 2; height: auto; min-height: 720px; }
+  .hero__photo::after { background: linear-gradient(90deg, var(--espresso) 0%, rgba(27, 15, 9, 0) 34%), linear-gradient(0deg, rgba(27, 15, 9, .6) 0%, rgba(27, 15, 9, 0) 26%); }
+  .hero__text { order: 1; align-self: center; margin: 0; padding: 56px 24px 56px max(var(--pad), calc((100vw - var(--wrap)) / 2)); }
+  .hero__name { margin-top: 14px; font-size: clamp(60px, 6vw, 92px); }
+  .hero__lead { margin-top: 18px; max-width: 34ch; font-size: 20px; }
+  .scale { margin-top: 24px; }
+  .scale__num { font-size: 76px; }
+  .hero__about { margin-top: 18px; }
+  .pills { margin: 18px 0 26px; }
+
+  .offers__grid { grid-template-columns: minmax(0, 1fr) minmax(0, .92fr) minmax(0, 1fr); gap: 22px; align-items: stretch; }
+  .offers__photo { order: 2; }
+  .offers__photo .frame { height: 100%; aspect-ratio: auto; min-height: 560px; }
+  .offer--light { order: 1; }
+  .offer--dark { order: 3; }
+  .offer { padding: 38px 32px 34px; }
+
+  .levels { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); grid-template-areas: "photo head" "photo list"; column-gap: clamp(48px, 7vw, 110px); row-gap: 40px; align-content: center; max-width: none; padding-inline: max(var(--pad), calc((100vw - var(--wrap)) / 2)); }
+  .levels__head { grid-area: head; align-self: end; margin: 0; }
+  .levels h2 { font-size: clamp(40px, 4.6vw, 66px); }
+  .levels__photo { grid-area: photo; }
+  .levels__photo .frame { width: 100%; max-width: 520px; margin: 0; }
+  .levels__list { grid-area: list; align-self: start; max-width: none; margin: 0; }
+}

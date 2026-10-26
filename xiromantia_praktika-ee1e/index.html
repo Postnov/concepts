@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<script>(function(h){h.classList.add('is-loading');var r=function(){h.classList.remove('is-loading')};setTimeout(function(){if(!window.MotionBase)r()},9000);setTimeout(r,12000)})(document.documentElement)</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- preload-fonts -->
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Commissioner-normal-300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Commissioner-normal-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Commissioner-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Commissioner-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Commissioner-normal-500-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Commissioner-normal-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Commissioner-normal-600-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Commissioner-normal-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Spectral-italic-200-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Spectral-italic-200-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Spectral-italic-300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Spectral-italic-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Spectral-normal-200-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Spectral-normal-200-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Spectral-normal-300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Spectral-normal-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Spectral-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/xiromantia-sc/Spectral-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- /preload-fonts -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Иван Громов · хиромант — концепт</title>
+<link rel="stylesheet" href="../shared/fonts/xiromantia-sc.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="concept-bar" data-concept>
+  <span>Концепт редизайна @xiromantia_praktika · не официальный сайт</span>
+  <a href="https://taplink.cc/xiromantia_praktika">Текущий сайт →</a>
+</div>
+
+<main>
+  <!-- 1. Hero: имя, ладонь под лупой, био, факты -->
+  <section class="hero" aria-label="Иван Громов, хиромант">
+    <div class="hero__head">
+      <p class="kicker"><i></i><span>Хиромант и хирограф</span></p>
+      <h1 class="hero__name"><span class="hero__first">Иван</span> <em class="hero__last">Громов</em></h1>
+    </div>
+
+    <figure class="hero__photo">
+      <div class="frame">
+        <img class="frame__img" src="assets/palm.jpg" width="920" height="1009" alt="Иван Громов показывает ладонь" fetchpriority="high">
+      </div>
+      <!-- Лупа хироманта: внутри та же фотография крупнее, линии ладони светятся -->
+      <div class="loupe" aria-hidden="true">
+        <div class="loupe__lens">
+          <div class="loupe__world">
+            <img src="assets/palm.jpg" width="920" height="1009" alt="">
+            <svg class="loupe__lines" viewBox="0 0 920 1009" preserveAspectRatio="none">
+              <path class="ln" pathLength="1" d="M177 638 C 197 629, 212 620, 223 612 S 239 597, 243 591 S 250 576, 254 566"/>
+              <path class="ln ln--fine" pathLength="1" d="M248 578 L 245 566"/>
+              <path class="ln ln--fine" pathLength="1" d="M214 580 L 226 608"/>
+              <path class="ln ln--fine" pathLength="1" d="M326 607 L 344 630"/>
+            </svg>
+          </div>
+        </div>
+        <svg class="loupe__ring" viewBox="0 0 200 200">
+          <defs><path id="ring-path" d="M100 100 m -88 0 a 88 88 0 1 1 176 0 a 88 88 0 1 1 -176 0"/></defs>
+          <circle class="loupe__rim" cx="100" cy="100" r="78"/>
+          <text class="loupe__text"><textPath href="#ring-path" textLength="548" lengthAdjust="spacing">хиромантия · анализ рук · честно · спокойно · простым языком ·</textPath></text>
+        </svg>
+      </div>
+    </figure>
+
+    <div class="hero__text">
+      <p class="hero__lead">Помогаю разобраться в самых важных вопросах жизни через анализ рук.</p>
+      <p class="vows"><span>Честно.</span><span>Спокойно.</span><span>Простым языком.</span></p>
+      <div class="hero__cta">
+        <a class="btn" href="https://wa.me/79194028232?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%98%D0%B2%D0%B0%D0%BD.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D1%80%D1%83%D0%BA%2C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%2015%20000%D1%80.%20%D0%A7%D1%82%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D1%8D%D1%82%D0%BE%D0%B3%D0%BE%20%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE%3F">Персональный анализ рук</a>
+        <a class="tg" href="https://t.me/xirogod">Telegram @xirogod</a>
+      </div>
+    </div>
+
+    <ul class="facts">
+      <li><b>15 лет</b><span>опыта в хиромантии</span></li>
+      <li><b>8&nbsp;000+</b><span>решенных запросов клиентов</span></li>
+      <li><b>40+</b><span>стран, в&nbsp;которых есть мои клиенты</span></li>
+      <li><b>№1</b><span>в России по обучению европейской хиромантии</span></li>
+    </ul>
+  </section>
+
+  <!-- 2. Персональный анализ рук: вопросы и два формата -->
+  <section class="analysis" aria-labelledby="analysis-title">
+    <header class="sec-head">
+      <p class="eyebrow"><span>I</span><i></i>персональный анализ рук</p>
+      <h2 id="analysis-title">Ваши ладони уже знают, <em>что ждёт впереди!</em></h2>
+      <p class="sec-sub">Если хотя бы один из этих вопросов не даёт вам спокойно спать — вы по&nbsp;адресу.</p>
+    </header>
+
+    <ol class="questions">
+      <li class="q"><svg class="q__crease" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 18 C 90 6, 210 4, 398 12"/></svg><span class="q__n">01</span><p>Будут ли у меня счастливые отношения?</p></li>
+      <li class="q"><svg class="q__crease" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 8 C 120 20, 260 18, 398 6"/></svg><span class="q__n">02</span><p>Стоит ли сохранять этот брак?</p></li>
+      <li class="q"><svg class="q__crease" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 14 C 140 2, 250 22, 398 14"/></svg><span class="q__n">03</span><p>Встречу ли я своего человека?</p></li>
+      <li class="q"><svg class="q__crease" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 6 C 100 10, 220 22, 398 16"/></svg><span class="q__n">04</span><p>Что ждёт меня в финансах?</p></li>
+      <li class="q"><svg class="q__crease" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 18 C 130 14, 240 2, 398 10"/></svg><span class="q__n">05</span><p>Смогу ли я реализовать себя?</p></li>
+      <li class="q"><svg class="q__crease" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 10 C 110 22, 290 4, 398 14"/></svg><span class="q__n">06</span><p>Будут ли у меня дети?</p></li>
+    </ol>
+
+    <div class="plans">
+      <article class="plan">
+        <p class="plan__meta"><span>аудиосообщения</span></p>
+        <h3 class="plan__title">Персональный анализ рук</h3>
+        <p class="plan__text">Вы получите ответы на все вопросы в разрезе прошлого, настоящего и будущего. Формат аудиосообщений, разбитых на четкие темы:</p>
+        <ul class="spheres">
+          <li><span>I</span>Характер</li>
+          <li><span>II</span>Личная жизнь</li>
+          <li><span>III</span>Деньги</li>
+          <li><span>IV</span>Здоровье</li>
+        </ul>
+        <p class="plan__price">15&nbsp;000&nbsp;₽</p>
+        <a class="btn" href="https://wa.me/79194028232?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%98%D0%B2%D0%B0%D0%BD.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D1%80%D1%83%D0%BA%2C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%2015%20000%D1%80.%20%D0%A7%D1%82%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D1%8D%D1%82%D0%BE%D0%B3%D0%BE%20%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE%3F">Заказать анализ</a>
+      </article>
+      <article class="plan plan--video">
+        <figure class="plan__photo"><img src="assets/video.jpg" width="1080" height="1340" alt="Иван Громов на видеосвязи" loading="lazy"></figure>
+        <div class="plan__body">
+          <p class="plan__meta"><span>zoom</span><i></i><span>до 60 минут</span></p>
+          <h3 class="plan__title">Видео-анализ рук</h3>
+          <p class="plan__text">Вариант для тех, кто предпочитает личное общение. В условленный день и время мы созвонимся в зуме, и я проведу «живой» анализ ваших рук. Наглядно покажу по рукам ответы на ваши вопросы.</p>
+          <p class="plan__price">25&nbsp;000&nbsp;₽</p>
+          <a class="btn btn--light" href="https://wa.me/79194028232?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%98%D0%B2%D0%B0%D0%BD.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D1%80%D1%83%D0%BA%20%D0%B2%20%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%20%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B5.%20%D0%A1%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%2025000%E2%82%BD.%20%D0%A7%D1%82%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D1%8D%D1%82%D0%BE%D0%B3%D0%BE%20%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE%3F">Заказать видео-анализ</a>
+        </div>
+      </article>
+    </div>
+    <p class="plans__note">Стандартный срок ожидания — 10–14 календарных дней после оплаты. В&nbsp;срочном формате — 1–2 дня, стоимость консультации ×2 от&nbsp;обычной цены.</p>
+  </section>
+
+  <!-- 3. Как проходит + что говорят после консультации -->
+  <section class="process" aria-labelledby="process-title">
+    <svg class="process__lines" viewBox="0 0 600 720" preserveAspectRatio="xMaxYMin meet" aria-hidden="true">
+      <path pathLength="1" d="M440 -10 C 320 140, 262 330, 300 520 S 352 690, 340 740"/>
+      <path pathLength="1" d="M20 236 C 190 190, 390 150, 620 40"/>
+      <path pathLength="1" d="M60 400 C 210 340, 420 300, 620 262"/>
+      <path pathLength="1" d="M230 740 C 220 560, 236 420, 268 300"/>
+    </svg>
+    <header class="sec-head">
+      <p class="eyebrow"><span>II</span><i></i>как проходит</p>
+      <h2 id="process-title">Как проходит <em>персональный анализ?</em></h2>
+    </header>
+    <div class="steps">
+      <span class="steps__line" aria-hidden="true"><span></span></span>
+      <ol class="steps__list">
+      <li class="step">
+        <span class="step__n">1</span>
+        <h3 class="step__title">Фото рук</h3>
+        <p>Вы делаете фото рук по образцу, который я вам вышлю.</p>
+      </li>
+      <li class="step">
+        <span class="step__n">2</span>
+        <h3 class="step__title">Оплата</h3>
+        <p>Вносите оплату. Все продажи проходят официально, через ИП.</p>
+      </li>
+      <li class="step">
+        <span class="step__n">3</span>
+        <h3 class="step__title">Разбор</h3>
+        <p>В назначенный день получаете свой разбор. Разумеется, предусмотрена самая подробная обратная связь по всем возникшим вопросам.</p>
+      </li>
+      </ol>
+    </div>
+
+    <figure class="voices">
+      <figcaption>После консультации женщины чаще всего говорят:</figcaption>
+      <blockquote class="voice"><p>«Мне стало намного спокойнее.»</p></blockquote>
+      <blockquote class="voice"><p>«Теперь я понимаю, почему все происходило именно так.»</p></blockquote>
+      <blockquote class="voice"><p>«У меня снова появилась надежда.»</p></blockquote>
+    </figure>
+
+    <div class="process__cta">
+      <a class="btn btn--light" href="https://wa.me/79194028232?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%98%D0%B2%D0%B0%D0%BD.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D1%80%D1%83%D0%BA%2C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%2015%20000%D1%80.%20%D0%A7%D1%82%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D1%8D%D1%82%D0%BE%D0%B3%D0%BE%20%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE%3F">Получить персональный анализ</a>
+      <a class="tg tg--light" href="https://t.me/xirogod">Telegram @xirogod</a>
+    </div>
+  </section>
+
+  <aside class="concept-end">
+    <p class="concept-end__title">Так может выглядеть <em>весь ваш сайт</em></p>
+    <p class="concept-end__text">Это концепт: три блока вашего Taplink в новом дизайне, на ваших фото и текстах.</p>
+    <a class="btn btn--ghost" href="https://taplink.cc/xiromantia_praktika">Открыть текущий сайт</a>
+  </aside>
+</main>
+
+<script src="../shared/vendor/gsap/gsap.min.js"></script>
+<script src="../shared/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="../shared/vendor/gsap/SplitText.min.js"></script>
+<script src="../shared/motion-base.js"></script>
+<script src="motion.js"></script>
+</body>
+</html>

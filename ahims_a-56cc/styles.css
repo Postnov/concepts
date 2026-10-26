@@ -1,0 +1,191 @@
+/* Аня · wellness и биохакинг — концепт. Палитра от её Taplink: шалфейный зелёный на сливочной бумаге + ягодный акцент (клубника, цветы на фото).
+   Фирменная идея: «колба» — жидкость с живой волной поднимается в круге с фото и в пробирках у гидов. */
+:root {
+  --paper: #f7f1e6;
+  --paper-2: #efe7d6;
+  --ink: #17301a;
+  --ink-soft: #4f6250;
+  --sage: #5d7a5e;
+  --sage-deep: #3f5a41;
+  --sage-soft: #c7d4c0;
+  --berry: #c2445b;
+  --rose: #e9a3ae;
+  --line: rgba(23, 48, 26, .14);
+  --radius: 30px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 13vw, 150px);
+  --sans: 'Overpass', system-ui, -apple-system, sans-serif;
+  --serif: 'Alegreya', Georgia, serif;
+  --concept-bg: #17301a;
+  --concept-ink: #f2ecdf;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--sage); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+.nw { white-space: nowrap; }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 56px; padding: 0 28px; border-radius: 999px;
+  background: var(--sage-deep); color: #f7f1e6; text-decoration: none;
+  font: 500 15px/1 var(--sans); letter-spacing: .03em;
+  box-shadow: 0 16px 32px -18px rgba(23, 48, 26, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn__ic { width: 18px; height: 18px; flex: none; }
+.btn--light { background: var(--paper); color: var(--ink); box-shadow: none; }
+.btn--ghost { background: transparent; color: var(--sage-deep); box-shadow: inset 0 0 0 1.5px var(--sage); }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px;
+  padding-top: 26px; padding-bottom: var(--section);
+}
+.hero::before { /* мягкое пятно шалфея за колбой */
+  content: ''; position: absolute; z-index: -1; top: -60px; right: -120px;
+  width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(199, 212, 192, .75), rgba(199, 212, 192, 0));
+}
+.flask { position: relative; order: -1; width: min(80vw, 330px); margin: 0 auto; aspect-ratio: 1; }
+.flask__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.flask__glass { fill: rgba(255, 255, 255, .55); }
+.flask__rim { fill: none; stroke: var(--ink); stroke-opacity: .22; stroke-width: 1; }
+.flask__wave--back { fill: var(--sage-soft); }
+.flask__wave--front { fill: var(--sage); }
+.flask__bubble { fill: rgba(247, 241, 230, .7); }
+.flask__photo {
+  position: absolute; left: 18%; top: 14%; width: 64%; aspect-ratio: 1;
+  border-radius: 50%; overflow: hidden;
+  box-shadow: 0 0 0 6px var(--paper), 0 24px 40px -22px rgba(23, 48, 26, .55);
+}
+.flask__photo img { width: 100%; height: 100%; object-fit: cover; scale: 1.02; }
+
+.kicker {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.kicker i { width: 5px; height: 5px; border-radius: 50%; background: var(--berry); }
+.hero__text { text-align: center; display: grid; justify-items: center; }
+.hero__name {
+  margin-top: 6px;
+  font: 500 clamp(96px, 30vw, 188px)/.9 var(--serif); letter-spacing: -.02em; color: var(--ink);
+}
+.hero__lead { margin-top: 12px; font: 300 clamp(21px, 5.6vw, 30px)/1.3 var(--sans); max-width: 17em; }
+.hero__lead em { font-size: 1.12em; }
+.tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 20px 0 28px; }
+.tags li {
+  padding: 8px 15px 6px; border-radius: 999px; border: 1px solid var(--line);
+  font-size: 13.5px; line-height: 1.2; color: var(--ink-soft); background: rgba(255, 255, 255, .45);
+}
+.hero__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 22px; }
+.link-ig {
+  font: 500 15px/1 var(--sans); color: var(--sage-deep); text-decoration: none;
+  border-bottom: 1px solid currentColor; padding-bottom: 3px; transition: color .3s;
+}
+.link-ig:hover { color: var(--berry); }
+.hero__place {
+  margin-top: 26px; font: 500 11.5px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.hero__place::before { content: ''; width: 28px; height: 1px; background: var(--ink-soft); opacity: .5; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { margin-bottom: 34px; }
+.eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--berry); }
+.sec-title { margin-top: 14px; font: 500 clamp(40px, 11vw, 76px)/1 var(--serif); letter-spacing: -.01em; }
+
+/* ---------- 2. Интенсив и группа ---------- */
+.programs { padding-bottom: var(--section); }
+.programs__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.prog {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; align-items: flex-start;
+  padding: 30px 26px 28px; border-radius: var(--radius);
+}
+.prog--dark { background: var(--ink); color: var(--paper); }
+.prog--dark em { color: var(--sage-soft); }
+.prog--soft { background: var(--paper-2); }
+.prog::after { /* круг-«колба» на фоне карточки */
+  content: ''; position: absolute; right: -70px; top: -70px; width: 220px; height: 220px; border-radius: 50%;
+  border: 1px solid currentColor; opacity: .14; pointer-events: none;
+}
+.prog__ic { width: 40px; height: 40px; color: var(--sage-soft); }
+.prog--soft .prog__ic { color: var(--sage); }
+.prog__label {
+  margin-top: 26px; font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; opacity: .7;
+}
+.prog__title { margin-top: 12px; font: 500 clamp(30px, 8.4vw, 44px)/1.05 var(--serif); max-width: 13em; }
+.prog__title em { display: block; }
+.badge {
+  display: inline-flex; align-items: center; gap: 9px; margin-top: 18px;
+  padding: 9px 15px 7px; border-radius: 999px; background: var(--paper);
+  font: 500 13px/1.2 var(--sans); color: var(--ink);
+}
+.badge__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--berry); }
+.prog .btn { margin-top: 30px; }
+
+/* ---------- 3. Гиды ---------- */
+.guides { padding-bottom: var(--section); }
+.guides__list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.guide {
+  display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; align-items: stretch;
+  padding: 22px 22px 22px 14px; border-radius: var(--radius);
+  background: rgba(255, 255, 255, .55); border: 1px solid var(--line);
+}
+.tube { width: 56px; height: 100%; min-height: 200px; }
+.tube__glass { fill: none; stroke: var(--ink); stroke-opacity: .25; stroke-width: 1; }
+.guide--sage .tube__wave { fill: var(--sage); }
+.guide--berry .tube__wave { fill: var(--berry); }
+.guide--rose .tube__wave { fill: var(--rose); }
+.guide__body { display: flex; flex-direction: column; align-items: flex-start; padding-top: 4px; }
+.guide__ic { width: 30px; height: 30px; color: var(--ink-soft); }
+.guide--berry .guide__ic { color: var(--berry); }
+.guide__title { margin-top: 14px; font: 500 clamp(27px, 7.4vw, 34px)/1.08 var(--serif); }
+.guide__text { margin-top: 10px; color: var(--ink-soft); font-size: 15.5px; line-height: 1.5; }
+.guide__link {
+  margin-top: 20px; display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 20px 11px; border-radius: 999px; background: var(--ink); color: var(--paper);
+  font: 500 14px/1 var(--sans); text-decoration: none;
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.guide__link:hover, .guide__link:focus-visible { scale: 1.04 !important; }
+
+/* ---------- концепт: финал ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 500 clamp(28px, 7.4vw, 46px)/1.1 var(--serif); max-width: 22ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center;
+    gap: clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-top: 40px;
+  }
+  .hero::before { width: 760px; height: 760px; top: -120px; right: -160px; }
+  .flask { order: 0; width: min(100%, 500px); margin: 0 0 0 auto; }
+  .hero__text { text-align: left; justify-items: start; }
+  .kicker, .tags, .hero__actions { justify-content: flex-start; }
+  .hero__name { font-size: clamp(140px, 15vw, 230px); }
+  .hero__lead { font-size: clamp(26px, 2.4vw, 34px); }
+  .sec-head { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 44px; }
+  .sec-head .eyebrow { order: 1; padding-bottom: 14px; }
+  .programs__grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 20px; }
+  .prog { padding: 44px 44px 40px; min-height: 440px; }
+  .prog::after { width: 360px; height: 360px; right: -110px; top: -110px; }
+  .prog .btn { margin-top: auto; }
+  .prog--dark .prog__title { font-size: 58px; }
+  .guides__list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .guide { padding: 28px 28px 28px 18px; }
+  .guide__link { margin-top: auto; }
+  .guide__text { margin-bottom: 26px; }
+}
