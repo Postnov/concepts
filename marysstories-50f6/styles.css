@@ -1,0 +1,184 @@
+/* Мария Кардакова · Mary’s Academy — концепт.
+   Палитра из её бренда: оливковый жакет, тёмный кабинет, шафрановые кнопки и зелень Taplink. Настроение — научный журнал о еде. */
+:root {
+  --night: #1f1c17;
+  --night-2: #2a2620;
+  --paper: #f5f1e6;
+  --paper-2: #ebe5d3;
+  --card: #fffdf7;
+  --ink: #1f2219;
+  --ink-soft: #5c604f;
+  --olive: #8a8f62;
+  --sage: #b9c08f;
+  --leaf: #5d7d35;
+  --saffron: #f2b13e;
+  --saffron-deep: #d99520;
+  --line: rgba(31, 34, 25, .14);
+  --radius: 26px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 13vw, 150px);
+  --serif: 'Literata', Georgia, serif;
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --concept-bg: #15130f;
+  --concept-ink: #efe9da;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+b { font-weight: 600; }
+.mono { font: 500 11.5px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 56px; padding: 0 28px; border-radius: 18px;
+  background: var(--saffron); color: var(--ink); text-decoration: none;
+  font: 600 15.5px/1.15 var(--sans);
+  box-shadow: 0 16px 34px -18px rgba(217, 149, 32, .85);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--olive); }
+.btn--tg { min-height: 66px; padding: 0 26px 0 20px; justify-content: flex-start; text-align: left; }
+.btn__icon { width: 26px; height: 26px; flex: none; fill: currentColor; }
+.btn__text { display: grid; gap: 3px; font: 600 19px/1.05 var(--sans); letter-spacing: .02em; }
+.btn__text small { font: 500 12px/1.2 var(--sans); letter-spacing: 0; opacity: .75; }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr);
+  padding-top: 14px; padding-bottom: clamp(56px, 10vw, 110px);
+  background: var(--night); color: var(--paper);
+}
+.hero__media { position: relative; }
+.frame { position: relative; overflow: hidden; border-radius: var(--radius); aspect-ratio: 1080 / 1000; background: var(--night-2); }
+.frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; transform: scale(1.04); transform-origin: 50% 0; }
+.hero .frame::after { /* низ фото уходит в тон секции — на него ложится имя */
+  content: ''; position: absolute; inset: 55% 0 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(31, 28, 23, 0), rgba(31, 28, 23, .82) 72%, var(--night));
+}
+.hero__badge {
+  position: absolute; z-index: 3; left: 10px; top: 10px;
+  display: inline-flex; align-items: center; gap: 5px; padding: 5px 9px 5px 5px; border-radius: 10px;
+  background: rgba(31, 28, 23, .55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  font: 600 11.5px/1 var(--sans); color: var(--paper);
+}
+.hero__badge span { padding: 4px 6px; border-radius: 6px; background: var(--paper); color: var(--ink); }
+
+/* Двойная спираль ДНК из точек — фирменная идея (как тату на её руке): наука в основе питания */
+.helix { position: absolute; z-index: 2; pointer-events: none; overflow: visible; }
+.hero .helix { right: 6px; top: 7%; width: 58px; height: 70%; }
+.helix .dot-a { fill: var(--saffron); }
+.helix .dot-b { fill: var(--sage); }
+.helix line { stroke: rgba(245, 241, 230, .32); stroke-width: 1.2; }
+
+.hero__text { position: relative; z-index: 3; margin-top: -58px; }
+.hero__kicker { display: flex; flex-wrap: wrap; gap: 6px; color: var(--sage); }
+.hero__kicker span { padding: 5px 8px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgba(185, 192, 143, .4); }
+.hero__name { margin-top: 14px; font: 400 clamp(46px, 13.4vw, 92px)/.98 var(--serif); letter-spacing: -.02em; }
+.hero__first, .hero__last { display: block; }
+.hero__last { color: var(--saffron); }
+.hero__lead { margin-top: 20px; font: 400 clamp(18px, 4.8vw, 22px)/1.45 var(--sans); color: rgba(245, 241, 230, .86); max-width: 32ch; }
+.hero__lead b { color: var(--paper); font-weight: 600; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 26px; }
+.tags li { padding: 7px 13px; border-radius: 999px; background: rgba(185, 192, 143, .14); color: var(--sage); font: 500 13.5px/1.2 var(--sans); }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 680px; }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; color: var(--ink-soft); }
+.eyebrow span { padding: 4px 7px; border-radius: 6px; background: var(--ink); color: var(--paper); }
+.sec-head h2 { margin-top: 18px; font: 400 clamp(34px, 9vw, 64px)/1.04 var(--serif); letter-spacing: -.02em; }
+.sec-head h2 em { color: var(--leaf); }
+
+/* ---------- 2. Обо мне: как список источников в научной статье ---------- */
+.about { padding-block: var(--section); }
+.refs { margin-top: 34px; display: grid; gap: 12px; counter-reset: ref; }
+.ref {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px;
+  padding: 22px 20px 22px; border-radius: 22px; background: var(--card);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.ref::before {
+  counter-increment: ref; content: '[' counter(ref) ']';
+  position: absolute; right: 18px; top: 20px; font: 500 12px/1 var(--mono); color: var(--olive);
+}
+.ref__fig { display: flex; align-items: baseline; gap: 0; font: 400 64px/.9 var(--serif); letter-spacing: -.03em; color: var(--leaf); font-variant-numeric: tabular-nums; }
+.ref__fig sup { font-size: .5em; line-height: 1; transform: translateY(-.55em); }
+.ref__fig small { margin-left: 8px; font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+.ref__fig--word { font-style: italic; font-size: 52px; }
+.ref__text { color: var(--ink-soft); font-size: 15.5px; }
+.ref__text b { color: var(--ink); }
+.ref:nth-child(2) { background: var(--ink); color: var(--paper); box-shadow: none; }
+.ref:nth-child(2) .ref__fig { color: var(--saffron); }
+.ref:nth-child(2) .ref__text { color: rgba(245, 241, 230, .78); }
+.ref:nth-child(2) .ref__text b { color: var(--paper); }
+.ref:nth-child(2)::before { color: var(--sage); }
+
+/* ---------- 3. Курсы: карточки складываются стопкой при прокрутке ---------- */
+.courses { padding-block: 0 var(--section); }
+.stack { margin-top: 34px; display: grid; gap: 16px; }
+.course {
+  position: sticky; top: calc(18px + var(--i, 0) * 12px);
+  display: grid; gap: 14px; align-content: start; min-height: 360px;
+  padding: 24px 22px 22px; border-radius: var(--radius);
+  box-shadow: 0 -10px 40px -24px rgba(31, 34, 25, .35);
+  transform-origin: 50% 0;
+}
+.course:nth-child(1) { --i: 0; }
+.course:nth-child(2) { --i: 1; }
+.course:nth-child(3) { --i: 2; }
+.course:nth-child(4) { --i: 3; }
+.course__brand { display: inline-flex; align-items: center; gap: 8px; }
+.course__brand::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.course__title { font: 400 clamp(27px, 7.4vw, 38px)/1.08 var(--serif); letter-spacing: -.015em; max-width: 18ch; }
+.course__lead { font-size: 16px; max-width: 40ch; }
+.course__list { display: grid; gap: 8px; font-size: 15px; max-width: 46ch; }
+.course__list li { position: relative; padding-left: 20px; }
+.course__list li::before { content: ''; position: absolute; left: 2px; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: .55; }
+.course .btn { justify-self: start; margin-top: auto; min-width: 180px; }
+.course--leaf { background: var(--leaf); color: var(--paper); }
+.course--leaf .course__brand { color: var(--sage); }
+.course--saffron { background: var(--saffron); color: var(--ink); }
+.course--saffron .btn { background: var(--ink); color: var(--paper); box-shadow: none; }
+.course--paper { background: var(--card); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line), 0 -10px 40px -24px rgba(31, 34, 25, .35); }
+.course--paper .course__brand { color: var(--leaf); }
+.course--night { background: var(--night); color: var(--paper); }
+.course--night .course__brand { color: var(--saffron); }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 0 var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end .helix--mini { position: relative; width: 120px; height: 30px; margin-bottom: 8px; }
+.helix--mini line { stroke: var(--line); }
+.concept-end__title { font: 400 clamp(26px, 7vw, 42px)/1.12 var(--serif); max-width: 18ch; }
+.concept-end__title em { color: var(--leaf); }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(40px, 6vw, 96px);
+    min-height: calc(100svh - 34px); padding-top: 40px; padding-bottom: 60px;
+  }
+  .hero__media { order: 2; }
+  .hero__text { margin-top: 0; }
+  .hero .frame { aspect-ratio: 5 / 5.4; }
+  .hero .frame img { object-position: 50% 12%; }
+  .hero .frame::after { inset: 70% 0 0; opacity: .6; }
+  .hero__badge { left: 16px; top: 16px; font-size: 13px; }
+  .hero .helix { right: auto; left: -74px; top: 8%; height: 84%; width: 60px; }
+  .hero__name { font-size: clamp(64px, 7.4vw, 112px); }
+  .hero__lead { max-width: 30ch; font-size: 22px; }
+  .refs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .ref { padding: 30px 32px 32px; gap: 16px; align-content: start; }
+  .ref__fig { font-size: 84px; }
+  .ref__fig--word { font-size: 68px; }
+  .ref__text { font-size: 16.5px; max-width: 46ch; }
+  .courses { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .courses .sec-head { position: sticky; top: 64px; }
+  .stack { margin-top: 0; }
+  .course { top: calc(64px + var(--i, 0) * 16px); min-height: 380px; padding: 34px 34px 32px; }
+}

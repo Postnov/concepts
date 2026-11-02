@@ -1,0 +1,199 @@
+/* Дина Кадис · домашние тренировки — концепт.
+   Палитра от её Taplink и баннеров: персиковые кнопки, малиново-розовые карточки, сливовый фиолет форм и лосин. */
+:root {
+  --blush: #fbf0ea;
+  --blush-2: #f5e1d7;
+  --peach: #eeaa8c;
+  --peach-soft: #f8d9c9;
+  --rose: #e0588c;
+  --rose-deep: #c23d6f;
+  --plum: #34142f;
+  --plum-2: #522349;
+  --lilac: #b07fd0;
+  --ink: #2c1428;
+  --ink-soft: #6f5469;
+  --line: rgba(82, 35, 73, .16);
+  --radius: 30px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 13vw, 150px);
+  --display: 'Unbounded', system-ui, sans-serif;
+  --sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --script: 'Marck Script', cursive;
+  --concept-bg: #34142f;
+  --concept-ink: #fbe7de;
+}
+
+body { background: var(--blush); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-style: normal; color: var(--rose-deep); }
+.nw { white-space: nowrap; }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 58px; padding: 0 30px; border-radius: 999px;
+  background: var(--rose-deep); color: #fff; text-decoration: none;
+  font: 600 15.5px/1 var(--sans); letter-spacing: .02em; white-space: nowrap;
+  box-shadow: 0 16px 34px -16px rgba(194, 61, 111, .8);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* мягкий блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .3) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--plum-2); box-shadow: inset 0 0 0 1.5px var(--peach); }
+.btn--light { background: var(--peach); color: var(--plum); box-shadow: 0 16px 34px -18px rgba(238, 170, 140, .9); }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px;
+  padding-top: 30px; padding-bottom: var(--section);
+  background:
+    radial-gradient(90% 50% at 100% 30%, rgba(238, 170, 140, .38), transparent 70%),
+    radial-gradient(70% 40% at 0% 70%, rgba(224, 88, 140, .14), transparent 70%);
+}
+.kicker { display: flex; align-items: center; gap: 12px; font: 500 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.kicker__chip { padding: 8px 13px; border-radius: 999px; background: var(--plum); color: var(--blush); letter-spacing: .1em; }
+.hero__head { position: relative; }
+.hero__name {
+  margin-top: 20px; display: grid;
+  font: 700 clamp(56px, 17.4vw, 132px)/.92 var(--display); letter-spacing: -.035em; color: var(--plum);
+}
+.hero__line { display: block; }
+.hero__line + .hero__line { padding-left: .9em; }
+.hero__script {
+  position: absolute; right: 0; bottom: -18px;
+  font: 400 clamp(26px, 7.6vw, 40px)/1 var(--script); color: var(--rose-deep);
+  rotate: -6deg; transform-origin: 100% 50%;
+}
+
+.hero__photo { position: relative; margin: 14px 0 10px; }
+.frame { position: relative; overflow: hidden; border-radius: var(--radius); background: var(--peach-soft); aspect-ratio: 490 / 620; }
+.frame img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); }
+.hero__photo .frame { width: 82%; margin-left: auto; box-shadow: 0 40px 70px -40px rgba(52, 20, 47, .55); }
+
+/* Кольца активности: дорожки + дуги, заполнение задаёт --fill (0–100) */
+.rings { position: absolute; left: 0; bottom: -22px; width: 46%; aspect-ratio: 1; z-index: 2; }
+.rings__svg { position: absolute; inset: 0; width: 100%; height: 100%; rotate: -90deg; overflow: visible; }
+.rings__svg circle { fill: none; stroke-width: 9; stroke-linecap: round; }
+.ring-track { stroke: rgba(52, 20, 47, .1); }
+.ring { stroke-dasharray: 100 100; stroke-dashoffset: calc(100 - var(--fill)); }
+.ring--a { stroke: var(--rose); }
+.ring--b { stroke: var(--peach); }
+.ring--c { stroke: var(--lilac); }
+.rings::before { content: ''; position: absolute; inset: -6%; border-radius: 50%; background: var(--blush); box-shadow: 0 24px 50px -26px rgba(52, 20, 47, .5); z-index: -1; }
+.rings__ava { position: absolute; inset: 22%; width: 56%; height: 56%; border-radius: 50%; object-fit: cover; }
+
+.hero__lead { font: 500 clamp(20px, 5.3vw, 26px)/1.36 var(--sans); max-width: 26ch; margin-top: 18px; }
+.hero__lead em { display: inline; font-weight: 600; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 26px 0 28px; }
+.stat {
+  position: relative; padding: 16px 12px 14px; border-radius: 20px; background: #fff;
+  box-shadow: inset 0 0 0 1px var(--line);
+  display: grid; align-content: start; gap: 8px;
+}
+.stat::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--dot); }
+.stat--a { --dot: var(--rose); }
+.stat--b { --dot: var(--peach); }
+.stat--c { --dot: var(--lilac); }
+.stat b { font: 700 clamp(26px, 7.4vw, 36px)/1 var(--display); letter-spacing: -.03em; color: var(--plum); font-variant-numeric: tabular-nums; }
+.stat > span { font-size: 12.5px; line-height: 1.3; color: var(--ink-soft); }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 10px; }
+.hero__cta .btn { flex: 1 1 220px; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 760px; }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; font: 500 12px/1.35 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--rose-deep); color: #fff; letter-spacing: 0; }
+.sec-head h2 { margin-top: 18px; font: 700 clamp(27px, 7.4vw, 54px)/1.1 var(--display); letter-spacing: -.03em; color: var(--plum); }
+
+/* ---------- 2. Оффер ---------- */
+.offer { position: relative; padding-block: var(--section); background: var(--plum); color: var(--blush); border-radius: 40px 40px 0 0; }
+.offer .eyebrow { color: rgba(251, 240, 234, .7); }
+.offer .sec-head h2 { color: var(--blush); }
+.offer .sec-head h2 em { color: var(--peach); }
+.offer__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: 40px; }
+.meter { position: relative; width: min(78vw, 340px); aspect-ratio: 1; margin-inline: auto; }
+.meter__svg { width: 100%; height: 100%; rotate: -90deg; overflow: visible; }
+.meter__track, .meter__bar { fill: none; stroke-width: 14; }
+.meter__track { stroke: rgba(251, 240, 234, .1); }
+.meter__bar { stroke: var(--rose); stroke-linecap: round; stroke-dasharray: 100 100; stroke-dashoffset: 0; }
+.meter__ticks line { stroke: rgba(251, 240, 234, .28); stroke-width: 1.5; }
+.meter__num { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.meter__num > span { font: 800 clamp(72px, 22vw, 104px)/.9 var(--display); letter-spacing: -.05em; color: var(--blush); font-variant-numeric: tabular-nums; }
+.meter__num small { margin-top: 8px; font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--peach); }
+
+.deal { padding: 26px 22px 24px; border-radius: 28px; background: var(--plum-2); box-shadow: inset 0 0 0 1px rgba(251, 240, 234, .1); }
+.deal__title { font: 500 19px/1.4 var(--sans); }
+.perks { display: grid; gap: 12px; margin: 22px 0 18px; }
+.perks li { display: flex; align-items: center; gap: 14px; font: 500 15.5px/1.3 var(--sans); }
+.perk-ico { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(238, 170, 140, .16); }
+.perk-ico svg { width: 22px; height: 22px; fill: none; stroke: var(--peach); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.perk-ico svg .f { fill: var(--peach); stroke: none; }
+.deal__note { padding: 12px 16px; border-radius: 16px; background: rgba(251, 240, 234, .07); color: rgba(251, 240, 234, .82); font-size: 14.5px; }
+.deal__buy { display: grid; gap: 18px; margin-top: 24px; }
+.price { display: flex; align-items: baseline; gap: 14px; }
+.price__now { font: 700 46px/1 var(--display); letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.price__old { position: relative; text-decoration: none; font: 500 20px/1 var(--sans); opacity: .6; }
+.price__old::after { content: ''; position: absolute; left: -4px; right: -4px; top: 52%; height: 2px; background: var(--rose); transform-origin: left; scale: var(--strike, 1) 1; }
+.price--dark .price__now { color: var(--plum); }
+
+/* ---------- 3. Идеальные ножки ---------- */
+.legs { padding-block: var(--section); background: var(--blush); }
+.legs__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: 36px; }
+.legs__photo { position: relative; }
+.frame--wide { aspect-ratio: 630 / 340; }
+.stamp {
+  position: absolute; right: -6px; bottom: -40px; width: 132px; aspect-ratio: 1;
+  display: grid; place-items: center; padding: 18px; border-radius: 50%; text-align: center;
+  background: var(--rose); color: #fff; box-shadow: 0 20px 40px -20px rgba(194, 61, 111, .9);
+  font: 400 17px/1.05 var(--script); rotate: 8deg;
+}
+.legs__label { font: 400 34px/1 var(--script); color: var(--rose-deep); }
+.helps { display: grid; margin-top: 10px; }
+.helps li { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 8px; padding: 16px 0; border-bottom: 1px solid var(--line); font: 500 17px/1.38 var(--sans); }
+.helps__n { font: 700 13px/1.6 var(--display); color: var(--rose-deep); }
+.legs__fit {
+  display: flex; gap: 12px; align-items: center; margin-top: 22px; padding: 14px 16px; border-radius: 18px;
+  background: #fff; box-shadow: inset 0 0 0 1px var(--line); font-weight: 500; font-size: 15px;
+}
+.legs__fit::before { content: '✓'; flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--plum); color: var(--blush); font-size: 14px; }
+.gift { margin-top: 12px; padding: 14px 16px; border-radius: 18px; background: var(--peach-soft); font-size: 15px; }
+.gift b { color: var(--rose-deep); }
+.legs__buy { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 26px; }
+.legs__buy .btn { flex: 1 1 200px; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 700 clamp(24px, 6.4vw, 40px)/1.15 var(--display); letter-spacing: -.03em; color: var(--plum); max-width: 18ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); grid-template-areas: 'head photo' 'body photo';
+    column-gap: clamp(40px, 6vw, 96px); row-gap: 10px; align-items: end; min-height: calc(100svh - 40px); padding-top: 56px;
+  }
+  .hero__head { grid-area: head; padding-bottom: 86px; }
+  .hero__body { grid-area: body; align-self: start; }
+  .hero__photo { grid-area: photo; align-self: center; margin: 0; }
+  .hero__photo .frame { width: 90%; }
+  .rings { width: 40%; left: -4%; }
+  .hero__name { font-size: clamp(64px, 8.4vw, 132px); }
+  .hero__script { right: 6%; bottom: 26px; }
+  .hero__lead { max-width: 30ch; }
+  .stats { max-width: 560px; }
+  .hero__cta { max-width: 560px; }
+  .offer__grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(40px, 6vw, 96px); }
+  .meter { width: min(100%, 420px); }
+  .deal { padding: 34px 34px 32px; }
+  .deal__title { font-size: 22px; }
+  .deal__buy { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 28px; }
+  .legs__grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+  .stamp { width: 160px; font-size: 20px; right: -20px; bottom: -50px; }
+}

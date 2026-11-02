@@ -1,0 +1,258 @@
+/* Анастасия Максимова · врач-эндокринолог, диетолог — концепт.
+   Палитра с её фото и Taplink: тёмная зелень листьев, персиковый круг на стене, белый халат, лайм её кнопок.
+   Фирменная форма — капсула («волшебной таблетки нет, но есть я»). */
+:root {
+  --cream: #f7f4ee;
+  --sage: #e9efe1;
+  --sage-2: #dce7d0;
+  --leaf: #2d5634;
+  --leaf-deep: #1d3a23;
+  --green: #4e8a22;
+  --lime: #c3dd8c;
+  --peach: #f3bba0;
+  --peach-soft: #f8d9c8;
+  --coral: #c8603c;
+  --ink: #1f2b22;
+  --ink-soft: #56655a;
+  --line: rgba(45, 86, 52, .18);
+  --radius: 30px;
+  --pad: clamp(20px, 5.4vw, 56px);
+  --section: clamp(84px, 14vw, 156px);
+  --sans: 'Nunito', system-ui, -apple-system, sans-serif;
+  --serif: 'Noto Serif', Georgia, serif;
+  --concept-bg: #1d3a23;
+  --concept-ink: #eef3e6;
+}
+
+body { background: var(--cream); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+em { font-family: var(--serif); font-stretch: 62.5%; font-style: italic; font-weight: 400; color: var(--coral); }
+.nw { white-space: nowrap; }
+/* Маска нарезки по строкам — с запасом, чтобы курсив и хвосты букв не подрезались */
+.ln-mask { padding: 0 .16em .24em; margin: 0 -.16em -.24em; }
+.ch-mask { padding: .08em .05em .22em; margin: -.08em -.05em -.22em; }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-align: center;
+  min-height: 58px; padding: 10px 30px; border-radius: 999px;
+  background: var(--leaf); color: #fff; text-decoration: none;
+  font: 700 15.5px/1.2 var(--sans); letter-spacing: .01em;
+  box-shadow: 0 16px 30px -16px rgba(29, 58, 35, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--leaf); box-shadow: inset 0 0 0 1.5px var(--leaf); }
+.btn--light { background: var(--lime); color: var(--leaf-deep); box-shadow: none; }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  padding-top: 24px; padding-bottom: var(--section);
+}
+.hero__text { display: contents; }
+.kicker {
+  order: 1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px;
+  font: 800 11px/1.3 var(--sans); letter-spacing: .13em; text-transform: uppercase; color: var(--leaf);
+}
+.kicker__place { color: var(--coral); }
+.hero__name {
+  order: 2; margin-top: 14px; position: relative; z-index: 3; /* половинки капсулы уходят под имя */
+  font: 400 clamp(62px, 19.4vw, 150px)/.88 var(--serif); font-stretch: 62.5%; letter-spacing: -.012em;
+  color: var(--leaf-deep);
+}
+.hero__first, .hero__last { display: block; }
+.hero__last { font-style: italic; color: var(--green); }
+.hero__stage { order: 3; position: relative; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 18px; align-items: end; margin-top: 22px; }
+.hero__lead { order: 4; position: relative; z-index: 3; margin-top: 26px; font-size: 15.5px; color: var(--ink-soft); max-width: 46ch; }
+.hero__lead b { color: var(--ink); font-weight: 800; }
+.hero__cta { order: 5; display: grid; gap: 10px; margin-top: 24px; }
+
+/* Солнце-круг со стены на её фото */
+.sun {
+  position: absolute; z-index: 0; left: 30%; top: -9%; width: 72%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 38% 34%, #f9d3bf, var(--peach) 62%, #efab8c);
+}
+
+/* Капсула: окно-стадион с фото, вокруг тонкая оболочка; две половинки при входе разъезжаются */
+.capsule { position: relative; z-index: 1; aspect-ratio: 176 / 300; }
+.capsule__win {
+  position: absolute; inset: 0; overflow: hidden; border-radius: 999px; background: var(--sage);
+  box-shadow: 0 30px 50px -28px rgba(29, 58, 35, .55);
+}
+.capsule__win img { width: 100%; height: 100%; object-fit: cover; }
+.capsule__ring { position: absolute; inset: -9px; border-radius: 999px; border: 1.5px solid var(--leaf); opacity: .5; }
+.capsule__ring::before, .capsule__ring::after { /* шов капсулы */
+  content: ''; position: absolute; top: 50%; width: 14px; height: 1.5px; background: var(--leaf);
+}
+.capsule__ring::before { left: -7px; }
+.capsule__ring::after { right: -7px; }
+.capsule__cap { position: absolute; left: 0; right: 0; height: 50.5%; opacity: 0; pointer-events: none; }
+.capsule__cap--top {
+  top: 0; border-radius: 999px 999px 0 0;
+  background: linear-gradient(90deg, #e99a78 0%, #f6c3a9 32%, #fde4d6 44%, #f3b597 60%, #e5916d 100%);
+}
+.capsule__cap--bot {
+  bottom: 0; border-radius: 0 0 999px 999px;
+  background: linear-gradient(90deg, #dfe6da 0%, #fbfcf8 34%, #ffffff 44%, #eef2ea 62%, #d2dccb 100%);
+  box-shadow: inset 0 2px 0 rgba(45, 86, 52, .25);
+}
+
+.hero__side { position: relative; z-index: 2; display: grid; gap: 22px; padding-bottom: 4px; }
+.hero__claim { font: 400 clamp(29px, 8.2vw, 52px)/1.02 var(--serif); font-stretch: 62.5%; color: var(--leaf-deep); }
+.hero__claim em { display: inline-block; margin-top: .12em; font-size: 1.12em; }
+.stat { display: grid; gap: 6px; padding-top: 16px; border-top: 1px solid var(--line); }
+.stat__num { font: 600 clamp(40px, 11vw, 64px)/.9 var(--serif); font-stretch: 62.5%; color: var(--green); }
+.stat__label { font-size: 13.5px; line-height: 1.35; color: var(--ink-soft); }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 760px; }
+.eyebrow {
+  display: inline-flex; gap: 12px; align-items: center;
+  font: 800 12px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; color: var(--ink-soft);
+}
+.pill-num {
+  display: inline-grid; place-items: center; min-width: 46px; height: 24px; padding: 0 10px; border-radius: 999px;
+  background: linear-gradient(90deg, var(--peach) 50%, #fff 50%); box-shadow: inset 0 0 0 1px rgba(200, 96, 60, .35);
+  color: var(--leaf-deep); letter-spacing: .06em;
+}
+.sec-head h2 { margin-top: 18px; font: 400 clamp(40px, 11.4vw, 84px)/.98 var(--serif); font-stretch: 62.5%; color: var(--leaf-deep); }
+
+/* ---------- 2. Онлайн-консультация ---------- */
+.consult { padding-block: var(--section); background: linear-gradient(180deg, var(--cream), var(--sage) 22%, var(--sage) 86%, var(--cream)); }
+.consult__grid { display: grid; gap: 34px; margin-top: 38px; }
+.dial { position: relative; display: grid; justify-items: center; gap: 14px; }
+.dial__svg { width: min(64vw, 260px); height: auto; overflow: visible; }
+.dial__track { fill: #fff; stroke: var(--sage-2); stroke-width: 10; }
+.dial__arc { fill: none; stroke: var(--green); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 50 100; transform: rotate(-90deg); transform-origin: 100px 100px; }
+.dial__ticks line { stroke: var(--line); stroke-width: 1.5; }
+.dial__hand { stroke: var(--coral); stroke-width: 3; stroke-linecap: round; }
+.dial__dot { fill: var(--coral); }
+.dial__text {
+  position: absolute; left: 50%; top: calc(min(64vw, 260px) * .5); transform: translate(-50%, calc(-100% - 12px));
+  display: grid; justify-items: center; pointer-events: none;
+}
+.dial__text b { font: 600 clamp(50px, 13.4vw, 68px)/.9 var(--serif); font-stretch: 62.5%; color: var(--leaf-deep); }
+.dial__text span { font: 800 11px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+/* число 30 — над центром, стрелка уходит вниз, к «половине часа» */
+.dial__caption { font-size: 15px; color: var(--ink-soft); }
+
+.talk { display: grid; gap: 22px; }
+.talk__col { display: grid; justify-items: start; gap: 8px; }
+.talk__col--me { justify-items: end; }
+.talk__who { font: 400 30px/1 var(--serif); font-stretch: 62.5%; font-style: italic; color: var(--coral); padding: 0 6px 4px; }
+.bubble {
+  max-width: 86%; padding: 12px 18px; border-radius: 22px 22px 22px 6px;
+  background: #fff; box-shadow: 0 10px 24px -18px rgba(29, 58, 35, .5); font-size: 15.5px; line-height: 1.4;
+}
+.bubble--me { border-radius: 22px 22px 6px 22px; background: var(--leaf); color: #f2f6ec; }
+
+.price {
+  position: relative; margin-top: 44px; padding: 30px 24px 26px; border-radius: var(--radius);
+  background: var(--leaf-deep); color: #e9efe2; display: grid; gap: 14px;
+  box-shadow: 0 34px 60px -34px rgba(29, 58, 35, .75);
+}
+.price__top { display: grid; gap: 12px; }
+.price__label { font: 800 12px/1.45 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--lime); max-width: 30ch; }
+.price__sum { font: 400 clamp(64px, 18vw, 104px)/.95 var(--serif); font-stretch: 62.5%; color: #fff; white-space: nowrap; padding-bottom: .04em; }
+.price__note { font-size: 15.5px; line-height: 1.5; }
+.price__pay { font-size: 14px; color: rgba(233, 239, 226, .72); }
+.price .btn { margin-top: 8px; }
+.price__disclaimer {
+  margin-top: 4px; padding: 10px 14px; border-radius: 16px; border: 1px dashed rgba(195, 221, 140, .45);
+  font-size: 12.5px; line-height: 1.4; color: rgba(233, 239, 226, .75); text-align: center;
+}
+
+/* ---------- 3. Сопровождение ---------- */
+.care { padding-block: var(--section); }
+.care__grid { display: grid; gap: 40px; margin-top: 36px; }
+.care__about { display: grid; gap: 34px; }
+.care__q { font: 800 12px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; color: var(--coral); }
+.care__no-text { margin-top: 14px; font: 400 clamp(27px, 7.4vw, 40px)/1.14 var(--serif); font-stretch: 62.5%; color: var(--leaf-deep); }
+/* зачёркивание: линия рисуется поверх слов (по умолчанию — целиком) */
+.x {
+  background-image: linear-gradient(var(--coral), var(--coral)); background-repeat: no-repeat;
+  background-position: 0 58%; background-size: 100% 2px;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.care__soft { display: block; margin-top: 12px; font: 400 15.5px/1.5 var(--sans); color: var(--ink-soft); }
+.inc { margin-top: 16px; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.inc li { position: relative; padding: 14px 0 14px 34px; border-bottom: 1px solid var(--line); font-size: 15.5px; line-height: 1.45; }
+.inc li::before { /* маленькая капсула вместо маркера */
+  content: ''; position: absolute; left: 0; top: 19px; width: 20px; height: 10px; border-radius: 999px;
+  background: linear-gradient(90deg, var(--peach) 50%, #fff 50%); box-shadow: inset 0 0 0 1px rgba(200, 96, 60, .4);
+  rotate: -30deg;
+}
+
+.tariffs { display: grid; gap: 14px; }
+.tariff {
+  position: relative; display: grid; grid-template-rows: auto auto 1fr auto; gap: 12px; padding: 24px 22px 22px; border-radius: var(--radius);
+  background: #fff; box-shadow: inset 0 0 0 1px var(--line), 0 24px 46px -36px rgba(29, 58, 35, .5);
+}
+.tariff--main { background: var(--sage); box-shadow: inset 0 0 0 1.5px var(--green), 0 30px 56px -34px rgba(29, 58, 35, .55); }
+.tariff__name { font: 400 clamp(28px, 7.6vw, 36px)/1.05 var(--serif); font-stretch: 62.5%; color: var(--leaf-deep); }
+.tariff__desc { font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+.tariff__foot { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-top: 6px; padding-top: 14px; border-top: 1px solid var(--line); }
+.tariff__term { font: 800 12px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+.tariff__price { font: 600 clamp(38px, 10.4vw, 48px)/1 var(--serif); font-stretch: 62.5%; color: var(--green); white-space: nowrap; padding-bottom: .06em; }
+.tariffs__btn { margin-top: 10px; }
+
+/* «Доза» поддержки: капсула, заполненная по уровню обратной связи */
+.dose { display: flex; align-items: center; gap: 12px; }
+.dose__pill {
+  position: relative; flex: none; width: 58px; height: 24px; border-radius: 999px; overflow: hidden;
+  background: #fff; box-shadow: inset 0 0 0 1.5px var(--green);
+}
+.dose__pill i {
+  position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--fill) * 100%);
+  background: linear-gradient(90deg, var(--green), #7fb03f); transform-origin: left center;
+}
+.dose__label { font: 700 13px/1.25 var(--sans); color: var(--green); }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 400 clamp(34px, 9.4vw, 56px)/1.02 var(--serif); font-stretch: 62.5%; color: var(--leaf-deep); max-width: 14ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  :root { --section: clamp(84px, 8.6vw, 124px); }
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr); align-items: center; column-gap: clamp(40px, 5vw, 80px);
+    padding-top: 72px; padding-bottom: 24px;
+  }
+  .hero__text { display: block; }
+  .kicker { justify-content: flex-start; gap: 6px 26px; font-size: 12px; }
+  .hero__name { font-size: clamp(88px, 7.3vw, 120px); }
+  .hero__last { padding-left: .5em; }
+  .hero__lead { font-size: 17px; margin-top: 30px; }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .hero__cta .btn { padding-inline: 26px; }
+  .hero__stage { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 34px; margin-top: 0; }
+  .capsule { width: min(100%, 290px); justify-self: end; }
+  .hero__claim { font-size: clamp(44px, 3.9vw, 58px); }
+
+  .consult .sec-head { max-width: none; }
+  .consult h2 em { display: block; }
+  .consult__grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: center; gap: clamp(40px, 6vw, 96px); margin-top: 56px; }
+  .dial__svg { width: 300px; }
+  .dial__text { top: 150px; }
+  .talk { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 26px; align-items: start; }
+  .talk__col--me { padding-top: 70px; }
+  .bubble { max-width: 100%; font-size: 16.5px; }
+  .price { margin-top: 64px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 56px; row-gap: 16px; padding: 44px 48px; align-items: start; }
+  .price__top { grid-row: span 3; }
+  .price__note { font-size: 17px; }
+  .price .btn { justify-self: start; }
+  .price__disclaimer { grid-column: 1 / -1; }
+
+  .care__grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 96px); align-items: start; margin-top: 56px; }
+  .care__about { position: sticky; top: 40px; }
+  .tariffs { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .tariff--main { grid-column: 1 / -1; padding: 32px 30px 28px; }
+  .tariff--main .tariff__name { font-size: 44px; }
+  .tariffs__btn { grid-column: 1 / -1; justify-self: start; }
+  .concept-end__title { max-width: 22ch; }
+}

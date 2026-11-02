@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<script>(function(h){h.classList.add('is-loading');var r=function(){h.classList.remove('is-loading')};setTimeout(function(){if(!window.MotionBase)r()},9000);setTimeout(r,12000)})(document.documentElement)</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- preload-fonts -->
+<link rel="preload" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs/Geist-normal-300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs/Geist-normal-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs/Geist-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs/Geist-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs/Geist-normal-500-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs/Geist-normal-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs/Geist-normal-600-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs/Geist-normal-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs/ShantellSans-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs/ShantellSans-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs/ShantellSans-normal-500-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs/ShantellSans-normal-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- /preload-fonts -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Валерия Хурцилава · акушер-гинеколог — концепт</title>
+<link rel="stylesheet" href="../shared/fonts/esli_nuzhen_ginecolog-45aa-gs.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="concept-bar" data-concept>
+  <span>Концепт редизайна @esli_nuzhen_ginekolog · не официальный сайт</span>
+  <a href="https://taplink.cc/esli_nuzhen_ginecolog">Текущий сайт →</a>
+</div>
+
+<!-- Общий «гу»-фильтр для маленьких значков-клеток (большой эмбрион держит свой) -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <filter id="goo-s" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="2.2"/>
+    <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"/>
+  </filter>
+</svg>
+
+<main>
+  <!-- 1. Hero: фото «в поле микроскопа», вокруг делится клетка -->
+  <section class="hero" aria-label="Валерия Хурцилава, акушер-гинеколог">
+    <figure class="hero__visual">
+      <svg class="embryo" viewBox="-200 -200 400 400" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="cell-fill" cx="0" cy="0" r="190" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ffc2e0"/>
+            <stop offset=".5" stop-color="#f0479d"/>
+            <stop offset="1" stop-color="#9a2aa8"/>
+          </radialGradient>
+          <filter id="goo" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="9"/>
+            <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8"/>
+          </filter>
+        </defs>
+        <circle class="embryo__ring" r="194"/>
+        <circle class="embryo__ring embryo__ring--dash" r="184"/>
+        <path class="embryo__ticks" d="M0 -200V-188M0 188V200M-200 0H-188M188 0H200"/>
+        <g class="embryo__spin">
+          <!-- Стартовая раскладка — 8 клеток (так страница выглядит и без анимации) -->
+          <g class="embryo__cells" filter="url(#goo)" fill="url(#cell-fill)">
+            <circle cx="128" cy="0" r="54"/>
+            <circle cx="90.5" cy="90.5" r="54"/>
+            <circle cx="0" cy="128" r="54"/>
+            <circle cx="-90.5" cy="90.5" r="54"/>
+            <circle cx="-128" cy="0" r="54"/>
+            <circle cx="-90.5" cy="-90.5" r="54"/>
+            <circle cx="0" cy="-128" r="54"/>
+            <circle cx="90.5" cy="-90.5" r="54"/>
+          </g>
+          <g class="embryo__cyto" filter="url(#goo)">
+            <circle cx="128" cy="0" r="42"/>
+            <circle cx="90.5" cy="90.5" r="42"/>
+            <circle cx="0" cy="128" r="42"/>
+            <circle cx="-90.5" cy="90.5" r="42"/>
+            <circle cx="-128" cy="0" r="42"/>
+            <circle cx="-90.5" cy="-90.5" r="42"/>
+            <circle cx="0" cy="-128" r="42"/>
+            <circle cx="90.5" cy="-90.5" r="42"/>
+          </g>
+          <g class="embryo__nuclei">
+            <circle cx="128" cy="0" r="9"/>
+            <circle cx="90.5" cy="90.5" r="9"/>
+            <circle cx="0" cy="128" r="9"/>
+            <circle cx="-90.5" cy="90.5" r="9"/>
+            <circle cx="-128" cy="0" r="9"/>
+            <circle cx="-90.5" cy="-90.5" r="9"/>
+            <circle cx="0" cy="-128" r="9"/>
+            <circle cx="90.5" cy="-90.5" r="9"/>
+          </g>
+        </g>
+      </svg>
+      <div class="hero__photo"><img src="assets/portrait.jpg" width="300" height="300" alt="Валерия Хурцилава" fetchpriority="high"></div>
+      <p class="sticker"><span class="sticker__top">Лучший гинеколог мира</span><span class="sticker__sub">(по версии дочки)</span></p>
+    </figure>
+
+    <div class="hero__text">
+      <p class="hello">Добро пожаловать на мою страницу</p>
+      <h1 class="hero__name"><span class="hero__first">Валерия</span> <span class="hero__last">Хурцилава</span></h1>
+      <p class="hero__lead">Адвокат эрозии, <em>детектив по&nbsp;бесплодию</em></p>
+      <p class="hero__about">Акушер-гинеколог, врач УЗИ, спикер и&nbsp;автор марафонов.</p>
+      <div class="hero__cta">
+        <a class="btn" href="https://taplink.cc/esli_nuzhen_ginecolog">Онлайн-консультация</a>
+        <a class="btn btn--ghost" href="https://t.me/esli_nuzhen_ginecolog">Мой уютный телеграм-канал</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Приём и ведение -->
+  <section class="care" aria-labelledby="care-title">
+    <span class="care__orb" aria-hidden="true"></span>
+    <header class="sec-head">
+      <p class="eyebrow"><span>01</span> приём</p>
+      <h2 id="care-title">Лечу женщин, помогаю парам <em>стать родителями</em></h2>
+    </header>
+    <ol class="svc">
+      <li class="svc__item">
+        <a class="svc__link" href="https://taplink.cc/esli_nuzhen_ginecolog">
+          <span class="svc__line" aria-hidden="true"></span>
+          <span class="svc__num">01</span>
+          <span class="svc__title">Онлайн-консультация</span>
+          <span class="svc__go" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li class="svc__item">
+        <a class="svc__link" href="https://taplink.cc/esli_nuzhen_ginecolog">
+          <span class="svc__line" aria-hidden="true"></span>
+          <span class="svc__num">02</span>
+          <span class="svc__title">Онлайн ведение беременности</span>
+          <span class="svc__go" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li class="svc__item">
+        <a class="svc__link" href="https://taplink.cc/esli_nuzhen_ginecolog">
+          <span class="svc__line" aria-hidden="true"></span>
+          <span class="svc__num">03</span>
+          <span class="svc__title">Встречи для беременных в&nbsp;Москве</span>
+          <span class="svc__go" aria-hidden="true"></span>
+        </a>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 3. Курсы и вебинары -->
+  <section class="learn" aria-labelledby="learn-title">
+    <header class="sec-head">
+      <p class="eyebrow"><span>02</span> инфопродукты</p>
+      <h2 id="learn-title">Курсы, <em>вебинары</em></h2>
+      <p class="sec-sub">Здесь вы можете приобрести мои инфопродукты, которые ответят на&nbsp;многие ваши вопросы и&nbsp;помогут разобраться в&nbsp;женском здоровье!</p>
+    </header>
+    <div class="cards">
+      <article class="card">
+        <div class="card__top">
+          <p class="card__tag">вебинар</p>
+          <svg class="cells" viewBox="-20 -20 40 40" aria-hidden="true" focusable="false"><g filter="url(#goo-s)"><circle cx="0" cy="0" r="9"/></g></svg>
+        </div>
+        <h3 class="card__title">«Я беременна. Что&nbsp;делать»</h3>
+        <a class="btn btn--card" href="https://taplink.cc/esli_nuzhen_ginecolog">Купить вебинар</a>
+      </article>
+      <article class="card">
+        <div class="card__top">
+          <p class="card__tag">вебинар</p>
+          <svg class="cells" viewBox="-20 -20 40 40" aria-hidden="true" focusable="false"><g filter="url(#goo-s)"><circle cx="-5.5" cy="0" r="6.5"/><circle cx="5.5" cy="0" r="6.5"/></g></svg>
+        </div>
+        <h3 class="card__title">«Беременность от&nbsp;А&nbsp;до&nbsp;Я»</h3>
+        <a class="btn btn--card" href="https://taplink.cc/esli_nuzhen_ginecolog">Купить вебинар</a>
+      </article>
+      <article class="card">
+        <div class="card__top">
+          <p class="card__tag">видеоурок</p>
+          <svg class="cells" viewBox="-20 -20 40 40" aria-hidden="true" focusable="false"><g filter="url(#goo-s)"><circle cx="-5" cy="-5" r="5.4"/><circle cx="5" cy="-5" r="5.4"/><circle cx="-5" cy="5" r="5.4"/><circle cx="5" cy="5" r="5.4"/></g></svg>
+        </div>
+        <h3 class="card__title">«6 способов отследить овуляцию»</h3>
+        <a class="btn btn--card" href="https://taplink.cc/esli_nuzhen_ginecolog">Купить видеоурок</a>
+      </article>
+      <article class="card">
+        <div class="card__top">
+          <p class="card__tag">закрытый чат</p>
+          <svg class="cells" viewBox="-20 -20 40 40" aria-hidden="true" focusable="false"><g filter="url(#goo-s)"><circle cx="10" cy="0" r="4.3"/><circle cx="7.1" cy="7.1" r="4.3"/><circle cx="0" cy="10" r="4.3"/><circle cx="-7.1" cy="7.1" r="4.3"/><circle cx="-10" cy="0" r="4.3"/><circle cx="-7.1" cy="-7.1" r="4.3"/><circle cx="0" cy="-10" r="4.3"/><circle cx="7.1" cy="-7.1" r="4.3"/></g></svg>
+        </div>
+        <h3 class="card__title">Доступ в&nbsp;закрытый чат по&nbsp;менструальной гигиене</h3>
+        <a class="btn btn--card" href="https://taplink.cc/esli_nuzhen_ginecolog">Получить доступ</a>
+      </article>
+    </div>
+    <div class="help">
+      <p>После оплаты нажмите «Обратно в&nbsp;магазин» и&nbsp;перейдите по&nbsp;ссылке, которая у&nbsp;вас откроется. Если произошла ошибка, напишите в&nbsp;техподдержку</p>
+      <a class="help__link" href="https://wa.me/79274390095?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%BD%D0%B5%20%D0%BC%D0%BE%D0%B3%D1%83%20%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%20%D0%BA%20%D0%B2%D0%B5%D0%B1%D0%B8%D0%BD%D0%B0%D1%80%D1%83">Написать в&nbsp;техподдержку (WhatsApp)</a>
+    </div>
+  </section>
+
+  <aside class="concept-end">
+    <p class="concept-end__title">Так может выглядеть <em>весь ваш сайт</em></p>
+    <p class="concept-end__text">Это концепт: три блока вашего Taplink в&nbsp;новом дизайне, на&nbsp;ваших фото и&nbsp;текстах.</p>
+    <a class="btn btn--ghost" href="https://taplink.cc/esli_nuzhen_ginecolog">Открыть текущий сайт</a>
+  </aside>
+</main>
+
+<script src="../shared/vendor/gsap/gsap.min.js"></script>
+<script src="../shared/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="../shared/vendor/gsap/SplitText.min.js"></script>
+<script src="../shared/motion-base.js"></script>
+<script src="motion.js"></script>
+</body>
+</html>

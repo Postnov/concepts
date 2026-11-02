@@ -1,0 +1,98 @@
+/* Mosina Academy — концепт. Палитра логотипа: графит и песочный беж; Forum + Jost. */
+:root {
+  --graphite: #2b2a2a;
+  --graphite-2: #3a3939;
+  --disc: #434242;
+  --sand: #e6d9cc;
+  --sand-deep: #cdb8a3;
+  --cream: #f6f1ea;
+  --ink: #2b2a2a;
+  --ink-soft: #6b6560;
+  --line-dark: rgba(230, 217, 204, .22);
+  --line-light: rgba(43, 42, 42, .16);
+  --pad: clamp(20px, 5.5vw, 64px);
+  --section: clamp(76px, 12vw, 140px);
+  --serif: 'Forum', Georgia, serif;
+  --sans: 'Jost', system-ui, -apple-system, sans-serif;
+  --concept-bg: #e6d9cc;
+  --concept-ink: #2b2a2a;
+}
+body { background: var(--cream); color: var(--ink); font: 300 17px/1.6 var(--sans); }
+em { font-style: normal; color: var(--sand-deep); }
+.nw { white-space: nowrap; }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* кнопки: только плавное увеличение */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 56px; padding: 0 32px; border-radius: 999px;
+  background: var(--sand); color: var(--graphite); text-decoration: none;
+  font: 500 15px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase;
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%); transform: translateX(var(--shine, -120%)); }
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--sand); box-shadow: inset 0 0 0 1.5px var(--sand-deep); }
+.btn--ghost::after { display: none; }
+
+/* ---------- 1. Hero ---------- */
+.hero { background: var(--graphite); color: var(--sand); display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; padding-top: 44px; padding-bottom: calc(var(--section) * .8); }
+.kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font: 400 12px/1.3 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--sand-deep); }
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--sand-deep); }
+.hero__name { margin-top: 18px; font: 400 clamp(52px, 15vw, 150px)/.98 var(--serif); letter-spacing: .02em; text-transform: uppercase; color: var(--cream); }
+.hero__lead { margin-top: 22px; font: 300 clamp(19px, 5vw, 26px)/1.4 var(--sans); color: var(--sand); max-width: 24ch; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero__mark { position: relative; justify-self: center; width: min(78vw, 400px); aspect-ratio: 1; }
+.hero__rings { position: absolute; inset: -4%; width: 108%; height: 108%; overflow: visible; }
+.ring { fill: none; stroke: var(--sand-deep); stroke-width: .8; transform-origin: 200px 200px; }
+.ring--1 { stroke-dasharray: 100 0; opacity: .7; }
+.ring--2 { stroke-dasharray: 1.2 2.4; stroke-width: 1.4; opacity: .55; }
+.disc { position: absolute; inset: 7%; border-radius: 50%; overflow: hidden; background: var(--disc); }
+.disc img { width: 100%; height: 100%; object-fit: cover; scale: 1.04; }
+.disc__cut { position: absolute; left: 0; right: 0; top: 0; height: 1.5px; background: linear-gradient(90deg, transparent, var(--sand), transparent); box-shadow: 0 0 14px rgba(230,217,204,.7); opacity: 0; }
+
+/* заголовки секций */
+.sec-head { margin-bottom: clamp(32px, 6vw, 60px); }
+.eyebrow { font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { color: var(--sand-deep); margin-right: 10px; }
+.sec-head h2 { margin-top: 16px; font: 400 clamp(34px, 9vw, 72px)/1.08 var(--serif); letter-spacing: .01em; }
+.sec-head h2 em { color: #a88f76; }
+
+/* ---------- 2. Об академии ---------- */
+.about { padding-top: var(--section); padding-bottom: var(--section); }
+.facts { display: grid; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--line-light); }
+.fact { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 16px; padding: 28px 0 30px; border-bottom: 1px solid var(--line-light); }
+.fact__num { grid-row: 1; font: 400 15px/1.9 var(--serif); color: #a88f76; }
+.fact__text { grid-column: 2; font: 400 clamp(24px, 6.6vw, 46px)/1.2 var(--serif); }
+.brands { grid-column: 2; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.brands li { padding: 12px 26px; border-radius: 999px; background: var(--sand); font: 500 15px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; }
+
+/* ---------- 3. Ссылки ---------- */
+.links { background: var(--sand); padding-top: var(--section); padding-bottom: var(--section); }
+.links .eyebrow span { color: #8a735c; }
+.rows { border-top: 1px solid var(--line-light); }
+.rows li { border-bottom: 1px solid var(--line-light); }
+.row { position: relative; display: grid; grid-template-columns: 40px minmax(0, 1fr) 28px; align-items: center; gap: 12px; padding: 24px 4px; text-decoration: none; color: var(--ink); }
+.row__num { font: 400 14px/1 var(--serif); color: #8a735c; }
+.row__label { font: 400 clamp(24px, 6.4vw, 44px)/1.15 var(--serif); transition: translate .45s cubic-bezier(.2,.7,.2,1); }
+.row__go { position: relative; width: 28px; height: 28px; transition: translate .45s cubic-bezier(.2,.7,.2,1); }
+.row__go::before { content: ''; position: absolute; left: 0; right: 2px; top: 50%; height: 1.5px; background: currentColor; }
+.row__go::after { content: ''; position: absolute; right: 2px; top: 50%; width: 9px; height: 9px; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; translate: 0 -50%; rotate: 45deg; }
+.row:hover .row__label, .row:focus-visible .row__label { translate: 10px 0; }
+.row:hover .row__go, .row:focus-visible .row__go { translate: 6px 0; }
+
+/* ---------- Финал демо ---------- */
+.concept-end { background: var(--graphite); color: var(--sand); text-align: center; padding-block: var(--section); display: grid; justify-items: center; gap: 18px; }
+.concept-end__title { font: 400 clamp(30px, 8vw, 56px)/1.15 var(--serif); max-width: 16ch; }
+.concept-end__text { color: var(--sand-deep); max-width: 36ch; font-size: 16px; }
+
+@media (min-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: center; gap: 60px; padding-top: 80px; }
+  .hero__mark { width: min(100%, 460px); justify-self: end; }
+  .fact { grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1fr); align-items: center; padding: 40px 0; }
+  .fact__text { grid-column: 2; }
+  .brands { grid-column: 3; margin-top: 0; }
+  .row { grid-template-columns: 80px minmax(0, 1fr) 40px; padding: 34px 8px; }
+}

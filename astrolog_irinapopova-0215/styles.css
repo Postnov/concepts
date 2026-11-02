@@ -1,0 +1,234 @@
+/* Ирина Попова · таролог, астролог, мастер рейки — концепт.
+   Палитра от её Taplink: тёплая бумага и какао, золото «источника света» и драгоценные цвета практик. */
+:root {
+  --paper: #efe7d9;
+  --paper-2: #e7dcc9;
+  --paper-3: #f6f1e8;
+  --ink: #3b2c24;
+  --ink-soft: #77655a;
+  --cocoa: #6b5244;
+  --cocoa-deep: #4a372d;
+  --gold: #c39a5b;
+  --gold-soft: #e9d3a6;
+  --line: rgba(107, 82, 68, .18);
+  --radius: 26px;
+  --pad: clamp(20px, 5.5vw, 64px);
+  --section: clamp(84px, 13vw, 160px);
+  --display: 'Oranienbaum', 'Times New Roman', serif;
+  --sans: 'Jost', system-ui, -apple-system, sans-serif;
+  --concept-bg: #4a372d;
+  --concept-ink: #f3ead9;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+em { font-style: normal; color: var(--gold); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: var(--cocoa); color: #fbf6ec; text-decoration: none;
+  font: 500 14px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase;
+  box-shadow: 0 16px 30px -16px rgba(74, 55, 45, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* мягкий золотой блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 236, 200, .32) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--cocoa); box-shadow: inset 0 0 0 1.5px rgba(107, 82, 68, .45); }
+.btn--light { background: #fbf6ec; color: var(--cocoa-deep); box-shadow: none; }
+.btn--gold { background: linear-gradient(120deg, #d9b97f, #b8894a); color: #2c221d; box-shadow: 0 16px 30px -16px rgba(195, 154, 91, .8); }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 760px; margin-bottom: clamp(36px, 6vw, 64px); }
+.sec-head--center { margin-inline: auto; text-align: center; }
+.eyebrow {
+  display: inline-flex; gap: 10px; align-items: center;
+  font: 500 12px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--gold); }
+.sec-head h2 {
+  margin-top: 14px; font: 400 clamp(54px, 15vw, 132px)/.9 var(--display); text-transform: uppercase;
+  color: var(--cocoa); letter-spacing: -.005em;
+}
+.sec-sub { margin-top: 20px; color: var(--ink-soft); font-size: 16.5px; max-width: 52ch; }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr);
+  padding-top: 30px; padding-bottom: var(--section);
+  background: radial-gradient(120% 60% at 50% 38%, #f8eedb 0%, rgba(248, 238, 219, 0) 70%);
+}
+.hero__head { text-align: center; position: relative; z-index: 2; }
+.kicker { font: 400 15px/1.3 var(--sans); letter-spacing: .06em; color: var(--ink-soft); }
+.hero__name {
+  margin-top: 8px; display: flex; flex-direction: column; align-items: center;
+  font: 400 clamp(84px, 27vw, 210px)/.84 var(--display); text-transform: uppercase; color: var(--cocoa);
+  letter-spacing: -.01em;
+}
+.hero__line { display: block; }
+.roles { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px; }
+.roles li {
+  position: relative; font: 400 13px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.roles li + li::before { content: '✦'; position: absolute; left: -14px; top: 0; font-size: 9px; color: var(--gold); letter-spacing: 0; }
+
+.hero__photo { position: relative; z-index: 1; width: min(86%, 440px); margin: 34px auto 0; }
+.rays {
+  position: absolute; left: 50%; top: 40%; width: 230%; height: auto; aspect-ratio: 1;
+  translate: -50% -50%; pointer-events: none; overflow: visible;
+}
+.rays line { stroke-linecap: round; }
+.arch {
+  position: relative; overflow: hidden; aspect-ratio: 675 / 900;
+  border-radius: 999px 999px 26px 26px; background: var(--paper-2);
+  box-shadow: 0 40px 70px -40px rgba(74, 55, 45, .55), 0 0 0 1px rgba(255, 255, 255, .5) inset;
+}
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; transform: scale(1.04); }
+.arch::after { /* тонкая золотая линия по контуру арки */
+  content: ''; position: absolute; inset: 10px; border-radius: inherit; border: 1px solid rgba(255, 244, 222, .55); pointer-events: none;
+}
+
+.hero__side { position: relative; z-index: 2; display: grid; gap: 28px; }
+.training {
+  margin: -64px auto 0; width: min(94%, 460px); padding: 26px 22px 24px; border-radius: 22px; text-align: center;
+  background: rgba(107, 82, 68, .94); color: #f8efe0; backdrop-filter: blur(6px);
+  box-shadow: 0 30px 60px -30px rgba(58, 40, 30, .8);
+}
+.training__kicker { font: 400 12px/1.2 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--gold-soft); }
+.training__title { margin-top: 10px; font: 400 clamp(36px, 10.5vw, 52px)/.95 var(--display); text-transform: uppercase; }
+.hero__actions { display: grid; gap: 12px; width: min(100%, 460px); margin-inline: auto; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 6px 0 0; text-align: center; }
+.stats div { padding: 16px 6px 12px; border-top: 1px solid var(--line); }
+.stats dt { font: 400 clamp(30px, 8.6vw, 46px)/1 var(--display); color: var(--cocoa); white-space: nowrap; }
+.stats dd { margin: 8px 0 0; font-size: 12.5px; line-height: 1.35; color: var(--ink-soft); }
+
+/* ---------- 2. Практики ---------- */
+.practices { padding-bottom: var(--section); }
+.pr { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.pr__tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.pr__tab {
+  position: relative; overflow: hidden; display: grid; align-content: space-between; gap: 14px;
+  min-height: 92px; padding: 13px 14px; border-radius: 16px; text-align: left;
+  background: color-mix(in srgb, var(--c) 12%, var(--paper-3)); color: var(--ink);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 22%, transparent);
+  transition: background-color .5s ease, color .5s ease, scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.pr__tab:hover { scale: 1.03; }
+.pr__tab::before { /* «капля» цвета практики */
+  content: ''; position: absolute; right: 12px; top: 13px; width: 10px; height: 10px; border-radius: 50%; background: var(--c);
+  transition: background-color .5s ease;
+}
+.pr__tab[aria-selected='true'] { background: var(--c); color: #fbf5ea; }
+.pr__tab[aria-selected='true']::before { background: var(--gold-soft); }
+.pr__n { font: 500 11px/1 var(--sans); letter-spacing: .2em; opacity: .7; }
+.pr__t { font: 400 clamp(18px, 4.9vw, 24px)/1 var(--display); text-transform: uppercase; }
+
+.pr__stage {
+  position: relative; overflow: hidden; border-radius: var(--radius);
+  padding: clamp(28px, 6vw, 56px) clamp(22px, 5vw, 56px);
+  background: var(--c); color: #fbf5ea; transition: background-color .7s ease;
+  min-height: 420px;
+}
+.pr__stage::before { /* свет из левого верхнего угла, как на её карточках */
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(90% 70% at 0% 0%, rgba(255, 245, 228, .32), rgba(255, 245, 228, 0) 60%);
+}
+.pr__panel { position: relative; }
+.pr__panel h3 { font: 400 clamp(38px, 10.5vw, 64px)/.92 var(--display); text-transform: uppercase; }
+.pr__lead { margin-top: 18px; font: 300 17px/1.6 var(--sans); max-width: 58ch; }
+.pr__label { margin-top: 26px; font: 400 clamp(24px, 6.4vw, 32px)/1 var(--display); text-transform: uppercase; color: var(--gold-soft); }
+.checks { display: grid; gap: 12px; margin-top: 16px; }
+.checks li { position: relative; padding-left: 36px; font: 300 16px/1.5 var(--sans); }
+.checks li::before {
+  content: ''; position: absolute; left: 0; top: 1px; width: 24px; height: 24px; border-radius: 50%;
+  background: #f2e8d6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 12.5l3.2 3.2L17 9' fill='none' stroke='%236b5244' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat;
+}
+
+/* ---------- 3. Тарифы ---------- */
+.tariffs { padding-bottom: var(--section); }
+.offer { margin-top: 20px; font-size: 16.5px; color: var(--ink-soft); }
+.offer b { font-weight: 500; color: var(--cocoa); }
+.plans { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; perspective: 1200px; }
+.plan {
+  position: relative; overflow: hidden; display: flex; flex-direction: column;
+  padding: 30px 24px 26px; border-radius: var(--radius);
+}
+.plan--base { background: var(--paper-3); box-shadow: inset 0 0 0 1.5px var(--cocoa); }
+.plan--uni { background: linear-gradient(160deg, #a77897, #8a5779 60%); color: #fbf5ea; }
+.plan--vip { background: linear-gradient(160deg, #57524f, #383432 65%); color: #f6efe3; }
+.plan--vip::before { /* золотой отблеск «источника» в углу VIP */
+  content: ''; position: absolute; right: -30%; top: -30%; width: 90%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(233, 211, 166, .35), rgba(233, 211, 166, 0)); pointer-events: none;
+}
+.plan__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 14px; }
+.plan h3 { font: 400 clamp(34px, 9.2vw, 46px)/.95 var(--display); text-transform: uppercase; }
+.plan__term { font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; opacity: .72; }
+.plan__intro { margin-top: 16px; font-weight: 500; font-size: 15.5px; }
+.plan__list { display: grid; gap: 9px; margin-top: 12px; }
+.plan__list li { position: relative; padding-left: 20px; font: 300 15.5px/1.5 var(--sans); }
+.plan__list li::before { content: '✦'; position: absolute; left: 0; top: 0; font-size: 10px; color: var(--gold); }
+.plan--uni .plan__list li::before { color: var(--gold-soft); }
+.plan__label { margin-top: 22px; font: 400 26px/1 var(--display); text-transform: uppercase; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.chips li { padding: 6px 11px; border-radius: 999px; font-size: 13px; line-height: 1.2; box-shadow: inset 0 0 0 1px currentColor; opacity: .85; }
+.plan__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; margin: auto 0 18px; padding-top: 28px; }
+.old { position: relative; font: 300 20px/1 var(--sans); opacity: .55; text-decoration: none; }
+.old::after { /* зачёркивание рисуется анимацией */
+  content: ''; position: absolute; left: -2px; right: -2px; top: 52%; height: 1.5px; background: currentColor;
+  transform-origin: 0 50%; transform: scaleX(var(--strike, 1)) rotate(-8deg);
+}
+.new { font: 400 clamp(46px, 12vw, 60px)/1 var(--display); white-space: nowrap; }
+.plan .btn { width: 100%; }
+.fee { margin-top: 22px; text-align: center; font-size: 14px; color: var(--ink-soft); }
+
+/* ---------- финал концепта ---------- */
+.concept-end {
+  display: grid; justify-items: center; gap: 16px; text-align: center;
+  padding-top: clamp(64px, 10vw, 110px); padding-bottom: clamp(64px, 10vw, 110px);
+  background: var(--paper-2); border-top: 1px solid var(--line);
+}
+.concept-end__title { font: 400 clamp(40px, 11vw, 76px)/.95 var(--display); text-transform: uppercase; color: var(--cocoa); max-width: 14ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; }
+
+/* ---------- планшет и десктоп ---------- */
+@media (min-width: 760px) {
+  .pr__tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .plan { padding: 34px 28px 28px; }
+}
+@media (min-width: 1024px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); grid-template-rows: auto 1fr;
+    column-gap: clamp(40px, 5vw, 90px); align-items: start; padding-top: 56px;
+    background: radial-gradient(60% 80% at 75% 45%, #f8eedb 0%, rgba(248, 238, 219, 0) 70%);
+  }
+  .hero__head { grid-column: 1; grid-row: 1; text-align: left; }
+  .hero__name { align-items: flex-start; font-size: clamp(120px, 12.5vw, 210px); }
+  .roles { justify-content: flex-start; gap: 6px 26px; }
+  .roles li + li::before { left: -18px; }
+  .hero__photo { grid-column: 2; grid-row: 1 / span 2; width: min(100%, 540px); margin: 24px auto 0; }
+  .hero__side { grid-column: 1; grid-row: 2; align-content: start; margin-top: 38px; }
+  .training { margin: 0; width: 100%; max-width: 560px; text-align: left; padding: 26px 32px 28px; }
+  .training__title { font-size: 50px; }
+  .hero__actions { grid-template-columns: auto auto; justify-content: start; width: auto; margin: 0; }
+  .stats { max-width: 560px; text-align: left; }
+  .stats div { padding-inline: 0 10px; }
+
+  .practices .sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 60px; max-width: none; align-items: end; }
+  .practices .sec-head .eyebrow { grid-column: 1 / -1; }
+  .practices .sec-sub { margin: 0 0 10px; }
+  .pr { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 24px; align-items: start; }
+  .pr__tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .pr__tab { min-height: 118px; padding: 16px 18px; }
+  .pr__stage { position: sticky; top: 24px; min-height: 560px; }
+  .plans { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 22px; max-width: 1280px; margin-inline: auto; }
+}
+@media (min-width: 1440px) {
+  .hero, .practices, .tariffs { padding-inline: max(var(--pad), calc((100vw - 1320px) / 2)); }
+}

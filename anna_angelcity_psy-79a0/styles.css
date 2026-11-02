@@ -1,0 +1,103 @@
+/* Анна Федоровцева · клинический психолог — концепт. Палитра от её Taplink: глубокий морской синий и небесно-голубой на тёплой бумаге. */
+:root {
+  --paper: #f6f4ef;
+  --sky: #e3f0f6;
+  --sky-2: #cfe5ef;
+  --ink: #12323f;
+  --ink-soft: #4d6670;
+  --sea: #195873;
+  --sea-2: #3d8db3;
+  --sand: #d9a07a;
+  --line: rgba(25, 88, 115, .2);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(76px, 12vw, 140px);
+  --sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --serif: 'Spectral', Georgia, serif;
+  --concept-bg: #12323f;
+  --concept-ink: #e8f2f7;
+}
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--sea-2); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+.nw { white-space: nowrap; }
+
+/* кнопки: только плавное увеличение */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 56px; padding: 0 32px; border-radius: 14px;
+  background: var(--sea); color: #fff; text-decoration: none;
+  font: 500 14px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase;
+  box-shadow: 0 16px 30px -16px rgba(25, 88, 115, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.26) 50%, transparent 70%); transform: translateX(var(--shine, -120%)); }
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 46px; padding: 0 22px; font-size: 13px; }
+.btn--ghost { background: transparent; color: var(--sea); box-shadow: inset 0 0 0 1.5px var(--sea-2); }
+.btn--light { background: #fff; color: var(--sea); box-shadow: none; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; padding-top: 30px; padding-bottom: var(--section); }
+.kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font: 500 12px/1.2 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--sand); }
+.hero__name { margin-top: 14px; font: 300 clamp(46px, 13.4vw, 112px)/1 var(--serif); letter-spacing: -.015em; color: var(--sea); }
+.hero__lead { margin-top: 22px; font: 300 clamp(20px, 5.2vw, 27px)/1.4 var(--sans); max-width: 26ch; }
+.hero__lead em { font-size: 1.12em; }
+.methods { margin: 26px 0 30px; display: grid; gap: 0; max-width: 460px; border-top: 1px solid var(--line); }
+.methods li { display: grid; grid-template-columns: 52px minmax(0, 1fr); align-items: baseline; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; color: var(--ink-soft); }
+.methods b { font: 600 12px/1 var(--sans); letter-spacing: .14em; color: var(--sea); }
+
+.hero__photo { order: -1; margin: 6px auto 0; width: min(100%, 330px); }
+.portrait { position: relative; padding-bottom: 6px; }
+.frame, .ghost { position: relative; overflow: hidden; aspect-ratio: 4 / 5; border-radius: 999px 999px 24px 24px; background: var(--sky-2); }
+.frame { z-index: 2; box-shadow: 0 30px 60px -34px rgba(18, 50, 63, .55); }
+.frame img, .ghost img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+.ghost { position: absolute; inset: 0 0 6px; z-index: 1; opacity: .0; filter: blur(5px); }
+.ghost--a { background: var(--sea-2); }
+.ghost--b { background: var(--sand); }
+.ghost { background-image: url(assets/anna.jpg); background-size: cover; background-position: 50% 28%; background-blend-mode: multiply; }
+.portrait__tag {
+  position: absolute; z-index: 3; left: -6px; bottom: 26px; padding: 8px 14px; border-radius: 999px;
+  background: var(--paper); color: var(--sea); font: 500 11.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase;
+  box-shadow: 0 10px 24px -12px rgba(18, 50, 63, .5);
+}
+
+/* секции */
+.sec-head { max-width: 640px; }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { color: var(--sea-2); }
+.sec-head h2 { margin-top: 16px; font: 300 clamp(31px, 8.4vw, 58px)/1.1 var(--serif); letter-spacing: -.01em; color: var(--sea); }
+
+.topics { padding-block: var(--section); background: linear-gradient(180deg, var(--paper), var(--sky) 14%, var(--sky) 86%, var(--paper)); }
+.asks { margin-top: 34px; counter-reset: a; border-top: 1px solid var(--line); }
+.asks li { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 8px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); font: 400 clamp(17px, 4.6vw, 21px)/1.35 var(--serif); color: var(--ink); }
+.asks li span { font: 500 11.5px/1 var(--sans); letter-spacing: .1em; color: var(--sea-2); }
+
+.therapy { padding-block: var(--section); }
+.therapy__grid { display: grid; gap: 22px; margin-top: 34px; }
+.price-card { padding: 28px 24px 26px; border-radius: 26px; background: var(--sea); color: #fff; box-shadow: 0 30px 60px -36px rgba(18, 50, 63, .7); display: grid; justify-items: start; }
+.price-card__label { font: 500 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; opacity: .8; }
+.price-card__price { margin: 18px 0 8px; font: 300 clamp(58px, 17vw, 84px)/1 var(--serif); letter-spacing: -.01em; padding-bottom: .08em; }
+.price-card__meta { margin-bottom: 24px; opacity: .85; font-size: 15px; }
+.therapy__side { display: grid; gap: 16px; align-content: start; }
+.note { padding: 20px 22px; border-radius: 20px; font-size: 15px; color: var(--ink-soft); }
+.note--soft { background: var(--sky); }
+.note--warn { background: #fbeee3; color: var(--ink); box-shadow: inset 3px 0 0 var(--sand); }
+.note b { color: var(--sea); font-weight: 600; }
+
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 300 clamp(26px, 6.8vw, 42px)/1.15 var(--serif); max-width: 18ch; color: var(--sea); }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: center; gap: clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-top: 40px; }
+  .hero__photo { order: 0; margin: 0 0 0 auto; width: min(100%, 440px); }
+  .hero__name { font-size: clamp(54px, 6.4vw, 104px); }
+  .topics { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .topics .sec-head { position: sticky; top: 64px; }
+  .asks { margin-top: 0; }
+  .therapy__grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(28px, 4vw, 56px); align-items: stretch; }
+}

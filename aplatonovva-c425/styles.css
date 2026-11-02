@@ -1,0 +1,223 @@
+/* Анастасия Платонова · Таро и матрица судьбы — концепт.
+   Палитра от её Taplink и фото: ч/б портрет, ночное небо с полумесяцем, холодный серо-голубой фон страницы.
+   Ночь + лунное серебро + туманный сланец, без золота. */
+:root {
+  --night: #0b0c0f;
+  --night-2: #13151a;
+  --ivory: #eeece6;
+  --silver: #c9ccd2;
+  --ink-soft: rgba(238, 236, 230, .64);
+  --mist: #dfe3e8;          /* светлые секции: её серо-голубой фон таплинка */
+  --mist-2: #cfd5dc;
+  --slate: #4b525c;         /* её тёмный блок «приватность» */
+  --ink: #111317;
+  --ink-mute: #4e5560;
+  --line: rgba(238, 236, 230, .14);
+  --line-dark: rgba(17, 19, 23, .14);
+  --pad: clamp(20px, 5.5vw, 64px);
+  --section: clamp(84px, 13vw, 160px);
+  --sans: 'Ubuntu Sans', system-ui, -apple-system, sans-serif;
+  --serif: 'Bona Nova', Georgia, serif;
+  --concept-bg: #000;
+  --concept-ink: #d8dbe0;
+}
+
+body { background: var(--night); color: var(--ivory); font: 300 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- Луна: фаза задаётся --p (0 — новолуние, 1 — полнолуние) ---------- */
+.moon {
+  --s: 16px;
+  --shade: var(--night);
+  --lit: radial-gradient(circle at 34% 58%, rgba(104, 110, 120, .26), transparent 24%),
+         radial-gradient(circle at 56% 30%, rgba(104, 110, 120, .18), transparent 18%),
+         radial-gradient(circle at 62% 70%, rgba(104, 110, 120, .14), transparent 16%),
+         radial-gradient(circle at 64% 40%, #fbfaf6 0%, #e4e5e7 36%, #b9bdc3 70%, #8b9098 100%);
+  --ring: rgba(220, 224, 232, .2);
+  --glow: rgba(226, 230, 238, .28);
+  position: relative; display: inline-block; flex: none;
+  width: var(--s); height: var(--s); border-radius: 50%;
+  overflow: hidden; isolation: isolate;
+  background: var(--lit);
+  box-shadow: 0 0 calc(var(--s) * .55) calc(var(--s) * -.08) var(--glow);
+}
+.moon__shade {
+  position: absolute; inset: -3%; border-radius: 50%;
+  background: var(--shade);
+  transform: translateX(calc(var(--p, 0) * -110%));
+  filter: blur(calc(var(--s) * .025));
+}
+.moon::after { content: ''; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--ring); }
+.moon--xs { --s: 15px; }
+.moon--sm { --s: 30px; }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: var(--ivory); color: var(--night); text-decoration: none;
+  font: 500 15px/1 var(--sans); letter-spacing: .03em;
+  box-shadow: 0 0 40px -12px rgba(238, 236, 230, .45);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* лунный блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .7) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--ivory); box-shadow: inset 0 0 0 1px rgba(238, 236, 230, .38); }
+.btn--dark { background: var(--ink); color: var(--ivory); box-shadow: 0 16px 30px -16px rgba(17, 19, 23, .6); }
+.btn--dark::after { background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .18) 50%, transparent 70%); }
+.btn--ghost-dark { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px rgba(17, 19, 23, .32); }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0;
+  padding-top: 26px; padding-bottom: var(--section);
+  background: radial-gradient(120% 60% at 80% 0%, #1b1e25 0%, var(--night) 60%);
+}
+.hero__photo { position: relative; order: -1; margin: 0 6px; }
+.frame { position: relative; z-index: 1; overflow: hidden; background: var(--night-2); }
+.frame img { width: 100%; height: 100%; object-fit: cover; }
+.frame--arch { aspect-ratio: 1065 / 1324; border-radius: 999px 999px 0 0; }
+.frame--arch { /* фото растворяется в ночи снизу */
+  -webkit-mask-image: linear-gradient(180deg, #000 56%, rgba(0, 0, 0, .55) 78%, transparent 97%);
+  mask-image: linear-gradient(180deg, #000 56%, rgba(0, 0, 0, .55) 78%, transparent 97%);
+}
+.moon--hero { --s: clamp(118px, 36vw, 230px); position: absolute; z-index: 0; top: -4%; right: -9%; }
+
+.hero__text { position: relative; z-index: 2; margin-top: -26%; }
+.kicker {
+  display: flex; align-items: center; gap: 12px;
+  font: 500 11.5px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--silver);
+}
+.kicker i { width: 26px; height: 1px; background: currentColor; opacity: .6; }
+.hero__name { margin-top: 14px; font: 400 clamp(46px, 12.4vw, 128px)/.92 var(--serif); letter-spacing: .01em; }
+.hero__first { display: block; text-transform: uppercase; }
+.hero__last { display: block; font-style: italic; color: var(--silver); padding-left: .9em; }
+.hero__lead { margin-top: 24px; max-width: 26ch; font: 300 clamp(19px, 5vw, 25px)/1.42 var(--sans); }
+.hero__lead em { color: var(--silver); font-size: 1.08em; }
+.hero__nav { display: grid; margin: 26px 0 30px; border-top: 1px solid var(--line); }
+.hero__nav a {
+  display: flex; align-items: center; gap: 14px; padding: 15px 2px;
+  border-bottom: 1px solid var(--line); text-decoration: none;
+  font: 400 15px/1.3 var(--sans); letter-spacing: .02em; color: var(--ivory);
+}
+.hero__nav a::after { content: '↓'; margin-left: auto; color: var(--silver); opacity: .7; }
+.hero .actions .btn { flex: 1 1 auto; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 680px; }
+.eyebrow {
+  display: inline-flex; gap: 10px; align-items: center;
+  font: 500 11.5px/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--ink-mute);
+}
+.sec-head h2 { margin-top: 18px; font: 400 clamp(36px, 9.6vw, 76px)/1 var(--serif); letter-spacing: -.005em; }
+.sec-sub { margin-top: 18px; max-width: 40ch; }
+
+/* ---------- 2. Консультации (светлая, как её таплинк) ---------- */
+.consult { background: var(--mist); color: var(--ink); padding-block: var(--section); }
+.consult .moon { --shade: var(--mist); --ring: rgba(17, 19, 23, .35); --glow: transparent;
+  --lit: radial-gradient(circle at 64% 40%, #3a3f47 0%, #15171b 80%); }
+.consult h2 em { color: var(--slate); }
+.consult__inner, .destiny__inner { max-width: 1280px; margin-inline: auto; }
+.consult__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: 38px; }
+.consult__photo { position: relative; }
+.frame--card { aspect-ratio: 1080 / 1200; border-radius: 22px; background: var(--mist-2); }
+.wait {
+  position: relative; z-index: 2; margin: -34px 16px 0; padding: 16px 18px;
+  border-radius: 16px; background: var(--ink); color: var(--ivory);
+  font: 400 14px/1.45 var(--sans);
+}
+.cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.card {
+  position: relative; padding: 26px 24px 26px; border-radius: 22px;
+  background: #f4f5f7; box-shadow: 0 24px 50px -36px rgba(17, 19, 23, .5);
+}
+.card__meta { display: flex; justify-content: space-between; gap: 12px; font: 500 13px/1.2 var(--sans); color: var(--ink); }
+.card__meta span { font-weight: 400; letter-spacing: .16em; text-transform: uppercase; font-size: 11px; color: var(--ink-mute); }
+.card__title { margin-top: 20px; font: 400 clamp(25px, 6.6vw, 32px)/1.08 var(--serif); }
+.card__price { margin-top: 14px; font: 300 clamp(36px, 10vw, 46px)/1 var(--sans); letter-spacing: -.02em; }
+.card__text { margin-top: 14px; font-size: 15px; line-height: 1.55; color: var(--ink-mute); }
+.card--dark { background: var(--ink); color: var(--ivory); }
+.card--dark .card__meta, .card--dark .card__meta span, .card--dark .card__text { color: rgba(238, 236, 230, .7); }
+.card--dark .card__meta { color: var(--ivory); }
+.card--line { background: transparent; box-shadow: inset 0 0 0 1px rgba(17, 19, 23, .25); }
+
+.terms { margin-top: 46px; border-top: 1px solid var(--line-dark); }
+.terms__row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 18px 0; border-bottom: 1px solid var(--line-dark); }
+.terms dt { font: 500 11.5px/1.3 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-mute); }
+.terms dd { margin: 0; font-size: 15.5px; line-height: 1.55; }
+.order { margin-top: 48px; }
+.order__title { font: 400 clamp(30px, 8vw, 48px)/1.04 var(--serif); text-transform: uppercase; letter-spacing: .02em; margin-bottom: 22px; }
+.order .btn { flex: 1 1 auto; }
+
+/* ---------- 3. Разбор предназначения (ночь, её фото полумесяца) ---------- */
+.destiny { position: relative; padding-bottom: var(--section); background: #000; }
+.destiny__sky { position: relative; margin-inline: calc(var(--pad) * -1); height: 118vw; max-height: 720px; overflow: hidden; }
+.destiny__sky img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.destiny__sky::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, #000 0%, transparent 22%, transparent 55%, #000 100%); }
+.destiny__body { position: relative; z-index: 2; margin-top: -38vw; }
+.destiny .eyebrow { color: var(--silver); }
+.destiny h2 em { color: var(--silver); }
+.destiny .sec-sub { color: var(--ink-soft); }
+.destiny .moon { --shade: #000; }
+.phases { margin-top: 34px; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.phase { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.phase h3 { font: 400 clamp(21px, 5.6vw, 26px)/1.18 var(--serif); }
+.phase p { margin-top: 8px; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+.phase .moon { margin-top: 1px; }
+.destiny__price {
+  margin-top: 40px; padding: 30px 24px; border-radius: 24px;
+  background: linear-gradient(160deg, #1a1d23, #0d0e11); box-shadow: inset 0 0 0 1px var(--line);
+}
+.destiny__label { font: 500 11.5px/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--silver); }
+.destiny__sum { margin-top: 14px; font: 300 clamp(44px, 12vw, 64px)/1 var(--sans); letter-spacing: -.02em; }
+.destiny__note { margin: 14px 0 26px; color: var(--ink-soft); font-size: 15px; }
+.destiny__price .btn { width: 100%; }
+
+/* ---------- финал концепта ---------- */
+.concept-end { padding-block: 90px 110px; text-align: center; background: #000; border-top: 1px solid var(--line); }
+.moon--end { --s: 92px; display: block; margin: 0 auto 30px; }
+.concept-end__title { font: 400 clamp(30px, 8vw, 50px)/1.1 var(--serif); }
+.concept-end__title em { color: var(--silver); }
+.concept-end__text { margin: 16px auto 30px; max-width: 34ch; color: var(--ink-soft); }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: 4vw; align-items: center;
+    max-width: none; padding-top: 56px; padding-inline: max(var(--pad), calc((100vw - 1280px) / 2));
+  }
+  .hero__photo { order: 0; margin: 0; }
+  .hero__text { margin-top: 0; }
+  .hero__name { font-size: clamp(64px, 7.6vw, 118px); }
+  .hero__last { padding-left: 1.2em; }
+  .moon--hero { top: -6%; right: -14%; }
+  .hero__nav { max-width: 520px; }
+  .hero .actions .btn { flex: 0 0 auto; }
+
+  .consult__grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 56px; align-items: start; margin-top: 56px; }
+  .consult__photo { position: sticky; top: 40px; }
+  .cards { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .card--line { grid-column: 1 / -1; }
+  .terms { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 56px; margin-top: 72px; }
+  .order { display: flex; align-items: center; justify-content: space-between; gap: 40px; margin-top: 72px; }
+  .order__title { margin: 0; }
+  .order .btn { flex: 0 0 auto; }
+
+  .destiny { padding-top: var(--section); }
+  .destiny__inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; align-items: start; }
+  .destiny__sky { position: sticky; top: 30px; margin: 0; height: 84vh; max-height: 820px; border-radius: 28px; }
+  .destiny__sky::after { background: radial-gradient(closest-side, transparent 70%, rgba(0, 0, 0, .5)); }
+  .destiny__body { margin-top: 0; }
+  .phases { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 36px; }
+  .destiny__price { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 24px; padding: 36px; }
+  .destiny__price > p { grid-column: 1; }
+  .destiny__price .btn { width: auto; grid-column: 2; grid-row: 1 / 4; align-self: center; }
+}

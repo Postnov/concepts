@@ -1,0 +1,140 @@
+/* Orlova Studio — концепт. Палитра её баннера: тёплый серо-бежевый, графит монограммы и персиково-медный блик кнопки записи. */
+:root {
+  --bg: #e1e0dc;
+  --bg-2: #d6d4ce;
+  --card: #f1f0ed;
+  --ink: #2d2c2d;
+  --ink-soft: #6a6866;
+  --graphite: #403f41;
+  --graphite-2: #4d4c4e;
+  --peach: #dba48b;
+  --peach-2: #efc9b5;
+  --line: rgba(45, 44, 45, .16);
+  --line-light: rgba(241, 240, 237, .2);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(76px, 12vw, 140px);
+  --sans: 'Jost', system-ui, -apple-system, sans-serif;
+  --serif: 'Prata', Georgia, serif;
+  --concept-bg: #2d2c2d;
+  --concept-ink: #efeeea;
+}
+
+body { background: var(--bg); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: normal; font-weight: 400; color: var(--peach); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 56px; padding: 0 30px; border-radius: 999px; white-space: nowrap;
+  background: var(--graphite); color: #f3f2ef; text-decoration: none;
+  font: 500 14px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase;
+  box-shadow: 0 16px 30px -16px rgba(45, 44, 45, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .3) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--graphite); box-shadow: inset 0 0 0 1.5px var(--graphite); }
+.btn--peach { background: linear-gradient(115deg, var(--peach), var(--peach-2) 55%, var(--peach)); color: var(--ink); box-shadow: 0 16px 34px -16px rgba(219, 164, 139, .9); }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; padding-top: 28px; padding-bottom: var(--section); }
+.kicker { display: flex; align-items: center; gap: 12px; font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+.kicker i { width: 5px; height: 5px; border-radius: 50%; background: var(--peach); }
+
+.hero__photo { position: relative; margin: 0; }
+.frame {
+  position: relative; overflow: hidden; z-index: 1; isolation: isolate;
+  aspect-ratio: 300 / 380; border-radius: 999px 999px 26px 26px;
+  background: var(--bg-2); box-shadow: 0 40px 70px -46px rgba(45, 44, 45, .6);
+}
+.frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; transform: scale(1.04); transform-origin: 20% 30%; }
+
+/* Фирменная идея: «волоски» на фото, которые стирает луч, оставляя гладкость */
+.strands {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    repeating-linear-gradient(84deg, transparent 0 6px, rgba(52, 38, 34, .55) 6px 6.8px, transparent 6.8px 11px),
+    repeating-linear-gradient(97deg, transparent 0 9px, rgba(52, 38, 34, .42) 9px 9.7px, transparent 9.7px 15px),
+    repeating-linear-gradient(111deg, transparent 0 13px, rgba(52, 38, 34, .5) 13px 14px, transparent 14px 19px);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+}
+.beam {
+  position: absolute; top: -4%; bottom: -4%; left: 0; width: 70px; margin-left: -35px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 233, 220, .85) 50%, transparent);
+  filter: blur(7px); mix-blend-mode: screen; opacity: 0;
+}
+.no-motion .strands, .no-motion .beam { display: none; }
+
+.hero__name { font: 400 clamp(46px, 14vw, 128px)/.98 var(--serif); letter-spacing: .01em; text-transform: uppercase; color: var(--graphite); }
+.hero__lead { margin-top: 16px; font: 300 clamp(21px, 5.6vw, 30px)/1.3 var(--sans); max-width: 20ch; text-transform: uppercase; letter-spacing: .04em; }
+.hero__lead em { font-size: .95em; }
+.hero__about {
+  margin-top: 22px; padding: 20px 22px; border-radius: 22px; max-width: 46ch;
+  background: rgba(241, 240, 237, .7); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .6); color: var(--ink);
+  font-size: 15.5px; line-height: 1.55;
+}
+.hero__cta { display: grid; gap: 12px; margin-top: 26px; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 640px; }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; opacity: .7; }
+.eyebrow span { color: var(--peach); opacity: 1; }
+.sec-head h2 { margin-top: 18px; font: 400 clamp(32px, 9vw, 60px)/1.1 var(--serif); }
+
+/* ---------- 2. Процедуры (графит) ---------- */
+.services { padding-block: var(--section); background: var(--graphite); color: #f1f0ed; border-radius: 34px 34px 0 0; }
+.services .eyebrow { color: #f1f0ed; }
+.rows { margin-top: 34px; }
+.row { position: relative; border-top: 1px solid var(--line-light); }
+.row:last-child { border-bottom: 1px solid var(--line-light); }
+.row::before { content: ''; position: absolute; left: 0; top: -1px; height: 1px; width: 100%; background: var(--peach); transform: scaleX(var(--draw, 0)); transform-origin: left; }
+.row a { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 12px; align-items: baseline; padding: 24px 0; text-decoration: none; transition: padding-left .5s cubic-bezier(.2, .7, .2, 1); }
+.row__num { font: 400 15px/1 var(--serif); color: var(--peach); }
+.row__title { font: 400 clamp(19px, 5vw, 26px)/1.28 var(--sans); text-transform: uppercase; letter-spacing: .04em; }
+.row__go { grid-column: 2; margin-top: 8px; font: 400 14px/1 var(--sans); letter-spacing: .1em; color: rgba(241, 240, 237, .62); }
+.row__go::after { content: ' →'; color: var(--peach); }
+.row a:hover, .row a:focus-visible { padding-left: 10px; }
+.services__btn { margin-top: 40px; width: 100%; }
+
+/* ---------- 3. Отзывы ---------- */
+.reviews { padding-block: var(--section); }
+.reviews__track {
+  display: flex; gap: 14px; margin: 34px calc(var(--pad) * -1) 0; padding: 4px var(--pad) 24px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad); scrollbar-width: none; outline-offset: -4px;
+}
+.reviews__track::-webkit-scrollbar { display: none; }
+.rev { flex: 0 0 min(84%, 360px); scroll-snap-align: start; display: grid; align-content: start; gap: 12px; padding: 22px 22px 24px; border-radius: 24px; background: var(--card); box-shadow: 0 26px 50px -38px rgba(45, 44, 45, .55); }
+.rev__meta { font: 400 13.5px/1 var(--sans); color: var(--ink-soft); letter-spacing: .02em; }
+.stars { margin-right: 6px; color: #e0a23a; letter-spacing: .12em; font-size: 15px; }
+.rev__text { font-size: 15.5px; line-height: 1.55; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 400 clamp(26px, 7vw, 42px)/1.2 var(--serif); max-width: 18ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); grid-template-areas: 'kicker kicker' 'text photo'; align-items: center; gap: 28px clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-top: 40px; }
+  .kicker { grid-area: kicker; }
+  .hero__text { grid-area: text; }
+  .hero__photo { grid-area: photo; margin-left: auto; width: min(100%, 520px); }
+  .hero__name { font-size: clamp(54px, 5.6vw, 88px); }
+  .hero__cta { grid-template-columns: auto auto; justify-content: start; }
+  .services { display: grid; grid-template-columns: .8fr 1.2fr; gap: 16px clamp(40px, 6vw, 96px); align-items: start; }
+  .services .sec-head { position: sticky; top: 64px; }
+  .services .rows { margin-top: 0; }
+  .services__btn { grid-column: 2; width: auto; justify-self: start; margin-top: 12px; }
+  .row a { padding: 32px 0; grid-template-columns: 64px minmax(0, 1fr); }
+  .rev { flex-basis: 340px; }
+  .reviews__track { margin-inline: 0; padding-inline: 0; }
+}

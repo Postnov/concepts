@@ -1,0 +1,145 @@
+/* Вера Беликова · гинеколог — концепт. Палитра её Taplink: тёплая бумага, лесной зелёный, пыльно-серый. */
+:root {
+  --paper: #fcf6ec;
+  --paper-2: #f3ece0;
+  --mist: #e6ebec;
+  --ink: #143211;
+  --ink-soft: #4c6149;
+  --green: #1f4a27;
+  --green-2: #3f7a4a;
+  --rose: #a9564b;
+  --line: rgba(20, 50, 17, .18);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(76px, 13vw, 150px);
+  --sans: 'Mulish', system-ui, -apple-system, sans-serif;
+  --serif: 'Piazzolla', Georgia, serif;
+  --script: 'Caveat', cursive;
+  --concept-bg: #143211;
+  --concept-ink: #fcf6ec;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--rose); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+.nw { white-space: nowrap; }
+
+/* ---------- кнопки ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: var(--green); color: var(--paper); text-decoration: none;
+  font: 600 15px/1 var(--sans); letter-spacing: .03em;
+  box-shadow: 0 16px 30px -16px rgba(31, 74, 39, .75);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .22) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 46px; padding: 0 22px; font-size: 14px; }
+.btn--ghost { background: transparent; color: var(--green); box-shadow: inset 0 0 0 1.5px var(--green); }
+.btn--wide { margin-top: 28px; }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; padding-top: 30px; padding-bottom: var(--section); }
+.kicker {
+  display: flex; align-items: center; gap: 10px;
+  font: 600 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
+}
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--rose); }
+.hero__name {
+  margin-top: 16px;
+  font: 300 clamp(54px, 17vw, 132px)/.94 var(--serif); letter-spacing: -.02em;
+  color: var(--green);
+}
+.hero__name .nw { display: block; }
+.hero__lead { margin-top: 22px; font: 400 clamp(20px, 5.2vw, 26px)/1.35 var(--serif); max-width: 24ch; }
+.hero__script { margin-top: 10px; font: 500 clamp(26px, 7vw, 36px)/1.1 var(--script); color: var(--rose); }
+.hero__about { margin-top: 18px; color: var(--ink-soft); font-size: 15.5px; max-width: 40ch; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 30px; }
+.pills li { padding: 8px 15px; border-radius: 999px; font-size: 13.5px; font-weight: 600; line-height: 1.2; background: var(--mist); color: var(--green); }
+.pills li:nth-child(2) { background: transparent; box-shadow: inset 0 0 0 1px var(--green-2); }
+
+.hero__photo { position: relative; order: -1; margin: 18px 22px 18px 6px; }
+.frame { position: relative; z-index: 1; overflow: hidden; border-radius: 999px 999px 30px 30px / 62% 62% 30px 30px; aspect-ratio: 4 / 5; background: var(--mist); }
+.frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transform: scale(1.06); }
+.frame--tall { aspect-ratio: 4 / 4.6; }
+
+/* «Объектив»: кольцо с делениями за портретом, наводка на резкость при входе */
+.lens { position: absolute; z-index: 0; width: 86%; right: -24%; top: -11%; aspect-ratio: 1; overflow: visible; }
+.lens circle { fill: none; }
+.lens__ticks { stroke: var(--green-2); stroke-width: 3.2; stroke-dasharray: 1.4 6.9; opacity: .75; }
+.lens__ring { stroke: var(--rose); stroke-width: .8; opacity: .8; }
+.lens { transform-origin: 50% 50%; }
+.br { position: absolute; z-index: 2; width: 26px; height: 26px; border: 0 solid var(--paper); pointer-events: none; }
+.br--tl { left: 16%; top: 12%; border-width: 2px 0 0 2px; }
+.br--tr { right: 16%; top: 12%; border-width: 2px 2px 0 0; }
+.br--bl { left: 8%; bottom: 10%; border-width: 0 0 2px 2px; }
+.br--brr { right: 8%; bottom: 10%; border-width: 0 2px 2px 0; }
+.focus-chip {
+  position: absolute; z-index: 3; left: -8px; bottom: 16%;
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 12px; border-radius: 999px;
+  background: rgba(252, 246, 236, .92); backdrop-filter: blur(6px);
+  font: 700 11px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--green);
+  box-shadow: 0 10px 24px -14px rgba(20, 50, 17, .55);
+}
+.focus-chip i { width: 7px; height: 7px; border-radius: 50%; background: var(--rose); }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 640px; }
+.eyebrow {
+  display: inline-flex; gap: 10px; align-items: center;
+  font: 700 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--rose); }
+.sec-head h2 { margin-top: 16px; font: 300 clamp(30px, 8.2vw, 54px)/1.1 var(--serif); letter-spacing: -.01em; color: var(--green); }
+
+/* ---------- 2. Запросы ---------- */
+.topics { padding-block: var(--section); background: linear-gradient(180deg, var(--paper), var(--mist) 14%, var(--mist) 86%, var(--paper)); }
+.topics__body { margin-top: 34px; }
+.checks { display: grid; }
+.checks li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 14px; align-items: start; padding: 15px 0; border-bottom: 1px solid var(--line); font-size: 16.5px; line-height: 1.45; }
+.checks li:first-child { border-top: 1px solid var(--line); }
+.chk { width: 24px; height: 24px; margin-top: 1px; overflow: visible; }
+.chk circle { fill: none; stroke: var(--green-2); stroke-width: 1.4; }
+.chk path { fill: none; stroke: var(--rose); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 20; stroke-dashoffset: 0; }
+.wants { display: grid; gap: 14px; margin-top: 30px; }
+.wants li { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 18px; align-items: center; padding: 14px 18px 14px 14px; border-radius: 26px; background: var(--paper); font: 400 19px/1.3 var(--serif); }
+.wants img { width: 78px; height: 78px; border-radius: 50%; object-fit: cover; mix-blend-mode: multiply; }
+.script-line { margin-top: 34px; text-align: center; font: 500 clamp(32px, 9vw, 46px)/1.1 var(--script); color: var(--rose); }
+
+/* ---------- 3. Цены ---------- */
+.prices { padding-block: var(--section); }
+.cards { display: grid; gap: 14px; margin-top: 34px; }
+.card { position: relative; padding: 26px 24px 24px; border-radius: 28px; background: var(--green); color: var(--paper); box-shadow: 0 26px 50px -32px rgba(20, 50, 17, .7); }
+.card--alt { background: var(--paper-2); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.card__meta { display: flex; align-items: center; gap: 8px; font: 700 11.5px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; opacity: .78; }
+.card__dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.card__title { margin-top: 14px; font: 400 24px/1.2 var(--serif); }
+.card__price { margin-top: 22px; font: 300 clamp(48px, 13vw, 64px)/1.1 var(--serif); letter-spacing: -.01em; font-variant-numeric: lining-nums; }
+.pay-note { margin-top: 20px; padding-left: 16px; border-left: 1px solid var(--rose); color: var(--ink-soft); font-size: 14.5px; }
+
+/* ---------- финальная плашка ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 300 clamp(26px, 6.6vw, 40px)/1.15 var(--serif); max-width: 18ch; color: var(--green); }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-top: 40px; }
+  .hero__photo { order: 0; margin: 20px 40px 20px auto; width: min(100%, 470px); }
+  .hero__name { font-size: clamp(64px, 8vw, 124px); }
+  .topics { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .topics .sec-head { position: sticky; top: 64px; }
+  .topics__body { margin-top: 6px; }
+  .prices { display: grid; grid-template-columns: .8fr 1.2fr; column-gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .prices .cards { grid-column: 2; grid-row: 1 / span 3; margin-top: 0; grid-template-columns: 1fr 1fr; }
+  .prices .sec-head { grid-column: 1; }
+  .prices .pay-note { grid-column: 1; align-self: start; }
+  .prices .btn--wide { grid-column: 1; justify-self: start; }
+}

@@ -1,0 +1,120 @@
+/* Ксения Копейкина · психолог — концепт. Палитра от её Taplink: глубокий бирюзово-серый и бирюза, медь — от цвета волос на фото. */
+:root {
+  --bg: #121b1b;
+  --bg-2: #172321;
+  --card: #1c2b2a;
+  --ink: #ece8df;
+  --ink-soft: #a7b6b3;
+  --teal: #6aafb0;
+  --teal-hi: #93d4d1;
+  --copper: #e19a70;
+  --line: rgba(147, 212, 209, .2);
+  --radius: 28px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(80px, 13vw, 150px);
+  --sans: 'Wix Madefor Text', system-ui, -apple-system, sans-serif;
+  --serif: 'Piazzolla', Georgia, serif;
+  --concept-bg: #6aafb0;
+  --concept-ink: #0d1616;
+}
+
+body { background: var(--bg); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--copper); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  min-height: 58px; padding: 0 30px; border-radius: 999px;
+  background: var(--teal); color: #0d1616; text-decoration: none; text-align: center;
+  font: 600 15px/1.1 var(--sans); letter-spacing: .06em; text-transform: uppercase;
+  box-shadow: 0 16px 34px -16px rgba(106, 175, 176, .8);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn small { font: 500 12px/1 var(--sans); letter-spacing: .04em; text-transform: none; opacity: .75; }
+.btn::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .35) 50%, transparent 70%); transform: translateX(var(--shine, -120%)); }
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 48px; padding: 0 24px; font-size: 13.5px; }
+.btn--ghost { background: transparent; color: var(--teal-hi); box-shadow: inset 0 0 0 1.5px var(--teal); }
+
+/* ---------- сигнал: рваная линия тревоги → ровный пульс ---------- */
+.signal { display: block; width: 100%; overflow: visible; pointer-events: none; }
+.signal path { fill: none; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+.signal__line { stroke: var(--teal-hi); stroke-width: 1.6; }
+.signal__glow { stroke: var(--teal); stroke-width: 7; opacity: .16; }
+
+/* ---------- 1. Hero ---------- */
+.hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; padding-top: 34px; padding-bottom: var(--section); isolation: isolate; }
+.hero > * { position: relative; z-index: 1; }
+.hero > .signal { position: absolute; z-index: 0; left: 0; right: 0; top: 170px; height: 110px; }
+.kicker { display: flex; align-items: center; gap: 10px; font: 500 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--teal-hi); }
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--copper); }
+.hero__name { margin-top: 16px; font: 300 clamp(68px, 21vw, 150px)/.92 var(--serif); letter-spacing: -.01em; color: var(--ink); }
+.hero__surname { margin-top: 8px; font: 500 clamp(14px, 3.8vw, 20px)/1 var(--sans); letter-spacing: .5em; text-transform: uppercase; color: var(--ink-soft); }
+.hero__lead { margin-top: 26px; font: 300 clamp(21px, 5.6vw, 30px)/1.38 var(--serif); max-width: 28ch; }
+.hero__lead em { font-size: 1.04em; }
+.hero__about { margin-top: 20px; color: var(--ink-soft); font-size: 15.5px; max-width: 46ch; }
+.hero__note { margin-top: 18px; padding-left: 16px; border-left: 1.5px solid var(--copper); font-size: 14.5px; color: var(--ink-soft); max-width: 50ch; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.hero__cta .btn { flex: 1 1 220px; }
+
+.hero__photo { order: -1; position: relative; justify-self: center; width: min(78%, 290px); margin-top: 6px; }
+.frame { position: relative; overflow: hidden; aspect-ratio: 290 / 330; border-radius: 145px 145px var(--radius) var(--radius); background: var(--card); box-shadow: 0 0 0 8px var(--bg), 0 0 0 9.5px var(--line), 0 40px 70px -30px rgba(0, 0, 0, .8); }
+.frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.tag { position: absolute; z-index: 2; padding: 8px 14px; border-radius: 999px; background: var(--copper); color: #1b120d; font: 600 11.5px/1 var(--sans); letter-spacing: .18em; }
+.tag--a { right: -14px; bottom: 34px; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 640px; }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { color: var(--copper); }
+.sec-head h2 { margin-top: 16px; font: 300 clamp(32px, 8.6vw, 60px)/1.1 var(--serif); }
+.sec-sub { margin-top: 18px; color: var(--ink-soft); max-width: 44ch; }
+
+/* ---------- 2. Признаки ---------- */
+.signs { position: relative; padding-block: 40px var(--section); background: linear-gradient(180deg, var(--bg), var(--bg-2) 18%, var(--bg-2) 86%, var(--bg)); }
+.signal--scrub { height: 64px; margin-bottom: 52px; }
+.signs__list { margin-top: 38px; border-top: 1px solid var(--line); }
+.sign { position: relative; display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 14px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.sign__num { font: italic 300 56px/.9 var(--serif); color: var(--copper); }
+.sign h3 { font: 400 20px/1.3 var(--serif); }
+.sign__q { margin-top: 8px; color: var(--ink-soft); font-size: 15px; }
+
+/* ---------- 3. Стоимость и форматы ---------- */
+.formats { padding-block: var(--section); }
+.cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 38px; }
+.card { position: relative; display: flex; flex-direction: column; align-items: flex-start; padding: 26px 24px 24px; border-radius: 26px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); }
+.card:first-child { background: var(--teal); color: #0d1616; box-shadow: 0 26px 50px -30px rgba(106, 175, 176, .8); }
+.card__meta { display: flex; align-items: center; gap: 8px; font: 500 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; opacity: .8; }
+.card__dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.card__title { margin-top: 16px; font: 400 24px/1.2 var(--serif); }
+.card__big { margin: 18px 0 20px; font: 300 clamp(40px, 11vw, 52px)/1.05 var(--serif); letter-spacing: -.01em; }
+.card__rows { width: 100%; margin: 14px 0 22px; }
+.card__rows li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-top: 1px solid rgba(13, 22, 22, .22); font-size: 15px; }
+.card__rows b { font: 300 clamp(28px, 8vw, 36px)/1.1 var(--serif); white-space: nowrap; }
+.card__note { margin: 0 0 20px; font-size: 14.5px; color: var(--ink-soft); }
+.card__note--lead { margin-top: 16px; font-size: 15.5px; color: var(--ink); }
+.card:first-child .btn--small { background: #0d1616; color: var(--teal-hi); box-shadow: none; }
+.card .btn--small { margin-top: auto; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 300 clamp(26px, 7vw, 42px)/1.15 var(--serif); max-width: 18ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: center; gap: clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-top: 40px; }
+  .hero > .signal { top: auto; bottom: 24px; height: 110px; }
+  .hero__photo { order: 0; width: min(100%, 360px); justify-self: end; margin: 0; }
+  .hero__name { font-size: clamp(90px, 10.5vw, 168px); }
+  .signs { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .signs .signal--scrub { grid-column: 1 / -1; }
+  .signs .sec-head { position: sticky; top: 64px; }
+  .signs__list { margin-top: 0; }
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .card { padding: 32px 30px 28px; }
+}

@@ -1,0 +1,223 @@
+/* МарьСанна · разговорный английский — концепт.
+   Палитра её Taplink и фото: тёмно-синий, красный её кнопок и свитшота, тёплая бумага.
+   Фирменный моушн — красный маркер учителя: обводит, подчёркивает и ставит галочки сам. */
+:root {
+  --paper: #f6f1e8;
+  --paper-2: #efe7d9;
+  --ink: #15244a;
+  --ink-soft: #4d5a78;
+  --navy: #1b2f5e;
+  --navy-2: #12214a;
+  --red: #e3192d;
+  --red-hi: #ff4a3d;
+  --red-deep: #bc001f;
+  --cream: #fbf7f0;
+  --rule: rgba(64, 108, 190, .17);
+  --line: rgba(21, 36, 74, .14);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 13vw, 150px);
+  --display: 'Sofia Sans Extra Condensed', 'Arial Narrow', sans-serif;
+  --sans: 'Sofia Sans', system-ui, -apple-system, sans-serif;
+  --hand: 'Caveat', 'Segoe Print', cursive;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --concept-bg: #12214a;
+  --concept-ink: #f6f1e8;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 17px/1.55 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+b { font-weight: 700; }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 58px; padding: 0 30px; border-radius: 18px;
+  background: linear-gradient(95deg, #cc0324 0%, #f6352b 52%, #c70121 100%);
+  color: #fff; text-decoration: none;
+  font: 700 17px/1.1 var(--sans); letter-spacing: .01em; text-align: center;
+  box-shadow: inset 0 -4px 0 rgba(150, 0, 24, .9), 0 18px 34px -16px rgba(204, 3, 36, .7);
+  transition: scale .45s var(--ease);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04; }
+.btn--ghost { background: transparent; color: var(--cream); box-shadow: inset 0 0 0 1.5px rgba(251, 247, 240, .45); }
+.btn--outline { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 1.5px var(--navy); }
+
+/* ---------- маркер: обводка, подчёркивание, галочки ---------- */
+.mk { position: relative; display: inline-block; white-space: nowrap; }
+.mk__svg { position: absolute; pointer-events: none; overflow: visible; }
+.mk__svg path, .tick path {
+  fill: none; stroke: var(--red); stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 1; stroke-dashoffset: 0;
+}
+.mk__svg--circle { left: -16%; top: -28%; width: 132%; height: 156%; }
+.mk__svg--circle path { stroke-width: 3; }
+.mk__svg--under { left: -2%; bottom: -14px; width: 104%; height: 18px; }
+.mk__svg--under path { stroke-width: 3.2; }
+
+/* ---------- 1. Hero ---------- */
+.hero { padding: 0; }
+.hero__stage { position: relative; padding: 16px var(--pad) 0; display: grid; justify-items: center; }
+.hero__tag {
+  justify-self: start; display: flex; align-items: center; gap: 12px;
+  font: 600 13px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft);
+}
+.mk--tag { padding: 6px 4px; color: var(--ink); letter-spacing: .06em; }
+.hero__hello {
+  position: relative; z-index: 1; margin-top: 14px;
+  font: 900 clamp(120px, 39vw, 330px)/.8 var(--display); letter-spacing: -.005em; color: var(--navy);
+  padding: .04em .02em 0; /* запас глифам под маской */
+}
+.hello { display: inline-block; }
+/* Подпись «от МарьСанны» — как на её баннере, красным от руки: на мобильном открывает синюю плашку, на десктопе стоит у «O!» */
+.hero__sign { font: 700 clamp(38px, 10.6vw, 62px)/1 var(--hand); white-space: nowrap; rotate: -5deg; }
+.hero__sign--stage { display: none; }
+.hero__sign--panel { justify-self: start; margin: -6px 0 -4px -6px; color: var(--red-hi); }
+.hero__sign-text { display: inline-block; padding: 6px 8px 10px; }
+
+.hero__photo { position: relative; z-index: 2; width: min(92vw, 430px); margin-top: calc(clamp(120px, 39vw, 330px) * -.3); }
+.hero__photo img { width: 100%; height: auto; }
+
+.hero__note { display: none; }
+
+.hero__panel {
+  position: relative; z-index: 3; background: var(--navy); color: var(--cream);
+  padding: 26px var(--pad) 34px; display: grid; gap: 14px;
+}
+.hero__panel::before { /* мягкая тень, на которой «стоит» фото */
+  content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: rgba(255, 255, 255, .06);
+}
+.hero__lead { font: 800 clamp(34px, 9.4vw, 60px)/.98 var(--display); text-transform: uppercase; letter-spacing: .005em; padding-bottom: .04em; }
+.hero__sub { font: 400 18px/1.5 var(--sans); color: rgba(251, 247, 240, .82); }
+.mk--years { margin-left: 4px; padding: 0 3px; color: #fff; font-weight: 700; }
+.mk--years .mk__svg path { stroke: var(--red-hi); }
+.hero__cta { display: grid; gap: 14px; margin-top: 8px; }
+.hero__cta .btn { width: 100%; }
+.hero__meta { display: flex; align-items: center; justify-content: center; gap: 10px; font: 500 15px/1.3 var(--sans); color: rgba(251, 247, 240, .7); }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red-hi); flex: none; }
+
+/* ---------- заголовки секций ---------- */
+.eyebrow {
+  display: inline-flex; gap: 10px; align-items: center;
+  font: 600 13px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--red); }
+.eyebrow--light { color: rgba(251, 247, 240, .66); }
+.eyebrow--light span { color: var(--red-hi); }
+.sec-head h2 {
+  margin-top: 16px; font: 800 clamp(42px, 12vw, 84px)/.94 var(--display); text-transform: uppercase; letter-spacing: .002em;
+  color: var(--navy); padding-bottom: .04em;
+}
+.sec-head h2 .hl { color: var(--red); }
+
+/* ---------- 2. Обо мне: страница тетради ---------- */
+.about { padding-block: var(--section) calc(var(--section) * .8); }
+.sheet {
+  --lh: 36px;
+  position: relative; margin-top: 40px; padding: calc(var(--lh) * 1) 18px calc(var(--lh) * 1.5) 58px;
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 calc(var(--lh) - 1px), var(--rule) calc(var(--lh) - 1px) var(--lh)) 0 calc(var(--lh) * -.23) / 100% auto,
+    var(--cream);
+  border-radius: 6px 26px 26px 6px;
+  box-shadow: 0 1px 0 var(--line), 0 30px 60px -38px rgba(21, 36, 74, .45);
+}
+.sheet__margin { position: absolute; left: 42px; top: 0; bottom: 0; width: 2px; background: rgba(227, 25, 45, .5); transform-origin: top; }
+.facts { display: grid; }
+.fact { position: relative; padding-bottom: var(--lh); }
+.fact p { font: 500 19px/var(--lh) var(--sans); color: var(--ink); }
+.fact p b { color: var(--navy); }
+.tick { position: absolute; left: -50px; top: 2px; width: 30px; height: 30px; border-radius: 50%; box-shadow: inset 0 0 0 2px var(--navy); }
+.tick svg { position: absolute; left: 3px; top: -6px; width: 34px; height: 31px; overflow: visible; }
+.tick path { stroke-width: 4.2; }
+.mk--num { margin: 0 3px; padding: 0 7px; font-weight: 800; color: var(--red); }
+.mk--num .mk__svg--circle { left: -6%; top: -4%; width: 112%; height: 104%; }
+.mk--num .mk__svg path { stroke-width: 2.6; }
+.sheet__sign { position: absolute; right: 22px; bottom: 8px; font: 700 34px/1 var(--hand); color: var(--navy); rotate: -5deg; padding: 4px 6px; }
+
+/* ---------- 3. English Camp ---------- */
+.camp { position: relative; padding-block: var(--section); background: var(--navy); color: var(--cream); }
+.camp__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; }
+.camp__title {
+  margin-top: 16px; font: 800 clamp(44px, 12.4vw, 86px)/.94 var(--display); text-transform: uppercase; padding-bottom: .04em;
+}
+.camp__brand { margin-top: 18px; }
+.mk--brand { font: 700 clamp(48px, 14vw, 92px)/1 var(--hand); color: var(--red-hi); rotate: -4deg; padding: 0 6px 6px; }
+.mk--brand .mk__svg path { stroke: var(--cream); }
+
+.camp__photo { position: relative; justify-self: center; width: min(78%, 360px); }
+.tile {
+  position: relative; overflow: hidden; border-radius: 26px; aspect-ratio: 360 / 395; rotate: -3deg;
+  box-shadow: 0 0 0 6px var(--cream), 0 40px 70px -30px rgba(0, 0, 0, .6);
+}
+.tile img { width: 100%; height: 100%; object-fit: cover; }
+
+.camp__facts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.cfact {
+  position: relative; padding: 20px 18px 20px; border-radius: 22px;
+  background: rgba(251, 247, 240, .06); box-shadow: inset 0 0 0 1px rgba(251, 247, 240, .12);
+}
+.cfact__big { font: 900 clamp(54px, 15vw, 84px)/.9 var(--display); color: var(--cream); padding-top: .04em; }
+.cfact__label { margin-top: 8px; font: 500 15px/1.3 var(--sans); color: rgba(251, 247, 240, .72); }
+.seats { display: flex; gap: 6px; margin-top: 14px; }
+.seats i { width: 12px; height: 12px; border-radius: 50%; background: var(--cream); }
+.seats .seat--opt { background: transparent; box-shadow: inset 0 0 0 1.5px rgba(251, 247, 240, .6); }
+.cfact--wide { grid-column: 1 / -1; display: flex; align-items: flex-end; gap: 18px; }
+.cfact--wide .cfact__label { margin: 0 0 6px; }
+.cfact--price { grid-column: 1 / -1; background: var(--cream); color: var(--navy); box-shadow: none; }
+.cfact--price .cfact__label { color: var(--ink-soft); margin-top: 0; }
+.cfact__price { margin: 10px 0 8px; font: 900 clamp(60px, 17vw, 96px)/.9 var(--display); color: var(--red); padding-top: .04em; }
+.camp__cta { display: grid; gap: 12px; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: var(--section); text-align: center; display: grid; justify-items: center; gap: 16px; }
+.concept-end__title { font: 800 clamp(38px, 10.6vw, 72px)/.96 var(--display); text-transform: uppercase; max-width: 14ch; color: var(--navy); padding-bottom: .1em; }
+.mk--end { color: var(--red); }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 16px; margin-top: 6px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+
+  .hero__stage { min-height: calc(100svh - 210px); padding-top: 24px; padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .hero__hello { margin-top: 6px; font-size: clamp(200px, 23vw, 330px); }
+  .hero__sign--stage { display: block; position: absolute; z-index: 3; left: calc(100% - 14px); top: 21%; color: var(--red); rotate: -7deg; font-size: clamp(44px, 4.3vw, 62px); }
+  .hero__sign--panel { display: none; }
+  .hero__photo { width: clamp(400px, 36vw, 540px); margin-top: calc(clamp(200px, 23vw, 330px) * -.46); }
+
+  .hero__note {
+    display: grid; position: absolute; z-index: 3; bottom: 64px; gap: 4px; max-width: 220px;
+  }
+  .hero__note b { font: 900 120px/.82 var(--display); color: var(--navy); padding-top: .04em; }
+  .hero__note span { font: 600 15px/1.3 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+  .hero__note--years { left: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .hero__note--group { right: max(var(--pad), calc((100vw - 1200px) / 2)); text-align: right; justify-items: end; }
+  .hero__note--group b { color: var(--red); }
+
+  .hero__panel {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) auto; align-items: center; gap: 48px;
+    padding: 34px max(var(--pad), calc((100vw - 1200px) / 2));
+  }
+  .hero__lead { font-size: 52px; }
+  .hero__cta { margin-top: 0; }
+  .hero__cta .btn { width: auto; padding: 0 38px; }
+
+  .about { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .about .sec-head { position: sticky; top: 72px; }
+  .sheet { margin-top: 0; --lh: 40px; padding-left: 74px; }
+  .sheet__margin { left: 56px; }
+  .fact p { font-size: 21px; }
+  .tick { left: -62px; top: 4px; }
+
+  .camp__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    grid-template-areas: 'text photo' 'facts photo' 'cta photo';
+    column-gap: clamp(48px, 6vw, 96px); row-gap: 36px; align-items: start;
+  }
+  .camp__text { grid-area: text; }
+  .camp__photo { grid-area: photo; align-self: center; width: min(100%, 440px); }
+  .camp__facts { grid-area: facts; }
+  .camp__cta { grid-area: cta; grid-template-columns: auto auto; justify-content: start; }
+  .cfact--price { display: grid; grid-template-columns: auto minmax(0, 1fr); align-content: center; align-items: center; column-gap: 26px; row-gap: 4px; }
+  .cfact--price .cfact__price { grid-column: 1; grid-row: 1 / 3; margin: 0; font-size: 92px; }
+  .cfact--price .cfact__label { grid-column: 2; }
+}

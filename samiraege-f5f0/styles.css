@@ -1,0 +1,118 @@
+/* Самира · репетитор по английскому — концепт. Тетрадь учителя: линованная бумага, чернила, красная ручка проверяющего. */
+:root {
+  --paper: #f8f4ea;
+  --paper-2: #efeafb;
+  --ink: #1c1840;
+  --ink-soft: #55507a;
+  --violet: #5a3fd1;
+  --peri: #7b8ff0;
+  --red: #e23b2e;
+  --line: rgba(90, 63, 209, .1);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(80px, 13vw, 150px);
+  --display: 'Unbounded', system-ui, sans-serif;
+  --sans: 'Golos Text', system-ui, -apple-system, sans-serif;
+  --hand: 'Caveat', 'Segoe Script', cursive;
+  --concept-bg: #1c1840;
+  --concept-ink: #f4f1ff;
+}
+
+body {
+  background-color: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans);
+  background-image: repeating-linear-gradient(to bottom, transparent 0 35px, var(--line) 35px 36px);
+}
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+em { font-style: normal; color: var(--violet); }
+
+/* ручка */
+.pen { position: absolute; overflow: visible; pointer-events: none; }
+.pen path, .tick path { fill: none; stroke: var(--red); stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.note { font: 700 clamp(30px, 8vw, 40px)/1 var(--hand); color: var(--red); display: inline-block; }
+
+/* ---------- кнопки ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 56px; padding: 0 28px; border-radius: 16px;
+  background: var(--violet); color: #fff; text-decoration: none;
+  font: 500 15px/1.2 var(--sans); letter-spacing: .01em;
+  box-shadow: 0 16px 30px -14px rgba(90, 63, 209, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .26) 50%, transparent 70%); transform: translateX(var(--shine, -120%)); }
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--violet); box-shadow: inset 0 0 0 1.5px var(--violet); }
+.btn--ghost::after { display: none; }
+.btn--light { color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .6); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.actions .btn { flex: 1 1 100%; }
+.actions--center { margin-top: 44px; }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; padding-top: 28px; padding-bottom: var(--section); }
+.kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font: 500 12px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.kicker i { width: 5px; height: 5px; border-radius: 50%; background: var(--red); }
+.hero__name { margin-top: 12px; font: 600 clamp(54px, 16.5vw, 150px)/1 var(--display); letter-spacing: -.02em; color: var(--ink); }
+.hero__photo { position: relative; width: min(56vw, 300px); margin: 0 auto 8px; }
+.hero__photo .frame { aspect-ratio: 1 / 1.16; border-radius: 130px 130px 28px 28px; overflow: hidden; background: var(--peri); box-shadow: 14px 14px 0 var(--paper-2), 0 30px 50px -28px rgba(28, 24, 64, .5); }
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+.pen--heart { left: 0; top: 14%; width: 100%; height: 86%; }
+.note--hero { position: absolute; right: -8%; bottom: -3%; rotate: -8deg; }
+.hero__lead { font: 500 clamp(26px, 7vw, 40px)/1.15 var(--display); letter-spacing: -.01em; }
+.hero__about { margin-top: 14px; color: var(--ink-soft); font-size: 17px; max-width: 40ch; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 28px; }
+.pills li { padding: 9px 16px; border-radius: 999px; background: var(--paper-2); color: var(--violet); font: 500 13.5px/1.2 var(--sans); }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 900px; }
+.eyebrow { margin-bottom: 18px; font: 500 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { color: var(--red); margin-right: 8px; }
+h2 { font: 500 clamp(27px, 7.4vw, 56px)/1.18 var(--display); letter-spacing: -.015em; }
+
+/* ---------- 2. Результаты (тёмная тетрадь) ---------- */
+.results { background: var(--ink); color: #f4f1ff; padding-top: var(--section); padding-bottom: var(--section); border-radius: 36px 36px 0 0; }
+.results .eyebrow { color: #b9b3e6; }
+.results h2 { color: #fff; max-width: none; }
+.num { position: relative; display: inline-block; padding: 0 .18em; color: #fff; }
+.pen--num { left: -.18em; right: -.18em; top: -.18em; bottom: -.1em; width: calc(100% + .36em); height: calc(100% + .28em); }
+.results__lead { margin-top: 44px; font: 400 clamp(18px, 4.8vw, 24px)/1.4 var(--sans); color: #cfcaf5; }
+.results__lead--end { margin-top: 18px; }
+.scores { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-top: 22px; }
+.scores li { position: relative; padding: 14px 24px; }
+.scores span { position: relative; font: 600 clamp(32px, 9vw, 54px)/1 var(--display); color: #fff; }
+.scores .pen { inset: 0; width: 100%; height: 100%; }
+.unis { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.unis li { padding: 11px 18px; border-radius: 12px; background: rgba(255, 255, 255, .08); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16); font: 500 clamp(15px, 4vw, 18px)/1.1 var(--display); color: #fff; }
+.facts { margin-top: clamp(48px, 8vw, 80px); display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; border-top: 1px solid rgba(255, 255, 255, .18); }
+.facts li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 14px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid rgba(255, 255, 255, .18); }
+.facts__n { font: 700 28px/1 var(--hand); color: #ff8277; }
+.facts p { color: #e6e2fb; font-size: 16.5px; max-width: 56ch; }
+
+/* ---------- 3. Кому подходят занятия ---------- */
+.fit { padding-top: var(--section); padding-bottom: var(--section); }
+
+.checks { margin-top: 36px; display: grid; gap: 0; max-width: 760px; }
+.checks li { position: relative; display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 16px; align-items: start; padding: 20px 0; border-bottom: 1.5px dashed rgba(90, 63, 209, .25); }
+.tick { width: 34px; height: 34px; margin-top: 2px; overflow: visible; }
+.tick path { stroke-width: 5; }
+.checks p { font-size: 17px; line-height: 1.5; }
+
+/* ---------- конец концепта ---------- */
+.concept-end { background: var(--ink); color: #fff; text-align: center; padding-block: clamp(64px, 11vw, 110px); }
+.concept-end__title { font: 500 clamp(26px, 7vw, 46px)/1.2 var(--display); }
+.concept-end__title em { color: #ff8277; }
+.concept-end__text { margin: 16px auto 28px; max-width: 46ch; color: #cfcaf5; }
+.concept-end .btn { display: inline-flex; }
+
+@media (min-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); grid-template-areas: 'top photo' 'rest photo'; column-gap: clamp(32px, 6vw, 90px); align-items: start; padding-top: 70px; }
+  .hero__top { grid-area: top; align-self: end; }
+  .hero__photo { grid-area: photo; width: min(100%, 330px); align-self: center; justify-self: center; margin: 0; }
+  .hero__rest { grid-area: rest; align-self: start; }
+  .actions .btn { flex: 0 0 auto; }
+  .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; border-top: 0; }
+  .facts li { grid-template-columns: minmax(0, 1fr); border-top: 1px solid rgba(255, 255, 255, .18); border-bottom: 0; padding: 22px 0 0; gap: 10px; align-items: start; }
+  .results { border-radius: 56px 56px 0 0; }
+  .fit .actions--center { justify-content: flex-start; }
+}

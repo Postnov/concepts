@@ -1,0 +1,110 @@
+/* Екатерина Первакова · фитнес-тренер — концепт. Палитра с её фото: красный на холодном студийном белом. */
+:root {
+  --paper: #f3f1ee;
+  --paper-2: #fbe6e4;
+  --ink: #1c1b1d;
+  --ink-soft: #5f5a5c;
+  --red: #d4242b;
+  --red-deep: #b01a22;
+  --blush: #fde3e1;
+  --line: rgba(28, 27, 29, .14);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(80px, 13vw, 150px);
+  --sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --serif: 'Prata', Georgia, serif;
+  --concept-bg: #1c1b1d;
+  --concept-ink: #f3f1ee;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-style: normal; color: var(--red); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: var(--red); color: #fff; text-decoration: none;
+  font: 500 15px/1 var(--sans); letter-spacing: .03em;
+  box-shadow: 0 16px 30px -14px rgba(212, 36, 43, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .3) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 46px; padding: 0 22px; font-size: 14px; }
+.btn--ghost { background: transparent; color: var(--red-deep); box-shadow: inset 0 0 0 1.5px var(--red); }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; padding-top: 30px; padding-bottom: var(--section); }
+.kicker { display: flex; align-items: center; gap: 10px; font: 500 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--red); }
+.hero__name { margin-top: 16px; font: 400 clamp(46px, 14.4vw, 132px)/1 var(--serif); letter-spacing: -.01em; }
+.hero__surname { margin-top: 4px; font: 300 clamp(19px, 5.4vw, 30px)/1.2 var(--sans); letter-spacing: .34em; text-transform: uppercase; color: var(--red); }
+.hero__realms { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 22px; font: 500 13px/1.2 var(--sans); letter-spacing: .06em; text-transform: uppercase; }
+.hero__realms i { width: 7px; height: 7px; background: var(--red); transform: rotate(45deg); }
+.hero__lead { margin-top: 22px; font: 300 clamp(18px, 4.7vw, 24px)/1.5 var(--sans); max-width: 34ch; color: #3a363a; }
+.hero .btn { margin-top: 28px; }
+
+.hero__photo { position: relative; order: -1; width: min(72vw, 300px); aspect-ratio: 1; margin: 18px auto 14px; }
+.hoop { position: absolute; inset: 0; border-radius: 50%; padding: 11px; background: #fff; box-shadow: 0 26px 50px -22px rgba(28, 27, 29, .5), inset 0 0 0 1px rgba(28, 27, 29, .06); }
+.disc { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: #e9e7e4; }
+.disc img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); }
+.hoop__ring { position: absolute; inset: -9%; width: 118%; height: 118%; pointer-events: none; overflow: visible; }
+.hoop__ring circle { fill: none; stroke: var(--red); stroke-width: .5; vector-effect: non-scaling-stroke; stroke-width: 1.5px; stroke-dasharray: 100; stroke-dashoffset: 0; }
+.hoop__orbit { position: absolute; inset: -9%; pointer-events: none; z-index: 2; }
+.hoop__orbit i { position: absolute; left: 50%; top: 0; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 6px rgba(212, 36, 43, .18); }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 680px; }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { color: var(--red); }
+.sec-head h2 { margin-top: 16px; font: 400 clamp(32px, 9vw, 62px)/1.1 var(--serif); }
+.sec-sub { margin-top: 18px; color: var(--ink-soft); max-width: 52ch; }
+
+/* ---------- 2. Помочь: шаги вдоль «позвоночника» ---------- */
+.help { padding-block: var(--section); background: linear-gradient(180deg, var(--paper), var(--paper-2) 18%, var(--paper-2) 82%, var(--paper)); }
+.steps { position: relative; margin-top: 44px; display: grid; gap: 38px; padding-left: 46px; }
+.steps::before { content: ''; position: absolute; left: 13px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+.step { position: relative; display: grid; gap: 10px; }
+.step__vert { position: absolute; left: -46px; top: 2px; width: 28px; height: 40px; border-radius: 14px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); overflow: hidden; }
+.step__vert i { position: absolute; inset: 0; background: var(--red); transform-origin: top; transform: scaleY(0); border-radius: inherit; }
+.no-motion .step__vert i { transform: scaleY(1); }
+.step__title { font: 400 clamp(24px, 6.4vw, 34px)/1.15 var(--serif); }
+.step p { color: #3d393c; font-size: 15.5px; max-width: 60ch; }
+.step__meta { font: 500 12px/1.5 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--red-deep) !important; }
+
+/* ---------- 3. Форматы и цены ---------- */
+.offers { padding-block: var(--section); }
+.offers__grid { display: grid; gap: 14px; margin-top: 38px; }
+.offer { position: relative; display: flex; flex-direction: column; align-items: flex-start; padding: 26px 24px 24px; border-radius: 26px; background: #fff; box-shadow: inset 0 0 0 1px var(--line), 0 24px 50px -36px rgba(28, 27, 29, .4); }
+.offer--main { background: var(--red); color: #fff; box-shadow: 0 30px 56px -30px rgba(176, 26, 34, .8); }
+.offer__meta { font: 500 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--red); }
+.offer--main .offer__meta { color: rgba(255, 255, 255, .85); }
+.offer__title { margin-top: 14px; font: 400 21px/1.3 var(--serif); }
+.offer__text { margin-top: 10px; font-size: 15px; color: var(--ink-soft); }
+.offer__price { margin: auto 0 0; padding: 22px 0 20px; font: 300 clamp(40px, 11vw, 52px)/1 var(--sans); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.offer--main .btn { background: #fff; color: var(--red-deep); box-shadow: none; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 400 clamp(26px, 7vw, 42px)/1.2 var(--serif); max-width: 18ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: center; gap: clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-top: 40px; }
+  .hero__photo { order: 0; width: min(100%, 340px); margin: 0 auto; }
+  .hero__name { font-size: clamp(64px, 8vw, 128px); }
+  .help { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .help .sec-head { position: sticky; top: 64px; }
+  .steps { margin-top: 0; }
+  .offers__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .offer { padding: 32px 30px 28px; min-height: 300px; }
+}

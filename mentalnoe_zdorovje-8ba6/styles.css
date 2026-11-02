@@ -1,0 +1,142 @@
+/* Снежана · психолог — концепт. Палитра от её логотипа: аквамарин и чёрный кисточный шрифт. */
+:root {
+  --paper: #f3f9fa;
+  --paper-2: #e3f1f4;
+  --ink: #0f1d21;
+  --ink-soft: #4b6168;
+  --aqua: #62b6c6;
+  --aqua-deep: #1f7f93;
+  --mist: #cfe9ee;
+  --line: rgba(15, 29, 33, .16);
+  --radius: 30px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(80px, 13vw, 150px);
+  --sans: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+  --serif: 'Bitter', Georgia, serif;
+  --concept-bg: #0f1d21;
+  --concept-ink: #e8f4f6;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--aqua-deep); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 32px; border-radius: 999px;
+  background: var(--ink); color: #fff; text-decoration: none;
+  font: 600 16px/1 var(--sans); letter-spacing: .03em;
+  box-shadow: 0 14px 30px -14px rgba(15, 29, 33, .6);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .24) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 46px; padding: 0 24px; font-size: 15px; }
+.btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; padding-top: 30px; padding-bottom: var(--section); }
+.kicker {
+  display: flex; align-items: center; gap: 10px;
+  font: 600 12.5px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
+}
+.kicker i { width: 5px; height: 5px; border-radius: 50%; background: var(--aqua-deep); }
+.hero__name {
+  margin-top: 14px;
+  font: 600 clamp(52px, 16vw, 132px)/1 var(--serif); letter-spacing: -.02em;
+  color: var(--ink);
+}
+.hero__lead { margin-top: 22px; font: 300 clamp(22px, 6vw, 30px)/1.3 var(--serif); max-width: 22ch; }
+.hero__lead em { font-size: 1.02em; }
+.hero__about { margin-top: 18px; color: var(--ink-soft); font-size: 17px; max-width: 46ch; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 30px; }
+.pills li {
+  padding: 9px 16px; border-radius: 999px; font-size: 15px; line-height: 1.2;
+  background: var(--mist); color: #12505e;
+}
+.pills li:nth-child(2) { background: transparent; box-shadow: inset 0 0 0 1px var(--aqua-deep); }
+
+.hero__photo { position: relative; order: -1; margin: 26px auto 34px; width: min(64vw, 320px); }
+.frame { position: relative; z-index: 1; overflow: hidden; border-radius: 50%; aspect-ratio: 1; background: var(--mist); box-shadow: 0 30px 60px -30px rgba(31, 127, 147, .6); }
+.frame img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); }
+
+/* «Личное пространство»: кольцо-граница вокруг фото, вокруг него пунктир */
+.space { position: absolute; inset: -15%; pointer-events: none; }
+.space svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.space circle { fill: none; transform-origin: 200px 200px; }
+.space__ring { stroke: var(--aqua-deep); stroke-width: 2; }
+.space__dash { stroke: var(--aqua); stroke-width: 1.5; stroke-dasharray: 2 9; stroke-linecap: round; }
+.space__label {
+  position: absolute; right: 2%; top: 11%; z-index: 2;
+  padding: 7px 13px; border-radius: 999px; background: var(--ink); color: #fff;
+  font: 600 11px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase;
+}
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 640px; }
+.eyebrow {
+  display: inline-flex; gap: 10px; align-items: center;
+  font: 600 12.5px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--aqua-deep); }
+.sec-head h2 { margin-top: 16px; font: 300 clamp(30px, 8vw, 54px)/1.12 var(--serif); letter-spacing: -.01em; }
+.sec-sub { margin-top: 16px; color: var(--ink-soft); max-width: 46ch; overflow-wrap: anywhere; }
+
+/* ---------- 2. Запросы ---------- */
+.topics { padding-block: var(--section); background: linear-gradient(180deg, var(--paper), var(--paper-2) 28%, var(--paper-2) 80%, var(--paper)); }
+.rows { margin-top: 34px; }
+.rows li {
+  position: relative; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 10px; align-items: baseline;
+  padding: 18px 0; font: 400 18px/1.35 var(--sans);
+}
+.rows li::after { /* линия-граница рисуется слева направо */
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--ink);
+  transform-origin: left; transform: scaleX(var(--draw, 1)); opacity: .5;
+}
+.rows__n { font: 600 12.5px/1 var(--sans); letter-spacing: .1em; color: var(--aqua-deep); }
+
+/* ---------- 3. Консультации ---------- */
+.formats { padding-block: var(--section); }
+.cards { display: grid; gap: 16px; margin-top: 34px; }
+.card {
+  position: relative; padding: 26px 24px 24px; border-radius: 26px;
+  background: var(--ink); color: #fff;
+  box-shadow: 0 24px 50px -30px rgba(15, 29, 33, .6);
+}
+.card--alt { background: var(--aqua); color: var(--ink); box-shadow: 0 24px 50px -34px rgba(31, 127, 147, .7); }
+.card__meta { display: flex; align-items: center; gap: 8px; font: 600 12.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; opacity: .85; }
+.card__dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.card__title { margin-top: 14px; font: 400 25px/1.2 var(--serif); }
+.card__text { margin-top: 10px; font-size: 16px; opacity: .85; max-width: 38ch; }
+.card__price { margin: 20px 0 6px; font: 300 46px/1 var(--serif); font-variant-numeric: tabular-nums; }
+.card__price small { font: 400 20px/1 var(--sans); opacity: .75; }
+.card__alt { margin-bottom: 18px; font-size: 15px; opacity: .75; }
+.card .btn--small { margin-top: 14px; background: #fff; color: var(--ink); box-shadow: none; }
+.card--alt .btn--small { background: var(--ink); color: #fff; }
+.free { margin-top: 26px; display: grid; gap: 8px; padding: 6px 0 6px 18px; border-left: 2px solid var(--aqua-deep); color: var(--ink-soft); max-width: 60ch; }
+.free__title { font: 400 22px/1.3 var(--serif); color: var(--ink); }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 300 clamp(26px, 6.6vw, 40px)/1.2 var(--serif); max-width: 18ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 16px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: center; gap: clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-top: 40px; }
+  .hero__photo { order: 0; margin: 0 0 0 auto; width: min(100%, 420px); }
+  .hero__name { font-size: clamp(60px, 8vw, 128px); }
+  .topics { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .topics .sec-head { position: sticky; top: 64px; }
+  .rows { margin-top: 0; }
+  .cards { grid-template-columns: 1fr 1fr; }
+  .free { margin-top: 36px; }
+}

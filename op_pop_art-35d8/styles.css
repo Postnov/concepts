@@ -1,0 +1,243 @@
+/* OP-POP-ART · Анастасия Постригай — концепт.
+   Айдентика: музейная стена (тёплый белый), чёрная тушь оп-арта, её фиолетовый из Taplink (#5c45b0) и лимонный акцент поп-арта.
+   Шрифты: Unbounded — широкий геометрический гротеск в духе её логотипа; Literata — книжная антиква для живого голоса. */
+:root {
+  --paper: #f3efe7;
+  --paper-2: #ebe5da;
+  --ink: #141216;
+  --ink-soft: #57525d;
+  --violet: #5a41c4;
+  --violet-deep: #35228a;
+  --violet-soft: #e4dff5;
+  --lemon: #f3df4a;
+  --line: rgba(20, 18, 22, .14);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 14vw, 160px);
+  --display: 'Unbounded', system-ui, -apple-system, sans-serif;
+  --serif: 'Literata', Georgia, serif;
+  --concept-bg: #141216;
+  --concept-ink: #f3efe7;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--serif); }
+em { font-family: var(--serif); font-style: italic; font-weight: 500; }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 58px; padding: 0 30px; border-radius: 999px;
+  background: var(--violet); color: #fff; text-decoration: none;
+  font: 500 13px/1.2 var(--display); letter-spacing: .06em; text-transform: uppercase; text-align: center;
+  box-shadow: 0 16px 30px -16px rgba(53, 34, 138, .75);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04; }
+.btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; padding-top: 18px; padding-bottom: var(--section); }
+.kicker {
+  display: flex; align-items: center; gap: 10px;
+  font: 500 11px/1.2 var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft);
+}
+.kicker__txt { display: grid; gap: 4px; }
+.kicker__txt > span { white-space: nowrap; }
+.kicker__logo { width: 34px; height: 34px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+.kicker__name { color: var(--ink); }
+.kicker__role { color: var(--violet); }
+
+/* Картина: рама тушью и жёсткая поп-арт тень её фиолетового */
+.painting { position: relative; margin: 4px 10px 6px 0; }
+.painting__frame {
+  position: relative; aspect-ratio: 1 / 1; overflow: hidden;
+  --sh: 10px;
+  background: var(--paper); border: 2px solid var(--ink);
+  box-shadow: var(--sh) var(--sh) 0 var(--violet);
+}
+.opart { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* Стикер «Искусствовед от Бога» — её слова из био */
+.sticker {
+  position: absolute; right: -6px; bottom: -26px; z-index: 2;
+  width: 124px; height: 124px; border-radius: 50%;
+  display: grid; place-items: center; text-align: center;
+  background: var(--lemon); color: var(--ink);
+  box-shadow: 0 0 0 2px var(--ink), 4px 5px 0 2px var(--ink);
+  rotate: -10deg;
+}
+.sticker__in { display: grid; justify-items: center; gap: 3px; padding: 10px; font: 600 9.5px/1.3 var(--display); letter-spacing: .01em; text-transform: uppercase; }
+.sticker__in b { font-weight: 800; }
+.sticker__heart { width: 16px; height: 15px; color: var(--violet); margin-bottom: 2px; }
+
+/* Словесный знак: одна строка на телефоне, лесенка как в логотипе на десктопе */
+.hero__text { min-width: 0; }
+.wm {
+  display: flex; flex-wrap: nowrap; align-items: baseline;
+  font: 800 clamp(36px, 11.2vw, 72px)/1 var(--display); letter-spacing: -.025em; color: var(--ink);
+  font-kerning: none; white-space: nowrap; padding-top: 6px;
+}
+.wm .l { display: inline-block; }
+.wm__w--art { color: var(--violet); }
+.wm__dash { color: var(--violet); }
+.hero__lead { margin-top: 16px; font: 400 clamp(25px, 6.9vw, 40px)/1.18 var(--serif); letter-spacing: -.01em; max-width: 19ch; }
+.hero__lead em { color: var(--violet); }
+.hero__cta { display: grid; gap: 14px; margin-top: 26px; }
+.hero__cta .btn { width: 100%; }
+
+.textlink {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 18px; align-items: center;
+  padding: 14px 4px 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  text-decoration: none; transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.textlink:hover { scale: 1.02; }
+.textlink__t { font: 600 13px/1.3 var(--display); letter-spacing: .05em; text-transform: uppercase; }
+.textlink__s { grid-row: 2; color: var(--ink-soft); font-size: 15.5px; }
+.textlink__arrow {
+  grid-row: 1 / 3; grid-column: 2; width: 40px; height: 40px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--lemon); font: 600 16px/1 var(--display);
+  box-shadow: 0 0 0 1.5px var(--ink);
+}
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 720px; }
+.eyebrow {
+  display: inline-flex; gap: 10px; align-items: center;
+  font: 500 11.5px/1 var(--display); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { display: inline-grid; place-items: center; min-width: 30px; height: 22px; padding: 0 7px; border-radius: 999px; background: var(--ink); color: var(--paper); letter-spacing: .06em; }
+.sec-head h2 { margin-top: 16px; padding-bottom: .06em; font: 700 clamp(34px, 9.6vw, 74px)/1.04 var(--display); letter-spacing: -.025em; }
+.sec-head h2 em { white-space: nowrap; font-weight: 500; font-size: 1.06em; letter-spacing: -.01em; color: var(--violet); }
+.sec-sub { margin-top: 14px; color: var(--ink-soft); font-style: italic; font-size: 19px; }
+
+/* ---------- 2. Академия: фиолетовый постер с оп-арт кольцами ---------- */
+.academy { padding-block: 0 var(--section); }
+.poster {
+  position: relative; isolation: isolate; overflow: hidden; margin-top: 30px;
+  padding: 30px 22px 14px; border-radius: 30px;
+  background: var(--violet); color: #fff;
+  box-shadow: 0 40px 70px -40px rgba(53, 34, 138, .8);
+}
+/* Два набора колец: при прокрутке второй смещается — возникает муар, как на холстах оп-арта */
+.poster__rings { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.ring {
+  position: absolute; left: 50%; top: 100%; width: 260vmax; height: 260vmax; margin: -130vmax 0 0 -130vmax; border-radius: 50%;
+  background: repeating-radial-gradient(circle, rgba(255, 255, 255, .13) 0 1.5px, transparent 1.5px 13px);
+}
+.ring--b { left: 64%; top: 82%; opacity: .9; }
+.poster__lead { font: 400 clamp(23px, 6.2vw, 36px)/1.25 var(--serif); letter-spacing: -.01em; max-width: 22ch; }
+.poster__lead em { color: var(--lemon); font-weight: 500; }
+.facts { display: flex; align-items: flex-end; gap: 14px; margin-top: 26px; }
+.fact { display: flex; align-items: baseline; gap: 10px; }
+.fact--year b { font: 800 clamp(96px, 30vw, 200px)/.82 var(--display); letter-spacing: -.04em; color: var(--lemon); padding-right: .04em; }
+.fact--year span { font: 600 clamp(20px, 5.6vw, 34px)/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+.fact--online {
+  margin-left: auto; margin-bottom: 6px; align-items: center; gap: 8px;
+  padding: 9px 14px; border-radius: 999px; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .55);
+  font: 500 12px/1 var(--display); letter-spacing: .12em; text-transform: uppercase;
+}
+.fact__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lemon); box-shadow: 0 0 0 4px rgba(243, 223, 74, .25); }
+
+.steps { margin-top: 26px; border-top: 1px solid rgba(255, 255, 255, .22); }
+.step + .step { border-top: 1px solid rgba(255, 255, 255, .22); }
+.step__link {
+  display: grid; grid-template-columns: 34px minmax(0, 1fr) 46px; gap: 12px; align-items: center;
+  padding: 18px 0; text-decoration: none; transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.step__link:hover { scale: 1.02; }
+.step__num { font: 500 12px/1 var(--display); letter-spacing: .08em; color: rgba(255, 255, 255, .6); }
+.step__body { display: grid; gap: 4px; }
+.step__title { font: 600 15px/1.3 var(--display); letter-spacing: .01em; }
+.step__sub { font-size: 15.5px; line-height: 1.4; color: rgba(255, 255, 255, .78); }
+.step__go {
+  width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .5); font: 600 16px/1 var(--display);
+}
+.step--grant .step__go { background: var(--lemon); color: var(--ink); box-shadow: none; }
+.step--grant .step__sub { color: var(--lemon); }
+
+/* ---------- 3. Арт-туры: билеты ---------- */
+.tours { padding-block: 0 var(--section); }
+.tickets { display: grid; gap: 18px; margin-top: 34px; }
+.ticket { --stub: 104px; --notch: 13px; }
+.ticket__link {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) var(--stub);
+  min-height: 188px; border-radius: 22px; text-decoration: none; color: inherit;
+  /* вырезы перфорации сверху и снизу на границе корешка */
+  -webkit-mask: radial-gradient(circle at calc(100% - var(--stub)) 0, transparent var(--notch), #000 calc(var(--notch) + .5px)) top / 100% 51% no-repeat,
+                radial-gradient(circle at calc(100% - var(--stub)) 100%, transparent var(--notch), #000 calc(var(--notch) + .5px)) bottom / 100% 51% no-repeat;
+          mask: radial-gradient(circle at calc(100% - var(--stub)) 0, transparent var(--notch), #000 calc(var(--notch) + .5px)) top / 100% 51% no-repeat,
+                radial-gradient(circle at calc(100% - var(--stub)) 100%, transparent var(--notch), #000 calc(var(--notch) + .5px)) bottom / 100% 51% no-repeat;
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.ticket__link:hover { scale: 1.02; }
+.ticket--tokyo .ticket__link { background: var(--violet); color: #fff; }
+.ticket--cairo .ticket__link { background: var(--lemon); color: var(--ink); }
+.ticket__main { display: grid; align-content: space-between; gap: 10px; padding: 22px 18px 20px 22px; min-width: 0; }
+.ticket__kind { font: 500 11.5px/1 var(--display); letter-spacing: .16em; text-transform: uppercase; opacity: .8; }
+.ticket__city { font: 800 clamp(46px, 14vw, 92px)/.95 var(--display); letter-spacing: -.035em; padding-block: .04em; }
+.ticket__date { font-style: italic; font-size: 17px; line-height: 1.35; }
+.ticket__stub {
+  display: grid; align-content: space-between; justify-items: center; padding: 22px 0 20px;
+  border-left: 2px dashed currentColor; border-left-color: color-mix(in srgb, currentColor 45%, transparent);
+}
+/* «штрихкод» корешка — те же оп-арт полосы */
+.ticket__code { width: 44px; height: 70px; background: repeating-linear-gradient(90deg, currentColor 0 2px, transparent 2px 4px, currentColor 4px 5px, transparent 5px 9px); opacity: .85; }
+.ticket__more { display: grid; justify-items: center; gap: 7px; font: 600 9.5px/1 var(--display); letter-spacing: .06em; text-transform: uppercase; }
+.ticket__more i { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font: 600 15px/1 var(--display); font-style: normal; }
+.ticket--tokyo .ticket__more i { background: var(--lemon); color: var(--ink); }
+.ticket--cairo .ticket__more i { background: var(--ink); color: var(--lemon); }
+.tours__all { margin-top: 26px; width: 100%; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 0 var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 700 clamp(26px, 7vw, 44px)/1.12 var(--display); letter-spacing: -.02em; }
+.concept-end__title em { display: block; color: var(--violet); font-weight: 500; font-size: 1.08em; }
+.concept-end__text { color: var(--ink-soft); max-width: 38ch; font-size: 16px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .hero {
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); grid-template-rows: auto 1fr;
+    column-gap: clamp(48px, 6vw, 110px); row-gap: 0; align-items: start;
+    min-height: calc(100svh - 40px); padding-top: 48px;
+  }
+  .kicker { grid-column: 1; grid-row: 1; font-size: 11.5px; }
+  .kicker__logo { width: 40px; height: 40px; }
+  .hero__text { grid-column: 1; grid-row: 2; align-self: center; padding-top: 30px; }
+  .painting { grid-column: 2; grid-row: 1 / 3; align-self: center; margin: 0 14px 0 0; }
+  .painting__frame { --sh: 16px; }
+  .sticker { width: 160px; height: 160px; right: -34px; bottom: -40px; }
+  .sticker__in { font-size: 12px; }
+  .sticker__heart { width: 20px; height: 19px; }
+  /* лесенка, как в её логотипе: OP / POP / ART */
+  .wm { display: grid; justify-items: start; font-size: clamp(110px, 10.4vw, 168px); line-height: .9; letter-spacing: -.03em; }
+  .wm__dash { display: none; }
+  .wm__w:nth-child(3) { padding-left: .5em; }
+  .wm__w--art { padding-left: 1em; }
+  .hero__lead { margin-top: 26px; }
+  .hero__cta { grid-template-columns: auto auto; justify-content: start; align-items: center; gap: 24px; margin-top: 34px; }
+  .textlink__s { white-space: nowrap; }
+  .hero__cta .btn { width: auto; }
+
+  .academy .sec-head, .tours .sec-head { max-width: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 40px; }
+  .academy .eyebrow, .tours .eyebrow { grid-column: 1 / -1; }
+  .tours .sec-sub { grid-row: 2; grid-column: 2; margin: 0 0 10px; }
+  .poster { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 56px; padding: 56px 56px 44px; border-radius: 40px; margin-top: 44px; }
+  .poster__top { display: grid; align-content: space-between; gap: 40px; }
+  .steps { margin-top: 0; align-self: center; }
+  .step__link { grid-template-columns: 40px minmax(0, 1fr) 52px; padding: 24px 0; }
+  .step__title { font-size: 17px; }
+  .step__go { width: 52px; height: 52px; }
+
+  .tickets { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; margin-top: 48px; }
+  .ticket { --stub: 120px; --notch: 16px; }
+  .ticket__link { min-height: 300px; border-radius: 28px; }
+  .ticket__main { padding: 34px 28px 30px 34px; }
+  .ticket__city { font-size: clamp(64px, 6.4vw, 104px); }
+  .ticket__date { font-size: 19px; }
+  .ticket__code { width: 56px; height: 120px; }
+  .tours__all { width: auto; margin-top: 36px; }
+}

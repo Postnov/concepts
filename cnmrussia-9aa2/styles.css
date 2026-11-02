@@ -1,0 +1,263 @@
+/* CNM · Колледж натуропатической медицины — концепт.
+   Язык: британский «проспект колледжа» — бутылочно-зелёный, слоновая кость, золото премии IHCAN, фирменный зелёный #54a05b из логотипа.
+   Шрифты: Roboto Serif (заголовки, полужирный не нужен — светлое начертание) + Wix Madefor Text (текст). */
+:root {
+  --forest-900: #0b281d;
+  --forest-800: #0f3528;
+  --forest-700: #154533;
+  --leaf: #54a05b;
+  --leaf-light: #9dd3a0;
+  --ivory: #f4efe2;
+  --paper: #f7f3ea;
+  --paper-2: #efe8d8;
+  --ink: #11261c;
+  --ink-soft: #4b5c53;
+  --gold: #c08a32;
+  --gold-light: #e6c27a;
+  --line-dark: rgba(244, 239, 226, .14);
+  --line-light: rgba(17, 38, 28, .13);
+  --radius: 26px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 13vw, 150px);
+  --serif: 'Roboto Serif', Georgia, serif;
+  --sans: 'Wix Madefor Text', system-ui, -apple-system, sans-serif;
+  --concept-bg: #0b281d;
+  --concept-ink: #e9e3d2;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+em { font-family: var(--serif); font-style: italic; font-weight: 300; }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: var(--leaf); color: #fff; text-decoration: none;
+  font: 500 15px/1.2 var(--sans); letter-spacing: .02em; text-align: center;
+  box-shadow: 0 16px 34px -16px rgba(84, 160, 91, .8);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* мягкий блик раз в несколько секунд */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .3) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--light { background: var(--ivory); color: var(--forest-800); box-shadow: 0 16px 34px -18px rgba(0, 0, 0, .5); }
+.btn--ghost { background: transparent; color: var(--forest-700); box-shadow: inset 0 0 0 1.5px rgba(21, 69, 51, .45); }
+
+.link-arrow {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  font: 500 15px/1 var(--sans); color: var(--ivory); text-decoration: none;
+  border-bottom: 1px solid rgba(244, 239, 226, .35);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.link-arrow:hover { scale: 1.04; }
+
+/* ---------- метки ---------- */
+.kicker, .eyebrow {
+  display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 10px;
+  font: 500 11.5px/1.3 var(--sans); letter-spacing: .18em; text-transform: uppercase;
+}
+.kicker span { white-space: nowrap; }
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--gold-light); }
+.eyebrow { color: var(--ink-soft); }
+.eyebrow span { color: var(--leaf); font-weight: 600; }
+.eyebrow--gold span { color: var(--gold); }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; isolation: isolate;
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  padding-top: 26px; padding-bottom: clamp(64px, 12vw, 120px);
+  background:
+    radial-gradient(120% 70% at 85% 42%, rgba(84, 160, 91, .22), transparent 60%),
+    radial-gradient(90% 60% at 0% 100%, rgba(192, 138, 50, .12), transparent 60%),
+    linear-gradient(180deg, var(--forest-900), var(--forest-800) 55%, var(--forest-700));
+  color: var(--ivory);
+}
+.hero::after { /* тонкая «бумажная» сетка, как на бланке диплома */
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .5;
+  background-image: linear-gradient(rgba(244, 239, 226, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(244, 239, 226, .045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(180deg, #000, transparent 85%);
+}
+.crest { display: flex; align-items: center; gap: 12px; }
+.crest__logo { width: 46px; height: 46px; }
+.crest__name { display: grid; gap: 2px; line-height: 1.15; }
+.crest__name b { font: 500 17px/1.1 var(--serif); letter-spacing: .14em; }
+.crest__name span { font-size: 11.5px; letter-spacing: .04em; color: rgba(244, 239, 226, .62); }
+
+.hero .kicker { margin-top: 32px; color: rgba(244, 239, 226, .72); letter-spacing: .15em; }
+.hero__title {
+  margin-top: 14px;
+  font: 300 clamp(44px, 12.8vw, 96px)/1.04 var(--serif); letter-spacing: -.01em;
+}
+.hero__line { display: block; }
+/* Длинное слово — отдельной строкой помельче, курсивом: «Колледж / натуропатической / медицины» как гербовая надпись */
+.hero__line--fit { font-size: .66em; line-height: 1.3; }
+.hero__title em { color: var(--leaf-light); }
+.hero__lead { margin-top: 26px; max-width: 36ch; font-size: 16px; line-height: 1.6; color: rgba(244, 239, 226, .82); }
+.hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 28px; }
+
+/* Глобус: 112 точек-стран и золотые дуги из Великобритании */
+.globe { position: relative; margin: 14px -8px 0; aspect-ratio: 1 / .9; }
+.globe__canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.globe__stat {
+  position: absolute; z-index: 2; display: grid; gap: 2px;
+  padding: 12px 16px 12px; border-radius: 18px;
+  background: rgba(11, 40, 29, .62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 1px rgba(230, 194, 122, .28);
+}
+.globe__stat b { font: 300 30px/1.05 var(--serif); color: var(--ivory); font-variant-numeric: lining-nums; }
+.globe__stat > span { font: 500 11px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--gold-light); }
+.globe__stat--a { left: 8px; top: 6%; }
+.globe__stat--b { right: 8px; bottom: 9%; }
+.globe__note {
+  position: absolute; left: 50%; bottom: -4px; translate: -50% 0; white-space: nowrap;
+  font: 500 11px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: rgba(244, 239, 226, .55);
+}
+
+/* ---------- заголовки секций ---------- */
+.sec-head h2 { margin-top: 14px; font: 300 clamp(44px, 13vw, 104px)/1 var(--serif); letter-spacing: -.015em; }
+
+/* ---------- 2. Обучение ---------- */
+.programs { padding-block: var(--section); background: var(--paper); }
+.progs { display: grid; gap: 14px; margin-top: 34px; }
+.prog {
+  position: relative; display: grid; gap: 16px;
+  padding: 22px 20px 26px; border-radius: var(--radius); text-decoration: none; color: inherit;
+  background: #fffdf7; box-shadow: inset 0 0 0 1px var(--line-light), 0 26px 50px -38px rgba(17, 38, 28, .45);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.prog:hover { scale: 1.02; }
+.prog::before { /* золотая волосяная рамка, как на дипломе */
+  content: ''; position: absolute; inset: 6px; border-radius: calc(var(--radius) - 6px); pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(192, 138, 50, .28);
+}
+.prog__head { display: flex; align-items: center; gap: 12px; }
+.prog__num { min-width: 30px; font: 300 italic 32px/1 var(--serif); color: var(--gold); padding-right: 4px; }
+.prog__kind { flex: 1 1 auto; min-width: 0; font: 500 11px/1.3 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--leaf); }
+.prog__title { font: 300 clamp(32px, 9.4vw, 60px)/1.08 var(--serif); letter-spacing: -.01em; padding-bottom: 2px; }
+.prog__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.prog__tags span {
+  padding: 7px 13px; border-radius: 999px; font-size: 13px; line-height: 1.2; color: var(--forest-700);
+  background: rgba(84, 160, 91, .1);
+}
+.prog__go {
+  flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--forest-800); color: var(--ivory);
+}
+.prog__go svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.consult {
+  position: relative; overflow: hidden; isolation: isolate;
+  margin-top: 22px; padding: 30px 22px 26px; border-radius: var(--radius);
+  background: radial-gradient(120% 90% at 100% 0%, rgba(84, 160, 91, .3), transparent 60%), var(--forest-800);
+  color: var(--ivory);
+}
+.consult::after { /* полупрозрачный знак колледжа в углу */
+  content: ''; position: absolute; right: -60px; bottom: -70px; z-index: -1; width: 240px; height: 240px; opacity: .07;
+  background: url(assets/logo-ivory.png) center / contain no-repeat;
+}
+.consult__label { font: 500 11px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--gold-light); }
+.consult__title { margin-top: 14px; font: 300 clamp(25px, 6.8vw, 40px)/1.18 var(--serif); max-width: 22ch; }
+.consult__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.consult__actions .btn { flex: 1 1 100%; }
+.chan {
+  flex: 1 1 0; min-width: 0; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 16px; border-radius: 999px; text-decoration: none;
+  font: 500 15px/1 var(--sans); color: var(--ivory);
+  box-shadow: inset 0 0 0 1px rgba(244, 239, 226, .3);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.chan:hover { scale: 1.04; }
+.chan svg { width: 20px; height: 20px; fill: none; stroke: var(--leaf-light); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+
+/* ---------- 3. Премия ---------- */
+.award {
+  position: relative; isolation: isolate;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px;
+  padding-block: var(--section);
+  background: linear-gradient(180deg, var(--paper), var(--paper-2));
+}
+.award__seal { position: relative; width: min(78vw, 420px); justify-self: center; aspect-ratio: 1; }
+.award__rays { /* золотое сияние за медалью */
+  position: absolute; inset: -18%; z-index: -1; border-radius: 50%;
+  background:
+    radial-gradient(closest-side, rgba(230, 194, 122, .55), rgba(230, 194, 122, .18) 55%, transparent 72%),
+    repeating-conic-gradient(from 0deg, rgba(192, 138, 50, .14) 0 4deg, transparent 4deg 12deg);
+  mask-image: radial-gradient(closest-side, #000 45%, transparent 100%);
+}
+.award__badge { position: relative; width: 100%; height: 100%; }
+.award__badge img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 24px 30px rgba(120, 78, 18, .28)); }
+.award__glint { /* блик проходит по медали: маска по её же силуэту */
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, transparent 38%, rgba(255, 250, 230, .75) 50%, transparent 62%) no-repeat;
+  background-size: 260% 100%; background-position: var(--glint, 160%) 0;
+  -webkit-mask: url(assets/ihcan.png) center / contain no-repeat; mask: url(assets/ihcan.png) center / contain no-repeat;
+  mix-blend-mode: soft-light;
+}
+.award__num { margin-top: 18px; font: 300 italic clamp(92px, 30vw, 190px)/.9 var(--serif); color: var(--gold); letter-spacing: -.02em; padding-right: .06em; }
+.award__title { margin-top: 10px; font: 300 clamp(23px, 6.3vw, 36px)/1.3 var(--serif); max-width: 26ch; }
+.video-link {
+  display: inline-flex; align-items: center; gap: 14px; margin-top: 28px; padding: 10px 22px 10px 10px;
+  border-radius: 999px; text-decoration: none; color: var(--ink);
+  background: #fffdf7; box-shadow: inset 0 0 0 1px var(--line-light), 0 18px 36px -26px rgba(17, 38, 28, .5);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.video-link:hover { scale: 1.04; }
+.video-link__play { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--forest-800); }
+.video-link__play svg { width: 18px; height: 18px; fill: var(--gold-light); margin-left: 2px; }
+.video-link__text { display: grid; gap: 2px; line-height: 1.25; }
+.video-link__text b { font-weight: 500; font-size: 15px; }
+.video-link__text small { font-size: 12.5px; color: var(--ink-soft); }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end {
+  display: grid; justify-items: center; gap: 14px; text-align: center;
+  padding-block: 20px var(--section); background: var(--paper-2);
+}
+.concept-end__title { font: 300 clamp(26px, 7vw, 42px)/1.15 var(--serif); max-width: 18ch; }
+.concept-end__title em { color: var(--leaf); }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto 1fr;
+    grid-template-areas: 'head globe' 'body globe'; grid-template-rows: auto auto; align-content: center;
+    column-gap: clamp(32px, 4vw, 72px);
+    min-height: calc(100svh - 34px); padding-top: 40px; padding-bottom: 72px;
+  }
+  .hero__head { grid-area: head; }
+  .hero__body { grid-area: body; }
+  .hero .kicker { margin-top: 56px; }
+  .hero__title { font-size: clamp(64px, 6vw, 92px); }
+  .hero__lead { font-size: 17.5px; max-width: 40ch; margin-top: 30px; }
+  .globe { grid-area: globe; margin: 0 -20px 0 0; align-self: center; aspect-ratio: 1 / .96; }
+  .globe__stat b { font-size: 40px; }
+  .globe__stat--a { left: 0; top: 10%; }
+  .globe__stat--b { right: 0; bottom: 12%; }
+
+  .programs { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); column-gap: 64px; align-items: start; }
+  .programs .sec-head { position: sticky; top: 60px; }
+  .progs { margin-top: 0; }
+  .sec-head h2 { font-size: clamp(60px, 5.6vw, 84px); }
+  .prog { padding: 30px 32px 34px; gap: 18px; }
+  .prog__num { font-size: 40px; min-width: 44px; }
+  .prog__go { width: 56px; height: 56px; }
+  .consult { grid-column: 2; padding: 44px 44px 40px; }
+  .consult__title { max-width: 26ch; font-size: 36px; }
+  .consult__actions .btn { flex: 0 0 auto; }
+  .chan { flex: 0 0 auto; padding: 0 24px; }
+
+  .award { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center; gap: 80px; }
+  .award__seal { width: min(100%, 460px); }
+  .award__num { margin-top: 22px; }
+}

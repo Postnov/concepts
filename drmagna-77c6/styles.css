@@ -1,0 +1,143 @@
+/* Dr.MAGNA — клиника косметологии. Палитра логотипа и Taplink: графит на лавандовой бумаге, шампанское как акцент. */
+:root {
+  --paper: #f3f1f7;
+  --paper-2: #e8e5f0;
+  --ink: #141417;
+  --ink-soft: #5b5a66;
+  --gold: #a07b52;
+  --gold-soft: #cdb08d;
+  --line: rgba(20, 20, 23, .14);
+  --radius: 26px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(72px, 12vw, 140px);
+  --sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --serif: 'Prata', Georgia, serif;
+  --concept-bg: #141417;
+  --concept-ink: #f3f1f7;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: normal; font-weight: 400; color: var(--gold); }
+main { overflow-x: clip; }
+section, .concept-end, .foot { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 58px; padding: 12px 30px; border-radius: 999px;
+  background: var(--ink); color: var(--paper); text-decoration: none;
+  font: 500 15px/1.25 var(--sans); letter-spacing: .03em;
+  box-shadow: 0 16px 30px -16px rgba(20, 20, 23, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .22) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.btn--light { background: var(--paper); color: var(--ink); box-shadow: none; }
+.btn--ghost-light { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 1.5px rgba(243, 241, 247, .6); }
+
+/* ---------- общие заголовки секций ---------- */
+.sec-head { display: grid; gap: 14px; margin-bottom: clamp(30px, 5vw, 56px); }
+.eyebrow { font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { color: var(--gold); margin-right: 8px; }
+.sec-head h2 { font: 400 clamp(36px, 10vw, 74px)/1.08 var(--serif); letter-spacing: -.01em; }
+.sec-sub { color: var(--ink-soft); font-size: 16px; }
+
+/* ---------- 1. Hero ---------- */
+.hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; padding-top: 40px; padding-bottom: var(--section); isolation: isolate; }
+.hero__logo { position: relative; order: -1; }
+.lift { position: absolute; left: 50%; top: 50%; width: 100vw; height: 135%; translate: -50% -50%; z-index: -1; pointer-events: none; -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 40%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 40%, transparent 100%); }
+.lift path { fill: none; stroke: var(--gold-soft); stroke-width: 1; vector-effect: non-scaling-stroke; opacity: .55; }
+.hero__text { position: relative; }
+.kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font: 500 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+.hero__name { margin-top: 16px; font: 400 clamp(46px, 14.2vw, 150px)/1 var(--serif); letter-spacing: -.015em; color: var(--ink); }
+.hero__lead { margin-top: 22px; font: 300 clamp(20px, 5.3vw, 28px)/1.4 var(--sans); max-width: 26ch; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 30px; }
+.pills li { padding: 9px 16px; border-radius: 999px; font-size: 14px; background: rgba(255, 255, 255, .6); box-shadow: inset 0 0 0 1px var(--line); }
+.hero__btns { display: grid; gap: 12px; max-width: 420px; }
+.hero__logo { display: grid; justify-items: center; }
+.medal { width: min(52vw, 210px); aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: #141414; box-shadow: 0 40px 70px -34px rgba(20, 20, 23, .85), 0 0 0 10px rgba(255, 255, 255, .55), 0 0 0 11px var(--line); }
+.medal img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); }
+
+/* ---------- Акции ---------- */
+.deals-sec { padding-bottom: var(--section); }
+.deals { display: grid; gap: 0; border-top: 1.5px solid var(--ink); counter-reset: d; }
+.deal { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 4px 14px; padding: 22px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.deal__n { font: 500 12px/1.6 var(--sans); letter-spacing: .12em; color: var(--gold); }
+.deal__title { font: 500 clamp(17px, 4.6vw, 22px)/1.3 var(--sans); letter-spacing: -.005em; }
+.deal__note { margin-top: 6px; color: var(--ink-soft); font-size: 14px; line-height: 1.5; max-width: 52ch; }
+.deal__price { grid-column: 2; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 6px; }
+.deal__price s { position: relative; color: var(--ink-soft); font-size: 16px; text-decoration: none; }
+.deal__price s::after { content: ''; position: absolute; left: -2px; right: -2px; top: 54%; height: 1.5px; background: var(--gold); transform-origin: left center; transform: scaleX(var(--strike, 1)); }
+.deal__price b { font: 400 clamp(26px, 7.2vw, 36px)/1.15 var(--serif); letter-spacing: -.01em; padding-block: 2px; }
+.deal__pct { color: var(--gold); }
+.deal__from { color: var(--ink-soft); font-size: 15px; }
+.deal--feature { padding: 30px 0 28px; }
+.deal--feature .deal__title { font-size: clamp(21px, 6vw, 30px); }
+.deal--feature .deal__price b { font-size: clamp(36px, 11vw, 56px); }
+.fine { margin-top: 22px; color: var(--ink-soft); font-size: 13px; max-width: 46ch; }
+
+/* ---------- О клинике ---------- */
+.why { background: var(--ink); color: var(--paper); padding-block: var(--section); border-radius: var(--radius) var(--radius) 0 0; margin-bottom: 0; }
+.why .eyebrow { color: rgba(243, 241, 247, .6); }
+.why__list { display: grid; gap: 0; border-top: 1px solid rgba(243, 241, 247, .25); }
+.why__item { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 14px; padding: 22px 0; border-bottom: 1px solid rgba(243, 241, 247, .15); }
+.why__n { font: 500 12px/2 var(--sans); letter-spacing: .12em; color: var(--gold-soft); }
+.why__item h3 { font: 400 clamp(21px, 5.6vw, 28px)/1.25 var(--serif); }
+.why__item p { margin-top: 4px; color: rgba(243, 241, 247, .68); font-size: 15px; }
+.why + .deals-sec { padding-top: var(--section); }
+
+/* ---------- Консультация ---------- */
+.consult { padding-bottom: var(--section); }
+.consult__box { background: var(--ink); color: var(--paper); border-radius: var(--radius); padding: clamp(30px, 7vw, 72px) clamp(22px, 6vw, 64px); display: grid; gap: 30px; }
+.consult h2 { font: 400 clamp(28px, 7.6vw, 52px)/1.2 var(--serif); max-width: 20ch; }
+.consult__btns { display: grid; gap: 12px; max-width: 420px; }
+
+/* ---------- Адрес ---------- */
+.where { padding-bottom: var(--section); }
+.addr { position: relative; display: grid; gap: 14px; justify-items: start; padding: clamp(26px, 6vw, 48px); border-radius: var(--radius); background: var(--paper-2); text-decoration: none; overflow: hidden; transition: scale .45s cubic-bezier(.2, .7, .2, 1); }
+.addr:hover, .addr:focus-visible { scale: 1.015 !important; }
+.addr::before { content: ''; position: absolute; inset: 0; background:
+  repeating-linear-gradient(0deg, transparent 0 46px, rgba(20, 20, 23, .06) 46px 47px),
+  repeating-linear-gradient(90deg, transparent 0 62px, rgba(20, 20, 23, .06) 62px 63px); }
+.addr > * { position: relative; }
+.addr__pin { width: 34px; height: 34px; border-radius: 50% 50% 50% 0; rotate: -45deg; background: var(--ink); display: grid; place-items: center; margin: 4px 0 6px 6px; }
+.addr__pin::after { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--gold-soft); }
+.addr__text { font: 400 clamp(28px, 8vw, 50px)/1.15 var(--serif); }
+.addr__go { font: 500 14px/1 var(--sans); letter-spacing: .06em; padding: 12px 0 2px; border-bottom: 1.5px solid var(--gold); }
+.where__note { margin-top: 18px; color: var(--ink-soft); }
+
+/* ---------- Подвал ---------- */
+.foot { padding-block: 40px 56px; background: var(--ink); color: var(--paper); display: grid; gap: 22px; }
+.foot__brand { font: 400 28px/1 var(--serif); }
+.foot__links { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+.foot__links a { text-decoration: none; border-bottom: 1px solid rgba(243, 241, 247, .4); padding-bottom: 2px; font-size: 15px; }
+.foot__concept { color: rgba(243, 241, 247, .6); font-size: 13px; }
+.consult + .where + .foot, .where + .foot { margin-top: 0; }
+
+/* ---------- Конец концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 400 clamp(26px, 7vw, 42px)/1.2 var(--serif); max-width: 18ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+@media (min-width: 900px) {
+  section, .concept-end, .foot { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; gap: 56px; padding-top: 70px; }
+  .hero__name { font-size: clamp(72px, 7.4vw, 104px); }
+  .hero__logo { order: 0; justify-items: end; }
+  .lift { left: auto; right: 0; translate: 0 -50%; width: 56vw; height: 150%; }
+  .medal { width: min(100%, 420px); }
+  .deals { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; }
+  .deal--feature { grid-column: 1 / -1; }
+  .why__list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; }
+  .consult__box { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; }
+  .where { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; align-items: start; }
+  .where .sec-head { margin-bottom: 0; }
+  .where__note { grid-column: 2; margin-top: 0; }
+}

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<script>(function(h){h.classList.add('is-loading');var r=function(){h.classList.remove('is-loading')};setTimeout(function(){if(!window.MotionBase)r()},9000);setTimeout(r,12000)})(document.documentElement)</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- preload-fonts -->
+<link rel="preload" href="../shared/fonts/kalligrafiaonl-t/Onest-normal-400-700-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/kalligrafiaonl-t/Onest-normal-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/kalligrafiaonl-t/Onest-rub-400-700.woff2" as="font" type="font/woff2" crossorigin>
+<!-- /preload-fonts -->
+<link rel="preload" href="../shared/fonts/gurevich-fg/Forum-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/gurevich-fg/Forum-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#000000">
+<title>Sofya · обучение таро — концепт</title>
+<link rel="stylesheet" href="../shared/fonts/kalligrafiaonl-t.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="concept-bar" data-concept>
+  <span>Концепт редизайна @lilova_taro · не официальный сайт</span>
+  <a href="https://taplink.cc/taro_sofia">Текущий сайт →</a>
+</div>
+
+<main>
+  <!-- 1. Hero: корона и затмение -->
+  <section class="hero" aria-label="Sofya — обучение таро">
+    <p class="brand"><span class="brand__name">Sofya</span><span class="brand__role">эзотерик</span></p>
+
+    <figure class="hero__visual">
+      <img class="hero__img" src="assets/portrait.jpg" width="1080" height="1340" alt="София в чёрной короне" fetchpriority="high">
+      <!-- Затмение: чёрная луна закрывает золотое солнце за короной, вокруг остаётся корона лучей.
+           Координаты viewBox — пиксели фото (корона в центре 547×290) -->
+      <svg class="eclipse" viewBox="-137 -394 1368 900" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="ec-sun" cx="50%" cy="22%" r="62%">
+            <stop offset="0" stop-color="#fffaf0"/>
+            <stop offset=".35" stop-color="#f7e2ae"/>
+            <stop offset=".75" stop-color="#e0b462"/>
+            <stop offset="1" stop-color="#b9843a"/>
+          </radialGradient>
+          <radialGradient id="ec-glow" gradientUnits="userSpaceOnUse" cx="547" cy="290" r="660">
+            <stop offset=".5" stop-color="#f3d595" stop-opacity="0"/>
+            <stop offset=".545" stop-color="#f6dc9f" stop-opacity=".9"/>
+            <stop offset=".6" stop-color="#e2b86a" stop-opacity=".42"/>
+            <stop offset=".75" stop-color="#b8863b" stop-opacity=".14"/>
+            <stop offset="1" stop-color="#8a6128" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="ec-fade" gradientUnits="userSpaceOnUse" x1="0" y1="-394" x2="0" y2="506">
+            <stop offset="0" stop-color="#fff"/>
+            <stop offset=".56" stop-color="#fff"/>
+            <stop offset=".78" stop-color="#000"/>
+          </linearGradient>
+          <mask id="ec-mask" maskUnits="userSpaceOnUse" x="-137" y="-394" width="1368" height="900">
+            <rect x="-137" y="-394" width="1368" height="900" fill="url(#ec-fade)"/>
+          </mask>
+          <radialGradient id="ec-glint" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#fff"/>
+            <stop offset=".25" stop-color="#fff2c8" stop-opacity=".9"/>
+            <stop offset="1" stop-color="#f0cf86" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g class="eclipse__corona" mask="url(#ec-mask)">
+          <circle class="eclipse__glow" cx="547" cy="290" r="660" fill="url(#ec-glow)"/>
+          <g class="eclipse__rays" stroke="#f1d390" fill="none"></g>
+          <circle class="eclipse__ring" cx="547" cy="290" r="364" fill="none" stroke="#f4dc9e" stroke-width="1.4" vector-effect="non-scaling-stroke" pathLength="1"/>
+          <circle class="eclipse__ring2" cx="547" cy="290" r="420" fill="none" stroke="#d7ad62" stroke-width=".8" stroke-opacity=".5" stroke-dasharray=".004 .012" vector-effect="non-scaling-stroke" pathLength="1"/>
+        </g>
+        <circle class="eclipse__sun" cx="547" cy="290" r="356" fill="url(#ec-sun)"/>
+        <circle class="eclipse__moon" cx="547" cy="290" r="362" fill="#000"/>
+        <g class="eclipse__glint" transform="translate(547 -70)">
+          <circle r="70" fill="url(#ec-glint)"/>
+          <path d="M0-62 1.6-1.6 62 0 1.6 1.6 0 62-1.6 1.6-62 0-1.6-1.6Z" fill="#fff6dc"/>
+        </g>
+      </svg>
+    </figure>
+
+    <div class="hero__text">
+      <p class="kicker">Таро <i></i> Астрология <i></i> Хорар</p>
+      <h1 class="hero__title">Обучение таро</h1>
+      <p class="hero__sub">с нуля до первого клиента!</p>
+      <p class="hero__open"><span class="dot" aria-hidden="true"></span>Идёт набор на обучение</p>
+      <div class="hero__cta">
+        <a class="btn btn--gold" href="https://t.me/lilova_taro/1474">Посмотреть программу</a>
+        <a class="btn btn--ghost" href="https://youtu.be/e6G7O4AdE08?si=eYBDxN5C0D_xrAQr">Смотреть бесплатный урок</a>
+      </div>
+      <p class="hero__links">
+        <a href="#tariffs">Все тарифы, выбери свой</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdo6ZX4ymVgGLKVhnRMo8Ww-jfLzbymDXlDv8XjepRtgtKM4Q/viewform?usp=preview">Анкета на бесплатную диагностику</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. Что вы получите: схема обучения (куб Метатрона из её таплинка) -->
+  <section class="path" aria-labelledby="path-title">
+    <header class="sec-head">
+      <p class="eyebrow"><span>I</span> программа</p>
+      <h2 id="path-title">Что вы получите после каждого модуля?</h2>
+      <p class="sec-sub">Обучение выстроено по понятной логике:</p>
+    </header>
+
+    <div class="path__grid">
+      <figure class="cube" aria-hidden="true">
+        <svg class="cube__svg" viewBox="0 0 400 400">
+          <defs>
+            <radialGradient id="cube-node" cx="50%" cy="40%" r="60%">
+              <stop offset="0" stop-color="#fff0c4"/>
+              <stop offset=".6" stop-color="#d9ae5c"/>
+              <stop offset="1" stop-color="#9c6f2c"/>
+            </radialGradient>
+            <radialGradient id="cube-core" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#fff6dc"/>
+              <stop offset=".3" stop-color="#f3d38c" stop-opacity=".8"/>
+              <stop offset="1" stop-color="#d9ae5c" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle class="cube__outer" cx="200" cy="200" r="182" pathLength="1"/>
+          <g class="cube__circles"></g>
+          <g class="cube__lines"></g>
+          <path class="cube__route" d="M200 60 321.24 270 78.76 270Z" pathLength="1"/>
+          <circle class="cube__core" cx="200" cy="200" r="30" fill="url(#cube-core)"/>
+          <g class="cube__dots"></g>
+          <g class="cube__node" data-node="1" transform="translate(200 60)"><circle r="15" fill="url(#cube-node)"/><text y="5.5">1</text></g>
+          <g class="cube__node" data-node="2" transform="translate(321.24 270)"><circle r="15" fill="url(#cube-node)"/><text y="5.5">2</text></g>
+          <g class="cube__node" data-node="3" transform="translate(78.76 270)"><circle r="15" fill="url(#cube-node)"/><text y="5.5">3</text></g>
+        </svg>
+        <span class="cube__label cube__label--1">Теория</span>
+        <span class="cube__label cube__label--2">Практика</span>
+        <span class="cube__label cube__label--3">Первые деньги</span>
+      </figure>
+
+      <div class="path__side">
+        <ol class="steps">
+          <li class="step" data-step="1">
+            <span class="step__num">1</span>
+            <h3 class="step__title">Теория</h3>
+            <p class="step__text">По каждому аркану, где подробно разбираю каждый аркан и рассказываю о самой системе таро, нумерология и астрология в картах</p>
+          </li>
+          <li class="step" data-step="2">
+            <span class="step__num">2</span>
+            <h3 class="step__title">Практика</h3>
+            <p class="step__text">Личная практика со мной, где мы учимся смотреть самые важные сферы: от карьеры до отношений, от прогнозов на год до вопросов кармы и опыта души, от чакровой диагностики здоровья до диагностики магических воздействий</p>
+          </li>
+          <li class="step" data-step="3">
+            <span class="step__num">3</span>
+            <h3 class="step__title">Первые деньги</h3>
+            <p class="step__text"><b>Результат к концу обучения:</b> вы умеете проводить платные расклады, грамотно формулировать вопросы для клиентов, понимать запросы, работать с людьми</p>
+          </li>
+        </ol>
+        <p class="path__note">После каждого модуля вы не просто изучаете материал, а закрепляете его в реальной работе: <span class="muted">домашние задания с моей проверкой и обратной связью, промежуточная практика с первыми клиентами, вы тестируете себя уже во время курса</span></p>
+        <p class="forever"><span class="forever__plus" aria-hidden="true">+</span>Доступ к урокам останется с вами навсегда!</p>
+        <a class="btn btn--gold" href="https://t.me/lilova_taro/1474">Посмотреть программу</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Тарифы: луна растёт вместе с тарифом -->
+  <section class="tariffs" id="tariffs" aria-labelledby="tariffs-title">
+    <header class="sec-head">
+      <p class="eyebrow"><span>II</span> тарифы</p>
+      <h2 id="tariffs-title"><span class="h2-main">Тарифы</span> <small>прохождения курса</small></h2>
+    </header>
+
+    <div class="plans" data-plan="0">
+      <div class="plans__tabs" role="tablist" aria-label="Тарифы">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="plan-0" data-plan-tab="0">
+          <svg class="tab__moon" viewBox="0 0 40 40" aria-hidden="true"><defs><mask id="tab-moon-0" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="40"><rect width="40" height="40" fill="#fff"/><circle cx="10.4" cy="20" r="15.6" fill="#000"/></mask></defs><circle class="tab__ghost" cx="20" cy="20" r="14.5"/><circle class="tab__lit" cx="20" cy="20" r="15" mask="url(#tab-moon-0)"/></svg>
+          <span>Мастер</span>
+        </button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="plan-1" data-plan-tab="1">
+          <svg class="tab__moon" viewBox="0 0 40 40" aria-hidden="true"><defs><mask id="tab-moon-1" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="40"><rect width="40" height="40" fill="#fff"/><circle cx="-1.6" cy="20" r="15.6" fill="#000"/></mask></defs><circle class="tab__ghost" cx="20" cy="20" r="14.5"/><circle class="tab__lit" cx="20" cy="20" r="15" mask="url(#tab-moon-1)"/></svg>
+          <span>Магистр</span>
+        </button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="plan-2" data-plan-tab="2">
+          <svg class="tab__moon" viewBox="0 0 40 40" aria-hidden="true"><defs><mask id="tab-moon-2" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="40"><rect width="40" height="40" fill="#fff"/></mask></defs><circle class="tab__ghost" cx="20" cy="20" r="14.5"/><circle class="tab__lit" cx="20" cy="20" r="15" mask="url(#tab-moon-2)"/></svg>
+          <span>VIP</span>
+        </button>
+      </div>
+
+      <div class="plans__body">
+        <div class="plans__head">
+          <svg class="moon" viewBox="0 0 200 200" aria-hidden="true">
+            <defs>
+              <radialGradient id="moon-sun" cx="62%" cy="40%" r="70%">
+                <stop offset="0" stop-color="#fff2cc"/>
+                <stop offset=".5" stop-color="#e9c47c"/>
+                <stop offset="1" stop-color="#a97a33"/>
+              </radialGradient>
+              <mask id="moon-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
+                <rect width="200" height="200" fill="#fff"/>
+                <circle class="moon__shade" cx="58" cy="100" r="64" fill="#000"/>
+              </mask>
+            </defs>
+            <circle class="moon__halo" cx="100" cy="100" r="92"/>
+            <circle class="moon__ring" cx="100" cy="100" r="76" pathLength="1"/>
+            <circle class="moon__night" cx="100" cy="100" r="62"/>
+            <circle class="moon__lit" cx="100" cy="100" r="62" fill="url(#moon-sun)" mask="url(#moon-mask)"/>
+          </svg>
+
+          <div class="plans__panels">
+            <div class="panel" id="plan-0" role="tabpanel" data-panel="0">
+              <h3 class="panel__name">Мастер таро</h3>
+              <p class="panel__price">50&nbsp;000&nbsp;<span class="rub">₽</span></p>
+              <p class="panel__bank"><span class="nw">59&nbsp;000&nbsp;₽</span> — рассрочка <span class="nw">от банка</span></p>
+            </div>
+            <div class="panel" id="plan-1" role="tabpanel" data-panel="1" hidden>
+              <h3 class="panel__name">Магистр таро</h3>
+              <p class="panel__price">80&nbsp;000&nbsp;<span class="rub">₽</span></p>
+              <p class="panel__bank"><span class="nw">99&nbsp;000&nbsp;₽</span> — рассрочка <span class="nw">от банка</span></p>
+            </div>
+            <div class="panel" id="plan-2" role="tabpanel" data-panel="2" hidden>
+              <h3 class="panel__name">VIP</h3>
+              <p class="panel__price">100&nbsp;000&nbsp;<span class="rub">₽</span></p>
+              <p class="panel__bank"><span class="nw">119&nbsp;000&nbsp;₽</span> — рассрочка <span class="nw">от банка</span></p>
+            </div>
+          </div>
+        </div>
+
+        <ul class="feats" aria-label="Что входит в тариф">
+          <li class="feat" data-in="012">Теория + домашние задания</li>
+          <li class="feat" data-in="012">Авторская методичка</li>
+          <li class="feat" data-in="0">Практика со мной в мини-группах по 2–4 человека (6 уроков)</li>
+          <li class="feat" data-in="012">Расклады на работу, деньги, личную жизнь, самоанализ и другие бытовые запросы</li>
+          <li class="feat" data-in="012">Разборы лично для вас, на разные сферы</li>
+          <li class="feat" data-in="012">Доступ к чату учениц и закрытым мастер-классам</li>
+          <li class="feat" data-in="12">Расклады на годовые прогнозы</li>
+          <li class="feat" data-in="12">Расклады на карму, реинкарнацию, расклады на чакровое здоровье, магические и энергетические воздействия</li>
+          <li class="feat" data-in="12">Практика индивидуальная 10 уроков</li>
+          <li class="feat" data-in="12">Дополнительные тематические методички</li>
+          <li class="feat" data-in="12">3 реальных клиента для практики</li>
+          <li class="feat" data-in="2">Полное сопровождение 1 месяц</li>
+          <li class="feat" data-in="2">Скидка 15% на мои услуги таро</li>
+        </ul>
+
+        <div class="plans__pay">
+          <div class="pay" data-pay="0">
+            <a class="btn btn--gold" href="https://t.me/lilovataro"><span>Оплатить «Мастер таро» —&nbsp;<span class="nw">50&nbsp;000&nbsp;₽</span></span></a>
+            <a class="btn btn--ghost" href="https://t.me/lilovataro"><span>Внутренняя рассрочка —&nbsp;<span class="nw">от&nbsp;15&nbsp;000&nbsp;₽</span></span></a>
+            <a class="btn btn--ghost" href="https://payform.ru/g3bpxZ1/"><span>Рассрочка от банка —&nbsp;<span class="nw">от&nbsp;5&nbsp;900&nbsp;₽</span></span></a>
+          </div>
+          <div class="pay" data-pay="1" hidden>
+            <a class="btn btn--gold" href="https://t.me/lilovataro"><span>Оплатить «Магистр таро» —&nbsp;<span class="nw">80&nbsp;000&nbsp;₽</span></span></a>
+            <a class="btn btn--ghost" href="https://t.me/lilovataro"><span>Внутренняя рассрочка —&nbsp;<span class="nw">от&nbsp;20&nbsp;000&nbsp;₽</span></span></a>
+            <a class="btn btn--ghost" href="https://payform.ru/inbpy0p/"><span>Рассрочка от банка —&nbsp;<span class="nw">от&nbsp;9&nbsp;900&nbsp;₽</span></span></a>
+          </div>
+          <div class="pay" data-pay="2" hidden>
+            <a class="btn btn--gold" href="https://t.me/lilovataro"><span>Оплатить «VIP» —&nbsp;<span class="nw">100&nbsp;000&nbsp;₽</span></span></a>
+            <a class="btn btn--ghost" href="https://t.me/lilovataro"><span>Внутренняя рассрочка —&nbsp;<span class="nw">от&nbsp;20&nbsp;000&nbsp;₽</span></span></a>
+            <a class="btn btn--ghost" href="https://payform.ru/jtbpy12/"><span>Рассрочка от банка —&nbsp;<span class="nw">от&nbsp;11&nbsp;900&nbsp;₽</span></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="concept-end">
+    <svg class="concept-end__mark" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="23" fill="none" stroke="#e7c47c" stroke-opacity=".45" stroke-width="1"/><circle cx="30" cy="30" r="17" fill="#e7c47c"/><circle cx="27.6" cy="27.6" r="17" fill="#000"/><circle cx="42.4" cy="42.4" r="2.2" fill="#fff3d0"/></svg>
+    <p class="concept-end__title">Так может выглядеть <span class="gold">весь ваш сайт</span></p>
+    <p class="concept-end__text">Это концепт: три блока вашего Taplink в новом дизайне, на ваших фото и текстах.</p>
+    <a class="btn btn--ghost" href="https://taplink.cc/taro_sofia">Открыть текущий сайт</a>
+  </aside>
+</main>
+
+<script src="../shared/vendor/gsap/gsap.min.js"></script>
+<script src="../shared/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="../shared/vendor/gsap/SplitText.min.js"></script>
+<script src="../shared/motion-base.js"></script>
+<script src="motion.js"></script>
+</body>
+</html>

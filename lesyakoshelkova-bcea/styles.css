@@ -1,0 +1,127 @@
+/* Леся Кошелькова · КПТ-психолог — концепт. Палитра от её Taplink: бирюзовый на холодной бумаге, коралловая точка — бег. */
+:root {
+  --paper: #f1f6f5;
+  --paper-2: #e3eeed;
+  --ink: #0c262c;
+  --ink-soft: #4b6268;
+  --teal: #00879f;
+  --teal-deep: #0b5666;
+  --night: #0b2f38;
+  --mist: #cfe6ea;
+  --coral: #ff6b4a;
+  --line: rgba(11, 86, 102, .2);
+  --radius: 26px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(76px, 12vw, 140px);
+  --sans: 'Rubik', system-ui, -apple-system, sans-serif;
+  --serif: 'Bitter', Georgia, serif;
+  --concept-bg: #0b2f38;
+  --concept-ink: #e9f4f5;
+}
+
+body { background: var(--paper); color: var(--ink); font: 300 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--teal); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: var(--teal-deep); color: #fff; text-decoration: none;
+  font: 500 15px/1 var(--sans); letter-spacing: .02em;
+  box-shadow: 0 14px 30px -14px rgba(11, 86, 102, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .26) 50%, transparent 70%); transform: translateX(var(--shine, -120%)); }
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 46px; padding: 0 22px; font-size: 14px; }
+.btn--ghost { background: transparent; color: var(--teal-deep); box-shadow: inset 0 0 0 1.5px var(--teal); }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding-top: 22px; padding-bottom: 28px; }
+.kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font: 500 11.5px/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--coral); }
+.hero__name { margin-top: 14px; font: 500 clamp(44px, 15vw, 128px)/.98 var(--sans); letter-spacing: -.025em; color: var(--teal-deep); }
+.hero__first, .hero__last { display: block; }
+.hero__first { color: var(--ink); }
+.hero__photo { position: relative; justify-self: center; width: min(46vw, 190px); aspect-ratio: 1; margin: 0; }
+.frame { position: absolute; inset: 7%; overflow: hidden; border-radius: 50%; background: var(--mist); z-index: 1; }
+.frame img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); }
+.orbit { position: absolute; inset: 0; }
+.orbit__ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px dashed rgba(11, 86, 102, .42); }
+.orbit__runner { position: absolute; left: 50%; top: -7px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 5px rgba(255, 107, 74, .22); }
+.orbit { will-change: transform; }
+.hero__lead { font: 300 clamp(28px, 8.4vw, 46px)/1.1 var(--sans); letter-spacing: -.01em; }
+.hero__lead em { font-size: 1.02em; }
+.hero__about { margin-top: 14px; color: var(--ink-soft); font-size: 15.5px; max-width: 44ch; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 20px; }
+.pills li { padding: 8px 15px; border-radius: 999px; font: 400 13.5px/1.2 var(--sans); background: var(--mist); color: var(--teal-deep); }
+.pills li:nth-child(2) { background: transparent; box-shadow: inset 0 0 0 1px var(--teal); }
+
+/* ---------- пульс ---------- */
+.pulse { position: relative; height: 84px; margin-block: 4px 0; }
+.pulse svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.pulse path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.pulse__base { stroke: rgba(11, 86, 102, .16); stroke-width: 1.5; }
+.pulse__line { stroke: var(--teal); stroke-width: 2.5; }
+.pulse__dot { position: absolute; left: 0; top: 0; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 5px rgba(255, 107, 74, .22); opacity: 0; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 680px; }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { color: var(--teal); }
+.sec-head h2 { margin-top: 16px; font: 400 clamp(30px, 8vw, 56px)/1.1 var(--sans); letter-spacing: -.015em; }
+.sec-sub { margin-top: 16px; color: var(--ink-soft); max-width: 46ch; }
+
+/* ---------- 2. Запросы: километры ---------- */
+.topics { padding-block: var(--section); }
+.topics__list { position: relative; margin-top: 38px; }
+.topics__rail { position: absolute; left: 17px; top: 18px; bottom: 18px; width: 2px; background: var(--line); border-radius: 2px; }
+.topics__rail span { position: absolute; inset: 0; background: var(--teal); border-radius: 2px; transform-origin: top; transform: scaleY(0); }
+.no-motion .topics__rail span { transform: scaleY(1); }
+.km li { position: relative; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 18px; align-items: center; padding: 15px 0; }
+.km__n { position: relative; z-index: 1; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--teal); color: var(--teal-deep); font: 500 14px/1 var(--sans); font-variant-numeric: tabular-nums; }
+.km__t { font: 400 clamp(19px, 5.2vw, 26px)/1.25 var(--sans); letter-spacing: -.005em; }
+.topics__note { margin-top: 30px; padding-left: 16px; border-left: 2px solid var(--coral); color: var(--ink-soft); max-width: 44ch; }
+
+/* ---------- 3. Услуги ---------- */
+.services { padding-block: var(--section); background: var(--night); color: #e9f4f5; }
+.services .eyebrow { color: #8fb4bb; }
+.services .eyebrow span { color: var(--coral); }
+.services em { color: #7fd4e4; }
+.cards { display: grid; gap: 14px; margin-top: 38px; }
+.card { position: relative; display: flex; flex-direction: column; padding: 24px 22px 22px; border-radius: var(--radius); background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .13); }
+.card--main { background: var(--teal); box-shadow: 0 30px 60px -34px rgba(0, 0, 0, .6); color: #fff; }
+.card__meta { display: flex; align-items: center; gap: 8px; font: 500 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; opacity: .8; }
+.card__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--coral); }
+.card__title { margin-top: 14px; font: 400 21px/1.28 var(--sans); }
+.card__text { margin-top: 12px; font-size: 15px; opacity: .9; }
+.card__price { margin: auto 0 0; padding-top: 22px; font: 300 46px/1 var(--sans); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.card .btn--small { margin-top: 20px; align-self: flex-start; background: #fff; color: var(--teal-deep); box-shadow: none; }
+
+/* ---------- финальная плашка ---------- */
+.concept-end { padding-block: var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 400 clamp(24px, 6.4vw, 40px)/1.15 var(--sans); max-width: 18ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); grid-template-areas: 'a p' 'b p'; align-content: center; align-items: end; column-gap: clamp(40px, 6vw, 96px); row-gap: 28px; min-height: calc(100svh - 120px); padding-top: 40px; }
+  .hero__text:not(.hero__text--b) { grid-area: a; align-self: end; }
+  .hero__text--b { grid-area: b; align-self: start; }
+  .hero__photo { grid-area: p; align-self: center; width: min(100%, 400px); margin: 0 auto; }
+  .hero__name { font-size: clamp(60px, 7.4vw, 112px); }
+  .hero__lead { font-size: clamp(34px, 3.6vw, 52px); }
+  .pulse { height: 110px; }
+  .topics { display: grid; grid-template-columns: .85fr 1.15fr; gap: 0 clamp(40px, 6vw, 96px); align-items: start; grid-template-areas: 'h l' 'n l'; }
+  .topics .sec-head { grid-area: h; position: sticky; top: 64px; }
+  .topics__list { grid-area: l; margin-top: 0; }
+  .topics__note { grid-area: n; }
+  .cards { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+  .card--main { grid-row: span 3; justify-content: flex-start; padding: 36px 34px 32px; }
+  .card--main .card__title { font-size: 28px; }
+  .card--main .card__price { margin-top: auto; font-size: 64px; }
+}

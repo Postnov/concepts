@@ -1,0 +1,126 @@
+/* Анна Рябцева · педиатр — концепт. Тёплый оранжевый её Taplink на кремовой бумаге, «кривая роста» как знак. */
+:root {
+  --paper: #fff6ea;
+  --paper-2: #ffe8cc;
+  --ink: #3b2608;
+  --ink-soft: #7a5a2c;
+  --orange: #f26b0f;
+  --orange-deep: #c9500a;
+  --sun: #ffa726;
+  --line: rgba(59, 38, 8, .14);
+  --radius: 28px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(72px, 11vw, 130px);
+  --sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --serif: 'Literata', Georgia, serif;
+  --concept-bg: #3b2608;
+  --concept-ink: #fff1dc;
+}
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--orange-deep); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+.nw { white-space: nowrap; }
+
+/* кнопки: только плавное увеличение */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  min-height: 62px; padding: 12px 28px; border-radius: 999px;
+  background: var(--sun); color: var(--ink); text-decoration: none; text-align: center;
+  font: 600 16px/1.1 var(--sans);
+  box-shadow: 0 14px 30px -14px rgba(242, 107, 15, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn small { font: 400 12.5px/1.3 var(--sans); opacity: .78; }
+.btn::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.4) 50%, transparent 70%); transform: translateX(var(--shine, -120%)); }
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; box-shadow: none; border: 1.5px solid var(--ink); }
+.btn--ghost::after { display: none; }
+.btn--inv { color: #fff1dc; border-color: rgba(255,241,220,.6); }
+.btn--wide { width: 100%; font-size: 17px; min-height: 64px; }
+
+/* ---------- hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; padding-top: 28px; padding-bottom: 56px; }
+.hero__art { position: relative; width: min(100%, 360px); aspect-ratio: 1 / 1.08; margin-inline: auto; }
+.curve { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.curve text { font: 600 13px var(--sans); fill: var(--orange-deep); }
+.arch { position: absolute; left: 20%; right: 4%; bottom: 0; top: 14%; border-radius: 999px 999px 26px 26px; overflow: hidden; background: #ffa80f; box-shadow: 0 30px 50px -28px rgba(201, 80, 10, .6); }
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.kicker { font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--orange-deep); }
+.hero__name { font: 600 clamp(42px, 12.5vw, 88px)/1.02 var(--serif); letter-spacing: -.015em; margin: 14px 0 18px; }
+.hero__lead { font: 400 clamp(19px, 5vw, 26px)/1.4 var(--serif); max-width: 22em; }
+.hero__contact { margin: 26px 0 14px; font: 500 14px/1.4 var(--sans); color: var(--ink-soft); }
+.hero__btns { display: grid; gap: 12px; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { margin-bottom: clamp(28px, 5vw, 48px); }
+.eyebrow { font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--orange-deep); margin-bottom: 16px; }
+.eyebrow span { display: inline-block; margin-right: 8px; padding-right: 10px; border-right: 1px solid currentColor; }
+.sec-head h2 { font: 600 clamp(32px, 8.5vw, 58px)/1.1 var(--serif); letter-spacing: -.01em; }
+
+/* ---------- услуги ---------- */
+.svc { padding-block: var(--section); background: var(--paper-2); border-radius: 40px 40px 0 0; }
+.svc__list { position: relative; display: grid; gap: 16px; padding-left: 26px; }
+.svc__rail { position: absolute; left: 6px; top: 8px; bottom: 90px; width: 2px; background: var(--line); border-radius: 2px; }
+.svc__rail span { display: block; width: 100%; height: 100%; background: var(--orange); transform-origin: top; transform: scaleY(0); border-radius: 2px; }
+.card { position: relative; padding: 24px 22px 26px; border-radius: var(--radius); background: var(--paper); box-shadow: 0 18px 40px -30px rgba(59, 38, 8, .5); }
+.card::before { content: ''; position: absolute; left: -26px; top: 32px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper-2); border: 2px solid var(--orange); }
+.card--main { background: var(--sun); }
+.card--main .card__price em, .card--main .card__price { color: var(--ink); }
+.card__title { font: 600 clamp(19px, 5vw, 24px)/1.25 var(--serif); }
+.card__price { margin: 14px 0 16px; font: 500 clamp(32px, 9vw, 44px)/1 var(--serif); color: var(--orange-deep); }
+.card__price small { font: 400 15px var(--sans); color: var(--ink-soft); margin-right: 2px; }
+.card--main .card__price small { color: var(--ink); }
+.card__list { display: grid; gap: 8px; font-size: 15px; line-height: 1.5; }
+.card__list li { position: relative; padding-left: 20px; }
+.card__list li::before { content: ''; position: absolute; left: 0; top: .72em; width: 10px; height: 2px; background: var(--orange); }
+.card--main .card__list li::before { background: var(--ink); }
+.card__title + .card__list { margin-top: 14px; }
+.svc__note { font: 400 13.5px/1.5 var(--sans); color: var(--ink-soft); padding: 6px 4px 0; }
+.svc .btn--wide { margin-top: 8px; }
+
+/* ---------- вопросы ---------- */
+.faq { padding-block: var(--section); }
+.acc { border-top: 1px solid var(--line); }
+.acc__item { border-bottom: 1px solid var(--line); }
+.acc__head { display: flex; align-items: center; justify-content: space-between; gap: 18px; width: 100%; padding: 22px 0; text-align: left; }
+.acc__title { font: 500 clamp(17px, 4.6vw, 21px)/1.35 var(--serif); }
+.acc__icon { position: relative; flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--sun); transition: background .3s; }
+.acc__icon::before, .acc__icon::after { content: ''; position: absolute; left: 50%; top: 50%; width: 12px; height: 2px; margin: -1px 0 0 -6px; background: var(--ink); transition: rotate .4s cubic-bezier(.2, .7, .2, 1); }
+.acc__icon::after { rotate: 90deg; }
+.acc__head[aria-expanded="true"] .acc__icon::after { rotate: 0deg; }
+.acc__body { overflow: hidden; font-size: 15.5px; line-height: 1.6; color: var(--ink-soft); }
+.acc__body > :last-child { margin-bottom: 24px; }
+.acc__body p { margin: 0 0 10px; }
+.acc__body p + .dash, .dash + p { margin-top: 14px; }
+.dash { display: grid; gap: 8px; }
+.dash li { position: relative; padding-left: 22px; }
+.dash li::before { content: '—'; position: absolute; left: 0; color: var(--orange); }
+.acc__body a { color: var(--orange-deep); overflow-wrap: anywhere; }
+.acc__body strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- конец концепта ---------- */
+.concept-end { padding-block: 72px 80px; text-align: center; background: var(--ink); color: #fff1dc; }
+.concept-end__title { font: 600 clamp(28px, 7vw, 44px)/1.15 var(--serif); margin-bottom: 14px; }
+.concept-end__title em { color: var(--sun); }
+.concept-end__text { max-width: 30em; margin: 0 auto 28px; opacity: .8; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: center; gap: 64px; min-height: min(86vh, 760px); padding-block: 56px 80px; max-width: 1280px; margin-inline: auto; }
+  .hero__art { grid-column: 2; grid-row: 1; width: 100%; max-width: 480px; }
+  .hero__text { grid-column: 1; grid-row: 1; }
+  .hero__btns { grid-template-columns: 1fr 1fr; max-width: 560px; }
+  .svc { border-radius: 56px 56px 0 0; }
+  .svc > *, .faq > * { max-width: 1180px; margin-inline: auto; }
+  .svc { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); column-gap: 80px; align-items: start; max-width: none; }
+  .svc .sec-head { position: sticky; top: 40px; max-width: none; margin: 0; justify-self: end; width: 100%; padding-left: calc((100vw - 1180px) / 2); }
+  .svc__list { max-width: 640px; }
+  .faq { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); column-gap: 80px; align-items: start; }
+  .faq .sec-head { position: sticky; top: 40px; justify-self: end; width: 100%; padding-left: calc((100vw - 1180px) / 2); margin: 0; max-width: none; }
+  .faq .acc { max-width: 700px; }
+}
+@media (min-width: 900px) and (max-width: 1260px) {
+  .svc .sec-head, .faq .sec-head { padding-left: 0; }
+}

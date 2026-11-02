@@ -1,0 +1,142 @@
+/* Елена Чурина · иммунолог — концепт. Палитра от её Taplink: орхидея и сливовый на светло-розовой бумаге, охра с фона фото. */
+:root {
+  --paper: #fbf4f9;
+  --paper-2: #f4e6f1;
+  --ink: #2e1a37;
+  --ink-soft: #6a5573;
+  --plum: #3d1a4d;
+  --plum-2: #55266a;
+  --orchid: #8b4f9c;
+  --orchid-soft: #c79bd2;
+  --ochre: #e0a040;
+  --line: rgba(139, 79, 156, .22);
+  --radius: 28px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(80px, 13vw, 150px);
+  --sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --serif: 'Spectral', Georgia, serif;
+  --concept-bg: #3d1a4d;
+  --concept-ink: #f8eef6;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--orchid); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; text-align: center; gap: 10px;
+  min-height: 56px; padding: 14px 30px; border-radius: 999px;
+  background: var(--orchid); color: #fff; text-decoration: none;
+  font: 500 15px/1.25 var(--sans); letter-spacing: .02em;
+  box-shadow: 0 14px 30px -14px rgba(85, 38, 106, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .26) 50%, transparent 70%); transform: translateX(var(--shine, -120%)); }
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 46px; padding: 12px 24px; font-size: 14px; }
+.btn--ghost { background: transparent; color: var(--plum-2); box-shadow: inset 0 0 0 1.5px var(--orchid); }
+.btn--ochre { background: var(--ochre); color: var(--plum); box-shadow: 0 14px 30px -14px rgba(0, 0, 0, .55); }
+.btn--ghost-light { background: transparent; color: #f6e8f4; box-shadow: inset 0 0 0 1.5px rgba(246, 232, 244, .5); }
+
+/* клетка иммунной системы: тело + ядро */
+.cell { position: absolute; display: block; width: var(--s, 20px); height: var(--s, 20px); border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff 0, var(--c1, #f1c9f5) 38%, var(--c2, #b36fc4) 100%);
+  box-shadow: 0 6px 16px -6px rgba(85, 38, 106, .55); }
+.cell::after { content: ''; position: absolute; left: 30%; top: 32%; width: 38%; height: 38%; border-radius: 50%; background: rgba(61, 26, 77, .38); }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; padding-top: 30px; padding-bottom: var(--section); }
+.kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font: 500 12px/1.2 var(--sans); letter-spacing: .15em; text-transform: uppercase; color: var(--ink-soft); }
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--ochre); }
+.hero__name { margin-top: 16px; font: 300 clamp(52px, 17vw, 128px)/.96 var(--serif); letter-spacing: -.015em; color: var(--plum); }
+.hero__lead { margin-top: 22px; font: 300 clamp(20px, 5.2vw, 27px)/1.38 var(--sans); max-width: 26ch; }
+.hero__lead em { font-size: 1.1em; }
+.hero__about { margin-top: 16px; color: var(--ink-soft); font-size: 15px; max-width: 48ch; }
+.hero__years { display: flex; align-items: center; gap: 14px; margin-top: 20px; font: 500 14px/1.35 var(--sans); color: var(--plum-2); }
+.hero__years .cell { position: relative; flex: none; --s: 26px; }
+.hero__btns { display: grid; gap: 12px; margin-top: 28px; max-width: 420px; }
+
+.hero__photo { position: relative; order: -1; width: min(78vw, 300px); aspect-ratio: 1; margin: 30px auto 52px; }
+.frame { position: absolute; inset: 0; z-index: 2; overflow: hidden; border-radius: 50%; background: var(--ochre); box-shadow: 0 0 0 6px var(--paper), 0 0 0 7.5px var(--orchid-soft), 0 34px 60px -30px rgba(61, 26, 77, .6); }
+.frame img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); }
+.orbit { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.orbit__ring { position: absolute; border-radius: 50%; border: 1px dashed rgba(139, 79, 156, .32); }
+.orbit__ring--1 { inset: -10%; }
+.orbit__ring--2 { inset: -19%; }
+.orbit__ring--3 { inset: -28%; border-style: solid; border-color: rgba(139, 79, 156, .14); }
+.orbit__ring .cell { left: 50%; top: 0; margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2); }
+.cell--a { --s: 26px; } .cell--b { --s: 14px; left: 50% !important; top: 100% !important; --c1: #f8dfa8; --c2: var(--ochre); }
+.cell--c { --s: 18px; } .cell--d { --s: 30px; left: 100% !important; top: 50% !important; --c1: #f8dfa8; --c2: var(--ochre); } .cell--e { --s: 12px; left: 8% !important; top: 74% !important; }
+.cell--f { --s: 20px; left: 14% !important; top: 20% !important; }
+.hero__photo, .orbit { max-width: 100%; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 680px; }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { color: var(--ochre); }
+.sec-head h2 { margin-top: 16px; font: 300 clamp(32px, 8.4vw, 58px)/1.08 var(--serif); letter-spacing: -.01em; }
+
+/* ---------- 2. Программа (тёмная секция) ---------- */
+.program { padding-block: var(--section); background: radial-gradient(120% 60% at 90% 0%, #6a2f82 0, transparent 60%), var(--plum); color: #f6e8f4; }
+.program .eyebrow { color: var(--orchid-soft); }
+.program em { color: var(--ochre); }
+.program__list { position: relative; margin-top: 36px; }
+.program__rail { position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: rgba(246, 232, 244, .18); }
+.program__rail > span { position: absolute; inset: 0; background: var(--ochre); transform-origin: top; transform: scaleY(0); }
+.no-motion .program__rail > span { transform: scaleY(1); }
+.cell--rail { --s: 15px; left: 0; top: 0; margin: -7px 0 0 -7px; --c1: #fbe3b0; --c2: var(--ochre); box-shadow: 0 0 0 5px rgba(224, 160, 64, .22); }
+.acc { padding-left: 20px; }
+.acc__item { border-bottom: 1px solid rgba(246, 232, 244, .16); }
+.acc__head { width: 100%; display: grid; grid-template-columns: 34px minmax(0, 1fr) 28px; gap: 10px; align-items: start; padding: 22px 0; text-align: left; }
+.acc__num { padding-top: 5px; font: 500 12px/1 var(--sans); letter-spacing: .1em; color: var(--ochre); }
+.acc__title { font: 400 clamp(17px, 4.6vw, 21px)/1.32 var(--serif); }
+.acc__title small { display: block; margin-bottom: 4px; font: 500 11.5px/1.2 var(--sans); letter-spacing: .15em; text-transform: uppercase; color: var(--orchid-soft); }
+.acc__icon { position: relative; width: 28px; height: 28px; margin-top: 2px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(246, 232, 244, .3); transition: background .3s, box-shadow .3s; }
+.acc__icon::before, .acc__icon::after { content: ''; position: absolute; left: 50%; top: 50%; width: 10px; height: 1.5px; background: #f6e8f4; transform: translate(-50%, -50%); transition: transform .4s cubic-bezier(.2, .7, .2, 1); }
+.acc__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.acc__head[aria-expanded='true'] .acc__icon { background: var(--ochre); box-shadow: none; }
+.acc__head[aria-expanded='true'] .acc__icon::before, .acc__head[aria-expanded='true'] .acc__icon::after { background: var(--plum); }
+.acc__head[aria-expanded='true'] .acc__icon::after { transform: translate(-50%, -50%) rotate(0); }
+.acc__body { overflow: hidden; }
+.acc__in { display: grid; gap: 12px; padding: 0 0 24px 44px; color: rgba(246, 232, 244, .78); font-size: 15px; }
+.program__cta { display: grid; gap: 12px; margin-top: 40px; max-width: 420px; }
+
+/* ---------- 3. Форматы ---------- */
+.formats { padding-block: var(--section); }
+.cards { display: grid; gap: 16px; margin-top: 36px; }
+.card { position: relative; display: flex; flex-direction: column; align-items: flex-start; padding: 26px 22px 24px; border-radius: 26px; background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--line); }
+.card--alt { background: var(--plum-2); color: #f6e8f4; box-shadow: 0 28px 50px -30px rgba(61, 26, 77, .8); }
+.card__meta { display: flex; align-items: center; gap: 8px; font: 500 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--orchid); }
+.card--alt .card__meta { color: var(--ochre); }
+.card__dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.card__title { margin-top: 14px; font: 400 clamp(22px, 5.6vw, 27px)/1.2 var(--serif); }
+.card__text { margin-top: 14px; font-size: 15px; color: var(--ink-soft); }
+.card--alt .card__text { color: rgba(246, 232, 244, .8); }
+.card__note { margin: 14px 0 22px; font-size: 12.5px; line-height: 1.5; color: var(--ink-soft); opacity: .85; }
+.card--alt .card__note { color: rgba(246, 232, 244, .66); }
+.card .btn { margin-top: auto; }
+.card--alt .btn--small { background: var(--ochre); color: var(--plum); box-shadow: none; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 300 clamp(26px, 6.8vw, 42px)/1.15 var(--serif); max-width: 18ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: center; gap: clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-top: 40px; }
+  .hero__photo { order: 0; width: min(100%, 340px); margin: 0 auto; }
+  .hero__name { font-size: clamp(60px, 7.2vw, 112px); }
+  .hero__btns { grid-template-columns: auto; justify-items: start; }
+  .program { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .program .sec-head { position: sticky; top: 64px; }
+  .program__list { margin-top: 0; grid-column: 2; }
+  .program .sec-head { grid-column: 1; grid-row: 1; }
+  .program__list { grid-row: 1 / span 2; }
+  .program__cta { grid-column: 1; grid-row: 2; align-self: start; margin-top: 8px; position: sticky; top: 300px; }
+  .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

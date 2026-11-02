@@ -1,0 +1,139 @@
+/* Елена Тихоненкова · логопед — концепт. Палитра от её Taplink: фуксия, пудровый розовый, сливовый. */
+:root {
+  --cream: #fff6fa;
+  --blush: #ffe0ee;
+  --lilac: #ecdcff;
+  --pink: #e5318b;
+  --pink-deep: #c01f74;
+  --plum: #5b1f86;
+  --plum-deep: #3d1259;
+  --ink: #2f1744;
+  --ink-soft: #6c5280;
+  --line: rgba(91, 31, 134, .16);
+  --radius: 30px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(76px, 12vw, 140px);
+  --display: 'Unbounded', 'Onest', system-ui, sans-serif;
+  --sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --concept-bg: #3d1259;
+  --concept-ink: #ffeaf5;
+}
+
+body { background: var(--cream); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-style: normal; color: var(--pink); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 32px; border-radius: 999px;
+  background: var(--pink); color: #fff; text-decoration: none;
+  font: 600 15px/1 var(--sans); letter-spacing: .02em;
+  box-shadow: 0 16px 32px -14px rgba(229, 49, 139, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .36) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 48px; padding: 0 24px; font-size: 14.5px; }
+.btn--plum { background: var(--plum); box-shadow: 0 16px 32px -14px rgba(91, 31, 134, .7); }
+.btn--ghost { background: transparent; color: var(--plum); box-shadow: inset 0 0 0 1.5px var(--plum); }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; padding-top: 30px; padding-bottom: var(--section); }
+.kicker { display: flex; align-items: center; gap: 12px; font: 600 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--plum); }
+.wave { display: inline-flex; align-items: center; gap: 3px; height: 22px; }
+.wave i { display: block; width: 3px; height: 100%; border-radius: 2px; background: var(--pink); transform: scaleY(.3); }
+.no-motion .wave i:nth-child(odd) { transform: scaleY(.9); }
+.hero__name {
+  margin-top: 16px; font: 600 clamp(31px, 8.7vw, 66px)/1.05 var(--display); letter-spacing: -.02em; color: var(--plum);
+}
+.hero__lead { margin-top: 22px; font: 500 clamp(20px, 5.2vw, 27px)/1.35 var(--sans); max-width: 22ch; }
+.hero__about { margin-top: 16px; color: var(--ink-soft); font-size: 15px; max-width: 48ch; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 30px; }
+.pills li { padding: 9px 16px; border-radius: 999px; font-size: 13.5px; line-height: 1.2; font-weight: 500; background: var(--blush); color: var(--pink-deep); }
+.pills li:nth-child(2) { background: var(--lilac); color: var(--plum); }
+.pills li:nth-child(3) { background: transparent; box-shadow: inset 0 0 0 1.5px var(--line); color: var(--plum); }
+
+.hero__photo { position: relative; order: -1; margin: 12px 14px 0; }
+.arch {
+  position: relative; z-index: 1; overflow: hidden; aspect-ratio: 304 / 424;
+  border-radius: 999px 999px var(--radius) var(--radius); background: var(--blush);
+  box-shadow: 0 40px 70px -40px rgba(91, 31, 134, .6);
+}
+.arch img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); }
+.blob {
+  position: absolute; z-index: 0; inset: -7% -14% -6%; border-radius: 46% 54% 40% 60% / 50% 42% 58% 50%;
+  background: linear-gradient(150deg, #ffb3d8, #d9b8ff 70%);
+}
+.chip {
+  position: absolute; z-index: 2; display: grid; place-items: center; width: 58px; height: 58px;
+  border-radius: 50% 50% 50% 12px; background: #fff; color: var(--pink);
+  font: 700 26px/1 var(--display); box-shadow: 0 18px 30px -14px rgba(91, 31, 134, .5);
+}
+.chip--1 { left: -22px; top: 14%; }
+.chip--2 { right: -20px; top: 30%; color: var(--plum); border-radius: 50% 50% 12px 50%; }
+.chip--3 { left: -14px; bottom: 22%; color: var(--plum); width: 52px; height: 52px; font-size: 23px; }
+.chip--4 { right: -10px; bottom: 8%; width: 50px; height: 50px; font-size: 22px; border-radius: 50% 12px 50% 50%; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 680px; }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; font: 600 12px/1.3 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { color: var(--pink); }
+.sec-head h2 { margin-top: 16px; font: 600 clamp(26px, 7.2vw, 46px)/1.12 var(--display); letter-spacing: -.02em; color: var(--plum); }
+
+/* ---------- 2. Чем могу быть полезна ---------- */
+.help { padding-block: var(--section); background: linear-gradient(180deg, var(--cream), var(--blush) 14%, var(--blush) 86%, var(--cream)); }
+.help__grid { display: grid; gap: 18px; margin-top: 34px; }
+.who { display: flex; flex-direction: column; align-items: flex-start; position: relative; overflow: hidden; padding: 28px 22px 26px; border-radius: var(--radius); background: #fff; box-shadow: 0 30px 60px -40px rgba(91, 31, 134, .45); }
+.who--pro { background: var(--plum); color: #fff; }
+.who__title { font: 600 21px/1.2 var(--display); letter-spacing: -.01em; color: var(--pink); }
+.who--pro .who__title { color: #ffc2e1; }
+.who__list { display: grid; gap: 14px; margin: 20px 0 26px; font-size: 15.5px; line-height: 1.5; }
+.who__list li { position: relative; padding-left: 22px; }
+.who__list li::before { content: ''; position: absolute; left: 0; top: .5em; width: 10px; height: 10px; border-radius: 50% 50% 50% 2px; background: var(--pink); }
+.who--pro .who__list li::before { background: #ffc2e1; }
+.who--pro .btn--plum { background: #fff; color: var(--plum); box-shadow: none; }
+.who__photo { align-self: stretch; margin: 26px -22px -26px; height: 300px; overflow: hidden; }
+.who__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; transform: scale(1.03); }
+.who__photo--pink img { object-position: 50% 6%; }
+
+/* ---------- 3. Услуги и цены ---------- */
+.prices { padding-block: var(--section); }
+.bubbles { display: grid; gap: 16px; margin-top: 34px; }
+.bubble {
+  position: relative; padding: 26px 24px 24px; border-radius: 30px 30px 30px 6px; background: var(--pink); color: #fff;
+  box-shadow: 0 30px 50px -32px rgba(229, 49, 139, .75);
+}
+.bubble--alt { background: #fff; color: var(--ink); border-radius: 30px 30px 6px 30px; box-shadow: inset 0 0 0 1.5px var(--line), 0 30px 50px -36px rgba(91, 31, 134, .4); }
+.bubble__meta { font: 600 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; opacity: .85; }
+.bubble__title { margin-top: 14px; font: 500 20px/1.25 var(--sans); }
+.bubble__price { margin: 18px 0 20px; font: 600 38px/1 var(--display); letter-spacing: -.02em; }
+.bubble__price { font-variant-numeric: tabular-nums; }
+.bubble .btn--small { background: #fff; color: var(--pink-deep); box-shadow: none; }
+.bubble--alt .btn--plum { background: var(--plum); color: #fff; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 600 clamp(22px, 6vw, 34px)/1.2 var(--display); letter-spacing: -.02em; color: var(--plum); max-width: 18ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-top: 40px; }
+  .hero__photo { order: 0; margin: 0 20px 0 auto; width: min(100%, 440px); }
+  .hero__name { font-size: clamp(40px, 4.6vw, 66px); }
+  .help__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: stretch; }
+  .who { padding: 40px 36px 36px; }
+  .who__photo { display: none; }
+  .who .btn { margin-top: auto; }
+  .bubbles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .bubble { padding: 34px 32px 30px; }
+  .bubble__title { font-size: 23px; }
+}

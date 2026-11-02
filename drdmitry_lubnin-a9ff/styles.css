@@ -1,0 +1,234 @@
+/* Дмитрий Лубнин · акушер-гинеколог — концепт.
+   Палитра его Taplink: графит, холодная лавандово-серая бумага, сланцево-синие цифры, голубая футболка.
+   Знак системы — тонкий «плюс» (проект «Позитивная гинекология», «23+», «15+»): перекрестья, метки приводки у фото. */
+:root {
+  --graphite: #1c1b20;
+  --graphite-2: #2a292f;
+  --paper: #edecf1;
+  --paper-2: #e3e2e9;
+  --white: #f7f7fa;
+  --ink: #1f1e24;
+  --ink-soft: #5f5e68;
+  --slate: #4d6785;
+  --slate-2: #6f87a3;
+  --ice: #c7d6e7;
+  --ice-2: #dfe7f1;
+  --line: rgba(31, 30, 36, .14);
+  --line-light: rgba(236, 238, 245, .2);
+  --pad: clamp(20px, 5.4vw, 56px);
+  --section: clamp(88px, 14vw, 160px);
+  --sans: 'Raleway', system-ui, -apple-system, sans-serif;
+  --mono: 'Source Code Pro', ui-monospace, monospace;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --concept-bg: #111015;
+  --concept-ink: #e9ebf1;
+}
+
+body {
+  background: var(--paper); color: var(--ink);
+  font: 400 16.5px/1.65 var(--sans);
+  font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1;
+}
+em { font-style: italic; font-weight: 300; }
+strong { font-weight: 600; }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: прямоугольные, как у него, только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 58px; padding: 0 28px; border-radius: 3px;
+  background: var(--graphite); color: var(--white); text-decoration: none;
+  font: 500 15.5px/1.2 var(--sans); letter-spacing: .02em; text-align: center;
+  transition: scale .45s var(--ease);
+}
+.btn::after { /* мягкий блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .22) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.035 !important; }
+.btn--light { background: var(--white); color: var(--ink); }
+.btn--light::after { background: linear-gradient(105deg, transparent 30%, rgba(160, 185, 215, .45) 50%, transparent 70%); }
+.btn--line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px rgba(31, 30, 36, .45); }
+.btn--line-light { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1px rgba(236, 238, 245, .4); }
+
+/* ---------- общие детали ---------- */
+.frame { position: relative; z-index: 1; overflow: hidden; background: #55565c; }
+.frame img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); /* прячет скругления исходного баннера */ }
+.frame::after { content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(31, 30, 36, .1); pointer-events: none; }
+
+/* Метки приводки: маленький «плюс» у углов фото */
+.reg { position: absolute; z-index: 2; width: 22px; height: 22px; pointer-events: none; color: rgba(31, 30, 36, .55); }
+.reg::before, .reg::after { content: ''; position: absolute; background: currentColor; }
+.reg::before { left: 0; right: 0; top: 50%; height: 1px; margin-top: -.5px; }
+.reg::after { top: 0; bottom: 0; left: 50%; width: 1px; margin-left: -.5px; }
+.reg--tl { left: -11px; top: -11px; }
+.reg--tr { right: -11px; top: -11px; }
+.reg--bl { left: -11px; bottom: -11px; }
+.reg--br { right: -11px; bottom: -11px; }
+
+/* Перекрестье: две волосяные линии через центр фото, уходят за края секции */
+.cross { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.cross__x, .cross__y { position: absolute; background: rgba(236, 238, 245, .36); }
+.no-motion .hero .cross > span { opacity: .4; }
+.cross__x { left: -200vw; right: -200vw; top: 50%; height: 1px; }
+.cross__y { top: -100vh; bottom: -100vh; left: 50%; width: 1px; }
+.cross--light .cross__x, .cross--light .cross__y { background: rgba(31, 30, 36, .14); }
+@media (max-width: 999px) { .cross__y { top: -56px; bottom: -56px; } }
+
+.sec-head { max-width: 640px; }
+.eyebrow {
+  display: inline-flex; gap: 12px; align-items: baseline;
+  font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--slate); }
+.eyebrow span::after { content: ' —'; color: var(--ink-soft); }
+.sec-head h2 { margin-top: 18px; font: 300 clamp(44px, 12.4vw, 92px)/1.02 var(--sans); letter-spacing: -.02em; }
+.sec-head h2 em { color: var(--slate); }
+.sec-sub { margin-top: 14px; font: 300 clamp(20px, 5.2vw, 26px)/1.35 var(--sans); color: var(--ink-soft); max-width: 26ch; }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; overflow: clip;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 0;
+  padding-top: 30px; padding-bottom: clamp(72px, 12vw, 120px);
+  background:
+    radial-gradient(120% 60% at 75% 45%, rgba(110, 112, 122, .32), transparent 60%),
+    linear-gradient(180deg, #121115 0%, var(--graphite) 40%, #24232a 100%);
+  color: var(--white);
+}
+.kicker {
+  font: 500 11.5px/1.3 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: rgba(233, 235, 241, .66);
+}
+.hero__name {
+  margin-top: 16px;
+  font: 200 clamp(60px, 17.4vw, 138px)/1 var(--sans); letter-spacing: -.035em;
+}
+.hero__line { display: block; }
+.hero__line--2 { padding-left: .9em; }
+.hero__name .char-mask { padding: .14em .08em .06em; margin: -.14em -.08em -.06em; }
+.hero__lead { margin-top: 18px; font: 300 clamp(19px, 5vw, 25px)/1.38 var(--sans); color: rgba(233, 235, 241, .86); }
+.hero__lead em { color: var(--ice); font-weight: 400; }
+
+.hero__photo { position: relative; margin: 30px 2px 0; }
+.hero__photo .frame { aspect-ratio: 640 / 778; }
+.hero__photo .reg { color: rgba(233, 235, 241, .6); }
+
+.hero__facts { position: relative; z-index: 1; }
+.stats { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin-top: 34px; border-top: 1px solid var(--line-light); }
+.stat { display: grid; gap: 6px; padding: 20px 0 0; }
+.stat + .stat { padding-left: 20px; border-left: 1px solid var(--line-light); }
+.stat__num { font: 200 clamp(42px, 11.4vw, 64px)/1 var(--sans); letter-spacing: -.03em; white-space: nowrap; }
+.stat__num b { display: inline-block; font-weight: 200; color: var(--ice); }
+.stat__num .gt { margin-right: .06em; }
+.stat__label { font: 500 11.5px/1.35 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: rgba(233, 235, 241, .62); }
+.hero__about { margin-top: 26px; max-width: 40ch; color: rgba(233, 235, 241, .74); font-size: 15.5px; }
+.hero__cta { display: grid; gap: 10px; margin-top: 28px; }
+
+/* ---------- 2. Принципы ---------- */
+.principles { padding-block: var(--section); display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+.principles__photo { position: relative; margin: 6px 2px 0; }
+.frame--tall { aspect-ratio: 4 / 5; }
+.frame--tall img { object-position: 50% 42%; }
+
+.plist { counter-reset: p; border-top: 1px solid var(--line); }
+.pitem {
+  position: relative; display: grid; grid-template-columns: 18px minmax(0, 1fr); grid-template-rows: auto 1fr; gap: 14px 14px;
+  align-items: center; padding: 26px 0 30px; border-bottom: 1px solid var(--line);
+}
+.pitem__mark { position: relative; grid-row: 1; grid-column: 1; width: 18px; height: 18px; color: var(--slate); }
+.pitem__mark i { position: absolute; background: currentColor; }
+.pitem__mark i:nth-of-type(1) { left: 0; right: 0; top: 50%; height: 1.5px; margin-top: -.75px; }
+.pitem__mark i:nth-of-type(2) { top: 0; bottom: 0; left: 50%; width: 1.5px; margin-left: -.75px; }
+.pitem__num { grid-row: 1; grid-column: 2; font: 500 12px/1 var(--mono); letter-spacing: .12em; color: var(--ink-soft); }
+.pitem__text { grid-row: 2; grid-column: 1 / -1; align-self: start; font-size: 17px; line-height: 1.6; color: #34333b; }
+.pitem__text strong {
+  color: var(--ink); font-weight: 600;
+  background: linear-gradient(var(--ice), var(--ice)) 0 88% / 100% .42em no-repeat;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  transition: background-size 1.1s var(--ease);
+}
+/* С анимацией выделение «прочерчивается» при появлении пункта */
+.js-motion .pitem__text strong { background-size: 0% .42em; }
+.js-motion .pitem__text strong.is-on { background-size: 100% .42em; }
+
+/* ---------- 3. Очный приём ---------- */
+.visit {
+  position: relative; overflow: clip; padding-block: var(--section); background: var(--paper-2);
+  display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 44px;
+}
+.visit__photos { position: relative; padding-bottom: 24%; }
+.visit__clinic { position: relative; width: 66%; }
+.frame--clinic { aspect-ratio: 580 / 798; }
+.visit__cab { position: absolute; right: 0; bottom: 0; width: 50%; }
+.frame--cabinet { aspect-ratio: 458 / 640; outline: 8px solid var(--paper-2); }
+.frame--cabinet img { object-position: 50% 30%; }
+
+.addr { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; align-items: start; font-size: 16.5px; color: var(--ink-soft); }
+.addr__pin { width: 24px; height: 24px; margin-top: 1px; color: var(--slate); }
+
+.task {
+  position: relative; margin: 30px 0 0; padding: 30px 26px 30px;
+  background: var(--graphite); color: var(--white); border-radius: 3px; overflow: hidden;
+}
+.task::before { /* кавычка его баннеров — псевдоэлементом, чтобы не считалась текстом с подрезом */
+  content: '\201C'; position: absolute; right: 20px; top: 6px; font: italic 300 120px/1 var(--sans); color: rgba(199, 214, 231, .22);
+}
+.task__title { position: relative; font: 300 clamp(32px, 8.6vw, 46px)/1.08 var(--sans); letter-spacing: -.02em; }
+.task__title em { color: var(--ice); }
+.task__rule { display: block; width: 64px; height: 1px; margin: 22px 0 18px; background: rgba(233, 235, 241, .45); transform-origin: left; }
+.task__text { position: relative; font: 300 19px/1.45 var(--sans); color: rgba(233, 235, 241, .86); }
+.task__text strong { font-weight: 600; font-style: italic; color: var(--white); }
+.visit__cta { display: grid; gap: 10px; margin-top: 26px; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: clamp(80px, 11vw, 120px); text-align: center; display: grid; justify-items: center; gap: 16px; }
+.concept-end__plus { position: relative; width: 26px; height: 26px; margin-bottom: 6px; color: var(--slate); }
+.concept-end__plus i { position: absolute; background: currentColor; }
+.concept-end__plus i:nth-of-type(1) { left: 0; right: 0; top: 50%; height: 1px; }
+.concept-end__plus i:nth-of-type(2) { top: 0; bottom: 0; left: 50%; width: 1px; }
+.concept-end__title { font: 300 clamp(28px, 7.4vw, 46px)/1.12 var(--sans); max-width: 17ch; letter-spacing: -.015em; }
+.concept-end__title em { color: var(--slate); }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15.5px; }
+.concept-end .btn { margin-top: 8px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 760px) {
+  .hero__cta, .visit__cta { grid-template-columns: max-content max-content; }
+}
+@media (min-width: 1000px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+
+  .hero {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(48px, 6vw, 110px);
+    min-height: calc(100svh - 34px); padding-top: 64px; padding-bottom: 72px; align-items: start;
+  }
+  .hero__text { grid-column: 1; grid-row: 1; padding-top: 18px; }
+  .hero__facts { grid-column: 1; grid-row: 2; align-self: end; }
+  .hero__photo { grid-column: 2; grid-row: 1 / span 2; align-self: center; margin: 0; max-width: 540px; justify-self: end; width: 100%; }
+  .hero__name { font-size: clamp(96px, 8.6vw, 132px); }
+  .hero__lead { font-size: clamp(22px, 1.9vw, 27px); }
+  .stats { max-width: 520px; }
+
+  .principles { grid-template-columns: minmax(0, .82fr) minmax(0, 1fr); column-gap: clamp(56px, 7vw, 120px); align-items: start; }
+  .principles__aside { position: sticky; top: 40px; }
+  .principles__photo { margin-top: 44px; max-width: 420px; }
+  .plist { margin-top: 8px; }
+  .pitem { grid-template-columns: 18px 46px minmax(0, 1fr); grid-template-rows: auto; column-gap: 0; align-items: start; padding: 34px 0 36px; }
+  .pitem__mark { margin-top: 7px; }
+  .pitem__num { grid-column: 2; margin: 11px 0 0 16px; }
+  .pitem__text { grid-row: 1; grid-column: 3; font-size: 18.5px; }
+
+  .visit {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); grid-template-rows: auto auto;
+    column-gap: clamp(56px, 7vw, 120px); row-gap: 40px; align-content: center;
+  }
+  .visit .sec-head { grid-column: 2; grid-row: 1; align-self: end; }
+  .visit__photos { grid-column: 1; grid-row: 1 / span 2; align-self: center; padding-bottom: 26%; }
+  .visit__side { grid-column: 2; grid-row: 2; align-self: start; }
+  .task { padding: 40px 40px 38px; }
+}

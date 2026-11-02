@@ -1,0 +1,197 @@
+/* Елена Голева · дыхание — концепт. Палитра от её фото и Taplink: туманный воздух, глубокая морская волна свитера, тёплый кирпич фона. */
+:root {
+  --air: #eef3f2;
+  --air-2: #e2ebea;
+  --paper: #f7f9f8;
+  --ink: #12262b;
+  --ink-soft: #4d6268;
+  --sea: #2c6f7c;
+  --sea-deep: #1b4d58;
+  --sea-light: #8fc3c6;
+  --brick: #c0714f;
+  --night: #0f2328;
+  --line: rgba(44, 111, 124, .18);
+  --radius: 28px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 13vw, 150px);
+  --sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --serif: 'STIX Two Text', Georgia, serif;
+  --mono: 'Roboto Mono', ui-monospace, monospace;
+  --concept-bg: #12262b;
+  --concept-ink: #e6efee;
+}
+
+body {
+  background: var(--air); color: var(--ink); font: 400 16px/1.6 var(--sans);
+  background-image: radial-gradient(120% 60% at 100% 0%, #fff 0%, rgba(255, 255, 255, 0) 60%), radial-gradient(90% 50% at 0% 40%, var(--air-2) 0%, rgba(226, 235, 234, 0) 70%);
+  background-repeat: no-repeat;
+}
+em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--sea); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-align: center;
+  min-height: 58px; padding: 10px 28px; border-radius: 999px;
+  background: var(--sea-deep); color: #fff; text-decoration: none;
+  font: 500 15px/1.25 var(--sans); letter-spacing: .01em;
+  box-shadow: 0 16px 32px -16px rgba(27, 77, 88, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* мягкий блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .22) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 48px; padding: 8px 22px; font-size: 14px; }
+.btn--ghost { background: transparent; color: var(--sea-deep); box-shadow: inset 0 0 0 1.5px rgba(44, 111, 124, .45); }
+.btn--light { background: #fff; color: var(--night); box-shadow: none; }
+
+/* ---------- общие заголовки ---------- */
+.eyebrow, .kicker, .monitor__head, .course__tag, .lesson__num {
+  font: 500 11.5px/1.3 var(--mono); letter-spacing: .14em; text-transform: uppercase;
+}
+.eyebrow { display: flex; align-items: center; gap: 12px; color: var(--sea); margin-bottom: 18px; }
+.eyebrow span { display: inline-grid; place-items: center; height: 26px; padding: 0 9px; border-radius: 99px; box-shadow: inset 0 0 0 1px var(--line); color: var(--ink); }
+.sec-head h2 {
+  font: 400 clamp(34px, 9.2vw, 64px)/1.04 var(--serif); letter-spacing: -.015em; max-width: 15ch;
+}
+.sec-head h2 em { color: var(--sea); }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  display: flex; flex-direction: column; gap: 22px;
+  padding-top: clamp(26px, 6vw, 72px); padding-bottom: var(--section);
+}
+.hero__text { display: contents; }
+.kicker { order: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; color: var(--ink-soft); }
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--brick); }
+.hero__name { order: 2; font: 400 clamp(58px, 17vw, 132px)/.9 var(--serif); letter-spacing: -.03em; margin-top: -4px; }
+.hero__first, .hero__last { display: block; }
+.hero__last { font-style: italic; color: var(--sea); padding-left: .42em; }
+.monitor { order: 3; }
+.hero__lead { order: 4; font: 300 clamp(20px, 5.4vw, 27px)/1.38 var(--sans); max-width: 30ch; }
+.hero__lead em { font-size: 1.08em; }
+.hero__actions { order: 5; display: grid; gap: 12px; }
+
+/* Монитор дыхания: тёмный экран, кривая рисуется в такт вдоха и выдоха */
+.monitor {
+  position: relative; overflow: hidden; isolation: isolate;
+  border-radius: var(--radius); background: var(--night); color: #d8e7e6;
+  aspect-ratio: 350 / 380; margin-inline: calc(var(--pad) * -.35);
+  box-shadow: 0 40px 70px -40px rgba(15, 35, 40, .75);
+}
+.monitor::before { /* сетка экрана */
+  content: ''; position: absolute; inset: 0; z-index: -1; opacity: .5;
+  background-image: linear-gradient(rgba(143, 195, 198, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(143, 195, 198, .08) 1px, transparent 1px);
+  background-size: 24px 24px; background-position: center;
+}
+.monitor::after { /* мягкое свечение снизу */
+  content: ''; position: absolute; inset: auto -20% -40% -20%; height: 70%; z-index: -1;
+  background: radial-gradient(closest-side, rgba(44, 111, 124, .55), transparent);
+}
+.monitor__head {
+  position: absolute; inset: 18px 20px auto; display: flex; justify-content: space-between; align-items: center;
+  font-size: 11px; color: rgba(216, 231, 230, .7);
+}
+.monitor__tag { display: inline-flex; align-items: center; gap: 8px; }
+.monitor__tag b { width: 7px; height: 7px; border-radius: 50%; background: var(--sea-light); box-shadow: 0 0 10px var(--sea-light); }
+.monitor__phase { color: var(--sea-light); min-width: 6ch; text-align: right; }
+.monitor__screen { position: absolute; inset: auto 0 16%; height: 34%; }
+.trace { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.trace__line {
+  fill: none; stroke: var(--sea-light); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+  vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 6px rgba(143, 195, 198, .6));
+}
+.trace__line--old { opacity: .28; filter: none; }
+.trace__dot {
+  position: absolute; left: 0; top: 0; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%;
+  background: #fff; box-shadow: 0 0 0 4px rgba(143, 195, 198, .25), 0 0 18px 4px rgba(143, 195, 198, .7);
+  opacity: 0;
+}
+.monitor__photo {
+  position: absolute; left: 50%; top: 13%; width: 54%; aspect-ratio: 1; translate: -50% 0;
+  border-radius: 50%; overflow: hidden; z-index: 2;
+  box-shadow: 0 0 0 1px rgba(143, 195, 198, .35), 0 0 0 10px rgba(143, 195, 198, .06), 0 30px 60px -20px rgba(0, 0, 0, .6);
+}
+.monitor__photo img { width: 100%; height: 100%; object-fit: cover; scale: 1.04; }
+.monitor__foot { position: absolute; left: 20px; bottom: 16px; font: 300 14px/1.2 var(--sans); color: rgba(216, 231, 230, .75); }
+.monitor__foot em { color: #fff; font-size: 1.15em; }
+
+/* ---------- 2. Уроки ---------- */
+.lessons { padding-bottom: var(--section); }
+.lesson-list { margin-top: 36px; border-top: 1px solid var(--line); }
+.lesson {
+  display: grid; grid-template-columns: 44px minmax(0, 1fr) 54px; align-items: center; gap: 14px;
+  padding: 22px 0; border-bottom: 1px solid var(--line); text-decoration: none;
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1); transform-origin: 0 50%;
+}
+.lesson:hover { scale: 1.02; }
+.lesson__num { color: var(--brick); letter-spacing: .06em; }
+.lesson__body { display: grid; gap: 4px; }
+.lesson__title { font: 400 clamp(22px, 6vw, 30px)/1.15 var(--serif); }
+.lesson__sub { font-size: 14.5px; color: var(--ink-soft); }
+.lesson__wave { width: 54px; height: 22px; overflow: visible; }
+.lesson__wave path { fill: none; stroke: var(--sea); stroke-width: 1.6; stroke-linecap: round; }
+
+.course {
+  position: relative; overflow: hidden; isolation: isolate; margin-top: 40px;
+  padding: 30px 24px 28px; border-radius: var(--radius); background: var(--sea-deep); color: #fff;
+  display: grid; justify-items: start; gap: 14px;
+}
+.course__tag { display: inline-flex; align-items: center; gap: 8px; color: rgba(255, 255, 255, .72); }
+.course__tag b { width: 7px; height: 7px; border-radius: 50%; background: var(--brick); }
+.course__title { font: 400 clamp(29px, 7.8vw, 50px)/1.08 var(--serif); letter-spacing: -.01em; max-width: 19ch; text-wrap: balance; }
+.course__status { font: italic 400 20px/1.2 var(--serif); color: var(--sea-light); margin-bottom: 8px; }
+.course__wave { position: absolute; z-index: -1; inset: auto -5% -6% -5%; width: 110%; height: 55%; opacity: .5; }
+.course__wave path { fill: none; stroke: rgba(143, 195, 198, .55); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+
+/* ---------- 3. О враче ---------- */
+.about { padding-bottom: var(--section); }
+.about__grid { display: grid; gap: 34px; margin-top: 34px; }
+.about__facts { display: grid; gap: 26px; }
+.fact {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 14px; align-items: end;
+  padding: 24px; border-radius: var(--radius); background: var(--paper); box-shadow: inset 0 0 0 1px var(--line);
+}
+.fact__num { font: 400 96px/.8 var(--serif); color: var(--sea); letter-spacing: -.04em; grid-row: span 2; }
+.fact__unit { font: 500 13px/1 var(--mono); text-transform: uppercase; letter-spacing: .14em; color: var(--brick); }
+.fact__text { font-size: 15.5px; line-height: 1.4; color: var(--ink-soft); }
+.about__role { font: 300 clamp(20px, 5.4vw, 26px)/1.4 var(--sans); }
+.about__text { display: grid; gap: 18px; color: var(--ink-soft); font-size: 16.5px; }
+.about__quote {
+  margin: 0 0 6px; padding-left: 22px; border-left: 2px solid var(--brick);
+  font: italic 400 clamp(25px, 6.8vw, 36px)/1.22 var(--serif); color: var(--ink);
+}
+.about__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+
+/* ---------- финал ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 400 clamp(28px, 7.4vw, 46px)/1.1 var(--serif); max-width: 16ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .hero {
+    display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); column-gap: 64px; align-items: center;
+    min-height: calc(100svh - 40px); padding-top: 48px;
+  }
+  .hero__text { display: grid; gap: 28px; align-content: center; }
+  .hero__name { font-size: clamp(92px, 9.6vw, 148px); }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+  .monitor { margin: 0; aspect-ratio: 470 / 560; }
+  .monitor__photo { width: 56%; top: 14%; }
+
+  .lessons { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 64px; align-items: start; }
+  .lessons .sec-head { grid-column: 1; }
+  .lesson-list { grid-column: 1; }
+  .course { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; min-height: 100%; padding: 48px 44px; align-content: end; }
+  .course__wave { height: 60%; inset: 4% -5% auto -5%; }
+
+  .about__grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; margin-top: 54px; }
+  .about .sec-head h2 { max-width: 20ch; }
+}

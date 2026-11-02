@@ -1,0 +1,383 @@
+/* Анна Куликова · «Здоровое похудение» — концепт «марафон-приложение».
+   Белый экран приложения, её салатовые кнопки, оранжевый «легендарный марафон», чёрный как её спортивная форма. */
+:root {
+  --bg: #ffffff;
+  --card: #f2f5ee;          /* серо-зелёные карточки приложения */
+  --track: #e2e9da;         /* пустые сегменты, дорожки */
+  --lime: #8cc63f;          /* её кнопки; текст на нём только тёмный */
+  --lime-soft: #e6f3d4;
+  --green: #2f6e1b;         /* ссылки и акцентные цифры (6.2:1 на белом) */
+  --orange: #f06a1d;        /* бейджи с тёмным текстом */
+  --orange-soft: #ffeadc;
+  --ink: #121512;
+  --ink-soft: #545c53;
+  --line: rgba(18, 21, 18, .09);
+  --radius: 28px;
+  --pad: clamp(16px, 4.4vw, 48px);
+  --section: clamp(72px, 15vw, 150px);
+  --display: 'Wix Madefor Display', 'PT Sans', system-ui, -apple-system, sans-serif;
+  --text: 'Wix Madefor Text', 'PT Sans', system-ui, -apple-system, sans-serif;
+  --concept-bg: #121512;
+  --concept-ink: #eef6e4;
+}
+
+body { background: var(--bg); color: var(--ink); font: 400 16px/1.55 var(--text); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+em { font-style: normal; color: var(--green); }
+b { font-weight: 600; }
+svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+a:focus-visible, .carousel:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+
+.eyebrow {
+  font: 600 13px/1 var(--text); letter-spacing: .14em; text-transform: uppercase; color: var(--green);
+}
+/* Без висячих коротких слов и одиноких слов в последней строке */
+h1, h2, h3, .hero__lead, .sec-sub, .program__lead, .feature p, .toggle span, .leaf-list li, .slide--note p,
+.extra__title, .profile__role, .shop__hint span, .menu-row__name b, .imagine p { text-wrap: pretty; }
+/* длинные подписи кнопок — две ровные строки, без одинокого «записаться» */
+.btn__text b { text-wrap: balance; }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  --fill: 1;                /* 0 — контур, 1 — залита салатовым (моушн «после 8-й недели») */
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  min-height: 64px; padding: 10px 10px 10px 22px; border-radius: 22px;
+  color: var(--ink); text-decoration: none; text-align: left;
+  background: var(--bg); box-shadow: inset 0 0 0 2px var(--lime), 0 18px 34px -20px rgba(76, 122, 22, .55);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::before { /* заливка */
+  content: ''; position: absolute; inset: 0; z-index: -2; background: var(--lime);
+  transform-origin: left center; transform: scaleX(var(--fill));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn__text { display: grid; gap: 3px; min-width: 0; }
+.btn__text b { font: 700 clamp(15px, 4.2vw, 16.5px)/1.25 var(--text); }
+.btn__text small { font: 500 13.5px/1.25 var(--text); color: rgba(18, 21, 18, .72); }
+.btn__go {
+  flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 16px;
+  background: var(--ink); color: #fff; font-size: 20px;
+}
+.btn--ghost { --fill: 0; display: inline-flex; padding-right: 26px; min-height: 56px; box-shadow: inset 0 0 0 2px var(--lime); }
+
+/* ---------- 1. Первый экран ---------- */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-top: 10px; padding-bottom: var(--section);
+  /* весенняя свежесть: едва заметный салатовый рассвет сверху */
+  background: radial-gradient(120% 46% at 50% 0%, #eef8e2 0%, rgba(238, 248, 226, 0) 100%);
+}
+
+/* Карточка-сторис: её фото квадратом (исходник квадратный — кадр узнаётся как аватар таплинка) */
+.hero__card {
+  position: relative; isolation: isolate; overflow: hidden; border-radius: var(--radius);
+  aspect-ratio: 1; background: #e9ebe8;
+  box-shadow: 0 34px 60px -38px rgba(76, 122, 22, .75);
+}
+.hero__photo { width: 100%; height: 100%; object-fit: cover; }
+/* лёгкое зерно поверх фото: исходник 300 px, зерно прячет мыло увеличения */
+.hero__card::after {
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px; opacity: .2; mix-blend-mode: overlay;
+}
+/* интерфейс сторис поверх фото: полоски 8 недель, аватар и ник на мягком тёмном градиенте */
+.story-ui {
+  position: absolute; inset: 0 0 auto; z-index: 2; padding: 12px 12px 44px;
+  background: linear-gradient(rgba(12, 16, 12, .58), rgba(12, 16, 12, .26) 55%, rgba(12, 16, 12, 0));
+  color: #fff;
+}
+.story { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; }
+.story__seg { height: 4px; border-radius: 3px; background: rgba(255, 255, 255, .38); overflow: hidden; }
+.story__seg i { display: block; height: 100%; border-radius: inherit; background: var(--lime); transform-origin: left center; }
+.app-head { display: flex; align-items: center; gap: 9px; margin-top: 11px; }
+.app-head__ava { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--lime); }
+.app-head__who { display: grid; min-width: 0; line-height: 1.2; text-shadow: 0 1px 8px rgba(0, 0, 0, .35); }
+.app-head__who b, .app-head__who span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.app-head__who b { font: 700 14.5px/1.2 var(--text); }
+.app-head__who span { font-size: 13px; color: rgba(255, 255, 255, .86); }
+
+/* стикеры сторис: её «🌷 ВЕСЕННИЙ МАРАФОН 🌷» и «ЛЕГЕНДАРНЫЙ МАРАФОН СТРОЙНОСТИ» */
+.badge, .tag {
+  position: absolute; z-index: 3; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  padding: 8px 12px; border-radius: 999px; background: var(--orange); color: var(--ink);
+  font: 700 12.5px/1 var(--text); letter-spacing: .05em; text-transform: uppercase;
+  box-shadow: 0 10px 22px -12px rgba(18, 21, 18, .55);
+}
+.badge { top: 74px; right: 12px; padding-left: 10px; background: #fff; rotate: 3deg; }
+.badge svg { font-size: 15px; stroke-width: 2; color: #c2500f; }
+.tag { right: 12px; bottom: 12px; rotate: -2deg; }
+
+.hero__body { display: grid; justify-items: start; }
+.hero__title {
+  margin-top: 10px;
+  font: 800 clamp(40px, 11vw, 92px)/.97 var(--display); letter-spacing: -.025em;
+}
+.hero__lead { margin-top: 10px; font: 400 clamp(16.5px, 4.3vw, 21px)/1.42 var(--text); color: var(--ink-soft); max-width: 30ch; }
+
+.stats { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.42fr) minmax(0, 1fr); gap: 6px; margin: 16px 0 14px; }
+.stat { display: grid; align-content: start; gap: 2px; padding: 10px 10px 11px; border-radius: 20px; background: var(--card); }
+/* её слова «старт / продолжительность / всего за» — не мельче 13 px, чтобы читались в ролике */
+.stat__cap { font-size: 13px; line-height: 1.2; letter-spacing: -.01em; color: var(--ink-soft); white-space: nowrap; }
+.stat__num { font: 800 clamp(28px, 8vw, 32px)/1.05 var(--display); letter-spacing: -.02em; color: var(--green); font-variant-numeric: tabular-nums; }
+.stat__sub { font-size: 13px; line-height: 1.25; color: var(--ink); }
+.stat--price { background: var(--lime); }
+.stat--price .stat__cap { color: rgba(18, 21, 18, .75); }
+.stat--price .stat__num { color: var(--ink); }
+.hero .btn { width: 100%; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head h2, .program h2, .shop h2 {
+  font: 800 clamp(30px, 8.4vw, 60px)/1.04 var(--display); letter-spacing: -.02em;
+}
+/* у неё это подводка к кнопке, а не заголовок раздела — тише */
+.join h2 { font: 700 clamp(24px, 6.4vw, 40px)/1.16 var(--display); letter-spacing: -.015em; }
+.sec-sub { margin-top: 10px; font-size: 17px; color: var(--ink-soft); }
+
+/* ---------- 2. Результаты: карусель всех её слайдов, прогресс как у сторис ---------- */
+.results { padding-bottom: var(--section); }
+.reel-bar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: center; margin-top: 22px; }
+.reel-bar__segs { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 4px; }
+.reel-bar__segs span { height: 4px; border-radius: 3px; background: var(--track); overflow: hidden; }
+.reel-bar__segs i { display: block; height: 100%; border-radius: inherit; background: var(--lime); transform-origin: left center; transform: scaleX(var(--p, 0)); }
+.reel-bar__nav { display: flex; gap: 6px; }
+.nav-btn {
+  display: grid; place-items: center; width: 40px; height: 40px; border-radius: 14px;
+  background: var(--card); color: var(--ink); font-size: 19px;
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.nav-btn[data-dir="-1"] svg { rotate: 180deg; }
+.nav-btn:hover { scale: 1.05; }
+.nav-btn:disabled { opacity: .4; cursor: default; scale: 1; }
+.nav-btn:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+
+.carousel {
+  --H: clamp(290px, 78vw, 420px);                      /* высота слайда */
+  --W: calc(100vw - var(--pad) - 26px);                /* шире не делаем: следующий слайд виден краем */
+  display: flex; align-items: center; gap: 12px; margin: 14px calc(var(--pad) * -1) -16px; padding: 4px var(--pad) 34px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad);
+  scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.carousel::-webkit-scrollbar { display: none; }
+.slide {
+  position: relative; flex: none; scroll-snap-align: start;
+  /* широкие коллажи «до/после» не режем: ниже ростом, но целиком */
+  height: min(var(--H), calc(var(--W) / var(--r, 1)));
+  border-radius: 24px; overflow: hidden; background: var(--card);
+  box-shadow: 0 16px 26px -20px rgba(18, 21, 18, .5);   /* тень короче нижнего отступа ленты — не обрезается */
+}
+.slide img { height: 100%; width: auto; max-width: none; }
+.slide__link { display: block; height: 100%; }
+.slide__link:focus-visible { outline-offset: -4px; }
+.slide__cta {
+  position: absolute; left: 10px; bottom: 10px; display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 13px 9px 11px; border-radius: 999px; background: var(--lime); color: var(--ink); text-decoration: none;
+  font: 700 13px/1.1 var(--text); box-shadow: 0 10px 22px -12px rgba(18, 21, 18, .6);
+  transition: scale .4s cubic-bezier(.2, .7, .2, 1);
+}
+.slide__cta svg { font-size: 16px; }
+.slide__cta:hover { scale: 1.05 !important; }   /* !important: GSAP оставляет inline scale: none */
+.slide--note {
+  height: var(--H); width: clamp(250px, 70vw, 330px); padding: 24px 20px 20px; display: grid; align-content: space-between; gap: 14px;
+  background: var(--lime);
+}
+.slide--note > svg { font-size: 36px; stroke-width: 1.6; }
+.slide--note p { font: 800 clamp(21px, 5.6vw, 26px)/1.16 var(--display); letter-spacing: -.01em; }
+.note-btn {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 12px 12px 16px; border-radius: 18px; background: var(--ink); color: #fff; text-decoration: none;
+  font: 600 14.5px/1.25 var(--text); transition: scale .4s cubic-bezier(.2, .7, .2, 1);
+}
+.note-btn svg { font-size: 19px; color: var(--lime); }
+.note-btn:hover { scale: 1.04; }
+
+/* ---------- 3. Что вас ждёт ---------- */
+.program { padding-bottom: var(--section); display: grid; grid-template-columns: minmax(0, 1fr); gap: 52px; }
+/* одно её предложение: «…10 000 участниц, только сейчас 8 недель по суперцене!» */
+.program__lead { font: 700 clamp(21px, 5.6vw, 28px)/1.34 var(--display); letter-spacing: -.01em; max-width: 26ch; }
+.program__lead mark { background: none; color: var(--green); }
+.program__lead .hot {
+  padding: 1px 6px; margin-inline: -2px; border-radius: 8px; background: var(--lime);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.program__text { margin-top: 22px; display: grid; gap: 12px; color: var(--ink-soft); font-size: 16.5px; max-width: 44ch; }
+.program__text b { color: var(--ink); }
+.program__spring {
+  display: flex; gap: 12px; align-items: flex-start; margin-top: 6px;
+  padding: 14px 16px; border-radius: 18px; background: var(--orange-soft); color: var(--ink);
+}
+.program__spring svg { font-size: 22px; color: #c2500f; margin-top: 1px; }
+
+.features { margin-top: 22px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.feature { display: grid; align-content: start; gap: 14px; padding: 16px 14px 18px; border-radius: 22px; background: var(--card); }
+.feature p { font-size: 14.5px; line-height: 1.4; }
+.feature__icon {
+  display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px;
+  background: var(--bg); color: var(--green); font-size: 22px;
+  box-shadow: 0 6px 16px -10px rgba(47, 110, 27, .55);
+}
+.feature:first-child, .feature--wide { grid-column: 1 / -1; grid-template-columns: auto minmax(0, 1fr); align-items: center; }
+.feature--wide { background: var(--lime); }
+.feature:first-child p { font-size: 15.5px; }
+.feature--wide p { font: 600 16px/1.38 var(--text); }
+.feature--wide .feature__icon { color: var(--ink); }
+
+.imagine {
+  position: relative; margin: 14px 0 0; padding: 24px 22px 24px; border-radius: 24px;
+  background: var(--ink); color: #eef3ea;
+}
+.imagine__mark { display: block; font-size: 30px; margin-bottom: 12px; color: var(--lime); stroke-width: 1.6; }
+.imagine p { font: 500 17px/1.55 var(--text); position: relative; }
+.imagine b { color: var(--lime); }
+
+.extra {
+  margin-top: 14px; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 14px; align-items: center;
+  padding: 18px; border-radius: 24px; box-shadow: inset 0 0 0 1.5px var(--track);
+}
+.extra__icon { grid-row: span 2; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 18px; background: var(--lime-soft); color: var(--green); font-size: 26px; }
+.extra__cap { font: 600 12px/1.2 var(--text); letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+.extra__title { margin-top: 4px; font: 800 19px/1.2 var(--display); }
+
+.row-link {
+  margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 16px 14px 16px 20px; border-radius: 22px; background: var(--card);
+  text-decoration: none; transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.row-link:hover { scale: 1.03 !important; }   /* !important: GSAP оставляет inline scale: none */
+.row-link__text { display: grid; gap: 2px; }
+.row-link__text b { font: 700 16.5px/1.25 var(--text); }
+.row-link__text small { font-size: 13.5px; color: var(--ink-soft); }
+.row-link__go { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px; background: var(--bg); color: var(--green); font-size: 20px; }
+
+/* ---------- 4. Меню отдельно ---------- */
+.shop { padding-bottom: var(--section); display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
+.shop h2 em { color: #c2500f; }
+.shop__photo { margin-top: 20px; border-radius: var(--radius); overflow: hidden; aspect-ratio: 3 / 2; background: var(--card); }
+.shop__photo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); }
+.shop__hint { margin-top: 16px; display: flex; gap: 10px; align-items: flex-start; font-size: 15.5px; color: var(--ink-soft); }
+.shop__hint svg { font-size: 22px; color: var(--green); margin-top: 1px; }
+
+.menu-list { border-radius: 26px; background: var(--card); padding: 6px 6px; }
+.menu-list li + li .menu-row::before {
+  content: ''; position: absolute; left: 44px; right: 14px; top: 0; height: 1px; background: var(--line);
+}
+.menu-row {
+  position: relative; display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; gap: 10px; align-items: center;
+  min-height: 62px; padding: 10px 10px 10px 14px; border-radius: 20px;
+  text-decoration: none; transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.menu-row:hover { scale: 1.03 !important; }   /* !important: GSAP оставляет inline scale: none */
+.menu-row__num { font: 600 12px/1 var(--text); color: var(--green); font-variant-numeric: tabular-nums; }
+.menu-row__name { display: grid; gap: 2px; min-width: 0; }
+.menu-row__name b { font: 600 15.5px/1.25 var(--text); }
+.menu-row__name small { font-size: 13px; line-height: 1.3; color: var(--ink-soft); }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  padding: 9px 13px; border-radius: 999px; background: var(--lime); color: var(--ink);
+  font: 700 14px/1 var(--text); font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 5. Записаться ---------- */
+.join { padding-bottom: var(--section); display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.join .btn { margin-top: 22px; }
+.join .btn__go { font-size: 22px; }
+/* её длинная подпись «Нажмите, чтобы узнать подробности о марафоне или записаться» — в две строки на 390 */
+.btn--wa { padding-left: 18px; gap: 10px; }
+.btn--wa .btn__go { width: 42px; height: 42px; border-radius: 15px; }
+.btn--wa .btn__text b { font-size: 15px; line-height: 1.3; }
+.toggles { margin-top: 18px; display: grid; gap: 8px; }
+.toggle {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: center;
+  padding: 14px 14px 14px 18px; border-radius: 20px; background: var(--card);
+  font: 600 15px/1.3 var(--text);
+}
+.switch {
+  position: relative; width: 50px; height: 30px; border-radius: 999px; background: #d3d9cc;
+  transition: background-color .35s ease;
+}
+.switch::after {
+  content: ''; position: absolute; left: 3px; top: 3px; width: 24px; height: 24px; border-radius: 50%;
+  background: #fff; box-shadow: 0 2px 6px rgba(18, 21, 18, .25);
+  transition: translate .4s cubic-bezier(.3, .8, .25, 1);
+}
+.toggle.is-on .switch { background: var(--lime); }
+.toggle.is-on .switch::after { translate: 20px 0; }
+
+.treasure { margin-top: 8px; padding: 26px 22px 24px; border-radius: 26px; background: var(--lime-soft); }
+.treasure h3 { font: 800 clamp(25px, 6.6vw, 34px)/1.1 var(--display); letter-spacing: -.015em; }
+.treasure > p { margin-top: 12px; color: var(--ink-soft); }
+.treasure > p b { color: var(--ink); }
+.leaf-list { margin-top: 16px; display: grid; gap: 10px; }
+.leaf-list li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; font-size: 15.5px; line-height: 1.42; }
+.leaf-list svg { font-size: 19px; color: var(--green); margin-top: 1px; }
+
+/* ---------- 6. Обо мне ---------- */
+.about { padding-bottom: var(--section); }
+.profile { padding: 22px 20px 20px; border-radius: 28px; background: var(--card); }
+.profile__top { display: flex; align-items: center; gap: 16px; }
+/* кольцо как у сторис Instagram: её салатовый → оранжевый */
+.profile__ring { position: relative; flex: none; display: grid; place-items: center; width: 92px; height: 92px; }
+.profile__ring svg { position: absolute; inset: 0; width: 100%; height: 100%; rotate: -90deg; overflow: visible; }
+.profile__ring circle { fill: none; stroke: url(#ring-grad); stroke-width: 3.4; stroke-dasharray: 1 1; stroke-dashoffset: 0; }
+.profile__ava { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
+.profile h2 { margin-top: 8px; font: 800 clamp(27px, 7.4vw, 40px)/1.05 var(--display); letter-spacing: -.02em; }
+.profile__role { margin-top: 18px; font: 600 16.5px/1.42 var(--text); }
+.profile__text { margin-top: 12px; display: grid; gap: 12px; color: var(--ink-soft); font-size: 15.5px; }
+.profile__text b { color: var(--ink); }
+.profile .btn { margin-top: 20px; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 0 var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 800 clamp(26px, 7vw, 44px)/1.1 var(--display); letter-spacing: -.02em; max-width: 16ch; text-wrap: balance; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; text-wrap: pretty; }
+
+/* ---------- планшет и десктоп ---------- */
+@media (min-width: 960px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  /* фото не крупнее ~1,5× исходника: карточка-сторис 460 px */
+  .hero {
+    grid-template-columns: minmax(0, 460px) minmax(0, 1fr); align-items: center; gap: clamp(48px, 6vw, 96px);
+    padding-block: 28px 0;
+  }
+  .story-ui { padding: 16px 16px 52px; }
+  .app-head__ava { width: 40px; height: 40px; }
+  .app-head__who b { font-size: 15.5px; }
+  .badge { top: 86px; right: 16px; }
+  .tag { right: 16px; bottom: 16px; }
+  .tag, .badge { font-size: 13px; }
+  .results { padding-top: 48px; }
+  .hero__title { font-size: clamp(56px, 6.2vw, 92px); }
+  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .stat { padding: 16px 16px 17px; }
+  .stat__num { font-size: 44px; }
+  .stat__cap, .stat__sub { font-size: 14px; }
+  .hero .btn { max-width: none; }
+  .btn--wa .btn__text b { font-size: 16.5px; }
+
+  .reel-bar { margin-top: 30px; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; }
+  .reel-bar__segs { gap: 6px; }
+  .nav-btn { width: 48px; height: 48px; border-radius: 16px; font-size: 21px; }
+  .carousel {
+    --H: 400px; --W: 900px; --edge: max(var(--pad), calc((100vw - 1200px) / 2));
+    margin: 18px calc(var(--edge) * -1) -16px 0; padding: 4px var(--edge) 34px 0; scroll-padding-inline: 0; gap: 16px;
+  }
+  .slide--note { width: 320px; padding: 30px 26px 24px; }
+
+  .program { grid-template-columns: minmax(0, .9fr) minmax(0, 1.25fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .program__intro { position: sticky; top: 48px; }
+  .feature p { font-size: 16px; }
+  .feature:first-child p { font-size: 16.5px; }
+
+  .shop { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .shop__side { position: sticky; top: 48px; }
+
+  .join { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .treasure { margin-top: 0; padding: 36px 34px; }
+
+  .profile { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); column-gap: 56px; padding: 44px; }
+  .profile__top, .profile__role { grid-column: 1; }
+  .profile__text { grid-column: 2; grid-row: 1 / span 3; align-content: start; margin-top: 0; font-size: 16.5px; }
+  .profile .btn { grid-column: 1; align-self: start; }
+
+}

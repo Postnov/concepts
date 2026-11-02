@@ -1,0 +1,124 @@
+/* Анастасия Коробейникова · дерматолог-косметолог — концепт. Палитра с её фото: изумрудный бархат, белый костюм, помада. */
+:root {
+  --ivory: #f5f2ec;
+  --ivory-2: #ebe7de;
+  --emerald: #0f372f;
+  --emerald-2: #174a3f;
+  --emerald-3: #2a6b59;
+  --sage: #cfdcd3;
+  --ink: #17262a;
+  --ink-soft: #566660;
+  --lip: #b0454f;
+  --line: rgba(15, 55, 47, .16);
+  --line-light: rgba(245, 242, 236, .22);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(76px, 12vw, 140px);
+  --sans: 'Sofia Sans', system-ui, -apple-system, sans-serif;
+  --serif: 'Prata', Georgia, serif;
+  --concept-bg: #0a241f;
+  --concept-ink: #eef2ec;
+}
+
+body { background: var(--ivory); color: var(--ink); font: 400 17px/1.55 var(--sans); }
+em { font-style: normal; color: var(--lip); }
+.nw { white-space: nowrap; }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 56px; padding: 0 34px; border-radius: 999px;
+  background: var(--lip); color: #fff; text-decoration: none;
+  font: 600 16px/1 var(--sans); letter-spacing: .06em; text-transform: uppercase;
+  box-shadow: 0 16px 32px -16px rgba(176, 69, 79, .8);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .3) 50%, transparent 70%); transform: translateX(var(--shine, -120%)); }
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--light { background: var(--ivory); color: var(--emerald); box-shadow: none; }
+.btn--ghost { background: transparent; color: var(--emerald); box-shadow: inset 0 0 0 1.5px var(--emerald-3); }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px;
+  padding-top: 30px; padding-bottom: clamp(56px, 9vw, 110px);
+  background: var(--emerald); color: var(--ivory);
+}
+.kicker { display: flex; align-items: center; gap: 10px; font: 500 13px/1.2 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--sage); }
+.kicker__dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--lip); box-shadow: 0 0 0 5px rgba(176, 69, 79, .22); }
+.hero__name { margin-top: 16px; font: 400 clamp(38px, 10.6vw, 104px)/1.02 var(--serif); letter-spacing: -.005em; }
+.hero__lead { margin-top: 14px; font: 300 clamp(19px, 5vw, 26px)/1.35 var(--sans); color: var(--sage); }
+.hero__text .btn { margin-top: 26px; }
+
+.hero__photo { position: relative; margin: 0 auto; width: min(100%, 440px); }
+.arch { position: relative; overflow: hidden; aspect-ratio: 757 / 1000; border-radius: 999px 999px 26px 26px; background: var(--emerald-2); box-shadow: 0 0 0 1px var(--line-light), 0 40px 70px -40px rgba(0, 0, 0, .7); }
+.arch img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); }
+.arch__soft { filter: blur(16px) saturate(.5) brightness(1.15); }
+/* луч дерматоскопа: идёт сверху вниз и «проявляет» резкое фото */
+.scan { position: absolute; left: 0; right: 0; top: 0; height: 2px; opacity: 0; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .95), transparent); box-shadow: 0 0 22px 6px rgba(207, 220, 211, .55); transform: translateY(var(--scan-y, 0)); }
+.chip {
+  position: absolute; left: -6px; bottom: 7%; z-index: 3; display: flex; align-items: baseline; gap: 8px;
+  padding: 11px 18px 11px 16px; border-radius: 999px; background: var(--ivory); color: var(--emerald);
+  box-shadow: 0 18px 36px -18px rgba(0, 0, 0, .6);
+}
+.chip b { font: 400 30px/1 var(--serif); }
+.chip span { font: 500 13px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; }
+
+/* ---------- заголовки ---------- */
+.sec-head { max-width: 640px; }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; font: 500 13px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { color: var(--lip); }
+.sec-head h2 { margin-top: 16px; font: 400 clamp(32px, 8.4vw, 60px)/1.1 var(--serif); }
+
+/* ---------- 2. Приём ---------- */
+.visit { padding-block: var(--section) calc(var(--section) * .8); }
+.visit__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 34px; }
+.price { padding: 28px 24px 26px; border-radius: 28px; background: var(--emerald); color: var(--ivory); box-shadow: 0 30px 60px -36px rgba(15, 55, 47, .8); }
+.price__meta { font: 500 13px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--sage); }
+.price__title { margin-top: 14px; font: 400 23px/1.25 var(--serif); }
+.price__sum { margin: 22px 0 18px; font: 400 clamp(48px, 13vw, 72px)/1 var(--serif); }
+.price__note { color: rgba(245, 242, 236, .78); font-size: 15.5px; max-width: 40ch; }
+.price .btn { margin-top: 24px; }
+.facts { padding: 26px 24px; border-radius: 28px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); }
+.facts--no { background: transparent; box-shadow: inset 0 0 0 1px var(--line); }
+.facts__title { font: 400 22px/1.25 var(--serif); }
+.facts__list { margin-top: 18px; display: grid; gap: 12px; }
+.facts__list li { position: relative; padding-left: 30px; font-size: 17px; line-height: 1.4; }
+.facts__list li::before { content: ''; position: absolute; left: 0; top: .22em; width: 18px; height: 18px; border-radius: 50%; background: var(--sage); }
+.facts__list--yes li::after { content: ''; position: absolute; left: 6.5px; top: calc(.22em + 4.5px); width: 5px; height: 8px; border: solid var(--emerald); border-width: 0 2px 2px 0; transform: rotate(40deg); }
+.facts__list--no li::before { background: rgba(176, 69, 79, .14); }
+.facts__list--no li::after { content: ''; position: absolute; left: 5px; top: calc(.22em + 8px); width: 8px; height: 2px; border-radius: 1px; background: var(--lip); }
+
+/* ---------- 3. Отзывы ---------- */
+.reviews { padding-block: calc(var(--section) * .5) var(--section); }
+.rows { margin-top: 30px; border-top: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 38px minmax(0, 1fr) 44px; align-items: center; gap: 8px; padding: 22px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+.row__num { font: 500 13px/1 var(--sans); letter-spacing: .12em; color: var(--lip); }
+.row__name { font: 400 clamp(21px, 5.6vw, 28px)/1.2 var(--serif); }
+.row__arrow { position: relative; width: 44px; height: 44px; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--line); transition: background .35s, scale .45s cubic-bezier(.2, .7, .2, 1); }
+.row__arrow::before { content: ''; position: absolute; left: 14px; top: 21px; width: 16px; height: 1.5px; background: var(--emerald); transition: background .35s; }
+.row__arrow::after { content: ''; position: absolute; left: 22px; top: 17.5px; width: 7px; height: 7px; border: solid var(--emerald); border-width: 1.5px 1.5px 0 0; transform: rotate(45deg); transition: border-color .35s; }
+.row:hover .row__arrow, .row:focus-visible .row__arrow { background: var(--emerald); scale: 1.08; }
+.row:hover .row__arrow::before, .row:focus-visible .row__arrow::before { background: #fff; }
+.row:hover .row__arrow::after, .row:focus-visible .row__arrow::after { border-color: #fff; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 16px; }
+.concept-end__title { font: 400 clamp(26px, 6.6vw, 40px)/1.2 var(--serif); max-width: 18ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 16px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: center; gap: clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-block: 48px; }
+  .hero__photo { margin: 0 0 0 auto; width: min(100%, 460px); }
+  .hero__name { font-size: clamp(48px, 5vw, 80px); }
+  .visit__grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); grid-template-areas: 'price facts' 'price no'; gap: 18px; }
+  .price { grid-area: price; display: flex; flex-direction: column; align-items: flex-start; padding: 40px 36px; }
+  .price__note { margin-top: auto; }
+  .facts { grid-area: facts; }
+  .facts--no { grid-area: no; }
+  .rows { max-width: 760px; }
+}

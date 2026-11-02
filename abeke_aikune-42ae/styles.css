@@ -1,0 +1,168 @@
+/* Абай Баймагамбетов · целитель, основатель гимнастики Айкуне — концепт.
+   Палитра из эмблемы Айкуне: коричневые полосы-шанырак, бирюзовые ромбы, жёлтая дуга; тёмный гранат — со стены его фото. */
+:root {
+  --paper: #f5eee1;
+  --paper-2: #ebe1ce;
+  --ink: #241915;
+  --ink-soft: #6b5a4d;
+  --night: #1a1210;
+  --night-2: #261a17;
+  --garnet: #4a1424;
+  --garnet-hi: #7a2438;
+  --gold: #e6b93c;
+  --gold-deep: #94670f;
+  --sky: #2bbdd1;
+  --sky-deep: #0b7384;
+  --brown: #7b4b37;
+  --line: rgba(36, 25, 21, .16);
+  --line-d: rgba(245, 238, 225, .17);
+  --radius: 26px;
+  --pad: clamp(20px, 5.6vw, 56px);
+  --section: clamp(76px, 13vw, 150px);
+  --display: 'El Messiri', Georgia, 'Times New Roman', serif;
+  --sans: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+  --concept-bg: #120c0a;
+  --concept-ink: #f1e7d6;
+}
+
+body { background: var(--night); color: var(--paper); font: 400 17px/1.6 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+.nw { white-space: nowrap; }
+.hl { color: var(--gold-deep); }
+
+.sec--paper { background: var(--paper); color: var(--ink); }
+.sec--night { background: var(--night); color: var(--paper); }
+.sec--night .hl, .concept-end .hl, .hero .hl { color: var(--gold); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 12px 28px; border-radius: 999px;
+  background: var(--gold); color: #1d130e; text-decoration: none; text-align: center;
+  font: 600 16px/1.2 var(--sans); letter-spacing: .02em;
+  box-shadow: 0 16px 32px -16px rgba(230, 185, 60, .75);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* мягкий блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .42) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 1.5px rgba(230, 185, 60, .7); }
+.sec--paper .btn { background: var(--garnet); color: var(--paper); box-shadow: 0 16px 32px -18px rgba(74, 20, 36, .8); }
+.sec--paper .btn--ghost { background: transparent; color: var(--garnet); box-shadow: inset 0 0 0 1.5px var(--garnet); }
+
+/* ---------- позвонок ---------- */
+.vert { position: relative; display: grid; place-items: center; width: 56px; height: 30px; flex: none; }
+.vert svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: var(--gold); stroke: var(--brown); stroke-width: 1.4; overflow: visible; }
+.vert b { position: relative; font: 700 13px/1 var(--sans); color: #2a1a12; }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; overflow: hidden; isolation: isolate; color: var(--paper);
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; justify-items: center; text-align: center;
+  padding-top: 26px; padding-bottom: 60px;
+  background: radial-gradient(95% 52% at 50% 17%, #7a2438 0%, rgba(74, 20, 36, .92) 46%, #1f0c12 100%), var(--garnet);
+}
+.hero__chev { position: absolute; left: 50%; bottom: 0; z-index: -1; width: 150%; margin-left: -75%; color: var(--gold); opacity: .17; pointer-events: none; }
+
+.hero__stage { --d: min(76vw, 308px); position: relative; width: var(--d); aspect-ratio: 1; }
+.ring { position: absolute; inset: 0; }
+.ring::before { content: ''; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(43, 189, 209, .42); } /* спинной мозг: нить через центры позвонков */
+.ring__v, .ring__d { position: absolute; inset: 0; transform: rotate(var(--a)); }
+.ring__v svg { position: absolute; left: 50%; top: 0; width: 31px; height: 17px; margin: -8.5px 0 0 -15.5px; fill: var(--gold); stroke: var(--brown); stroke-width: 2.2; overflow: visible; }
+.ring__v--t svg { fill: var(--sky); stroke: #0b6575; }
+.ring__d i { position: absolute; left: 50%; top: 0; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; background: var(--sky); }
+.portrait {
+  position: absolute; inset: 11.5%; border-radius: 50%; overflow: hidden;
+  box-shadow: 0 0 0 2px rgba(230, 185, 60, .85), 0 0 0 11px rgba(230, 185, 60, .1), 0 30px 60px -20px rgba(0, 0, 0, .65);
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); }
+
+.hero__text { display: grid; justify-items: center; width: 100%; }
+.kicker {
+  display: flex; align-items: center; gap: 12px;
+  font: 600 12.5px/1.2 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--gold);
+}
+.kicker::before, .kicker::after { content: ''; width: 22px; height: 1px; background: currentColor; opacity: .7; }
+.hero__name { margin-top: 16px; font: 600 clamp(40px, 11.3vw, 108px)/1.02 var(--display); letter-spacing: .005em; }
+.hero__lead { margin-top: 18px; max-width: 26ch; font: 400 clamp(19px, 5vw, 25px)/1.38 var(--sans); color: rgba(245, 238, 225, .88); }
+.hero__tag { margin-top: 18px; }
+.hero__tag span {
+  display: inline-block; padding: 8px 16px; border-radius: 999px;
+  font: 600 13px/1.2 var(--sans); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--sky); box-shadow: inset 0 0 0 1px rgba(43, 189, 209, .55);
+}
+.hero__cta { display: grid; gap: 12px; width: min(100%, 380px); margin-top: 28px; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 680px; }
+.eyebrow {
+  display: inline-flex; gap: 10px; align-items: center;
+  font: 600 12.5px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--gold-deep); }
+.sec--night .eyebrow { color: rgba(245, 238, 225, .62); }
+.sec--night .eyebrow span { color: var(--gold); }
+.sec-head h2 { margin-top: 16px; font: 600 clamp(38px, 10.4vw, 68px)/1.04 var(--display); letter-spacing: -.005em; }
+
+/* ---------- 2. Что я лечу: позвоночник ---------- */
+.treat { padding-block: var(--section); background: linear-gradient(180deg, var(--paper), var(--paper-2) 35%, var(--paper-2) 78%, var(--paper)); }
+.spine { position: relative; margin-top: 30px; }
+.spine__axis { position: absolute; left: 27px; top: 26px; bottom: 26px; width: 2px; border-radius: 2px; background: var(--line); }
+.spine__axis i { position: absolute; inset: 0; border-radius: 2px; background: linear-gradient(var(--sky-deep), var(--gold-deep)); transform-origin: top; transform: scaleY(0); }
+.no-motion .spine__axis i { transform: scaleY(1); }
+.spine__item { position: relative; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 18px; align-items: start; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.spine__item:last-child { border-bottom: 0; }
+.spine__item p { padding-top: 1px; font: 500 clamp(21px, 5.6vw, 27px)/1.22 var(--display); }
+.callout { margin-top: 30px; display: grid; gap: 20px; justify-items: stretch; padding: 24px 16px 18px; border-radius: var(--radius); background: var(--paper); box-shadow: inset 0 0 0 1px var(--line); }
+.callout p { padding-inline: 6px; font-size: 18px; color: var(--ink); max-width: 40ch; }
+.callout .btn { padding-inline: 16px; }
+
+/* ---------- 3. Как записаться ---------- */
+.steps-sec { padding-block: var(--section); background: radial-gradient(80% 40% at 50% 0%, rgba(122, 36, 56, .45), transparent 70%), var(--night); }
+.steps { position: relative; margin-top: 40px; }
+.steps__rail { --p: 0; position: absolute; left: 27px; top: 16px; bottom: 36px; width: 2px; background: var(--line-d); border-radius: 2px; }
+.steps__rail i { position: absolute; inset: 0; border-radius: 2px; background: linear-gradient(var(--gold), var(--sky)); transform-origin: top; transform: scaleY(var(--p)); }
+.no-motion .steps__rail { --p: 1; }
+.step { position: relative; padding: 0 0 38px 78px; }
+.step:last-child { padding-bottom: 0; }
+.step .vert { position: absolute; left: 0; top: 0; }
+.step h3 { font: 600 clamp(24px, 6.4vw, 30px)/1.15 var(--display); padding-top: 2px; }
+.step p { margin-top: 10px; color: rgba(245, 238, 225, .78); max-width: 52ch; }
+.cta-row { display: grid; gap: 12px; margin-top: 44px; width: min(100%, 400px); }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 0 var(--section); background: var(--night); color: var(--paper); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 600 clamp(26px, 7vw, 42px)/1.12 var(--display); max-width: 18ch; }
+.concept-end__text { color: rgba(245, 238, 225, .72); max-width: 40ch; font-size: 16px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; justify-items: stretch; text-align: left; gap: clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-top: 40px; padding-bottom: 80px; }
+  .hero__stage { --d: min(34vw, 450px); order: 2; justify-self: center; }
+  .hero__text { order: 1; justify-items: start; }
+  .hero__name { font-size: clamp(48px, 5vw, 80px); }
+  .hero__lead { max-width: 24ch; }
+  .hero__chev { left: 36%; margin-left: 0; width: 64%; }
+  .hero__cta { grid-template-columns: auto auto; width: auto; justify-content: start; }
+  .hero__cta .btn { white-space: nowrap; padding-inline: 24px; }
+  .ring__v svg { width: 40px; height: 22px; margin: -11px 0 0 -20px; }
+  .ring__d i { width: 6px; height: 6px; margin: -3px 0 0 -3px; }
+  .treat { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); grid-template-rows: auto 1fr; grid-template-areas: 'head spine' 'call spine'; column-gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .treat__body { display: contents; }
+  .treat .sec-head { grid-area: head; }
+  .spine { grid-area: spine; margin-top: 0; }
+  .callout { grid-area: call; margin-top: 36px; }
+  .spine__item p { font-size: 29px; }
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 64px); }
+  .steps__list { display: contents; }
+  .steps__rail { left: 28px; right: 0; top: 14px; bottom: auto; width: auto; height: 2px; }
+  .steps__rail i { transform-origin: left; transform: scaleX(var(--p)); }
+  .step { padding: 74px 0 0 0; }
+  .cta-row { grid-template-columns: auto auto; width: auto; justify-content: start; }
+}

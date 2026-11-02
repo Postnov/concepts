@@ -1,0 +1,256 @@
+/* Марианна Орлова · Вектор любви 1.0 — концепт.
+   Палитра из её Taplink и фото: кремовая бумага, графит, красный «прожектор» с горячим светлым центром. */
+:root {
+  --cream: #f3ece6;
+  --paper: #faf8f4;
+  --blush: #f1dcd4;
+  --ink: #2b2a2b;
+  --ink-soft: #6c6461;
+  --red: #c05150;
+  --red-deep: #a33d3d;
+  --red-light: #e2716b;
+  --night: #1e1f22;       /* «холодный» блок */
+  --frost: #a7adb4;       /* приглушённый текст на тёмном */
+  --snow: #f4efea;
+  --line: rgba(43, 42, 43, .12);
+  --line-dark: rgba(244, 239, 234, .1);
+  --pad: clamp(18px, 5.4vw, 56px);
+  --section: clamp(88px, 14vw, 156px);
+  --display: 'Unbounded', system-ui, sans-serif;
+  --sans: 'Manrope', system-ui, -apple-system, sans-serif;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --concept-bg: #1e1f22;
+  --concept-ink: #f4efea;
+}
+
+body { background: var(--cream); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+main { overflow-x: clip; }
+em { font-family: var(--serif); font-style: italic; font-weight: 600; color: var(--red-deep); letter-spacing: 0; }
+strong { font-weight: 700; }
+.nowrap { white-space: nowrap; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 60px; padding: 0 32px; border-radius: 999px;
+  background: var(--red); color: var(--snow); text-decoration: none;
+  font: 500 13px/1 var(--display); letter-spacing: .07em; text-transform: uppercase;
+  box-shadow: 0 18px 36px -18px rgba(192, 81, 80, .8);
+  transition: scale .45s var(--ease);
+}
+.btn::after { /* мягкий блик, гоняет моушн */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .3) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn__arrow { font-family: var(--sans); font-size: 17px; font-weight: 500; }
+.btn--ghost { background: transparent; color: var(--red-deep); box-shadow: inset 0 0 0 1.5px var(--red); }
+
+/* ---------- 1. Hero ---------- */
+.hero { padding-top: 18px; padding-bottom: var(--section); }
+.hero__top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.brand { font: 500 12.5px/1.2 var(--display); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.role { font-size: 11.5px; line-height: 1.35; color: var(--ink-soft); text-align: right; max-width: 21ch; }
+
+.cover { position: relative; margin: 30px auto 0; max-width: 520px; }
+.cover__frame {
+  position: relative; z-index: 1; overflow: hidden; isolation: isolate;
+  aspect-ratio: 666 / 832;
+  border-radius: 50% 50% 26px 26px / 40% 40% 26px 26px; /* арка: верх — полукруг, как ореол прожектора */
+  background: #2a2526;
+  box-shadow: 0 40px 80px -46px rgba(120, 30, 30, .55);
+}
+.cover__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cover__cold { z-index: 1; filter: grayscale(1) contrast(1.08) brightness(.9); }
+.cover__frame::before { /* холодный тон под тёплой версией */
+  content: ''; position: absolute; inset: 0; z-index: 2;
+  background: #7f93a8; mix-blend-mode: multiply; opacity: .5;
+}
+.cover__warm {
+  z-index: 3; --warm: 100;
+  /* тёплая версия открывается кругом из центра ореола (45% 36% — центр света на фото) */
+  -webkit-mask-image: radial-gradient(circle at 45% 36%, #000 calc(var(--warm) * 1%), transparent calc(var(--warm) * 1% + 22%));
+          mask-image: radial-gradient(circle at 45% 36%, #000 calc(var(--warm) * 1%), transparent calc(var(--warm) * 1% + 22%));
+}
+.cover__frame::after { /* затемнение снизу под заголовок */
+  content: ''; position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  background: linear-gradient(180deg, transparent 52%, rgba(22, 14, 14, .55) 72%, rgba(22, 14, 14, .9) 100%);
+}
+.cover__title { position: absolute; left: 0; right: 0; bottom: 0; z-index: 5; padding: 0 22px 24px; color: var(--snow); }
+.cover__kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 600 11px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: rgba(244, 239, 234, .82);
+}
+.cover__kicker::before { content: ''; width: 22px; height: 1.5px; background: var(--red-light); }
+.cover__title h1 {
+  margin-top: 12px;
+  font: 700 clamp(36px, 11.2vw, 64px)/.98 var(--display); letter-spacing: -.015em; text-transform: uppercase;
+}
+.cover__title h1 b { font-weight: 700; color: var(--red-light); }
+
+/* Ореол тепла за аркой */
+.halo { position: absolute; left: 50%; top: 40%; width: 128%; aspect-ratio: 1; transform: translate(-50%, -50%); pointer-events: none; }
+.halo > span { position: absolute; inset: 0; border-radius: 50%; }
+.halo__glow { background: radial-gradient(closest-side, rgba(192, 81, 80, .3), rgba(192, 81, 80, .12) 55%, rgba(192, 81, 80, 0) 78%); }
+.halo__ring { inset: 9% !important; border: 1px solid rgba(192, 81, 80, .3); }
+.halo__ring--2 { inset: 17% !important; border-color: rgba(192, 81, 80, .18); }
+
+.hero__body { margin-top: 30px; }
+.hero__lead { font: 600 clamp(22px, 5.8vw, 44px)/1.28 var(--sans); letter-spacing: -.018em; max-width: 19ch; }
+.hero__lead em { font-size: 1.2em; line-height: .9; }
+.without { margin: 26px 0 30px; }
+.without li {
+  position: relative; padding: 14px 0;
+  font: 500 14px/1.2 var(--display); letter-spacing: .06em; text-transform: uppercase;
+}
+.without li::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: left; }
+.without li:last-child::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line); }
+.without b { color: var(--red); font-weight: 700; }
+.hero .btn { width: 100%; }
+
+.proof { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--line); }
+.proof__num { font: 700 46px/.9 var(--display); color: var(--red); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.proof__text { display: grid; gap: 8px; font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+.proof__who { font-weight: 600; color: var(--ink); font-size: 15px; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 640px; }
+.eyebrow {
+  display: inline-flex; gap: 12px; align-items: center;
+  font: 600 11.5px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { font-family: var(--display); font-weight: 500; letter-spacing: .04em; color: var(--red); }
+.sec-head h2 { text-wrap: balance; margin-top: 18px; font: 500 clamp(27px, 7.4vw, 54px)/1.14 var(--display); letter-spacing: -.02em; }
+.sec-head h2 em { font-size: 1.16em; line-height: 1; letter-spacing: -.005em; }
+
+/* ---------- 2. Боли: холод → тепло ---------- */
+.pains {
+  --spot: clamp(820px, 200vw, 1240px); /* диаметр тёплого света */
+  position: relative; overflow: hidden; isolation: isolate;
+  padding-block: var(--section) calc(var(--spot) * .31);
+  background: var(--night); color: var(--snow);
+}
+.pains .eyebrow { color: var(--frost); }
+.pains .sec-head h2 em { color: var(--red-light); }
+.pains__list { margin-top: 38px; }
+.pains__list li {
+  position: relative; padding: 17px 0 17px 40px;
+  border-bottom: 1px solid var(--line-dark);
+  font-size: 16px; line-height: 1.5; color: var(--frost);
+}
+.pains__list li:first-child { border-top: 1px solid var(--line-dark); }
+.pains__list li::before { /* знак «стоп», как ⛔ на её странице */
+  content: ''; position: absolute; left: 0; top: 19px; width: 22px; height: 22px; border-radius: 50%;
+  background: linear-gradient(var(--snow), var(--snow)) center / 11px 2.5px no-repeat, var(--red);
+}
+.pains__list strong { color: var(--snow); font-weight: 600; }
+
+.pains__friends {
+  margin: 48px 0 0; padding-left: 20px; border-left: 1px solid var(--red);
+  display: grid; gap: 8px;
+  font: 500 clamp(22px, 5.9vw, 32px)/1.28 var(--serif); font-style: italic; color: #d8d2cc;
+}
+
+.pains__end { position: relative; z-index: 1; margin-top: clamp(64px, 14vw, 120px); text-align: center; }
+.pains__doubt { font: 500 clamp(20px, 5.4vw, 36px)/1.3 var(--display); letter-spacing: -.015em; max-width: 22ch; margin-inline: auto; text-transform: uppercase; }
+.pains__doubt em { font-family: var(--display); font-style: normal; font-weight: 700; color: #f2a39a; }
+.pains__answer {
+  position: relative; margin-top: calc(var(--spot) * .3 - 10px); /* сомнение остаётся в холодной зоне, ответ — в центре света */
+  font: 600 clamp(38px, 10.6vw, 76px)/1.02 var(--serif); font-style: italic; color: var(--ink); letter-spacing: -.01em;
+}
+
+.pains__answer .emoji { font-size: .62em; vertical-align: .12em; font-style: normal; }
+
+/* Тёплый свет: тот же прожектор, что на её фото — горячий светлый центр, красный край. Центр — на ответе. */
+.spot {
+  position: absolute; z-index: -1; left: 50%; top: calc(50% + var(--spot) * .07); /* центр света чуть ниже ответа */
+  width: var(--spot); aspect-ratio: 1; border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side,
+    #fff8f2 0%, #fcefe6 34%, #f3cdbf 44%, #d97c70 54%, #c05150 61%, rgba(192, 81, 80, .5) 72%, rgba(192, 81, 80, .16) 86%, rgba(192, 81, 80, 0) 100%);
+  pointer-events: none;
+}
+
+/* ---------- лента ролей ---------- */
+.roles { overflow: hidden; background: var(--red); color: var(--snow); padding: 22px var(--pad); }
+.roles__track { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; }
+.roles__track li { display: inline-flex; align-items: baseline; gap: 8px; white-space: nowrap; font: 500 15px/1.2 var(--display); letter-spacing: .04em; text-transform: uppercase; }
+.roles__track span { font: 600 1.25em/1 var(--serif); font-style: italic; letter-spacing: 0; opacity: .75; }
+.js-motion .roles { padding-inline: 0; }
+.js-motion .roles__track { flex-wrap: nowrap; justify-content: flex-start; width: max-content; padding-inline: var(--pad); gap: 44px; }
+.js-motion .roles__track li { font-size: clamp(22px, 6vw, 40px); }
+.js-motion .roles__track li + li::before { content: ''; align-self: center; width: 7px; height: 7px; margin-right: 36px; border-radius: 50%; background: rgba(244, 239, 234, .6); }
+
+/* ---------- 3. Что внутри + цена ---------- */
+.offer { padding-block: var(--section); background: linear-gradient(180deg, var(--cream), var(--paper) 60%, var(--cream)); }
+.offer__grid { display: grid; gap: 40px; margin-top: 34px; }
+.inside li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; padding: 18px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.inside li:first-child { border-top: 1px solid var(--line); }
+.inside svg { width: 34px; height: 34px; fill: none; stroke: var(--red); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.inside strong { color: var(--ink); font-weight: 700; }
+.safe {
+  margin-top: 30px; padding: 24px 22px; border-radius: 24px; background: var(--blush);
+  font-size: 16.5px; line-height: 1.55;
+}
+.safe em { display: block; margin: 4px 0; font-size: 1.75em; line-height: 1.1; }
+
+.price {
+  position: relative; overflow: hidden; isolation: isolate;
+  padding: 34px 24px 26px; border-radius: 32px;
+  background: var(--night); color: var(--snow);
+  box-shadow: 0 40px 70px -40px rgba(30, 31, 34, .7);
+}
+.price__glow { /* маленький прожектор в углу карточки */
+  position: absolute; z-index: -1; right: -42%; top: -46%; width: 120%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 236, 226, .5), rgba(217, 124, 112, .5) 35%, rgba(192, 81, 80, .32) 55%, rgba(192, 81, 80, 0) 100%);
+}
+.price__label { font: 600 11.5px/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--frost); }
+.price__title { margin-top: 12px; font: 500 clamp(22px, 6vw, 30px)/1.15 var(--display); letter-spacing: -.015em; text-transform: uppercase; }
+.price__old { margin-top: 30px; font: 500 19px/1 var(--display); color: var(--frost); }
+.price__old s { position: relative; text-decoration: none; }
+.price__old s::after { content: ''; position: absolute; left: -4%; right: -4%; top: 50%; height: 2px; background: var(--red-light); transform: rotate(-6deg) scaleX(var(--strike, 1)); transform-origin: left; }
+.price__new { margin-top: 10px; font: 700 clamp(60px, 18vw, 92px)/1 var(--display); letter-spacing: -.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.price__note { margin: 18px 0 26px; font-size: 14px; line-height: 1.5; color: var(--frost); max-width: 34ch; }
+.price .btn { width: 100%; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 24px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; background: var(--cream); }
+.concept-end__title { font: 500 clamp(22px, 6vw, 36px)/1.2 var(--display); letter-spacing: -.02em; max-width: 18ch; }
+.concept-end__title em { display: block; font-size: 1.2em; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+.concept-end .btn { margin-top: 6px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .js-motion .roles__track { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+
+  .hero {
+    display: grid; grid-template-columns: 1.08fr .92fr; grid-template-areas: 'top top' 'body cover';
+    column-gap: clamp(48px, 6vw, 110px); align-items: center; padding-top: 28px;
+  }
+  .hero__top { grid-area: top; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+  .role { max-width: none; font-size: 12.5px; }
+  .cover { grid-area: cover; margin: 72px 0 0; width: 100%; max-width: 500px; justify-self: end; }
+  .hero__body { grid-area: body; margin-top: 64px; }
+  .hero__lead { font-size: clamp(40px, 4vw, 58px); max-width: 18ch; }
+  .without { max-width: 420px; margin: 34px 0 38px; }
+  .without li { font-size: 15px; padding: 16px 0; }
+  .hero .btn { width: auto; padding: 0 40px; }
+  .proof { max-width: 470px; margin-top: 52px; }
+
+  .pains { display: grid; grid-template-columns: .95fr 1.05fr; column-gap: clamp(48px, 6vw, 110px); align-items: start; }
+  .pains__list { margin-top: 0; }
+  .pains__list li { font-size: 17px; }
+  .pains__friends, .pains__end { grid-column: 1 / -1; }
+  .pains__friends { max-width: 760px; margin: 72px auto 0; padding-left: 28px; }
+
+  .offer__grid { grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 48px; }
+  .inside li { font-size: 17px; padding: 22px 0; }
+  .price { position: sticky; top: 40px; padding: 44px 40px 36px; }
+  .safe { padding: 28px 30px; }
+}

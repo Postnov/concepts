@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<script>(function(h){h.classList.add('is-loading');var r=function(){h.classList.remove('is-loading')};setTimeout(function(){if(!window.MotionBase)r()},9000);setTimeout(r,12000)})(document.documentElement)</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- preload-fonts -->
+<link rel="preload" href="../shared/fonts/lululovetarot-87da-kt/Kurale-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/lululovetarot-87da-kt/Kurale-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/lululovetarot-87da-kt/TenorSans-normal-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/lululovetarot-87da-kt/TenorSans-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- /preload-fonts -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Люлеви · таролог — концепт</title>
+<link rel="stylesheet" href="../shared/fonts/lululovetarot-87da-kt.css">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Сердце-масть: общий символ для индексов карт и орнаментов -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="heart" viewBox="0 0 24 22"><path d="M12 21.2 10.3 19.7C4.4 14.4.5 10.9.5 6.6.5 3.1 3.2.5 6.7.5c1.9 0 3.8.9 5.3 2.4C13.5 1.4 15.4.5 17.3.5c3.5 0 6.2 2.6 6.2 6.1 0 4.3-3.9 7.8-9.8 13.1L12 21.2Z" fill="currentColor"/></symbol>
+</svg>
+
+<div class="concept-bar" data-concept>
+  <span>Концепт редизайна @lulu.lovetarot · не официальный сайт</span>
+  <a href="https://liubovdanilova.taplink.ws">Текущий сайт →</a>
+</div>
+
+<main>
+  <!-- 1. Hero: печать с портретом, имя, главная кнопка -->
+  <section class="hero" aria-label="Люлеви, таролог">
+    <svg class="hero__arcs" viewBox="0 0 600 600" aria-hidden="true">
+      <circle cx="300" cy="300" r="292"/>
+      <circle cx="300" cy="300" r="250"/>
+      <circle cx="300" cy="300" r="208"/>
+      <circle cx="300" cy="300" r="166"/>
+    </svg>
+
+    <div class="hero__inner">
+      <figure class="seal">
+        <svg class="seal__ring" viewBox="0 0 300 300" aria-hidden="true">
+          <defs><path id="ring-path" d="M150 150m-131 0a131 131 0 1 1 262 0a131 131 0 1 1-262 0"/></defs>
+          <text><textPath href="#ring-path" textLength="820" lengthAdjust="spacing">Таролог с 15 летним стажем <tspan class="ring-heart">♥</tspan> Таролог с 15 летним стажем <tspan class="ring-heart">♥</tspan></textPath></text>
+        </svg>
+        <div class="seal__photo"><img src="assets/portrait.jpg" width="300" height="300" alt="Люлеви" fetchpriority="high"></div>
+      </figure>
+
+      <div class="hero__text">
+        <p class="kicker"><span>Liubov Danilova</span><svg class="kicker__heart" aria-hidden="true"><use href="#heart"/></svg><span>таролог</span></p>
+        <h1 class="hero__name">Люлеви</h1>
+        <p class="hero__lead">Получить бесплатный расклад таро вы можете по&nbsp;одной из&nbsp;ссылок ниже.</p>
+        <div class="hero__actions">
+          <a class="btn" href="https://t.me/ludmilalevi_tarohelpbot">
+            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.4 3.6 2.9 10.8c-1.3.5-1.3 1.2-.2 1.6l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.5-1.5ZM9.3 14.2l8.8-5.6c.4-.3.8-.1.5.2l-7.5 6.8-.3 3.2-1.5-4.6Z"/></svg>
+            Бесплатный расклад в&nbsp;Телеграм
+          </a>
+          <a class="btn btn--ghost" href="https://ludmilalevi-taro.com/contacts">Платный расклад</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Расклады: три карты раздаются из колоды и переворачиваются -->
+  <section class="spreads" aria-labelledby="spreads-title">
+    <header class="sec-head">
+      <p class="eyebrow"><span>01</span> колода</p>
+      <h2 id="spreads-title">Расклады <em>таро</em></h2>
+    </header>
+
+    <ol class="deck">
+      <li class="tcard">
+        <div class="tcard__inner">
+          <article class="tcard__face">
+            <span class="tcard__idx tcard__idx--tl">I<svg><use href="#heart"/></svg></span>
+            <span class="tcard__idx tcard__idx--br">I<svg><use href="#heart"/></svg></span>
+            <p class="tcard__tag">Телеграм</p>
+            <h3 class="tcard__title">Бесплатный расклад</h3>
+            <p class="tcard__note">в&nbsp;Телеграм-боте</p>
+            <a class="btn btn--small" href="https://t.me/ludmilalevi_tarohelpbot">Получить расклад</a>
+          </article>
+          <div class="tcard__back" aria-hidden="true"><svg><use href="#heart"/></svg></div>
+        </div>
+      </li>
+      <li class="tcard tcard--accent">
+        <div class="tcard__inner">
+          <article class="tcard__face">
+            <span class="tcard__idx tcard__idx--tl">II<svg><use href="#heart"/></svg></span>
+            <span class="tcard__idx tcard__idx--br">II<svg><use href="#heart"/></svg></span>
+            <p class="tcard__tag">Сайт</p>
+            <h3 class="tcard__title">Платный расклад</h3>
+            <p class="tcard__note">ludmilalevi-taro.com</p>
+            <a class="btn btn--small" href="https://ludmilalevi-taro.com/contacts">Перейти на&nbsp;сайт</a>
+          </article>
+          <div class="tcard__back" aria-hidden="true"><svg><use href="#heart"/></svg></div>
+        </div>
+      </li>
+      <li class="tcard tcard--muted">
+        <div class="tcard__inner">
+          <article class="tcard__face">
+            <span class="tcard__idx tcard__idx--tl">III<svg><use href="#heart"/></svg></span>
+            <span class="tcard__idx tcard__idx--br">III<svg><use href="#heart"/></svg></span>
+            <p class="tcard__tag">ВКонтакте</p>
+            <h3 class="tcard__title">Бесплатный расклад ВК</h3>
+            <p class="tcard__note">временно не&nbsp;доступно</p>
+            <a class="btn btn--small btn--ghost" href="https://salebot.pro/ref/6481710f2342ab686752c1d74893920e?utm_source=vkontakte&amp;utm_medium=insta&amp;utm_campaign={campaign_id}&amp;utm_content={ad_id}">ВКонтакте</a>
+          </article>
+          <div class="tcard__back" aria-hidden="true"><svg><use href="#heart"/></svg></div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 3. 15 лет стажа + подарок -->
+  <section class="years" aria-labelledby="years-title">
+    <div class="years__num">
+      <p class="years__pre">Таролог с</p>
+      <p class="years__big" id="years-title"><span data-count="15">15</span></p>
+      <p class="years__post">летним стажем</p>
+      <svg class="years__orbit" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="190"/><circle cx="200" cy="200" r="160"/></svg>
+    </div>
+    <div class="gift">
+      <span class="gift__icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><path d="M8 20h32v22H8zM5 13h38v7H5zM24 13v29M24 13c-3-6-11-8-12-3-1 4 7 3 12 3Zm0 0c3-6 11-8 12-3 1 4-7 3-12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </span>
+      <p class="gift__text">Забирай свой первый разбор</p>
+      <a class="btn" href="https://t.me/ludmilalevi_tarohelpbot">Забрать разбор</a>
+    </div>
+  </section>
+
+  <aside class="concept-end">
+    <p class="concept-end__title">Так может выглядеть <em>весь ваш сайт</em></p>
+    <p class="concept-end__text">Это концепт: блоки вашего Taplink в новом дизайне, на ваших фото и текстах.</p>
+    <a class="btn btn--ghost" href="https://liubovdanilova.taplink.ws">Открыть текущий сайт</a>
+  </aside>
+</main>
+
+<script src="../shared/vendor/gsap/gsap.min.js"></script>
+<script src="../shared/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="../shared/vendor/gsap/SplitText.min.js"></script>
+<script src="../shared/motion-base.js"></script>
+<script src="motion.js"></script>
+</body>
+</html>

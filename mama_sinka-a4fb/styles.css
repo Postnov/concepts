@@ -1,0 +1,255 @@
+/* Екатерина Синицына · фельдшер — концепт.
+   Айдентика: бумага кардиограммы (розовая сетка), тёмно-синие чернила, сигнальный красный, голубой её таплинка.
+   Справочники — настоящие книги с корешком; их соединяет линия пульса. */
+:root {
+  --paper: #fdf9f8;
+  --cool: #edf6fa;
+  --ink: #0d2640;
+  --ink-soft: #536a7e;
+  --red: #e1314a;
+  --red-deep: #c4223c;
+  --sky: #d3e9f5;
+  --sky-deep: #8fc7e3;
+  --teal: #1b8aa3;
+  --navy: #0b2236;
+  --line: rgba(13, 38, 64, .14);
+  --radius: 22px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(72px, 12vw, 140px);
+  --display: 'Oswald', 'Arial Narrow', Impact, sans-serif;
+  --sans: 'Ubuntu', system-ui, -apple-system, sans-serif;
+  --concept-bg: #0b2236;
+  --concept-ink: #eaf4fa;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 12px; }
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+main { overflow-x: clip; }
+em { font-style: normal; color: var(--red); }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 58px; padding: 0 28px; border-radius: 14px;
+  background: var(--red); color: #fff; text-decoration: none;
+  font: 500 16px/1 var(--display); letter-spacing: .09em; text-transform: uppercase;
+  box-shadow: 0 16px 30px -16px rgba(225, 49, 74, .8);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .3) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn__ico { flex: none; }
+.btn--small { min-height: 48px; padding: 0 22px; font-size: 14.5px; }
+.btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.btn--ghost::after { display: none; }
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative; isolation: isolate;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px;
+  padding-top: 26px; padding-bottom: var(--section);
+}
+/* бумага кардиограммы: мелкая и крупная сетка, растворяется к низу */
+.hero::before {
+  content: ''; position: absolute; inset: 0 0 12% 0; z-index: -1;
+  background-image:
+    linear-gradient(rgba(225, 49, 74, .2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(225, 49, 74, .2) 1px, transparent 1px),
+    linear-gradient(rgba(225, 49, 74, .085) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(225, 49, 74, .085) 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px, 12px 12px, 12px 12px;
+  background-position: -1px -1px;
+  -webkit-mask-image: linear-gradient(180deg, #000 52%, transparent);
+  mask-image: linear-gradient(180deg, #000 52%, transparent);
+}
+.kicker {
+  display: flex; align-items: center; gap: 10px;
+  font: 500 13px/1 var(--display); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.kicker i { width: 5px; height: 5px; border-radius: 50%; background: var(--red); }
+.hero__name {
+  margin-top: 16px;
+  font: 700 clamp(52px, 17.4vw, 140px)/1.16 var(--display); letter-spacing: .01em; text-transform: uppercase;
+  color: var(--ink);
+}
+.hero__first, .hero__last { display: block; }
+.hero__last { color: var(--red); margin-top: -.06em; }
+.hero__exp {
+  display: inline-block; margin-top: 12px; padding: 7px 12px 6px; border-radius: 8px;
+  background: var(--ink); color: #fff;
+  font: 500 14px/1.2 var(--display); letter-spacing: .1em; text-transform: uppercase;
+}
+.hero__lead { margin-top: 22px; font: 500 clamp(19px, 5vw, 26px)/1.42 var(--sans); max-width: 28ch; }
+.hero__about { margin-top: 14px; max-width: 42ch; color: var(--ink-soft); font-size: 15.5px; }
+.hero__text .btn { margin-top: 28px; }
+
+.hero__visual {
+  --d: min(88vw, 430px);
+  position: relative; order: -1; width: var(--d); height: var(--d); margin: 4px auto 6px;
+}
+.hero__disk {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle at 50% 34%, #fff 0, #dff0f9 40%, var(--sky-deep) 100%);
+  box-shadow: 0 30px 60px -30px rgba(27, 138, 163, .55), inset 0 0 0 1.5px rgba(13, 38, 64, .08);
+}
+.hero__ring {
+  position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+  border: 2px solid var(--red); opacity: 0;
+}
+/* линия пульса: проходит позади портрета (вылезает слева и справа от лица) */
+.ecg {
+  position: absolute; left: 50%; top: 50%; width: min(126vw, 820px); height: auto; translate: -50% -52%;
+  overflow: visible; pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.ecg path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.ecg__base { stroke: var(--ink); stroke-opacity: .28; stroke-width: 3; }
+.ecg__live { stroke: var(--red); stroke-opacity: .5; stroke-width: 4; filter: drop-shadow(0 0 5px rgba(225, 49, 74, .55)); }
+.ecg__head { stroke: var(--red); stroke-width: 5.5; filter: drop-shadow(0 0 7px rgba(225, 49, 74, .8)); }
+.ecg__dot { fill: var(--red); filter: drop-shadow(0 0 8px rgba(225, 49, 74, .9)); }
+.no-motion .ecg__live, .no-motion .ecg__head, .no-motion .ecg__dot { display: none; }
+/* портрет: плечи срезаны нижней дугой диска, голова может выходить вверх */
+.hero__cutwrap {
+  position: absolute; inset: -8% -6% 0 -6%; overflow: visible;
+  -webkit-mask-image: radial-gradient(circle calc(var(--d) / 2) at 50% calc(var(--d) * .58), #000 99.6%, transparent 100%), linear-gradient(#000, #000);
+  -webkit-mask-size: 100% 100%, 100% calc(var(--d) * .58);
+  -webkit-mask-repeat: no-repeat;
+  mask-image: radial-gradient(circle calc(var(--d) / 2) at 50% calc(var(--d) * .58), #000 99.6%, transparent 100%), linear-gradient(#000, #000);
+  mask-size: 100% 100%, 100% calc(var(--d) * .58);
+  mask-repeat: no-repeat;
+  mask-position: 0 0, 0 0;
+  mask-composite: add;
+}
+.hero__cut { position: absolute; left: 0; bottom: 0; width: 100%; height: auto; }
+.hero__tag {
+  position: absolute; left: -3%; bottom: 3%; z-index: 3;
+  display: inline-flex; align-items: center; gap: 9px; padding: 10px 15px 9px; border-radius: 12px;
+  background: var(--navy); color: #fff; box-shadow: 0 16px 30px -14px rgba(11, 34, 54, .7);
+  font: 500 13px/1 var(--display); letter-spacing: .12em; text-transform: uppercase;
+}
+.hero__pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 0 rgba(225, 49, 74, .7); animation: pulse 1.6s ease-out infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(225, 49, 74, .7); } 80%, 100% { box-shadow: 0 0 0 10px rgba(225, 49, 74, 0); } }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 720px; }
+.eyebrow {
+  display: inline-flex; gap: 12px; align-items: center;
+  font: 500 13px/1 var(--display); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow__beat { color: var(--red); }
+.sec-head h2 {
+  margin-top: 18px;
+  font: 600 clamp(40px, 11.4vw, 84px)/1.12 var(--display); letter-spacing: .005em; text-transform: uppercase;
+}
+.sec-sub { margin-top: 14px; color: var(--ink-soft); font-size: 17px; }
+.arrows { display: flex; gap: 6px; margin-top: 14px; font: 500 26px/1 var(--display); color: var(--red); }
+.arrows span { display: block; }
+
+/* ---------- 2. Справочники ---------- */
+.guides { padding-block: calc(var(--section) * .6) var(--section); background: linear-gradient(180deg, var(--paper), var(--cool) 14%, var(--cool) 100%); }
+
+/* книга: корешок, обрез страниц, тень */
+.book { position: relative; width: 100%; aspect-ratio: 3 / 4; border-radius: 4px 11px 11px 4px; background: #fff; box-shadow: 0 22px 34px -18px rgba(13, 38, 64, .55), 0 2px 5px rgba(13, 38, 64, .18); }
+.book img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.book::before { /* корешок */
+  content: ''; position: absolute; inset: 0; z-index: 2; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .3), rgba(255, 255, 255, .22) 4.5%, rgba(0, 0, 0, .1) 8%, transparent 14%);
+  box-shadow: inset 0 0 0 1px rgba(13, 38, 64, .1);
+}
+.book::after { /* обрез страниц справа */
+  content: ''; position: absolute; top: 2.5%; bottom: 2.5%; right: -3.2%; width: 3.4%; z-index: -1; border-radius: 0 6px 6px 0;
+  background: repeating-linear-gradient(90deg, #fff 0 1px, #cfd8e0 1px 2px);
+}
+.book--lg { border-radius: 5px 16px 16px 5px; }
+
+/* «Актуально сейчас» */
+.feature {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; gap: 34px; margin-top: 38px; padding: 28px 22px 34px; border-radius: 30px;
+  background: linear-gradient(160deg, #c7ede8, var(--tint) 70%, #8fd0c9);
+  box-shadow: 0 40px 70px -46px rgba(27, 138, 163, .7);
+}
+.feature__sun { position: absolute; z-index: -1; right: -22%; top: -14%; width: 78%; aspect-ratio: 1; }
+.feature__sun i {
+  position: absolute; inset: 0; border-radius: 50%;
+  background:
+    radial-gradient(circle, #ffe388 0 34%, rgba(255, 227, 136, 0) 35%),
+    repeating-conic-gradient(from 0deg, rgba(255, 227, 136, .75) 0 5deg, transparent 5deg 15deg);
+  -webkit-mask-image: radial-gradient(circle, #000 28%, transparent 70%);
+  mask-image: radial-gradient(circle, #000 28%, transparent 70%);
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 9px; padding: 9px 14px 8px; border-radius: 10px;
+  background: var(--navy); color: #fff; font: 500 13px/1 var(--display); letter-spacing: .16em; text-transform: uppercase;
+}
+.chip__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: pulse 1.6s ease-out infinite; }
+.feature__title { margin-top: 20px; font: 700 clamp(46px, 14.4vw, 112px)/1.14 var(--display); letter-spacing: .01em; text-transform: uppercase; color: var(--ink); }
+.feature__accent { color: var(--red); }
+.feature__lead { margin-top: 16px; max-width: 46ch; font-size: 16px; color: #1a3c4d; }
+.feature__actions { display: grid; gap: 12px; margin-top: 26px; }
+.feature__book { width: min(62%, 300px); margin: 0 auto; order: -1; }
+.feature .book { rotate: -4deg; }
+.feature .btn--ghost { box-shadow: inset 0 0 0 1.5px var(--ink); }
+
+/* список справочников + линия пульса */
+.glist { position: relative; margin-top: 40px; padding-left: 36px; display: grid; gap: 20px; }
+.glist__rail { position: absolute; left: 0; top: 0; width: 26px; height: 100%; overflow: visible; pointer-events: none; }
+.glist__rail path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.rail__base { stroke: rgba(13, 38, 64, .2); stroke-width: 2; }
+.rail__live { stroke: var(--red); stroke-width: 3; filter: drop-shadow(0 0 4px rgba(225, 49, 74, .45)); }
+.rail__node { fill: var(--cool); stroke: rgba(13, 38, 64, .3); stroke-width: 2; transition: fill .3s, stroke .3s; }
+.rail__node.is-on { fill: var(--red); stroke: var(--red); }
+.g__card {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr);
+  border-radius: var(--radius); background: #fff; overflow: hidden;
+  box-shadow: 0 26px 46px -34px rgba(13, 38, 64, .55), inset 0 0 0 1px rgba(13, 38, 64, .06);
+}
+.g__head {
+  display: grid; grid-template-columns: minmax(0, 104px) minmax(0, 1fr); gap: 16px; align-items: center;
+  padding: 20px 16px 20px 18px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--tint) 50%, #fff), var(--tint));
+}
+.g__cover .book { width: 100%; }
+.g__num { font: 500 13px/1 var(--display); letter-spacing: .2em; color: var(--red-deep); }
+.g__title { margin-top: 8px; font: 600 clamp(21px, 6.2vw, 30px)/1.14 var(--display); letter-spacing: .01em; text-transform: uppercase; }
+.g__body { padding: 18px 18px 22px; display: flex; flex-direction: column; align-items: flex-start; }
+.g__text { font-size: 14.5px; line-height: 1.58; color: var(--ink-soft); }
+.g__body .btn { margin-top: 18px; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); background: var(--cool); text-align: center; display: grid; justify-items: center; gap: 14px; padding-top: 60px; }
+.concept-end__title { font: 600 clamp(28px, 7.4vw, 46px)/1.15 var(--display); text-transform: uppercase; max-width: 16ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: clamp(32px, 5vw, 80px); min-height: calc(100svh - 40px); padding-top: 40px; padding-bottom: calc(var(--section) * .6); }
+  .hero__name { font-size: clamp(66px, 7.2vw, 112px); }
+  .hero__visual { --d: clamp(380px, 40vw, 540px); order: 0; margin: 0 0 0 auto; }
+  .ecg { width: min(128%, 820px); }
+  .hero__tag { left: -6%; bottom: 8%; }
+
+  .guides { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); column-gap: clamp(40px, 5vw, 80px); align-items: start; padding-top: calc(var(--section) * .75); }
+  .guides .sec-head { grid-column: 1; grid-row: 1 / span 2; position: sticky; top: 48px; }
+  .guides .sec-head h2 { font-size: clamp(40px, 3.6vw, 52px); }
+  .feature { grid-column: 2; grid-row: 1; margin-top: 0; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: center; padding: 44px 40px 48px; gap: 20px; }
+  .feature__title { font-size: clamp(48px, 4.4vw, 64px); }
+  .feature__book { order: 0; width: 100%; margin: 0; }
+  .feature__actions { grid-template-columns: auto; justify-items: start; }
+  .glist { grid-column: 2; grid-row: 2; margin-top: 44px; padding-left: 44px; }
+  .g__card { grid-template-columns: minmax(0, 30%) minmax(0, 1fr); grid-template-areas: "cover title" "cover body"; grid-template-rows: auto 1fr; }
+  .g__head { display: contents; }
+  .g__cover { grid-area: cover; display: flex; align-items: center; padding: 28px 20px 28px 28px; background: linear-gradient(160deg, color-mix(in srgb, var(--tint) 50%, #fff), var(--tint)); }
+  .g__headtext { grid-area: title; padding: 30px 30px 0 28px; }
+  .g__body { grid-area: body; padding: 12px 30px 32px 28px; }
+  .g__title { font-size: clamp(28px, 2.5vw, 36px); }
+  .g__text { font-size: 15.5px; }
+}

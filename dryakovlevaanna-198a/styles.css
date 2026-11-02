@@ -1,0 +1,92 @@
+/* Анна Яковлева · ЛОР — концепт. Палитра от её Taplink: ледяной белый, глубокий синий, голубой градиент. */
+:root {
+  --paper: #eef4fc;
+  --paper-2: #e3eefa;
+  --card: #ffffff;
+  --ink: #12283f;
+  --ink-soft: #52667b;
+  --sky: #8fc0ea;
+  --sky-deep: #3b86c6;
+  --mist: #d4e6f8;
+  --line: rgba(59, 134, 198, .22);
+  --radius: 26px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(72px, 12vw, 140px);
+  --display: 'Tenor Sans', 'Onest', system-ui, sans-serif;
+  --sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --concept-bg: #12283f;
+  --concept-ink: #e8f1fb;
+}
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+b { font-weight: 600; color: var(--ink); }
+
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 56px; padding: 12px 28px; border-radius: 999px;
+  background: linear-gradient(100deg, #cfe3f8, #8fc0ea); color: var(--ink); text-decoration: none;
+  font: 500 15px/1.25 var(--sans); letter-spacing: .02em;
+  box-shadow: 0 16px 30px -16px rgba(59, 134, 198, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%); transform: translateX(var(--shine, -120%)); }
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: rgba(255,255,255,.6); box-shadow: inset 0 0 0 1.5px var(--sky); }
+
+.eyebrow { font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--sky-deep); }
+.sec-head h2 { margin-top: 12px; font: 400 clamp(40px, 11vw, 92px)/1 var(--display); text-transform: uppercase; letter-spacing: .01em; }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; padding-top: 28px; padding-bottom: var(--section); }
+.kicker { font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--sky-deep); }
+.hero__name { margin-top: 14px; font: 400 clamp(46px, 15vw, 132px)/.98 var(--display); text-transform: uppercase; letter-spacing: .005em; }
+.hero__lead { margin-top: 16px; display: inline-block; padding: 9px 20px; border-radius: 12px; background: linear-gradient(100deg, #d6e8fa, #a9cdee); font: 400 clamp(16px, 4.2vw, 20px)/1.3 var(--sans); }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 26px 0 28px; padding: 22px 6px; border-radius: 20px; background: var(--card); box-shadow: 0 20px 40px -26px rgba(18, 40, 63, .35); }
+.stats li { padding: 0 14px; text-align: center; }
+.stats li + li { border-left: 1px solid var(--line); }
+.stats__num { font: 400 clamp(32px, 9vw, 52px)/1.05 var(--display); white-space: nowrap; }
+.stats__num small { font: 400 15px/1 var(--sans); color: var(--ink-soft); }
+.stats__cap { margin-top: 8px; font-size: 13px; line-height: 1.35; color: var(--ink-soft); }
+.hero__cta { display: grid; gap: 12px; max-width: 420px; }
+
+.hero__photo { position: relative; order: -1; }
+.hero__photo .frame { position: relative; overflow: hidden; border-radius: var(--radius); aspect-ratio: 1080 / 880; background: linear-gradient(160deg, #f6faff, #dcebfa); box-shadow: 0 30px 60px -36px rgba(18, 40, 63, .45); }
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); }
+.air { position: absolute; inset: 14% 0 0; width: 100%; height: 76%; overflow: visible; z-index: 1; pointer-events: none; mix-blend-mode: multiply; }
+.air path { fill: none; stroke: var(--sky-deep); stroke-width: 1.6; stroke-linecap: round; opacity: .5; stroke-dasharray: 120 80; }
+
+/* ---------- 2. Спектр ---------- */
+.spectrum { padding-bottom: var(--section); }
+.checks { margin-top: 30px; display: grid; gap: 10px; max-width: 760px; }
+.checks li { position: relative; padding: 18px 20px 18px 62px; border-radius: 18px; background: var(--card); box-shadow: 0 16px 36px -26px rgba(18, 40, 63, .4); display: grid; gap: 4px; }
+.checks li::before { content: ''; position: absolute; left: 18px; top: 20px; width: 26px; height: 26px; border-radius: 8px; background: linear-gradient(140deg, #e3f0fc, #8fc0ea); scale: var(--k, 1); }
+.checks li::after { content: ''; position: absolute; left: 27px; top: 25px; width: 7px; height: 12px; border: solid #fff; border-width: 0 2.5px 2.5px 0; rotate: 40deg; scale: var(--k, 1); }
+.checks__t { font: 400 18px/1.35 var(--sans); font-weight: 500; }
+.checks__s { font-size: 14px; line-height: 1.4; color: var(--ink-soft); }
+
+/* ---------- 3. Обо мне ---------- */
+.about { padding-bottom: calc(var(--section) * .6); display: grid; gap: 34px; }
+.about__body { max-width: 640px; }
+.about__lead { font: 400 clamp(21px, 5.6vw, 28px)/1.35 var(--sans); font-weight: 500; }
+.about__text { margin-top: 20px; color: var(--ink-soft); font-size: 17px; }
+.clinic { position: relative; overflow: hidden; padding: 34px 26px 32px; border-radius: var(--radius); background: var(--card); box-shadow: 0 30px 60px -36px rgba(18, 40, 63, .45); display: grid; justify-items: start; gap: 10px; }
+.clinic::before { content: ''; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(closest-side, rgba(143, 192, 234, .55), rgba(143, 192, 234, 0)); }
+.clinic__name { font: 400 clamp(34px, 9.5vw, 64px)/1 var(--display); text-transform: uppercase; }
+.clinic__addr { color: var(--ink-soft); margin-bottom: 14px; }
+
+.concept-end { padding-block: 40px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 400 clamp(24px, 6.4vw, 40px)/1.15 var(--display); max-width: 18ch; }
+.concept-end__title em { font-style: normal; color: var(--sky-deep); }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px; align-items: center; padding-top: 56px; }
+  .hero__photo { order: 0; margin: 0; }
+  .hero__name { font-size: clamp(60px, 7vw, 100px); }
+  .about { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 8vw; }
+  .about .sec-head { grid-column: 1 / -1; }
+  .checks { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; }
+}

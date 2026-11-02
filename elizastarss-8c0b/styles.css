@@ -1,0 +1,240 @@
+/* Элиза · психология отношений, арт терапия, МАК — концепт.
+   Палитра от неё: жёлтая рубашка на сером фоне фото + красный, фиолетовый и малиновый заголовков её Taplink.
+   Идея: серое «окрашивается» — фото, мазки кисти, 14 дней марафона. */
+:root {
+  --paper: #f6f1e7;
+  --paper-2: #efe6d6;
+  --card: #fffdf8;
+  --ink: #2a2326;
+  --ink-soft: #655b5e;
+  --sun: #f2cd2c;
+  --sun-soft: #f8df73;
+  --rose: #c8246a;
+  --rose-soft: #f1aac8;
+  --violet: #9f3db7;
+  --violet-soft: #dcb7ea;
+  --red: #cf3a32;
+  --cream: #f4e4c8;
+  --plum: #271d29;
+  --taupe: #6f6262;
+  --line: rgba(42, 35, 38, .13);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 14vw, 156px);
+  --hand: 'Shantell Sans', 'Comic Sans MS', system-ui, sans-serif;
+  --display: 'Yeseva One', Georgia, serif;
+  --concept-bg: #2a2326;
+  --concept-ink: #f7f0e1;
+}
+
+.concept-bar { padding: 7px 12px; font-size: 11px; letter-spacing: 0; }
+
+body {
+  background: var(--paper); color: var(--ink);
+  font: 400 16px/1.62 var(--hand); font-variation-settings: 'INFM' 0, 'BNCE' 0;
+}
+main { overflow-x: clip; overflow-wrap: break-word; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 58px; padding: 10px 28px; border-radius: 999px; text-align: center;
+  background: var(--sun); color: var(--ink); text-decoration: none;
+  font: 650 15.5px/1.2 var(--hand); font-variation-settings: 'INFM' 0, 'BNCE' 0; letter-spacing: .01em;
+  box-shadow: 0 16px 30px -18px rgba(150, 110, 0, .75), inset 0 -2px 0 rgba(0, 0, 0, .08);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn__icon { width: 20px; height: 20px; flex: none; }
+.btn--ink { background: var(--ink); color: #fff6df; box-shadow: 0 16px 30px -18px rgba(42, 35, 38, .8); }
+.btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+
+/* ---------- мазок кисти под заголовками ---------- */
+.title-wrap { position: relative; isolation: isolate; width: fit-content; max-width: 100%; }
+.stroke { position: absolute; z-index: -1; left: -3%; bottom: -.16em; width: 84%; height: .36em; fill: currentColor; color: var(--sun); pointer-events: none; }
+.stroke--rose { color: var(--rose-soft); }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-top: 14px; padding-bottom: var(--section); }
+.hero__art { position: relative; width: min(100%, 318px); aspect-ratio: 1; margin: 0 auto; }
+.blob { position: absolute; display: block; }
+.blob--sun { inset: 9% -3% -2% 11%; background: var(--sun); border-radius: 62% 38% 55% 45% / 45% 55% 45% 55%; }
+.blob--rose { width: 20%; aspect-ratio: 1; left: -3%; bottom: 13%; z-index: 2; background: var(--rose); border-radius: 50% 50% 46% 54% / 60% 44% 56% 40%; }
+.blob--violet { width: 11%; aspect-ratio: 1; right: 3%; top: 1%; background: var(--violet); border-radius: 46% 54% 60% 40% / 50% 42% 58% 50%; }
+.portrait {
+  position: absolute; inset: 0 9% 8% 3%; z-index: 1; overflow: hidden;
+  border-radius: 42% 58% 47% 53% / 56% 44% 58% 42%; background: #8a867f;
+  box-shadow: 0 34px 60px -34px rgba(42, 35, 38, .55);
+}
+.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; }
+.portrait__grey { filter: grayscale(1) contrast(1.06); }
+/* Мини-карта МАК за портретом */
+.sticker {
+  position: absolute; right: -1%; bottom: 4%; z-index: 2; rotate: 9deg;
+  display: grid; place-items: center; width: 22%; aspect-ratio: 3 / 4; border-radius: 10px;
+  background: var(--card); box-shadow: 0 14px 28px -14px rgba(42, 35, 38, .55);
+}
+.sticker::before { content: ''; position: absolute; inset: 7px; border-radius: 6px; background: radial-gradient(circle at 35% 30%, var(--violet-soft), transparent 55%), radial-gradient(circle at 70% 75%, var(--sun-soft), transparent 60%); }
+.sticker span { position: relative; font: 700 clamp(13px, 3.6vw, 20px)/1 var(--hand); font-variation-settings: 'INFM' 100, 'BNCE' 40; color: var(--ink); }
+
+.kicker {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 9px;
+  font: 600 11.5px/1.4 var(--hand); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft);
+}
+.kicker i { width: 5px; height: 5px; border-radius: 50%; background: var(--rose); }
+.hero .title-wrap { margin-top: 6px; font-size: clamp(84px, 24vw, 168px); }
+.hero__name { position: relative; font: 400 1em/1 var(--display); letter-spacing: -.005em; padding-right: .04em; }
+.hero .stroke { left: -5%; bottom: .04em; width: 112%; height: .26em; }
+.hero__lead { margin-top: 4px; font: 500 clamp(20px, 5.5vw, 28px)/1.28 var(--hand); font-variation-settings: 'INFM' 35, 'BNCE' 0; max-width: 22ch; }
+
+.facts {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center;
+  margin-top: 16px; padding-block: 13px; border-block: 1.5px dashed var(--line);
+}
+.fact-num { padding-right: 18px; border-right: 1.5px dashed var(--line); }
+.fact-num b { display: block; font: 400 38px/1 var(--display); color: var(--rose); white-space: nowrap; }
+.fact-num span { display: block; margin-top: 6px; max-width: 12ch; font-size: 13px; line-height: 1.3; color: var(--ink-soft); }
+.tags { display: grid; gap: 10px; }
+.tags li { display: flex; align-items: center; gap: 10px; font-size: 14.5px; line-height: 1.25; }
+.dot { flex: none; width: 12px; height: 12px; border-radius: 46% 54% 50% 50% / 56% 44% 56% 44%; }
+.dot--rose { background: var(--rose); }
+.dot--violet { background: var(--violet); }
+
+.hero__cta { display: grid; gap: 16px; justify-items: start; margin-top: 18px; }
+.hero__cta .btn { width: 100%; }
+.text-link {
+  font-weight: 600; text-decoration: underline wavy var(--rose) 1.4px; text-underline-offset: 6px;
+  font-variation-settings: 'INFM' 60, 'BNCE' 20;
+}
+
+/* ---------- заголовки секций ---------- */
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; font: 600 12px/1 var(--hand); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.eyebrow span { color: var(--rose); }
+.sec-head .title-wrap { margin-top: 16px; font-size: clamp(38px, 10.6vw, 74px); }
+.sec-title { font: 400 1em/1.04 var(--display); overflow-wrap: normal; text-transform: uppercase; letter-spacing: .005em; }
+.note { margin-top: 20px; font: 650 clamp(22px, 6vw, 30px)/1.2 var(--hand); font-variation-settings: 'INFM' 100, 'BNCE' 60; rotate: -1.5deg; transform-origin: left center; width: fit-content; }
+.note--rose { color: var(--rose); }
+.note--sun { color: var(--sun); }
+
+/* ---------- 2. Клуб ---------- */
+.club { padding-bottom: var(--section); }
+.club__intro { margin-top: 22px; font-size: 17px; max-width: 46ch; }
+.palette { display: grid; gap: 12px; margin-top: 34px; }
+.palette__item {
+  display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 16px; align-items: center;
+  padding: 18px 18px 18px 16px; border-radius: 24px; background: var(--card);
+  box-shadow: 0 1px 0 rgba(42, 35, 38, .05), 0 20px 40px -32px rgba(42, 35, 38, .45);
+}
+.palette__item p { font-size: 15.5px; line-height: 1.5; }
+.swatch { position: relative; display: block; width: 46px; aspect-ratio: 1; border-radius: 58% 42% 50% 50% / 46% 56% 44% 54%; box-shadow: inset 0 0 0 1.5px var(--line); }
+.swatch i { position: absolute; inset: 0; border-radius: inherit; background: var(--c); }
+.swatch--sun { --c: var(--sun); }
+.swatch--rose { --c: var(--rose); }
+.swatch--violet { --c: var(--violet); }
+.swatch--coral { --c: var(--red); }
+
+.methods { margin-top: 36px; font: 500 clamp(20px, 5.6vw, 30px)/1.5 var(--hand); font-variation-settings: 'INFM' 25, 'BNCE' 0; max-width: 30ch; }
+.mk {
+  color: inherit; padding: 0 .08em;
+  background: linear-gradient(var(--c), var(--c)) 0 90% / 100% 42% no-repeat;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.mk--sun { --c: var(--sun-soft); }
+.mk--rose { --c: var(--rose-soft); }
+.mk--violet { --c: var(--violet-soft); }
+
+.result { position: relative; isolation: isolate; display: grid; gap: 22px; justify-items: start; margin-top: 40px; padding: 34px 24px 26px; }
+.result__paint { position: absolute; inset: 0; z-index: -1; background: var(--sun); border-radius: 34px 52px 30px 58px / 44px 30px 52px 36px; }
+.result__text { font: 400 clamp(28px, 7.8vw, 46px)/1.14 var(--display); }
+.result__big { display: block; color: var(--rose); }
+.result .btn { width: 100%; }
+
+/* ---------- 3. Марафон ---------- */
+.marathon {
+  margin-inline: 8px; padding-block: var(--section); border-radius: 36px;
+  background: var(--plum); color: #f6efe3;
+  padding-inline: calc(var(--pad) - 8px);
+}
+.marathon .eyebrow { color: rgba(246, 239, 227, .62); }
+.marathon .eyebrow span { color: var(--sun); }
+.marathon .stroke { color: var(--violet); opacity: .9; }
+.days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; margin-top: 36px; }
+.day { position: relative; overflow: hidden; aspect-ratio: 1; border-radius: 12px; background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1); }
+.day i { position: absolute; inset: -8%; background: var(--c); border-radius: 46% 54% 52% 48% / 55% 45% 55% 45%; }
+.day b { position: absolute; left: 6px; top: 5px; font: 700 10.5px/1 var(--hand); color: var(--plum); }
+.day:nth-child(5n+1) { --c: var(--sun); }
+.day:nth-child(5n+2) { --c: var(--rose); }
+.day:nth-child(5n+3) { --c: var(--violet); }
+.day:nth-child(5n+4) { --c: var(--red); }
+.day:nth-child(5n+5) { --c: var(--cream); }
+.marathon__quote {
+  margin-top: 24px; padding-left: 16px; border-left: 3px solid var(--sun);
+  font: 500 17px/1.55 var(--hand); font-variation-settings: 'INFM' 45, 'BNCE' 0; color: rgba(246, 239, 227, .88);
+}
+.marathon__side { margin-top: 40px; }
+.marathon__invite { font: 400 clamp(25px, 6.6vw, 36px)/1.2 var(--display); }
+.practice {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 16px; align-items: center;
+  margin-top: 26px; padding: 22px 20px; border-radius: 26px;
+  background: rgba(255, 255, 255, .055); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1);
+}
+.practice__num { font: 400 58px/1 var(--display); color: var(--sun); }
+.practice__text { font-size: 15px; line-height: 1.45; color: rgba(246, 239, 227, .82); }
+.practice__bar { grid-column: 1 / -1; position: relative; display: block; height: 10px; margin-top: 14px; border-radius: 999px; background: rgba(255, 255, 255, .1); }
+.practice__bar span { position: absolute; inset: 0 20% 0 0; border-radius: inherit; background: linear-gradient(90deg, var(--sun), var(--rose)); transform-origin: left center; }
+.steps__lead { margin-top: 28px; font-weight: 600; color: rgba(246, 239, 227, .7); }
+.steps { display: grid; gap: 10px; margin: 12px 0 30px; }
+.steps li {
+  display: flex; align-items: center; gap: 14px; padding: 12px 16px 12px 12px; border-radius: 18px;
+  background: rgba(255, 255, 255, .04); font: 600 17px/1.3 var(--hand); font-variation-settings: 'INFM' 70, 'BNCE' 25;
+}
+.steps li span {
+  display: grid; place-items: center; flex: none; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--sun); color: var(--plum); font: 700 12px/1 var(--hand); font-variation-settings: 'INFM' 0, 'BNCE' 0;
+}
+.steps li:nth-child(2) span { background: var(--rose); color: #fff; }
+.steps li:nth-child(3) span { background: var(--violet); color: #fff; }
+.marathon .btn { width: 100%; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { position: relative; isolation: isolate; display: grid; justify-items: center; gap: 14px; padding-block: var(--section); text-align: center; }
+.concept-end__paint { position: absolute; z-index: -1; inset: -14% -10%; background: var(--sun-soft); opacity: .6; border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; }
+.concept-end__title { position: relative; isolation: isolate; font: 400 clamp(28px, 7vw, 46px)/1.15 var(--display); max-width: 16ch; }
+.concept-end__title .hl { color: var(--rose); }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1200px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: clamp(40px, 6vw, 100px); min-height: calc(100svh - 34px); padding-top: 40px; padding-bottom: 90px; }
+  .hero__art { order: 2; width: min(100%, 540px); margin: 0 0 0 auto; }
+  .hero .title-wrap { font-size: clamp(110px, 11vw, 168px); }
+  .kicker { font-size: 13px; }
+  .hero__lead { font-size: clamp(28px, 2.4vw, 36px); }
+  .fact-num b { font-size: 52px; }
+  .fact-num span { font-size: 15px; }
+  .tags li { font-size: 17px; }
+  .hero__cta { grid-auto-flow: column; align-items: center; justify-content: start; gap: 28px; }
+  .hero__cta .btn { width: auto; }
+  .facts { max-width: 600px; margin-top: 24px; padding-block: 18px; }
+  .hero__cta { margin-top: 28px; }
+
+  .club { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 100px); align-items: start; padding-top: 40px; }
+  .club .sec-head { position: sticky; top: 50px; }
+  .club .title-wrap { font-size: clamp(46px, 4.3vw, 62px); }
+  .club__intro { font-size: 18px; }
+  .palette__item p { font-size: 16.5px; }
+  .palette { margin-top: 0; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .palette__item { grid-template-columns: minmax(0, 1fr); align-items: start; gap: 18px; padding: 24px; }
+  .result { padding: 44px 44px 40px; }
+  .result .btn { width: auto; }
+
+  .marathon { margin-inline: 24px; border-radius: 48px; padding-inline: max(calc(var(--pad) - 24px), calc((100vw - 1200px) / 2 - 24px)); }
+  .marathon__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(40px, 6vw, 100px); align-items: start; }
+  .days { gap: 10px; margin-top: 44px; }
+  .day { border-radius: 16px; }
+  .day b { left: 9px; top: 8px; font-size: 12px; }
+  .marathon__quote { font-size: 19px; }
+  .marathon__side { margin-top: 44px; }
+  .marathon .btn { width: auto; }
+}

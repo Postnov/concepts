@@ -1,0 +1,144 @@
+/* Альбина · психолог, психосоматика — концепт.
+   Палитра от её Taplink: олива на тёплых сливках; тёплая глина — для линии пульса и сердца. */
+:root {
+  --paper: #f7f6ec;
+  --paper-2: #eef0db;
+  --ink: #20261a;
+  --ink-soft: #60664f;
+  --olive: #77883f;
+  --olive-deep: #4c5a20;
+  --tint: #e6ecd2;
+  --clay: #b65f41;
+  --line: rgba(76, 90, 32, .2);
+  --radius: 26px;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(80px, 13vw, 150px);
+  --sans: 'Sofia Sans', system-ui, -apple-system, sans-serif;
+  --serif: 'Piazzolla', Georgia, serif;
+  --concept-bg: #20261a;
+  --concept-ink: #f3f5e6;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16.5px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--olive-deep); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  background: var(--olive-deep); color: #f6f8ea; text-decoration: none;
+  font: 500 15px/1 var(--sans); letter-spacing: .04em;
+  box-shadow: 0 14px 30px -14px rgba(76, 90, 32, .7);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* мягкий блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .25) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 46px; padding: 0 22px; font-size: 14px; }
+.btn--ghost { background: transparent; color: var(--olive-deep); box-shadow: inset 0 0 0 1.5px var(--olive); }
+
+/* ---------- линия пульса ---------- */
+.pulse { display: block; width: min(100%, 430px); height: auto; }
+.pulse path { stroke: var(--clay); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; padding-top: 36px; padding-bottom: var(--section); }
+.kicker {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  font: 500 12px/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
+}
+.kicker i { width: 4px; height: 4px; border-radius: 50%; background: var(--clay); }
+.hero__name {
+  margin-top: 16px;
+  font: 500 clamp(52px, 14.4vw, 118px)/1 var(--serif); letter-spacing: .005em;
+  color: var(--ink);
+}
+.hero__surname {
+  display: block; margin-top: 12px;
+  font: 600 clamp(14px, 3.6vw, 21px)/1.3 var(--sans); letter-spacing: .34em; text-transform: uppercase;
+  color: var(--olive);
+}
+.hero__lead { margin-top: 24px; display: flex; align-items: baseline; gap: 12px; }
+.hero__lead em { font: italic 400 clamp(31px, 8.6vw, 52px)/1.12 var(--serif); color: var(--olive-deep); }
+.heart { width: clamp(20px, 5vw, 30px); flex: none; fill: var(--clay); transform-origin: 50% 55%; align-self: center; }
+.hero__pulse { margin-top: 10px; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 30px; }
+.pills li {
+  padding: 8px 15px; border-radius: 999px; font-size: 13.5px; line-height: 1.2;
+  background: var(--tint); color: var(--olive-deep);
+}
+.pills li:nth-child(2) { background: transparent; box-shadow: inset 0 0 0 1px var(--olive); }
+
+.hero__photo { position: relative; margin: 10px 0 0; }
+.frame { position: relative; overflow: hidden; border-radius: var(--radius); aspect-ratio: 5 / 6; background: var(--tint); }
+.frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 640px; }
+.eyebrow {
+  display: inline-flex; gap: 10px; align-items: center;
+  font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--clay); }
+.sec-head h2 { margin-top: 16px; font: 500 clamp(31px, 8vw, 54px)/1.12 var(--serif); letter-spacing: 0; }
+
+/* ---------- 2. Сессия ---------- */
+.offer { padding-block: var(--section); background: linear-gradient(180deg, var(--paper), var(--paper-2) 30%, var(--paper-2) 80%, var(--paper)); }
+.offer__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; }
+.offer__note { margin-top: 30px; color: var(--ink-soft); font-size: 15px; }
+.offer__note .pulse { opacity: .85; margin-bottom: 14px; }
+.offer__note a { color: var(--olive-deep); text-decoration: underline; text-underline-offset: 3px; }
+.card {
+  position: relative; padding: 28px 26px 26px; border-radius: 24px;
+  background: var(--olive-deep); color: #f3f5e6;
+  box-shadow: 0 28px 56px -32px rgba(32, 38, 26, .6);
+  max-width: 480px;
+}
+.card__meta { display: flex; align-items: center; gap: 8px; font: 500 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; opacity: .78; }
+.card__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--clay); }
+.card__title { margin-top: 16px; font: 500 clamp(22px, 5.6vw, 27px)/1.2 var(--serif); }
+.card__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.card__tags li {
+  padding: 7px 13px; border-radius: 999px; font-size: 13px; line-height: 1.2;
+  background: rgba(246, 248, 234, .14); color: #eef1da;
+}
+.card__price { margin: 22px 0 22px; font: 300 clamp(44px, 11vw, 56px)/1 var(--serif); letter-spacing: .01em; font-variant-numeric: tabular-nums; }
+.card .btn--small { background: #f6f8ea; color: var(--olive-deep); box-shadow: none; }
+
+/* ---------- 3. Телеграм-канал ---------- */
+.channel { padding-block: 0 var(--section); }
+.tg-card {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 14px 16px;
+  margin-top: 34px; padding: 22px; border-radius: 24px; max-width: 640px;
+  background: #fdfdf6; box-shadow: inset 0 0 0 1px var(--line), 0 24px 48px -34px rgba(32, 38, 26, .4);
+}
+.tg-card__ava { display: block; width: 58px; height: 58px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 2px var(--paper), 0 0 0 3.5px var(--olive); }
+.tg-card__ava img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+.tg-card__name { font: 500 19px/1.25 var(--serif); }
+.tg-card__sub { margin-top: 4px; color: var(--ink-soft); font-size: 14px; }
+.tg-card .btn--small { grid-column: 1 / -1; justify-self: start; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: 10px var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 500 clamp(26px, 6.4vw, 42px)/1.15 var(--serif); max-width: 18ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); align-items: center; gap: clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-top: 40px; }
+  .hero__photo { margin: 0 0 0 auto; width: min(100%, 480px); }
+  .hero__name { font-size: clamp(56px, 6.4vw, 104px); }
+  .hero__lead em { font-size: clamp(32px, 3.4vw, 46px); }
+  .offer__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+  .card { justify-self: end; width: min(100%, 460px); padding: 34px 32px 30px; }
+  .offer__note { margin-top: 40px; }
+  .tg-card { grid-template-columns: auto minmax(0, 1fr) auto; padding: 24px 26px; }
+  .tg-card .btn--small { grid-column: auto; }
+}

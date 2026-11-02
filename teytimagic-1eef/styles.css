@@ -1,0 +1,147 @@
+/* Teyti Magic — концепт. Палитра её Taplink: тёплая бумага, оливковая зелень, золото. */
+:root {
+  --paper: #f5eee3;
+  --paper-2: #ece1cf;
+  --ink: #1f1c14;
+  --ink-soft: #5d5845;
+  --olive: #55562c;
+  --olive-deep: #3b3c1f;
+  --olive-night: #2c2d16;
+  --gold: #a77a31;
+  --gold-soft: #c9a96a;
+  --line: rgba(167, 122, 49, .3);
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 13vw, 150px);
+  --display: 'Forum', 'Times New Roman', serif;
+  --serif: 'Spectral', Georgia, serif;
+  --sans: 'Golos Text', system-ui, -apple-system, sans-serif;
+  --concept-bg: #2c2d16;
+  --concept-ink: #f5eee3;
+}
+
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); }
+em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--gold); }
+main { overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+svg { display: block; }
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 58px; padding: 0 22px; border-radius: 14px; text-align: center;
+  background: var(--olive); color: #f5eee3; text-decoration: none;
+  font: 500 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase;
+  box-shadow: 0 16px 30px -16px rgba(44, 45, 22, .75);
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* мягкий блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 244, 214, .22) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--small { min-height: 48px; padding: 0 24px; font-size: 13px; }
+.btn--ghost { background: transparent; color: var(--olive); box-shadow: inset 0 0 0 1.5px var(--gold); }
+.btn--light { background: var(--paper); color: var(--olive-deep); box-shadow: none; }
+
+/* ---------- 1. Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; padding-top: 30px; padding-bottom: var(--section); position: relative; }
+.kicker {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px;
+  font: 500 11.5px/1.2 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft);
+}
+.kicker i { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); }
+.hero__name {
+  margin-top: 16px;
+  font: 400 clamp(38px, 11.4vw, 128px)/1 var(--display); letter-spacing: .05em; text-transform: uppercase; color: var(--ink);
+}
+.hero__name-b { color: var(--olive); }
+.hero__lead { margin-top: 22px; font: 400 clamp(23px, 6.4vw, 34px)/1.3 var(--display); max-width: 20ch; }
+.hero__lead em { font-size: 1.04em; }
+.hero__text .btn { margin-top: 28px; }
+
+.hero__photo { position: relative; order: -1; width: min(78%, 330px); margin: 8px auto 6px; }
+.arch {
+  position: relative; z-index: 1; overflow: hidden; aspect-ratio: 5 / 7;
+  border-radius: 999px 999px 22px 22px; background: var(--paper-2);
+  box-shadow: 0 0 0 1px var(--gold-soft), 0 0 0 9px var(--paper), 0 0 0 10px var(--line), 0 40px 60px -34px rgba(44, 45, 22, .6);
+}
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; transform: scale(1.04); }
+.wheel { position: absolute; z-index: 0; left: 50%; top: 40%; width: 142%; aspect-ratio: 1; margin: -71% 0 0 -71%; color: var(--gold); opacity: .8; }
+.wheel__ticks line { stroke-width: .5; }
+.spark { position: absolute; z-index: 2; color: var(--gold); }
+.spark--1 { width: 26px; right: -22px; top: 8%; }
+.spark--2 { width: 15px; left: -26px; top: 46%; }
+.spark--3 { width: 20px; right: -14px; bottom: 14%; }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { max-width: 640px; }
+.eyebrow {
+  display: inline-flex; gap: 12px; align-items: center;
+  font: 500 11.5px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow span { color: var(--gold); }
+.eyebrow span::after { content: ''; display: inline-block; width: 24px; height: 1px; margin-left: 12px; vertical-align: middle; background: var(--gold); }
+.sec-head h2 { margin-top: 16px; font: 400 clamp(32px, 9vw, 60px)/1.08 var(--display); text-transform: uppercase; letter-spacing: .03em; }
+.sec-head h2 em { text-transform: none; letter-spacing: 0; font-size: 1.06em; }
+.sec-sub { margin-top: 16px; color: var(--ink-soft); max-width: 44ch; }
+
+/* ---------- 2. Три карты ---------- */
+.spread { padding-block: var(--section); background: linear-gradient(180deg, var(--paper), var(--paper-2) 35%, var(--paper-2) 85%, var(--paper)); }
+.spread__cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; margin-top: 40px; perspective: 1400px; }
+.tcard { position: relative; }
+.tcard__inner { position: relative; transform-style: preserve-3d; }
+.tcard__front {
+  position: relative; min-height: 232px; padding: 30px 26px 26px;
+  display: grid; align-content: start; gap: 12px;
+  border-radius: 18px; background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--gold-soft), inset 0 0 0 7px var(--paper), inset 0 0 0 8px var(--line), 0 26px 44px -34px rgba(44, 45, 22, .55);
+}
+.tcard__icon { width: 46px; height: 46px; fill: none; stroke: var(--gold); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.tcard__front h3 { font: 400 22px/1.2 var(--display); text-transform: uppercase; letter-spacing: .06em; max-width: 16ch; }
+.tcard__front p { color: var(--ink-soft); font-size: 15.5px; max-width: 26ch; }
+.tcard__num { position: absolute; right: 26px; top: 28px; font: 400 15px/1 var(--display); letter-spacing: .2em; color: var(--gold); }
+.tcard__back {
+  position: absolute; inset: 0; border-radius: 18px; overflow: hidden; background: var(--olive-deep);
+  transform: rotateY(180deg); backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  box-shadow: 0 26px 44px -34px rgba(44, 45, 22, .7);
+}
+.tcard__back svg { width: 100%; height: 100%; }
+.tcard__front { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+
+/* ---------- 3. Услуги (тёмная полоса) ---------- */
+.services { padding-block: var(--section); background: var(--olive-night); color: var(--paper); position: relative; overflow: hidden; }
+.services .eyebrow { color: rgba(245, 238, 227, .6); }
+.services .eyebrow span { color: var(--gold-soft); }
+.services .sec-head h2 { color: var(--paper); }
+.services__list { margin-top: 36px; border-top: 1px solid rgba(201, 169, 106, .3); }
+.svc {
+  position: relative; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 20px; align-items: center;
+  padding: 26px 0; border-bottom: 1px solid rgba(201, 169, 106, .3);
+}
+.svc__icon { width: 56px; height: 56px; fill: none; stroke: var(--gold-soft); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.svc h3 { font: 400 clamp(19px, 5.2vw, 26px)/1.2 var(--display); text-transform: uppercase; letter-spacing: .05em; }
+.svc p { margin-top: 6px; color: rgba(245, 238, 227, .68); font-size: 15px; max-width: 40ch; }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: var(--section); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.concept-end__title { font: 400 clamp(25px, 6.6vw, 40px)/1.18 var(--display); max-width: 18ch; }
+.concept-end__text { color: var(--ink-soft); max-width: 40ch; font-size: 15px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1180px) / 2)); }
+  .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: clamp(40px, 6vw, 96px); min-height: calc(100svh - 40px); padding-top: 40px; }
+  .hero__photo { order: 0; margin: 0 auto; width: min(100%, 440px); }
+  .hero__name { font-size: clamp(48px, 5.6vw, 92px); }
+  .hero__lead { max-width: 22ch; }
+  .spread__cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .tcard__front { min-height: 290px; padding: 38px 30px 30px; }
+  .tcard__front h3 { font-size: 24px; }
+  .services { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .services .sec-head { position: sticky; top: 64px; }
+  .services__list { margin-top: 0; }
+  .svc { padding: 34px 0; grid-template-columns: 72px minmax(0, 1fr); gap: 28px; }
+  .svc__icon { width: 72px; height: 72px; }
+}

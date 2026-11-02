@@ -1,0 +1,217 @@
+/* Сергей Носов · эксперт по безопасности и выживанию — концепт.
+   Айдентика: чёрная ночь его студийного портрета + сигнальный оранжевый его Taplink, страница как карта и компас. */
+:root {
+  --night: #09090a;
+  --coal: #111113;
+  --coal-2: #19191c;
+  --bone: #ece6da;
+  --muted: #a39d92;
+  --line: rgba(236, 230, 218, .14);
+  --orange: #ff7a14;
+  --orange-deep: #b9480a;
+  --paper: #e8e2d4;
+  --ink: #121214;
+  --pad: clamp(20px, 5.5vw, 56px);
+  --section: clamp(84px, 13vw, 150px);
+  --display: 'Tektur', 'Arial Narrow', system-ui, sans-serif;
+  --sans: 'Sofia Sans', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --concept-bg: #ff7a14;
+  --concept-ink: #0b0b0c;
+}
+
+html { background: var(--night); }
+body { background: var(--night); color: var(--bone); font: 400 17px/1.55 var(--sans); }
+em { font-style: normal; color: var(--orange); }
+main { position: relative; overflow-x: clip; }
+section, .concept-end { padding-inline: var(--pad); }
+
+/* зерно плёнки поверх всей страницы */
+main::after {
+  content: ''; position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: .045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- кнопки: только плавное увеличение ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-align: center;
+  min-height: 56px; padding: 0 28px; border-radius: 6px;
+  background: var(--orange); color: #0b0b0c; text-decoration: none;
+  font: 600 14px/1.2 var(--mono); letter-spacing: .02em; text-transform: uppercase;
+  transition: scale .45s cubic-bezier(.2, .7, .2, 1);
+}
+.btn::after { /* мягкий блик */
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .34) 50%, transparent 70%);
+  transform: translateX(var(--shine, -120%));
+}
+.btn:hover, .btn:focus-visible { scale: 1.04 !important; }
+.btn--ghost { background: transparent; color: var(--bone); box-shadow: inset 0 0 0 1.5px rgba(236, 230, 218, .45); }
+.btn--ghost::after { display: none; }
+
+/* ---------- топографические линии ---------- */
+.topo { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.topo svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.topo path { fill: none; stroke: rgba(236, 230, 218, .17); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.topo path.is-index { stroke: rgba(255, 122, 20, .6); stroke-width: 1.3; }
+
+/* ---------- азимут: экранчик компаса ---------- */
+.hud {
+  position: fixed; z-index: 55; left: 12px; bottom: 12px;
+  display: flex; align-items: center; gap: 8px; padding: 8px 12px 8px 10px; border-radius: 999px;
+  background: rgba(9, 9, 10, .72); box-shadow: inset 0 0 0 1px rgba(236, 230, 218, .16);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  font: 500 11px/1 var(--mono); letter-spacing: .1em; color: var(--muted);
+  pointer-events: none;
+}
+.hud__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 3px rgba(255, 122, 20, .22); }
+.hud b { font-weight: 500; color: var(--bone); font-variant-numeric: tabular-nums; }
+.hud__dir { min-width: 2ch; color: var(--orange); }
+.no-motion .hud { display: none; }
+
+/* ---------- 1. Hero ---------- */
+.hero { position: relative; isolation: isolate; overflow: hidden; padding-inline: 0; min-height: calc(100svh - 34px); }
+.hero__stage { position: absolute; z-index: -1; inset: 0 0 auto 0; height: 128vw; max-height: 760px; --fx: 50%; --fy: 41%; }
+.hero__photo { position: absolute; inset: 0; margin: 0; overflow: hidden; }
+.hero__photo img { position: absolute; left: 0; top: -5%; width: 100%; height: 110%; object-fit: cover; object-position: 67% 30%; }
+.hero__shade {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(9, 9, 10, 0) 48%, var(--night) 97%),
+    linear-gradient(to right, rgba(9, 9, 10, .5), rgba(9, 9, 10, 0) 38%);
+}
+.topo--hero {
+  -webkit-mask-image: radial-gradient(circle at var(--fx) var(--fy), transparent 0 31%, #000 62%);
+  mask-image: radial-gradient(circle at var(--fx) var(--fy), transparent 0 31%, #000 62%);
+}
+.compass { --size: min(88vw, 640px); position: absolute; left: var(--fx); top: var(--fy); width: var(--size); aspect-ratio: 1; translate: -50% -50%; }
+.compass__ring { position: absolute; inset: 0; will-change: transform; }
+.compass__svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.c-ring { fill: none; stroke: rgba(236, 230, 218, .3); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.c-ring--in { stroke: rgba(236, 230, 218, .14); stroke-dasharray: 2 6; }
+.c-ticks { fill: none; stroke: rgba(236, 230, 218, .55); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.compass__dir {
+  position: absolute; left: 50%; top: 50%; width: 2em; height: 2em; margin: -1em 0 0 -1em; display: grid; place-items: center;
+  font: 700 clamp(15px, 4.6vw, 24px)/1 var(--display); color: var(--bone);
+  transform: rotate(calc(var(--a) * 1deg)) translateY(calc(var(--size) * -.4)) rotate(calc((var(--a) + var(--r, 0)) * -1deg));
+}
+.compass__dir.is-n { color: var(--orange); }
+.c-north { fill: var(--orange); }
+.compass__mark { /* неподвижная метка курса */
+  position: absolute; left: 50%; top: -2.4%; width: 0; height: 0; translate: -50% 0;
+  border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 12px solid var(--bone);
+}
+
+.hero__text { position: relative; padding: calc(128vw - 118px) var(--pad) 44px; max-width: 760px; }
+.kicker { display: flex; align-items: center; gap: 10px; font: 500 11.5px/1.3 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--bone); }
+.kicker i { flex: none; width: 22px; height: 2px; background: var(--orange); }
+.hero__name {
+  margin-top: 14px;
+  font: 800 clamp(58px, 21.4vw, 96px)/.92 var(--display); letter-spacing: -.01em; text-transform: uppercase; color: var(--bone);
+}
+.hero__lead { margin-top: 20px; font: 400 19px/1.35 var(--sans); color: var(--bone); }
+.hero__cta { display: grid; gap: 10px; margin-top: 26px; }
+.hero__cta .btn { width: 100%; }
+
+.creds { margin-top: 38px; border-top: 1px solid var(--line); }
+.creds li {
+  position: relative; padding: 14px 0 14px 28px; border-bottom: 1px solid var(--line);
+  font: 400 17px/1.3 var(--sans); color: var(--bone);
+}
+.creds li::before { content: ''; position: absolute; left: 2px; top: 50%; width: 11px; height: 11px; margin-top: -6px; border: 1.5px solid var(--orange); border-radius: 50%; }
+.creds li::after { content: ''; position: absolute; left: 6px; top: 50%; width: 3px; height: 3px; margin-top: -2px; border-radius: 50%; background: var(--orange); }
+
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 30px 0 0; }
+.stats dt { font: 700 clamp(30px, 9vw, 46px)/1 var(--display); letter-spacing: -.01em; color: var(--bone); font-variant-numeric: tabular-nums; }
+.stats dt b { font-weight: inherit; }
+.stats dd { margin: 8px 0 0; font: 500 11px/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- заголовки секций ---------- */
+.sec-head { position: relative; max-width: 680px; }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; font: 500 12px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.eyebrow span { color: var(--orange); }
+.sec-head h2 { margin-top: 18px; font: 600 clamp(30px, 8.6vw, 60px)/1.14 var(--display); letter-spacing: -.01em; text-wrap: balance; }
+
+/* ---------- 2. Преимущества ---------- */
+.adv { position: relative; overflow: hidden; padding-block: var(--section); background: linear-gradient(180deg, var(--night), var(--coal) 12%, var(--coal) 88%, var(--night)); }
+.topo--adv { inset: 8% -20% 0 -20%; opacity: .55; }
+.route { position: relative; margin-top: 52px; }
+.route__list { display: grid; gap: 52px; }
+.route__rail { position: absolute; z-index: 1; left: 11px; top: 10px; bottom: 10px; width: 2px; background: repeating-linear-gradient(to bottom, rgba(236, 230, 218, .3) 0 6px, transparent 6px 12px); }
+.route__fill { position: absolute; inset: 0; background: var(--orange); transform-origin: top; transform: scaleY(0); }
+.no-motion .route__fill { transform: scaleY(1); }
+.route__scout { position: absolute; left: 50%; top: 0; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--bone); box-shadow: 0 0 0 5px rgba(255, 122, 20, .28); opacity: 0; }
+.stop { position: relative; padding-left: 52px; }
+.stop__pin { position: absolute; z-index: 2; left: 4px; top: 3px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(236, 230, 218, .45); background: var(--coal); transition: background-color .4s, border-color .4s; }
+.stop.is-reached .stop__pin { background: var(--orange); border-color: var(--orange); }
+.stop__tag { font: 500 11.5px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); padding-top: 5px; }
+.stop__icon { display: block; width: 34px; height: 34px; margin-top: 18px; fill: none; stroke: var(--orange); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.stop h3 { margin-top: 14px; font: 600 clamp(22px, 6.2vw, 30px)/1.2 var(--display); }
+.stop > p:not(.stop__tag) { margin-top: 10px; max-width: 38ch; color: var(--muted); font-size: 17px; }
+.stop__photo { position: relative; overflow: hidden; margin-top: 24px; aspect-ratio: 4 / 3; border-radius: 6px; background: var(--coal-2); }
+.stop__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 46% 40%; }
+.topo--photo { background: linear-gradient(to top, rgba(9, 9, 10, .55), rgba(9, 9, 10, 0) 55%); }
+.topo--photo path { stroke: rgba(255, 255, 255, .4); }
+.topo--photo path.is-index { stroke: rgba(255, 122, 20, .95); }
+
+/* ---------- 3. Книги ---------- */
+.books { position: relative; overflow: hidden; padding-block: var(--section); background: var(--paper); color: var(--ink); }
+.books .eyebrow { color: #6b665d; }
+.books .eyebrow span { color: var(--orange-deep); }
+.books em { color: var(--orange-deep); }
+.topo--books { inset: -10% -30% -10% -10%; }
+.topo--books path { stroke: rgba(18, 18, 20, .11); }
+.topo--books path.is-index { stroke: rgba(185, 72, 10, .5); }
+.books__grid { position: relative; display: grid; gap: 34px; margin-top: 40px; }
+.books__photo { position: relative; margin: 0 0 0 -6px; }
+.frame { position: relative; overflow: hidden; border-radius: 6px; aspect-ratio: 640 / 608; background: #cfc8b8; }
+.frame img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); }
+.stamp { position: absolute; right: -4px; top: -34px; display: grid; place-items: center; width: 128px; height: 128px; border-radius: 50%; background: var(--orange); color: #0b0b0c; box-shadow: 0 18px 40px -18px rgba(185, 72, 10, .8); }
+.stamp__ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+.stamp__ring text { font: 600 13.5px var(--mono); fill: #0b0b0c; letter-spacing: .08em; }
+.stamp__num { position: relative; font: 800 36px/1 var(--display); letter-spacing: -.02em; }
+.books__lead { font: 400 clamp(20px, 5.4vw, 26px)/1.35 var(--sans); max-width: 26ch; color: var(--ink); }
+.books__side { display: grid; gap: 26px; justify-items: start; align-content: center; }
+.books .btn { background: var(--ink); color: var(--bone); }
+
+/* ---------- финальная плашка концепта ---------- */
+.concept-end { padding-block: var(--section); display: grid; justify-items: center; gap: 16px; text-align: center; background: var(--night); }
+.concept-end__title { font: 600 clamp(26px, 6.8vw, 42px)/1.15 var(--display); max-width: 18ch; }
+.concept-end__text { color: var(--muted); max-width: 40ch; font-size: 16px; }
+
+/* ---------- десктоп ---------- */
+@media (min-width: 900px) {
+  section, .concept-end { padding-inline: max(var(--pad), calc((100vw - 1240px) / 2)); }
+  .hud { left: 20px; bottom: 20px; }
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; min-height: calc(100svh - 34px); padding-inline: max(var(--pad), calc((100vw - 1240px) / 2)); }
+  .hero__stage { inset: 0 0 0 auto; width: 66%; height: auto; max-height: none; --fx: 52%; --fy: 45%; }
+  .hero__photo img { object-position: 70% 30%; }
+  .hero__shade {
+    background:
+      linear-gradient(to right, var(--night) 0, rgba(9, 9, 10, 0) 36%),
+      linear-gradient(to top, var(--night) 0, rgba(9, 9, 10, 0) 20%);
+  }
+  .compass { --size: min(76vh, 600px); }
+  .hero__text { padding: 56px 0 56px; max-width: 590px; }
+  .hero__name { font-size: clamp(96px, 10.4vw, 150px); }
+  .hero__cta { grid-template-columns: auto auto; justify-content: start; }
+  .hero__cta .btn { width: auto; }
+  .creds { margin-top: 44px; }
+  .stats { gap: 24px; }
+
+  .topo--adv { inset: 0 -4% 0 30%; }
+  .adv .sec-head { max-width: 760px; }
+  .route { max-width: 880px; margin-top: 72px; }
+  .stop { padding-left: 76px; }
+  .stop__pin { left: 2px; width: 20px; height: 20px; }
+  .route__rail { left: 11px; }
+  .stop__photo { aspect-ratio: 16 / 9; max-width: 720px; }
+
+  .books__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(48px, 7vw, 110px); align-items: center; margin-top: 56px; }
+  .books__photo { margin: 0; }
+  .stamp { right: -34px; top: -40px; width: 168px; height: 168px; }
+  .stamp__num { font-size: 46px; }
+  .stamp__ring text { font-size: 13.5px; }
+  .books__lead { font-size: clamp(26px, 2.5vw, 34px); }
+}
